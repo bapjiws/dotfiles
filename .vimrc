@@ -14,6 +14,7 @@ Plugin 'VundleVim/Vundle.vim'
 " UltiSnips
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
+Plugin 'sheerun/vim-polyglot'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
