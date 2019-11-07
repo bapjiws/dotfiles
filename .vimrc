@@ -57,5 +57,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+Plug 'airblade/vim-gitgutter' "https://github.com/airblade/vim-gitgutter
 " Initialize plugin system
 call plug#end()
