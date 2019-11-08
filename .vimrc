@@ -20,10 +20,10 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'sheerun/vim-polyglot'
-Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'		"https://github.com/ggreer/the_silver_searcher
+Plugin 'junegunn/fzf.vim'			"https://github.com/ggreer/the_silver_searcher
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'junegunn/fzf.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
