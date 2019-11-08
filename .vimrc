@@ -47,6 +47,7 @@ set number
 set tabstop=2
 syntax on
 
+" Install vim-plug if missing
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
