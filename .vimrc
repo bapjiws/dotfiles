@@ -14,7 +14,6 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-" ctrlp
 " syntastic
 " UltiSnips
 Plugin 'scrooloose/nerdtree'
