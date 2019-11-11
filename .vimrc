@@ -6,6 +6,9 @@ source $VIMRUNTIME/menu.vim
 set relativenumber
 set number
 
+" Make the backspace work like in most other programs
+set backspace=indent,eol,start
+
 set tabstop=2
 syntax on
 
