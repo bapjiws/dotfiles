@@ -30,6 +30,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter' "https://github.com/airblade/vim-gitgutter
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" :CocInstall coc-tsserver coc-json coc-html coc-css coc-svg
+"  TODO: check out coc-emmet and coc-snippets 
 
 " Initialize plugin system
 call plug#end()
