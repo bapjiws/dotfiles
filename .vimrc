@@ -36,6 +36,14 @@ Plug 'airblade/vim-gitgutter' "https://github.com/airblade/vim-gitgutter
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " :CocInstall coc-tsserver coc-json coc-html coc-css coc-svg
 "  TODO: check out coc-emmet and coc-snippets 
+" Track the engine.
+Plug 'sirver/UltiSnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Initialize plugin system
 call plug#end()
