@@ -1,3 +1,8 @@
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+nnoremap <Up> <Nop>
+
 set langmenu=en_US
 let $LANG = 'en_US'
 source $VIMRUNTIME/delmenu.vim
