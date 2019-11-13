@@ -1,22 +1,4 @@
-nnoremap <Down> <Nop>
-nnoremap <Left> <Nop>
-nnoremap <Right> <Nop>
-nnoremap <Up> <Nop>
-
-set langmenu=en_US
-let $LANG = 'en_US'
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
-
-set relativenumber
-set number
-
-" Make the backspace work like in most other programs
-set backspace=indent,eol,start
-
-set tabstop=2
-syntax on
-
+" TODO: consider using vim 8's native installs. 
 " Install vim-plug if missing
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -30,6 +12,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
+Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
@@ -52,6 +35,28 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Initialize plugin system
 call plug#end()
+
+colorscheme gruvbox
+set background=dark
+
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+nnoremap <Up> <Nop>
+
+set langmenu=en_US
+let $LANG = 'en_US'
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+
+set relativenumber
+set number
+
+" Make the backspace work like in most other programs
+set backspace=indent,eol,start
+
+set tabstop=2
+syntax on
 
 " Augmenting Ag command using fzf#vim#with_preview function
 "   * fzf#vim#with_preview([[options], [preview window], [toggle keys...]])
