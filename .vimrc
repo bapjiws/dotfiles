@@ -36,19 +36,27 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " Initialize plugin system
 call plug#end()
 
+set foldmethod=marker
+
+" Colour scheme {{{
 colorscheme gruvbox
 set background=dark
+" }}}
 
 
+" Key mappings {{{
 nnoremap <Down> <Nop>
 nnoremap <Left> <Nop>
 nnoremap <Right> <Nop>
 nnoremap <Up> <Nop>
+" }}}
 
+" Language settings {{{
 set langmenu=en_US
 let $LANG = 'en_US'
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
+" }}}
 
 set relativenumber
 set number
@@ -58,12 +66,14 @@ set backspace=indent,eol,start
 
 syntax on
 
+" Space settings {{{
 " tab counts for 2 spaces
 set tabstop=2
 " when indenting with '>', use 2 spaces width
 set shiftwidth=2
 " on pressing tab, insert 2 spaces
 set expandtab
+" }}}
 
 " Augmenting Ag command using fzf#vim#with_preview function
 "   * fzf#vim#with_preview([[options], [preview window], [toggle keys...]])
