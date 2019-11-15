@@ -51,7 +51,7 @@ nnoremap <Right> <Nop>
 nnoremap <Up> <Nop>
 " }}}
 
-" Language settings {{{
+" Language {{{
 set langmenu=en_US
 let $LANG = 'en_US'
 source $VIMRUNTIME/delmenu.vim
@@ -66,7 +66,7 @@ set backspace=indent,eol,start
 
 syntax on
 
-" Space settings {{{
+" Space {{{
 " tab counts for 2 spaces
 set tabstop=2
 " when indenting with '>', use 2 spaces width
