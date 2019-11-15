@@ -39,6 +39,7 @@ call plug#end()
 colorscheme gruvbox
 set background=dark
 
+
 nnoremap <Down> <Nop>
 nnoremap <Left> <Nop>
 nnoremap <Right> <Nop>
@@ -55,8 +56,14 @@ set number
 " Make the backspace work like in most other programs
 set backspace=indent,eol,start
 
-set tabstop=2
 syntax on
+
+" tab counts for 2 spaces
+set tabstop=2
+" when indenting with '>', use 2 spaces width
+set shiftwidth=2
+" on pressing tab, insert 2 spaces
+set expandtab
 
 " Augmenting Ag command using fzf#vim#with_preview function
 "   * fzf#vim#with_preview([[options], [preview window], [toggle keys...]])
