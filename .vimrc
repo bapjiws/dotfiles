@@ -38,6 +38,16 @@ call plug#end()
 
 set foldmethod=marker
 
+set relativenumber
+set number
+
+set noswapfile
+
+" Make the backspace work like in most other programs
+set backspace=indent,eol,start
+
+syntax on
+
 " Colour scheme {{{
 colorscheme gruvbox
 set background=dark
@@ -57,14 +67,6 @@ let $LANG = 'en_US'
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 " }}}
-
-set relativenumber
-set number
-
-" Make the backspace work like in most other programs
-set backspace=indent,eol,start
-
-syntax on
 
 " Space {{{
 " tab counts for 2 spaces
