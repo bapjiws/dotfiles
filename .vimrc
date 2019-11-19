@@ -11,25 +11,33 @@ endif
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
-" Make sure you use single quotes
+" Visual stuff
 Plug 'morhetz/gruvbox'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree' "https://github.com/scrooloose/nerdtree
-Plug 'Xuyuanp/nerdtree-git-plugin' "https://github.com/Xuyuanp/nerdtree-git-plugin
-Plug 'tpope/vim-fugitive'
-Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+" Fuzzy search
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+" File navigation
+Plug 'scrooloose/nerdtree' "https://github.com/scrooloose/nerdtree
+
+" Git stuff
+Plug 'Xuyuanp/nerdtree-git-plugin' "https://github.com/Xuyuanp/nerdtree-git-plugin
+Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter' "https://github.com/airblade/vim-gitgutter
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Syntax and styling
+Plug 'sheerun/vim-polyglot'
+Plug 'vim-syntastic/syntastic'
+
+" Code completion
 " :CocInstall coc-tsserver coc-json coc-html coc-css coc-svg
 "  TODO: check out coc-emmet and coc-snippets 
-" Track the engine.
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sirver/UltiSnips'
-" Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 
 " Initialize plugin system
 call plug#end()
@@ -50,7 +58,6 @@ syntax on
 colorscheme gruvbox
 set background=dark
 " }}}
-
 
 " Key mappings {{{
 nnoremap <Down> <Nop>
@@ -97,6 +104,7 @@ command! -bang -nargs=* Ag
   \                 <bang>0)
 
 
+" Example settings for nerdtree-git-plugin {{{
 " TODO: find out why the icons don't show.
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
@@ -110,3 +118,5 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
+" }}}
+
