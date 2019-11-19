@@ -30,7 +30,7 @@ Plug 'airblade/vim-gitgutter' "https://github.com/airblade/vim-gitgutter
 
 " Syntax and styling
 Plug 'sheerun/vim-polyglot'
-Plug 'vim-syntastic/syntastic'
+Plug 'vim-syntastic/syntastic' "https://github.com/vim-syntastic/syntastic
 
 " Code completion
 " :CocInstall coc-tsserver coc-json coc-html coc-css coc-svg
@@ -120,3 +120,13 @@ let g:NERDTreeIndicatorMapCustom = {
     \ }
 " }}}
 
+" Recommended settings for syntastic {{{ 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" }}}
