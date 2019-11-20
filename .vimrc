@@ -105,7 +105,6 @@ command! -bang -nargs=* Ag
 
 
 " Example settings for nerdtree-git-plugin {{{
-" TODO: find out why the icons don't show.
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
