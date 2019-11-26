@@ -54,6 +54,9 @@ set backspace=indent,eol,start
 
 syntax on
 
+set splitbelow
+set splitright
+
 " Colour scheme {{{
 colorscheme gruvbox
 set background=dark
