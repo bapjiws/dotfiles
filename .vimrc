@@ -119,6 +119,8 @@ let g:NERDTreeIndicatorMapCustom = {
     \ }
 " }}}
 
+let g:syntastic_javascript_checkers = ['syntastic-html-eslint', 'syntastic-javascript-eslint']
+
 " Recommended settings for syntastic {{{ 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
