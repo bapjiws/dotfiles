@@ -31,6 +31,7 @@ Plug 'airblade/vim-gitgutter' "https://github.com/airblade/vim-gitgutter
 " Syntax and styling
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-syntastic/syntastic' "https://github.com/vim-syntastic/syntastic
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 " Code completion
 " :CocInstall coc-tsserver coc-json coc-html coc-css coc-svg
@@ -61,6 +62,7 @@ set splitright
 " Colour scheme {{{
 colorscheme gruvbox
 set background=dark
+set t_Co=256
 " }}}
 
 " Key mappings {{{
