@@ -12,12 +12,12 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Visual stuff
-Plug 'morhetz/gruvbox'
-Plug 'vim-airline/vim-airline'
+Plug 'morhetz/gruvbox' "https://github.com/morhetz/gruvbox
+Plug 'vim-airline/vim-airline' "https://github.com/vim-airline/vim-airline
 Plug 'vim-airline/vim-airline-themes'
 
 " Fuzzy search
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } "https://github.com/junegunn/fzf
 Plug 'junegunn/fzf.vim'
 
 " File navigation
@@ -25,20 +25,20 @@ Plug 'scrooloose/nerdtree' "https://github.com/scrooloose/nerdtree
 
 " Git stuff
 Plug 'Xuyuanp/nerdtree-git-plugin' "https://github.com/Xuyuanp/nerdtree-git-plugin
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive' "https://github.com/tpope/vim-fugitive
 Plug 'airblade/vim-gitgutter' "https://github.com/airblade/vim-gitgutter
 
 " Syntax and styling
-Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
 Plug 'vim-syntastic/syntastic' "https://github.com/vim-syntastic/syntastic
-Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+Plug 'prettier/vim-prettier', { 'do': 'npm install' } "https://github.com/prettier/vim-prettier
 
 " Code completion
 " :CocInstall coc-tsserver coc-json coc-html coc-css coc-svg
 "  TODO: check out coc-emmet and coc-snippets 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sirver/UltiSnips'
-Plug 'honza/vim-snippets'
+Plug 'neoclide/coc.nvim', {'branch': 'release'} "https://github.com/neoclide/coc.nvim
+Plug 'sirver/UltiSnips' "https://github.com/sirver/UltiSnips
+Plug 'honza/vim-snippets' "https://github.com/honza/vim-snippets
 
 " Initialize plugin system
 call plug#end()
@@ -93,22 +93,11 @@ let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 " }}}
 
-" Augmenting Ag command using fzf#vim#with_preview function
-"   * fzf#vim#with_preview([[options], [preview window], [toggle keys...]])
-"     * For syntax-highlighting, Ruby and any of the following tools are required:
-"       - Bat: https://github.com/sharkdp/bat
-"       - Highlight: http://www.andre-simon.de/doku/highlight/en/highlight.php
-"       - CodeRay: http://coderay.rubychan.de/
-"       - Rouge: https://github.com/jneen/rouge
-"
-"   :Ag  - Start fzf with hidden preview window that can be enabled with "?" key
-"   :Ag! - Start fzf in fullscreen and display the preview window above
-command! -bang -nargs=* Ag
-  \ call fzf#vim#ag(<q-args>,
-  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \                 <bang>0)
-
+" Augmenting Rg command using fzf#vim#with_preview function
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
 
 " Example settings for nerdtree-git-plugin {{{
 let g:NERDTreeIndicatorMapCustom = {
