@@ -11,6 +11,9 @@ endif
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
+" Editing
+Plug 'tpope/vim-surround' "https://github.com/tpope/vim-surround
+
 " Visual stuff
 Plug 'morhetz/gruvbox' "https://github.com/morhetz/gruvbox
 Plug 'vim-airline/vim-airline' "https://github.com/vim-airline/vim-airline
