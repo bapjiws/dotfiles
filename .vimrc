@@ -92,8 +92,7 @@ set expandtab
 " }}}
 
 " Snippets {{{
-let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
-let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+let g:UltiSnipsSnippetDirectories=["~/.vim/UltiSnips"]
 " }}}
 
 " Code completion {{{
