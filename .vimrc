@@ -38,7 +38,7 @@ Plug 'prettier/vim-prettier', { 'do': 'npm install' } "https://github.com/pretti
 
 " Code completion
 " :CocInstall coc-tsserver coc-json coc-html coc-css coc-svg
-"  TODO: check out coc-emmet and coc-snippets 
+"  TODO: check out coc-snippets 
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "https://github.com/neoclide/coc.nvim
 Plug 'sirver/UltiSnips' "https://github.com/sirver/UltiSnips
 Plug 'honza/vim-snippets' "https://github.com/honza/vim-snippets
