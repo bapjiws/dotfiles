@@ -37,8 +37,6 @@ Plug 'vim-syntastic/syntastic' "https://github.com/vim-syntastic/syntastic
 Plug 'prettier/vim-prettier', { 'do': 'npm install' } "https://github.com/prettier/vim-prettier
 
 " Code completion
-" :CocInstall coc-tsserver coc-json coc-html coc-css coc-svg
-"  TODO: check out coc-snippets 
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "https://github.com/neoclide/coc.nvim
 Plug 'sirver/UltiSnips' "https://github.com/sirver/UltiSnips
 Plug 'honza/vim-snippets' "https://github.com/honza/vim-snippets
@@ -96,6 +94,15 @@ let g:UltiSnipsSnippetDirectories=["~/.vim/UltiSnips"]
 " }}}
 
 " Code completion {{{
+"  TODO: check out coc-snippets, coc-pairs, coc-svg, coc-prettier + coc-eslint.
+"  TODO: apply CSS code completion to .jsx files.
+let g:coc_global_extensions = [
+  \ 'coc-tsserver',
+  \ 'coc-json',
+  \ 'coc-html', 
+  \ 'coc-css'
+  \]
+
 " if hidden is not set, TextEdit might fail.
 set hidden
 
