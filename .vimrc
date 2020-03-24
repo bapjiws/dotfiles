@@ -50,7 +50,9 @@ set relativenumber
 set number
 
 set noswapfile
+
 set incsearch
+set hlsearch
 
 " Make the backspace work like in most other programs
 set backspace=indent,eol,start
