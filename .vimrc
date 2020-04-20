@@ -38,8 +38,6 @@ Plug 'prettier/vim-prettier', { 'do': 'npm install' } "https://github.com/pretti
 
 " Code completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "https://github.com/neoclide/coc.nvim
-Plug 'sirver/UltiSnips' "https://github.com/sirver/UltiSnips
-Plug 'honza/vim-snippets' "https://github.com/honza/vim-snippets
 
 " Initialize plugin system
 call plug#end()
@@ -90,11 +88,7 @@ set shiftwidth=2
 " on pressing tab, insert 2 spaces
 set expandtab
 " }}}
-
-" Snippets {{{
-let g:UltiSnipsSnippetDirectories=["~/.vim/UltiSnips"]
-" }}}
-
+ 
 " Code completion {{{
 "  TODO: check out coc-snippets, coc-prettier + coc-eslint.
 " https://github.com/neoclide/coc-css
