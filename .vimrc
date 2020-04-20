@@ -90,10 +90,11 @@ set expandtab
 " }}}
  
 " Code completion {{{
-"  TODO: check out coc-snippets, coc-prettier + coc-eslint.
+"  TODO: check out coc-prettier + coc-eslint.
 " https://github.com/neoclide/coc-css
 " https://github.com/neoclide/coc-pairs
 " https://github.com/iamcco/coc-svg
+" https://github.com/neoclide/coc-snippets
 let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-json',
@@ -101,7 +102,8 @@ let g:coc_global_extensions = [
   \ 'coc-css', 
   \ 'coc-svg', 
   \ 'coc-emmet',
-  \ 'coc-pairs' 
+  \ 'coc-pairs',
+  \ 'coc-snippets'
   \]
 
 " TextEdit might fail if hidden is not set.
