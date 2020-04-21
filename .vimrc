@@ -34,7 +34,6 @@ Plug 'airblade/vim-gitgutter' "https://github.com/airblade/vim-gitgutter
 " Syntax and styling
 Plug 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
 Plug 'vim-syntastic/syntastic' "https://github.com/vim-syntastic/syntastic
-Plug 'prettier/vim-prettier', { 'do': 'npm install' } "https://github.com/prettier/vim-prettier
 
 " Code completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "https://github.com/neoclide/coc.nvim
@@ -90,11 +89,13 @@ set expandtab
 " }}}
  
 " Code completion {{{
-"  TODO: check out coc-prettier + coc-eslint.
+"  TODO: check out coc-eslint.
 " https://github.com/neoclide/coc-css
-" https://github.com/neoclide/coc-pairs
 " https://github.com/iamcco/coc-svg
+" https://github.com/neoclide/coc-emmet
+" https://github.com/neoclide/coc-pairs
 " https://github.com/neoclide/coc-snippets
+" https://github.com/neoclide/coc-prettier
 let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-json',
@@ -103,7 +104,8 @@ let g:coc_global_extensions = [
   \ 'coc-svg', 
   \ 'coc-emmet',
   \ 'coc-pairs',
-  \ 'coc-snippets'
+  \ 'coc-snippets',
+  \ 'coc-prettier'
   \]
 
 " TextEdit might fail if hidden is not set.
@@ -246,6 +248,8 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " }}} 
+
+nmap <Leader>p :CocCommand prettier.formatFile<CR>
 
 nnoremap ,o <C-o>
 nnoremap ,i <C-i>
