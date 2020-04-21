@@ -247,6 +247,9 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " }}} 
 
+nnoremap ,o <C-o>
+nnoremap ,i <C-i>
+
 " Augmenting Rg command using fzf#vim#with_preview function
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
