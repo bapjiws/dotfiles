@@ -33,7 +33,6 @@ Plug 'airblade/vim-gitgutter' "https://github.com/airblade/vim-gitgutter
 
 " Syntax and styling
 Plug 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
-Plug 'vim-syntastic/syntastic' "https://github.com/vim-syntastic/syntastic
 
 " Code completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "https://github.com/neoclide/coc.nvim
@@ -292,15 +291,3 @@ let g:NERDTreeIndicatorMapCustom = {
     \ }
 " }}}
 
-let g:syntastic_javascript_checkers = ['syntastic-html-eslint', 'syntastic-javascript-eslint']
-
-" Recommended settings for syntastic {{{ 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-" }}}
