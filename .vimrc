@@ -17,7 +17,7 @@ Plug 'tpope/vim-surround' "https://github.com/tpope/vim-surround
 " Visual stuff
 Plug 'morhetz/gruvbox' "https://github.com/morhetz/gruvbox
 Plug 'vim-airline/vim-airline' "https://github.com/vim-airline/vim-airline
-Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline-themes' "https://github.com/vim-airline/vim-airline-themes
 
 " Fuzzy search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } "https://github.com/junegunn/fzf
@@ -68,6 +68,18 @@ augroup END
 colorscheme gruvbox
 set background=dark
 set t_Co=256
+" }}}
+
+" Airline {{{
+" Install the Powerline Fonts: https://github.com/powerline/fonts.
+let g:airline_powerline_fonts = 1
+let g:airline_theme='deus'
+
+" Hiding 'x' (filetype) and 'y' (file encoding).
+let g:airline#extensions#default#layout = [
+      \ [ 'a', 'b', 'c' ],
+      \ [ 'z', 'error', 'warning' ]
+      \ ]
 " }}}
 
 " Key mappings {{{
