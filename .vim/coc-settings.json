@@ -3,9 +3,9 @@
     "javascript": "javascriptreact",
     "typescript": "typescriptreact"
   },
-  "diagnostic.infoSign": "💡",
+  "diagnostic.infoSign": "⚠️",
   "diagnostic.warningSign": "⚠️",
-  "diagnostic.errorSign": "💣",
+  "diagnostic.errorSign": "❌",
   "diagnostic.checkCurrentLine": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
@@ -15,8 +15,6 @@
     "json",
     "html"
   ],
-  "prettier.singleQuote": true,
-  "prettier.stylelintIntegration": false,
-  "prettier.disableSuccessMessage": true,
-  "suggest.removeDuplicateItems": true
+  "prettier.eslintIntegration": true,
+  "prettier.disableSuccessMessage": true
 }
