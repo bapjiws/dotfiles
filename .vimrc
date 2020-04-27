@@ -33,6 +33,8 @@ Plug 'airblade/vim-gitgutter' "https://github.com/airblade/vim-gitgutter
 
 " Syntax and styling
 Plug 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
+" post install (yarn install | npm install) then load plugin only for editing supported files
+"Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 " Code completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "https://github.com/neoclide/coc.nvim
@@ -121,6 +123,7 @@ let g:coc_global_extensions = [
   \ 'coc-emmet',
   \ 'coc-pairs',
   \ 'coc-snippets',
+  \ 'coc-eslint',
   \ 'coc-prettier'
   \]
 
@@ -264,8 +267,6 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " }}} 
-
-nmap <Leader>p :CocCommand prettier.formatFile<CR>
 
 nnoremap ,o <C-o>
 nnoremap ,i <C-i>
