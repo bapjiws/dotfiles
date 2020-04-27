@@ -75,11 +75,14 @@ set t_Co=256
 let g:airline_powerline_fonts = 1
 let g:airline_theme='deus'
 
-" Hiding 'x' (filetype) and 'y' (file encoding).
+" Hiding 'x' (filetype), 'y' (file encoding), errores and warnings.
 let g:airline#extensions#default#layout = [
       \ [ 'a', 'b', 'c' ],
-      \ [ 'z', 'error', 'warning' ]
+      \ [ 'z']
       \ ]
+
+let g:airline_section_z = airline#section#create(['%3p%% ', 'linenr', ':%2v'])
+"let g:airline#extensions#coc#enabled = 0
 " }}}
 
 " Key mappings {{{
