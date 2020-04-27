@@ -57,8 +57,7 @@ set backspace=indent,eol,start
 
 syntax on
 
-set splitbelow
-set splitright
+set splitbelow splitright
 
 augroup myvimrc
   au!
