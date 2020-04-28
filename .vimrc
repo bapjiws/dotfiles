@@ -34,7 +34,7 @@ Plug 'airblade/vim-gitgutter' "https://github.com/airblade/vim-gitgutter
 " Syntax and styling
 Plug 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
 " post install (yarn install | npm install) then load plugin only for editing supported files
-"Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 " Code completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "https://github.com/neoclide/coc.nvim
@@ -109,13 +109,11 @@ set expandtab
 " }}}
  
 " Code completion {{{
-"  TODO: check out coc-eslint.
 " https://github.com/neoclide/coc-css
 " https://github.com/iamcco/coc-svg
 " https://github.com/neoclide/coc-emmet
 " https://github.com/neoclide/coc-pairs
 " https://github.com/neoclide/coc-snippets
-" https://github.com/neoclide/coc-prettier
 let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-json',
@@ -125,8 +123,6 @@ let g:coc_global_extensions = [
   \ 'coc-emmet',
   \ 'coc-pairs',
   \ 'coc-snippets',
-  \ 'coc-eslint',
-  \ 'coc-prettier'
   \]
 
 " TextEdit might fail if hidden is not set.
@@ -272,6 +268,10 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 nnoremap ,o <C-o>
 nnoremap ,i <C-i>
+
+let g:prettier#quickfix_enabled = 0
+nnoremap <C-k> :labove<CR>
+nnoremap <C-j> :lbelow<CR>
 
 " Augmenting Rg command using fzf#vim#with_preview function
 command! -bang -nargs=* Rg

@@ -6,15 +6,5 @@
   "diagnostic.infoSign": "⚠️",
   "diagnostic.warningSign": "⚠️",
   "diagnostic.errorSign": "❌",
-  "diagnostic.checkCurrentLine": true,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "json",
-    "html"
-  ],
-  "prettier.eslintIntegration": true,
-  "prettier.disableSuccessMessage": true
+  "diagnostic.checkCurrentLine": true
 }
