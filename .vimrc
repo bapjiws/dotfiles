@@ -272,9 +272,7 @@ nnoremap ,i <C-i>
 nnoremap <C-k> :labove<CR>
 nnoremap <C-j> :lbelow<CR>
 
-"Run vim-prettier not only before saving, but also after changing text or leaving insert mode:
 let g:prettier#quickfix_enabled = 0
-autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 " Augmenting Rg command using fzf#vim#with_preview function
 command! -bang -nargs=* Rg
