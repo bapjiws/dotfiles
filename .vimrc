@@ -33,8 +33,7 @@ Plug 'airblade/vim-gitgutter' "https://github.com/airblade/vim-gitgutter
 
 " Syntax and styling
 Plug 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
-" post install (yarn install | npm install) then load plugin only for editing supported files
-Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+Plug 'prettier/vim-prettier', { 'do': 'npm install' } "https://github.com/prettier/vim-prettier
 
 " Code completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "https://github.com/neoclide/coc.nvim
