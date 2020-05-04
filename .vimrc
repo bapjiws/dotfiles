@@ -25,6 +25,7 @@ Plug 'junegunn/fzf.vim'
 
 " File navigation
 Plug 'scrooloose/nerdtree' "https://github.com/scrooloose/nerdtree
+Plug 'ryanoasis/vim-devicons'
 
 " Git stuff
 Plug 'Xuyuanp/nerdtree-git-plugin' "https://github.com/Xuyuanp/nerdtree-git-plugin
