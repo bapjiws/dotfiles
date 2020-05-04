@@ -34,6 +34,7 @@ Plug 'airblade/vim-gitgutter' "https://github.com/airblade/vim-gitgutter
 " Syntax and styling
 Plug 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
 Plug 'prettier/vim-prettier', { 'do': 'npm install' } "https://github.com/prettier/vim-prettier
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 " Code completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "https://github.com/neoclide/coc.nvim
