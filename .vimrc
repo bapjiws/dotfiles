@@ -280,7 +280,8 @@ command! -bang -nargs=* Rg
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
 
-" Example settings for nerdtree-git-plugin {{{
+" NERDTree {{{
+map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
