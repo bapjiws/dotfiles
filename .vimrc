@@ -275,6 +275,9 @@ nnoremap <C-j> :lbelow<CR>
 
 let g:prettier#quickfix_enabled = 0
 
+nmap <leader>t :term fish<CR>
+nmap <leader>vt :vert term fish<CR>
+
 " Augmenting Rg command using fzf#vim#with_preview function
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
