@@ -199,10 +199,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
@@ -275,18 +271,39 @@ nnoremap <C-j> :lbelow<CR>
 
 let g:prettier#quickfix_enabled = 0
 
-nmap <leader>t :term fish<CR>
-nmap <leader>vt :vert term fish<CR>
+nnoremap <leader>t :term fish<CR>
+nnoremap <leader>vt :vert term fish<CR>
 
 " Augmenting Rg command using fzf#vim#with_preview function
+" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
+"command! -bang -nargs=* Find 
+"      \ call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow 
+"      \ --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 
 " NERDTree {{{
-map <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeIndicatorMapCustom = {
+
+" Automatically close NerdTree when you open a file
+let g:NERDTreeQuitOnOpen = 1
+
+" Remove the 'Press ? for help' prompt from the top
+let g:NERDTreeMinimalUI = 1
+
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <silent> <leader>f :NERDTreeFind<CR> let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",
