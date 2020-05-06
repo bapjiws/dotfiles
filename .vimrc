@@ -82,7 +82,11 @@ let g:airline#extensions#default#layout = [
       \ [ 'z']
       \ ]
 
+let g:airline_section_c = airline#section#create_right(['file'])
+airline#section#create(['%{getcwd()}'])
 let g:airline_section_z = airline#section#create(['%3p%% ', 'linenr', ':%2v'])
+let g:airline#extensions#branch#displayed_head_limit = 30
+let g:airline#extensions#branch#vcs_checks = []
 "let g:airline#extensions#coc#enabled = 0
 " }}}
 
@@ -303,7 +307,8 @@ let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeMinimalUI = 1
 
 nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <silent> <leader>f :NERDTreeFind<CR> let g:NERDTreeIndicatorMapCustom = {
+nnoremap <silent> <leader>f :NERDTreeFind<CR> 
+let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",
