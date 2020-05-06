@@ -83,7 +83,6 @@ let g:airline#extensions#default#layout = [
       \ ]
 
 let g:airline_section_c = airline#section#create_right(['file'])
-airline#section#create(['%{getcwd()}'])
 let g:airline_section_z = airline#section#create(['%3p%% ', 'linenr', ':%2v'])
 let g:airline#extensions#branch#displayed_head_limit = 30
 let g:airline#extensions#branch#vcs_checks = []
@@ -294,6 +293,7 @@ command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
+
 "command! -bang -nargs=* Find 
 "      \ call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow 
 "      \ --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
