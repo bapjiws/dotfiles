@@ -47,9 +47,10 @@ syntax on
 
 set splitbelow splitright
 
+nnoremap <C-s> :source $MYVIMRC<CR>
 augroup myvimrc
-  au!
-  au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+  autocmd!
+  autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
 
 " don't show the help in normal mode
