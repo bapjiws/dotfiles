@@ -293,8 +293,13 @@ nnoremap <C-j> :lbelow<CR>
 
 let g:prettier#quickfix_enabled = 0
 
-nnoremap <leader>t :term fish<CR>
-nnoremap <leader>vt :vert term fish<CR>
+" ============================================================================ "
+" ===                         TERMINAL SETUP                               === "
+" ============================================================================ "
+nnoremap <leader>t :sp term://fish<CR>
+nnoremap <leader>vt :vsp term://fish<CR>
+"Map <Esc> to exit terminal-mode
+tnoremap <Esc> <C-\><C-n>
 
 " NERDTree {{{
 
