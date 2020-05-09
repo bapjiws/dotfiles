@@ -19,10 +19,6 @@ Plug 'morhetz/gruvbox' "https://github.com/morhetz/gruvbox
 Plug 'vim-airline/vim-airline' "https://github.com/vim-airline/vim-airline
 Plug 'vim-airline/vim-airline-themes' "https://github.com/vim-airline/vim-airline-themes
 
-" Fuzzy search
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } "https://github.com/junegunn/fzf
-Plug 'junegunn/fzf.vim'
-
 " File navigation
 Plug 'scrooloose/nerdtree' "https://github.com/scrooloose/nerdtree
 Plug 'ryanoasis/vim-devicons'
