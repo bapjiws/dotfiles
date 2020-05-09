@@ -48,8 +48,8 @@ syntax on
 set splitbelow splitright
 
 " Shift lines
-vnoremap J :move '>+1<CR>gv-gv
-vnoremap K :move '<-2<CR>gv-gv
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 nnoremap <C-s> :source $MYVIMRC<CR>
 augroup myvimrc
