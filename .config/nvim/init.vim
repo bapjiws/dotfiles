@@ -289,9 +289,6 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " }}} 
 
-nnoremap <C-k> :labove<CR>
-nnoremap <C-j> :lbelow<CR>
-
 let g:prettier#quickfix_enabled = 0
 
 " ============================================================================ "
