@@ -76,6 +76,7 @@ endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>1)
 
+nnoremap <space>f "*yaw :RG <C-r>*<CR>
 
 " don't show the help in normal mode
 let g:Lf_HideHelp = 1
