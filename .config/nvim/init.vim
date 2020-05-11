@@ -60,7 +60,9 @@ augroup myvimrc
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
 
-
+" ============================================================================ "
+" ===                                 FZF                                  === "
+" ============================================================================ "
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
@@ -76,9 +78,12 @@ endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>1)
 
+"Find current word
 nnoremap <leader>fw "*yaw :RG <C-r>*<CR>
+"Find visual selection
 vnoremap <leader>fv "*y<Esc> : RG <C-r>*<CR>
 
+" TODO: remove.
 " don't show the help in normal mode
 let g:Lf_HideHelp = 1
 let g:Lf_UseCache = 0
