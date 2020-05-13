@@ -147,6 +147,9 @@ nnoremap <Right> <Nop>
 nnoremap <Up> <Nop>
 " }}}
 
+nnoremap <leader>yw "*yaw
+inoremap <leader>pw <C-r>*
+
 nnoremap <Up> :resize +2<CR>
 nnoremap <Down> :resize -2<CR>
 nnoremap <Left> :vertical resize +2<CR>
