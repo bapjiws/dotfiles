@@ -79,9 +79,9 @@ endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>1)
 
 "Find current word
-nnoremap <leader>fw "*yaw :RG <C-r>*<CR>
+nnoremap <leader>fw "*yaw :RG <C-r>*<BS><CR>
 "Find visual selection
-vnoremap <leader>fv "*y<Esc> : RG <C-r>*<CR>
+vnoremap <leader>fv "*y<Esc> :RG <C-r>*<BS><CR>
 
 " TODO: remove.
 " don't show the help in normal mode
