@@ -4,7 +4,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-surround' "https://github.com/tpope/vim-surround
 
 " Visual stuff
-Plug 'morhetz/gruvbox' "https://github.com/morhetz/gruvbox
+Plug 'joshdick/onedark.vim' "https://github.com/joshdick/onedark.vim
 Plug 'vim-airline/vim-airline' "https://github.com/vim-airline/vim-airline
 Plug 'vim-airline/vim-airline-themes' "https://github.com/vim-airline/vim-airline-themes
 
@@ -33,6 +33,9 @@ Plug 'junegunn/fzf.vim'
 " Initialize plugin system
 call plug#end()
 
+source $HOME/.config/nvim/plugin-config/fzf.vim
+source $HOME/.config/nvim/themes/onedark.vim
+
 set foldmethod=marker
 
 set relativenumber
@@ -59,29 +62,6 @@ augroup myvimrc
   autocmd!
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
-
-" ============================================================================ "
-" ===                                 FZF                                  === "
-" ============================================================================ "
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
-
-function! RipgrepFzf(query, fullscreen)
-  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
-  let initial_command = printf(command_fmt, shellescape(a:query))
-  let reload_command = printf(command_fmt, '{q}')
-  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
-endfunction
-
-command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>1)
-
-"Find current word
-nnoremap <leader>fw "*yaw :RG <C-r>*<BS><CR>
-"Find visual selection
-vnoremap <leader>fv "*y<Esc> :RG <C-r>*<BS><CR>
 
 " TODO: remove.
 " don't show the help in normal mode
@@ -115,12 +95,6 @@ noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand
 noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
 noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
 noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
-
-" Colour scheme {{{
-colorscheme gruvbox
-set background=dark
-set t_Co=256
-" }}}
 
 " Airline {{{
 " Install the Powerline Fonts: https://github.com/powerline/fonts.
@@ -298,7 +272,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings using CoCList:
 " Show all diagnostics.
