@@ -35,6 +35,7 @@ call plug#end()
 
 source $HOME/.config/nvim/plugin-config/fzf.vim
 source $HOME/.config/nvim/themes/onedark.vim
+source $HOME/.config/nvim/themes/airline.vim
 
 set foldmethod=marker
 
@@ -95,24 +96,6 @@ noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand
 noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
 noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
 noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
-
-" Airline {{{
-" Install the Powerline Fonts: https://github.com/powerline/fonts.
-let g:airline_powerline_fonts = 1
-let g:airline_theme='deus'
-
-" Hiding 'x' (filetype), 'y' (file encoding), errores and warnings.
-let g:airline#extensions#default#layout = [
-      \ [ 'a', 'b', 'c' ],
-      \ [ 'z']
-      \ ]
-
-"let g:airline_section_c = airline#section#create_right(['file'])
-let g:airline_section_z = airline#section#create(['%3p%% ', 'linenr', ':%2v'])
-let g:airline#extensions#branch#displayed_head_limit = 30
-let g:airline#extensions#branch#vcs_checks = []
-"let g:airline#extensions#coc#enabled = 0
-" }}}
 
 " Key mappings {{{
 nnoremap <Down> <Nop>
@@ -271,8 +254,6 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings using CoCList:
 " Show all diagnostics.
