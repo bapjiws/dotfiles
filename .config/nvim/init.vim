@@ -30,10 +30,13 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+Plug 'voldikss/vim-floaterm'
+
 " Initialize plugin system
 call plug#end()
 
 source $HOME/.config/nvim/plugin-config/fzf.vim
+source $HOME/.config/nvim/plugin-config/floaterm.vim
 source $HOME/.config/nvim/themes/onedark.vim
 source $HOME/.config/nvim/themes/airline.vim
 
@@ -275,14 +278,6 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " }}} 
 
 let g:prettier#quickfix_enabled = 0
-
-" ============================================================================ "
-" ===                         TERMINAL SETUP                               === "
-" ============================================================================ "
-nnoremap <leader>t :sp term://fish<CR>
-nnoremap <leader>vt :vsp term://fish<CR>
-"Map <Esc> to exit terminal-mode
-tnoremap <Esc> <C-\><C-n>
 
 " NERDTree {{{
 
