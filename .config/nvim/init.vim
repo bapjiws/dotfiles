@@ -31,7 +31,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'voldikss/vim-floaterm'
-
+"
 " Initialize plugin system
 call plug#end()
 
@@ -56,6 +56,10 @@ set backspace=indent,eol,start
 syntax on
 
 set splitbelow splitright
+
+" Invoke plugins
+" TODO: move calls for Prettier and Floaterm here.
+nnoremap <leader>g :FloatermNew lazygit<CR>
 
 " Shift lines
 vnoremap J :m '>+1<CR>gv=gv
