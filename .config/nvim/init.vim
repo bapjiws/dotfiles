@@ -71,8 +71,6 @@ augroup myvimrc
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
 
-
-
 " Key mappings {{{
 nnoremap <Down> <Nop>
 nnoremap <Left> <Nop>
@@ -80,13 +78,10 @@ nnoremap <Right> <Nop>
 nnoremap <Up> <Nop>
 " }}}
 
-" TODO: check these examples
-"noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
-"noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
-"xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
-"nnoremap <silent> K :call <SID>show_documentation()<CR>
-nnoremap <leader>yw "*yaw
-inoremap <leader>pw <C-r>*
+"Find current word
+nnoremap <leader>fw :<C-r>=printf("Rg %s", expand("<cword>"))<CR><CR>
+"Find visual selection
+vnoremap <leader>fv "*y<Esc> :Rg <C-r>*<CR>
 
 nnoremap <Up> :resize +2<CR>
 nnoremap <Down> :resize -2<CR>
