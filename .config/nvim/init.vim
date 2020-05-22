@@ -83,10 +83,10 @@ nnoremap <leader>fw :<C-r>=printf("Rg %s", expand("<cword>"))<CR><CR>
 "Find visual selection
 vnoremap <leader>fv "*y<Esc> :Rg <C-r>*<CR>
 
-nnoremap <Up> :resize +2<CR>
-nnoremap <Down> :resize -2<CR>
-nnoremap <Left> :vertical resize +2<CR>
-nnoremap <Right> :vertical resize -2<CR>
+nnoremap <C-K> :resize +5<CR>
+nnoremap <C-J> :resize -5<CR>
+nnoremap <C-H> :vertical resize +5<CR>
+nnoremap <C-L> :vertical resize -5<CR>
 
 " Language {{{
 " TODO: check if we need all these.
