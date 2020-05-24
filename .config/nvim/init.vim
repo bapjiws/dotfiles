@@ -28,15 +28,17 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} "https://github.com/neoclide/coc
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-" TODO: add checks for fzf and lazygit to fish config to install them if
-" missing.
-Plug 'voldikss/vim-floaterm'
-"
+" TODO: add checks for fzf and lazygit to fish config to install them if missing.
+Plug 'voldikss/vim-floaterm' "https://github.com/voldikss/vim-floaterm
+
+Plug 'liuchengxu/vista.vim' "https://github.com/liuchengxu/vista.vim
+
 " Initialize plugin system
 call plug#end()
 
 source $HOME/.config/nvim/plugin-config/fzf.vim
 source $HOME/.config/nvim/plugin-config/floaterm.vim
+source $HOME/.config/nvim/plugin-config/vista.vim
 source $HOME/.config/nvim/themes/onedark.vim
 source $HOME/.config/nvim/themes/airline.vim
 
