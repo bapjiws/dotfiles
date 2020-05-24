@@ -1,18 +1,4 @@
-" This is the default extra key bindings
 let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
-
-" An action can be a reference to a function that processes selected lines
-function! s:build_quickfix_list(lines)
-  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
-  copen
-  cc
-endfunction
-
-let g:fzf_action = {
-  \ 'ctrl-q': function('s:build_quickfix_list'),
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
@@ -89,6 +75,6 @@ command! -bang -nargs=* GGrep
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 
 "Find current word
-"nnoremap <leader>fw "*yaw :RG <C-r>*<BS><CR>
+"nnoremap <leader>fw "*yaw :Rg<C-r>*<BS><CR>
 "Find visual selection
-"vnoremap <leader>fv "*y<Esc> :RG <C-r>*<BS><CR>
+"vnoremap <leader>fv "*y<Esc> :Rg <C-r>*<BS><CR>
