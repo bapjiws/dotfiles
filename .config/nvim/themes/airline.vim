@@ -1,6 +1,5 @@
-" Install the Powerline Fonts: https://github.com/powerline/fonts.
 let g:airline_powerline_fonts = 1
-let g:airline_theme='deus'
+let g:airline_theme='onedark'
 
 " Avoid showing 'double arrows'
 let g:airline_skip_empty_sections = 1
