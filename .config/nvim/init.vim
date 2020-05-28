@@ -8,8 +8,9 @@ Plug 'joshdick/onedark.vim' "https://github.com/joshdick/onedark.vim
 Plug 'vim-airline/vim-airline' "https://github.com/vim-airline/vim-airline
 Plug 'vim-airline/vim-airline-themes' "https://github.com/vim-airline/vim-airline-themes
 
-" File navigation
+" Navigation
 Plug 'scrooloose/nerdtree' "https://github.com/scrooloose/nerdtree
+Plug 'mhinz/vim-startify' "https://github.com/mhinz/vim-startify
 
 " Git stuff
 Plug 'Xuyuanp/nerdtree-git-plugin' "https://github.com/Xuyuanp/nerdtree-git-plugin
@@ -36,6 +37,7 @@ Plug 'liuchengxu/vista.vim' "https://github.com/liuchengxu/vista.vim
 " Initialize plugin system
 call plug#end()
 
+source $HOME/.config/nvim/plugin-config/startify.vim
 source $HOME/.config/nvim/plugin-config/fzf.vim
 source $HOME/.config/nvim/plugin-config/floaterm.vim
 source $HOME/.config/nvim/plugin-config/vista.vim
