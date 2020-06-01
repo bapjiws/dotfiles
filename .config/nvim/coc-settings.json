@@ -6,5 +6,6 @@
   "diagnostic.infoSign": "⚠️",
   "diagnostic.warningSign": "⚠️",
   "diagnostic.errorSign": "❌",
-  "diagnostic.checkCurrentLine": true
+  "diagnostic.checkCurrentLine": true,
+  "prettier.eslintIntegration": true,
 }

@@ -19,7 +19,6 @@ Plug 'airblade/vim-gitgutter' "https://github.com/airblade/vim-gitgutter
 
 " Syntax and styling
 Plug 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
-Plug 'prettier/vim-prettier', { 'do': 'npm install' } "https://github.com/prettier/vim-prettier
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 " Code completion
@@ -116,6 +115,8 @@ let g:coc_global_extensions = [
   \ 'coc-emmet',
   \ 'coc-pairs',
   \ 'coc-snippets',
+  \ 'coc-eslint',
+  \ 'coc-prettier'
   \]
 
 " TextEdit might fail if hidden is not set.
@@ -234,7 +235,7 @@ nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " }}} 
 
-let g:prettier#quickfix_enabled = 0
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " NERDTree {{{
 
