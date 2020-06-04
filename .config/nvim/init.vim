@@ -21,6 +21,11 @@ Plug 'airblade/vim-gitgutter' "https://github.com/airblade/vim-gitgutter
 Plug 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
+" Snippets
+Plug 'thomasfaingnaert/vim-lsp-snippets'
+Plug 'thomasfaingnaert/vim-lsp-ultisnips'
+Plug 'SirVer/ultisnips'
+
 " LSP
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
@@ -29,8 +34,7 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
-" Automatically register `typescript-language-server`.
-"Plug 'ryanolsonx/vim-lsp-javascript'
+Plug 'sbdchd/neoformat'
 
 " Search
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -116,8 +120,23 @@ set completeopt=menuone,noinsert,noselect,preview
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 let g:lsp_signs_error = {'text': '✗'}
-let g:lsp_signs_warning = {'text': '‼'}
-let g:lsp_signs_hint = {'text': '!'}
+let g:lsp_signs_warning = {'text': '⚠'}
+let g:lsp_signs_hint = {'text': 'ℹ'}
+
+
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
+
+" for asyncomplete.vim log
+let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+
+
+" Snippets
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+let g:UltiSnipsEditSplit="vertical"
 
 " Language {{{
 " TODO: check if we need all these.
