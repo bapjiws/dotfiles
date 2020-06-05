@@ -43,6 +43,8 @@ source $HOME/.config/nvim/plugin-config/vista.vim
 source $HOME/.config/nvim/themes/onedark.vim
 source $HOME/.config/nvim/themes/airline.vim
 
+map <Space> <leader>
+
 set foldmethod=marker
 
 set relativenumber
@@ -101,6 +103,7 @@ set expandtab
 " }}}
  
 " Code completion {{{
+" TODO: remove or update the comments
 " https://github.com/neoclide/coc-css
 " https://github.com/iamcco/coc-svg
 " https://github.com/neoclide/coc-emmet
@@ -218,7 +221,7 @@ omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
 " Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
@@ -235,6 +238,7 @@ nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " }}} 
 
+"TODO: set up with leader.
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " NERDTree {{{
