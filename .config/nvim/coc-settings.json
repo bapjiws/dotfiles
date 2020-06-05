@@ -3,9 +3,9 @@
     "javascript": "javascriptreact",
     "typescript": "typescriptreact"
   },
-  "diagnostic.infoSign": "⚠️",
-  "diagnostic.warningSign": "⚠️",
-  "diagnostic.errorSign": "❌",
+  "diagnostic.infoSign": "ℹ",
+  "diagnostic.warningSign": "⚠",
+  "diagnostic.errorSign": "✗",
   "diagnostic.checkCurrentLine": true,
-  "prettier.eslintIntegration": true,
+  "prettier.eslintIntegration": true
 }
