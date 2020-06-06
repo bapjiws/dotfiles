@@ -195,8 +195,8 @@ nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " }}} 
 
-" TODO: set up with leader.
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+nmap <leader>p :CocCommand prettier.formatFile<CR>
+
 " TODO: Vista
 
 " NERDTree {{{
