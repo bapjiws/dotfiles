@@ -178,7 +178,7 @@ nmap ghs <Plug>(GitGutterStageHunk)
 nmap ghu <Plug>(GitGutterUndoHunk)
 nmap ghp <Plug>(GitGutterPreviewHunk)
 "GitGutterFold
-" Gdiffsplit + Gread
+" Gdiffsplit + Gread + Gblame
 
 nmap <silent> <leader>d  :<C-u>CocList diagnostics<cr>
 nmap <silent> [d <Plug>(coc-diagnostic-prev)
@@ -207,6 +207,8 @@ nmap <silent> <leader>gr <Plug>(coc-references)
 nnoremap <leader>t :FloatermNew<CR>
 
 nnoremap <leader>vs :Vista coc<CR>
+
+" TODO: Plug commands
 
 " }}} 
 
