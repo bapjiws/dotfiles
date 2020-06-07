@@ -54,10 +54,6 @@ set noswapfile
 
 set splitbelow splitright
 
-" Invoke plugins
-" TODO: move calls for Prettier and Floaterm here.
-nnoremap <leader>g :FloatermNew lazygit<CR>
-
 " Shift lines
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
@@ -74,11 +70,6 @@ nnoremap <Left> <Nop>
 nnoremap <Right> <Nop>
 nnoremap <Up> <Nop>
 " }}}
-
-"Find current word
-nnoremap <leader>fw :<C-r>=printf("Rg %s", expand("<cword>"))<CR><CR>
-"Find visual selection
-vnoremap <leader>fv "*y<Esc> :Rg <C-r>*<CR>
 
 nnoremap <C-K> :resize +5<CR>
 nnoremap <C-J> :resize -5<CR>
@@ -166,11 +157,6 @@ else
   imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -182,22 +168,49 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>p :CocCommand prettier.formatFile<CR>
+nmap <leader>oi :CocCommand editor.action.organizeImport<CR>
+" TODO: overlaps with hunk commands.
+nmap <silent> <leader>h :call <SID>show_documentation()<CR>
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+nmap ghs <Plug>(GitGutterStageHunk)
+nmap ghu <Plug>(GitGutterUndoHunk)
+nmap ghp <Plug>(GitGutterPreviewHunk)
+"GitGutterFold
+" Gdiffsplit + Gread
 
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
+nmap <silent> <leader>d  :<C-u>CocList diagnostics<cr>
+nmap <silent> [d <Plug>(coc-diagnostic-prev)
+nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nnoremap <silent> <leader>ex  :<C-u>CocList extensions<cr>
 
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent> <leader>cm  :<C-u>CocList commands<cr>
+"Find current word
+nnoremap <leader>fw :<C-r>=printf("Rg %s", expand("<cword>"))<CR><CR>
+"Find visual selection
+vnoremap <leader>fv "*y<Esc> :Rg <C-r>*<CR>
+"Find current word
+"nnoremap <leader>fw "*yaw :Rg<C-r>*<BS><CR>
+"Find visual selection
+"vnoremap <leader>fv "*y<Esc> :Rg <C-r>*<BS><CR>
 
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+nnoremap <leader>g :FloatermNew lazygit<CR>
+
+" TODO: overlaps with lazygit.
+nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> <leader>gt <Plug>(coc-type-definition)
+nmap <silent> <leader>gi <Plug>(coc-implementation)
+nmap <silent> <leader>gr <Plug>(coc-references)
+
+nnoremap <leader>t :FloatermNew<CR>
+
+nnoremap <leader>vs :Vista coc<CR>
+
 " }}} 
 
-nmap <leader>p :CocCommand prettier.formatFile<CR>
 
-" TODO: Vista
 
 " NERDTree {{{
 
