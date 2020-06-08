@@ -167,49 +167,42 @@ endfunction
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-nmap <leader>rn <Plug>(coc-rename)
-nmap <leader>p :CocCommand prettier.formatFile<CR>
-nmap <leader>oi :CocCommand editor.action.organizeImport<CR>
-" TODO: overlaps with hunk commands.
-nmap <silent> <leader>h :call <SID>show_documentation()<CR>
+nmap rnm <Plug>(coc-rename)
+nmap <silent> prt :CocCommand prettier.formatFile<CR>
+nmap <silent> mpt :CocCommand editor.action.organizeImport<CR>
+nmap <silent> hlp :call <SID>show_documentation()<CR>
+
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
-nmap ghs <Plug>(GitGutterStageHunk)
-nmap ghu <Plug>(GitGutterUndoHunk)
-nmap ghp <Plug>(GitGutterPreviewHunk)
-"GitGutterFold
-" Gdiffsplit + Gread + Gblame
+nmap shk <Plug>(GitGutterStageHunk)
+nmap uhk <Plug>(GitGutterUndoHunk)
+nmap phk <Plug>(GitGutterPreviewHunk)
+nmap <silent> fld :GitGutterFold<CR>
 
-nmap <silent> <leader>d  :<C-u>CocList diagnostics<cr>
+nmap <silent> dff :Gdiffsplit<CR>
+nmap <silent> chk :Gread<CR>
+nmap <silent> blm :Gblame<CR>
+
+nmap <silent> dgt  :<C-u>CocList diagnostics<cr>
 nmap <silent> [d <Plug>(coc-diagnostic-prev)
 nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
-nnoremap <silent> <leader>ex  :<C-u>CocList extensions<cr>
+nnoremap <silent> xtn  :<C-u>CocList extensions<cr>
+nnoremap <silent> cmd  :<C-u>CocList commands<cr>
 
-nnoremap <silent> <leader>cm  :<C-u>CocList commands<cr>
-"Find current word
+nnoremap <leader>lzg :FloatermNew lazygit<CR>
+
+nmap <silent> dfn <Plug>(coc-definition)
+nmap <silent> tdf <Plug>(coc-type-definition)
+nmap <silent> mpl <Plug>(coc-implementation)
+nmap <silent> rfr <Plug>(coc-references)
+
+nnoremap <silent> trm :FloatermNew<CR>
+nnoremap <silent> vst :Vista coc<CR>
+
+" TODO: meta: save, reload, find, deps management with Plug 
 nnoremap <leader>fw :<C-r>=printf("Rg %s", expand("<cword>"))<CR><CR>
-"Find visual selection
 vnoremap <leader>fv "*y<Esc> :Rg <C-r>*<CR>
-"Find current word
-"nnoremap <leader>fw "*yaw :Rg<C-r>*<BS><CR>
-"Find visual selection
-"vnoremap <leader>fv "*y<Esc> :Rg <C-r>*<BS><CR>
-
-nnoremap <leader>g :FloatermNew lazygit<CR>
-
-" TODO: overlaps with lazygit.
-nmap <silent> <leader>gd <Plug>(coc-definition)
-nmap <silent> <leader>gt <Plug>(coc-type-definition)
-nmap <silent> <leader>gi <Plug>(coc-implementation)
-nmap <silent> <leader>gr <Plug>(coc-references)
-
-nnoremap <leader>t :FloatermNew<CR>
-
-nnoremap <leader>vs :Vista coc<CR>
-
-" TODO: Plug commands
-
 " }}} 
 
 
