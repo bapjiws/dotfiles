@@ -40,6 +40,7 @@ source $HOME/.config/nvim/plugin-config/startify.vim
 source $HOME/.config/nvim/plugin-config/fzf.vim
 source $HOME/.config/nvim/plugin-config/floaterm.vim
 source $HOME/.config/nvim/plugin-config/vista.vim
+source $HOME/.config/nvim/plugin-config/nerdtree.vim
 source $HOME/.config/nvim/themes/onedark.vim
 source $HOME/.config/nvim/themes/airline.vim
 
@@ -58,7 +59,7 @@ set splitbelow splitright
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-nnoremap <C-s> :source $MYVIMRC<CR>
+" Source on save 
 augroup myvimrc
   autocmd!
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
@@ -190,7 +191,7 @@ nmap <silent> ]d <Plug>(coc-diagnostic-next)
 nnoremap <silent> xtn  :<C-u>CocList extensions<cr>
 nnoremap <silent> cmd  :<C-u>CocList commands<cr>
 
-nnoremap <leader>lzg :FloatermNew lazygit<CR>
+nnoremap lzg :FloatermNew lazygit<CR>
 
 nmap <silent> dfn <Plug>(coc-definition)
 nmap <silent> tdf <Plug>(coc-type-definition)
@@ -200,33 +201,16 @@ nmap <silent> rfr <Plug>(coc-references)
 nnoremap <silent> trm :FloatermNew<CR>
 nnoremap <silent> vst :Vista coc<CR>
 
-" TODO: meta: save, reload, find, deps management with Plug 
+" TODO: meta: save, reload, find, deps management with Plug, file navigation, terminal
+" TODO: try `src` and `wrt`.
+nmap <leader>s :w
+nnoremap <C-s> :source $MYVIMRC<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <silent> <leader>f :NERDTreeFind<CR> 
+" TODO: is version control meta?
+
+" TODO: try `fcw` and ``.
 nnoremap <leader>fw :<C-r>=printf("Rg %s", expand("<cword>"))<CR><CR>
 vnoremap <leader>fv "*y<Esc> :Rg <C-r>*<CR>
 " }}} 
 
-
-
-" NERDTree {{{
-
-" Automatically close NerdTree when you open a file
-let g:NERDTreeQuitOnOpen = 1
-
-" Remove the 'Press ? for help' prompt from the top
-let g:NERDTreeMinimalUI = 1
-
-nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <silent> <leader>f :NERDTreeFind<CR> 
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
-" }}}
