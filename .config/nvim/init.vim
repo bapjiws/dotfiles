@@ -165,6 +165,7 @@ function! s:show_documentation()
   endif
 endfunction
 
+"TODO: highlight brighter.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 nmap rnm <Plug>(coc-rename)
