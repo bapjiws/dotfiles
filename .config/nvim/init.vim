@@ -94,7 +94,6 @@ set shiftwidth=2
 set expandtab
 " }}}
  
-" Code completion {{{
 " TODO: remove or update the comments
 " https://github.com/neoclide/coc-css
 " https://github.com/iamcco/coc-svg
@@ -169,48 +168,53 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 nmap rnm <Plug>(coc-rename)
+"TODO: run on save.
 nmap <silent> prt :CocCommand prettier.formatFile<CR>
-nmap <silent> mpt :CocCommand editor.action.organizeImport<CR>
+nmap <silent> oip :CocCommand editor.action.organizeImport<CR>
 nmap <silent> hlp :call <SID>show_documentation()<CR>
 
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
-nmap shk <Plug>(GitGutterStageHunk)
-nmap uhk <Plug>(GitGutterUndoHunk)
-nmap phk <Plug>(GitGutterPreviewHunk)
+nmap hst <Plug>(GitGutterStageHunk)
+nmap hud <Plug>(GitGutterUndoHunk)
+nmap hpw <Plug>(GitGutterPreviewHunk)
 nmap <silent> fld :GitGutterFold<CR>
 
-nmap <silent> dff :Gdiffsplit<CR>
-nmap <silent> chk :Gread<CR>
-nmap <silent> blm :Gblame<CR>
+nmap <silent> gdf :Gdiffsplit<CR>
+nmap <silent> gck :Gread<CR>
+nmap <silent> gbl :Gblame<CR>
 
-nmap <silent> dgt  :<C-u>CocList diagnostics<cr>
+nmap <silent> dgs  :<C-u>CocList diagnostics<cr>
 nmap <silent> [d <Plug>(coc-diagnostic-prev)
 nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
-nnoremap <silent> xtn  :<C-u>CocList extensions<cr>
+nnoremap <silent> ext  :<C-u>CocList extensions<cr>
 nnoremap <silent> cmd  :<C-u>CocList commands<cr>
 
 nnoremap lzg :FloatermNew lazygit<CR>
 
 nmap <silent> dfn <Plug>(coc-definition)
 nmap <silent> tdf <Plug>(coc-type-definition)
-nmap <silent> mpl <Plug>(coc-implementation)
-nmap <silent> rfr <Plug>(coc-references)
+nmap <silent> imp <Plug>(coc-implementation)
+nmap <silent> rfc <Plug>(coc-references)
 
 nnoremap <silent> trm :FloatermNew<CR>
 nnoremap <silent> vst :Vista coc<CR>
 
 " TODO: meta: save, reload, find, deps management with Plug, file navigation, terminal
 " TODO: try `src` and `wrt`.
-nmap <leader>s :w
-nnoremap <C-s> :source $MYVIMRC<CR>
+nmap wrt :w<CR>
+"nnoremap <C-s> :source $MYVIMRC<CR>
+nmap <silent> src :source $MYVIMRC<CR>
+" rld  --rld> :e
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <leader>f :NERDTreeFind<CR> 
 " TODO: is version control meta?
 
+"nnoremap caw "*yaw 
+"nnoremap paw "*p
+
 " TODO: try `fcw` and ``.
 nnoremap <leader>fw :<C-r>=printf("Rg %s", expand("<cword>"))<CR><CR>
 vnoremap <leader>fv "*y<Esc> :Rg <C-r>*<CR>
-" }}} 
 
