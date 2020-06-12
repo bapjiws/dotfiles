@@ -168,45 +168,53 @@ endfunction
 "TODO: highlight brighter.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-nmap rnm <Plug>(coc-rename)
+"TODO: introduce "force"/"screaming" commands like mks! or rld!  
+
+nnoremap rnm <Plug>(coc-rename)
 "TODO: run on save.
-nmap <silent> prt :CocCommand prettier.formatFile<CR>
-nmap <silent> oip :CocCommand editor.action.organizeImport<CR>
-nmap <silent> hlp :call <SID>show_documentation()<CR>
+"TODO: rename.
+nnoremap <silent> prt :CocCommand prettier.formatFile<CR>
+nnoremap <silent> oip :CocCommand editor.action.organizeImport<CR>
+nnoremap <silent> hlp :call <SID>show_documentation()<CR>
 
-nmap ]h <Plug>(GitGutterNextHunk)
-nmap [h <Plug>(GitGutterPrevHunk)
-nmap hst <Plug>(GitGutterStageHunk)
-nmap hud <Plug>(GitGutterUndoHunk)
-nmap hpw <Plug>(GitGutterPreviewHunk)
-nmap <silent> fld :GitGutterFold<CR>
+nnoremap ]h <Plug>(GitGutterNextHunk)
+nnoremap [h <Plug>(GitGutterPrevHunk)
+nnoremap hst <Plug>(GitGutterStageHunk)
+nnoremap hud <Plug>(GitGutterUndoHunk)
+nnoremap hpw <Plug>(GitGutterPreviewHunk)
+nnoremap <silent> fld :GitGutterFold<CR>
 
-nmap <silent> gdf :Gdiffsplit<CR>
-nmap <silent> gck :Gread<CR>
-nmap <silent> gbl :Gblame<CR>
+"TODO: rename without the git part.
+nnoremap <silent> gdf :Gdiffsplit<CR>
+nnoremap <silent> gck :Gread<CR>
+nnoremap <silent> gbl :Gblame<CR>
 
-nmap <silent> dgs  :<C-u>CocList diagnostics<cr>
-nmap <silent> [d <Plug>(coc-diagnostic-prev)
-nmap <silent> ]d <Plug>(coc-diagnostic-next)
+nnoremap <silent> dgs  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> [d <Plug>(coc-diagnostic-prev)
+nnoremap <silent> ]d <Plug>(coc-diagnostic-next)
 
 nnoremap <silent> ext  :<C-u>CocList extensions<cr>
 nnoremap <silent> cmd  :<C-u>CocList commands<cr>
 
-nnoremap lzg :FloatermNew lazygit<CR>
+"TODO: rename.
+nnoremap <leader>lzg :FloatermNew lazygit<CR>
 
-nmap <silent> dfn <Plug>(coc-definition)
-nmap <silent> tdf <Plug>(coc-type-definition)
-nmap <silent> imp <Plug>(coc-implementation)
-nmap <silent> rfc <Plug>(coc-references)
+nnoremap <silent> dfn <Plug>(coc-definition)
+nnoremap <silent> tdf <Plug>(coc-type-definition)
+nnoremap <silent> imp <Plug>(coc-implementation)
+nnoremap <silent> rfc <Plug>(coc-references)
 
 nnoremap <silent> trm :FloatermNew<CR>
+"TODO: rename to smb or something.
 nnoremap <silent> vst :Vista coc<CR>
+
+nnoremap mks :mksession ~/.config/nvim/session/.vim<Left><Left><Left><Left>
 
 " TODO: meta: save, reload, find, deps management with Plug, file navigation, terminal
 " TODO: try `src` and `wrt`.
-nmap wrt :w<CR>
+nnoremap wrt :w<CR>
 "nnoremap <C-s> :source $MYVIMRC<CR>
-nmap <silent> src :source $MYVIMRC<CR>
+nnoremap src :source $MYVIMRC<CR>
 " rld  --rld> :e
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <leader>f :NERDTreeFind<CR> 
