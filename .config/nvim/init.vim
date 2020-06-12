@@ -149,12 +149,12 @@ endfunction
 " Trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" Use <CR> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
 if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+  inoremap <expr> <CR> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 else
-  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  imap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
 function! s:show_documentation()
@@ -189,12 +189,12 @@ nnoremap <silent> gdf :Gdiffsplit<CR>
 nnoremap <silent> gck :Gread<CR>
 nnoremap <silent> gbl :Gblame<CR>
 
-nnoremap <silent> dgs  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> dgs  :<C-u>CocList diagnostics<CR>
 nnoremap <silent> [d <Plug>(coc-diagnostic-prev)
 nnoremap <silent> ]d <Plug>(coc-diagnostic-next)
 
-nnoremap <silent> ext  :<C-u>CocList extensions<cr>
-nnoremap <silent> cmd  :<C-u>CocList commands<cr>
+nnoremap <silent> ext  :<C-u>CocList extensions<CR>
+nnoremap <silent> cmd  :<C-u>CocList commands<CR>
 
 "TODO: rename.
 nnoremap <leader>lzg :FloatermNew lazygit<CR>
