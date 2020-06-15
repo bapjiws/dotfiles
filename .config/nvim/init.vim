@@ -168,62 +168,63 @@ endfunction
 "TODO: highlight brighter.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-"TODO: introduce "force"/"screaming" commands like mks! or rld!  
+"TODO: introduce "force"/"yelling" commands like mks! or rld!  
+"TODO: nmap vs nnoremap.
 
-nnoremap rnm <Plug>(coc-rename)
+nmap <leader>rnm <Plug>(coc-rename)
 "TODO: run on save.
-"TODO: rename.
-nnoremap <silent> prt :CocCommand prettier.formatFile<CR>
-nnoremap <silent> oip :CocCommand editor.action.organizeImport<CR>
-nnoremap <silent> hlp :call <SID>show_documentation()<CR>
+nmap <leader>fmt :CocCommand prettier.formatFile<CR>
+nmap <leader>oim :CocCommand editor.action.organizeImport<CR>
+nnoremap <leader>hlp :call <SID>show_documentation()<CR>
 
-nnoremap ]h <Plug>(GitGutterNextHunk)
-nnoremap [h <Plug>(GitGutterPrevHunk)
-nnoremap hst <Plug>(GitGutterStageHunk)
-nnoremap hud <Plug>(GitGutterUndoHunk)
-nnoremap hpw <Plug>(GitGutterPreviewHunk)
-nnoremap <silent> fld :GitGutterFold<CR>
+nmap ]c <Plug>(GitGutterNextHunk)
+nmap [c <Plug>(GitGutterPrevHunk)
+nmap <leader>add <Plug>(GitGutterStageHunk)
+nmap <leader>und <Plug>(GitGutterUndoHunk)
+nmap <leader>prw <Plug>(GitGutterPreviewHunk)
+nmap <leader>fld :GitGutterFold<CR>
 
-"TODO: rename without the git part.
-nnoremap <silent> gdf :Gdiffsplit<CR>
-nnoremap <silent> gck :Gread<CR>
-nnoremap <silent> gbl :Gblame<CR>
+nmap <leader>dff :Gdiffsplit<CR>
+nmap <leader>rst :Gread<CR>
+nmap <leader>blm :Gblame<CR>
 
-nnoremap <silent> dgs  :<C-u>CocList diagnostics<CR>
-nnoremap <silent> [d <Plug>(coc-diagnostic-prev)
-nnoremap <silent> ]d <Plug>(coc-diagnostic-next)
+nmap <silent> [d <Plug>(coc-diagnostic-prev)
+nmap <silent> ]d <Plug>(coc-diagnostic-next)
+nmap <leader>dgn  :<C-u>CocList diagnostics<CR>
 
-nnoremap <silent> ext  :<C-u>CocList extensions<CR>
-nnoremap <silent> cmd  :<C-u>CocList commands<CR>
+nmap <leader>ext  :<C-u>CocList extensions<CR>
+nmap <leader>cmd  :<C-u>CocList commands<CR>
 
-"TODO: rename.
-nnoremap <leader>lzg :FloatermNew lazygit<CR>
+nmap <leader>vsn :FloatermNew lazygit<CR>
 
-nnoremap <silent> dfn <Plug>(coc-definition)
-nnoremap <silent> tdf <Plug>(coc-type-definition)
-nnoremap <silent> imp <Plug>(coc-implementation)
-nnoremap <silent> rfc <Plug>(coc-references)
+nmap <leader>dfn <Plug>(coc-definition)
+nmap <leader>tdf <Plug>(coc-type-definition)
+nmap <leader>imp <Plug>(coc-implementation)
+nmap <leader>rfc <Plug>(coc-references)
 
-nnoremap <silent> trm :FloatermNew<CR>
-"TODO: rename to smb or something.
-nnoremap <silent> vst :Vista coc<CR>
+nmap <leader>trm :FloatermNew<CR>
+nmap <leader>sym :Vista coc<CR>
 
-nnoremap mks :mksession ~/.config/nvim/session/.vim<Left><Left><Left><Left>
+" TODO: create a func and use $VIM_SESSION_DIR. 
+nmap <leader>mks :mksession ~/.config/nvim/session/.vim<Left><Left><Left><Left>
 
-" TODO: meta: save, reload, find, deps management with Plug, file navigation, terminal
-" TODO: try `src` and `wrt`.
-nnoremap wrt :w<CR>
-"nnoremap <C-s> :source $MYVIMRC<CR>
-nnoremap src :source $MYVIMRC<CR>
-" rld  --rld> :e
-nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <silent> <leader>f :NERDTreeFind<CR> 
-" TODO: is version control meta?
+nnoremap <leader>wrt :w<CR>
+nmap <leader>src :source $MYVIMRC<CR>
 
-"nnoremap caw "*yaw 
-"nnoremap paw "*p
+" TODO: `rld`  --rld> :e
+
+nmap <leader>fex :NERDTreeToggle<CR>
+nmap <leader>fit :NERDTreeFind<CR> 
+
+nnoremap <leader>yaw "*yaw
+" moves the cursor one character to the right after executing.
+nnoremap <leader>yiw "*yiw 
+vnoremap <leader>yvs "*y
+"nmap paw "*p
 
 " TODO: try `fcw` and ``.
-nnoremap <leader>fw :<C-r>=printf("Rg %s", expand("<cword>"))<CR><CR>
+nmap <leader>fwp :<C-r>=printf("Rg %s", expand("<cword>"))<CR><CR>
+" TODO: make a func for Files  and pass the copied word as an argument.
+" nmap <leader>fwf :<C-r>=printf("Files %s", expand("<cword>"))<CR><CR>
 vnoremap <leader>fv "*y<Esc> :Rg <C-r>*<CR>
 
