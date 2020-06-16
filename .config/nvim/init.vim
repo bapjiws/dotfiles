@@ -169,62 +169,61 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 "TODO: introduce "force"/"yelling" commands like mks! or rld!  
-"TODO: nmap vs nnoremap.
 
-nmap <leader>rnm <Plug>(coc-rename)
+nnoremap <leader>rnm <Plug>(coc-rename)
 "TODO: run on save.
-nmap <leader>fmt :CocCommand prettier.formatFile<CR>
-nmap <leader>oim :CocCommand editor.action.organizeImport<CR>
+nnoremap <leader>fmt :CocCommand prettier.formatFile<CR>
+nnoremap <leader>oim :CocCommand editor.action.organizeImport<CR>
 nnoremap <leader>hlp :call <SID>show_documentation()<CR>
 
-nmap ]c <Plug>(GitGutterNextHunk)
-nmap [c <Plug>(GitGutterPrevHunk)
-nmap <leader>add <Plug>(GitGutterStageHunk)
-nmap <leader>und <Plug>(GitGutterUndoHunk)
-nmap <leader>prw <Plug>(GitGutterPreviewHunk)
-nmap <leader>fld :GitGutterFold<CR>
+nnoremap ]c :GitGutterNextHunk<CR>
+nnoremap [c :GitGutterPrevHunk<CR>
+nnoremap <leader>add <Plug>(GitGutterStageHunk)
+nnoremap <leader>und <Plug>(GitGutterUndoHunk)
+nnoremap <leader>prw <Plug>(GitGutterPreviewHunk)
+nnoremap <leader>fld :GitGutterFold<CR>
 
-nmap <leader>dff :Gdiffsplit<CR>
-nmap <leader>rst :Gread<CR>
-nmap <leader>blm :Gblame<CR>
+nnoremap <leader>dff :Gdiffsplit<CR>
+nnoremap <leader>rst :Gread<CR>
+nnoremap <leader>blm :Gblame<CR>
 
-nmap <silent> [d <Plug>(coc-diagnostic-prev)
-nmap <silent> ]d <Plug>(coc-diagnostic-next)
-nmap <leader>dgn  :<C-u>CocList diagnostics<CR>
+nnoremap [d :<C-u>call CocActionAsync('diagnosticPrevious')<CR>
+nnoremap ]d :<C-u>call CocActionAsync('diagnosticNext')<CR>
+nnoremap <leader>dgn :<C-u>CocList diagnostics<CR>
 
-nmap <leader>ext  :<C-u>CocList extensions<CR>
-nmap <leader>cmd  :<C-u>CocList commands<CR>
+nnoremap <leader>ext  :<C-u>CocList extensions<CR>
+nnoremap <leader>cmd  :<C-u>CocList commands<CR>
 
-nmap <leader>vsn :FloatermNew lazygit<CR>
+nnoremap <leader>vsn :FloatermNew lazygit<CR>
 
-nmap <leader>dfn <Plug>(coc-definition)
-nmap <leader>tdf <Plug>(coc-type-definition)
-nmap <leader>imp <Plug>(coc-implementation)
-nmap <leader>rfc <Plug>(coc-references)
+nnoremap <leader>dfn <Plug>(coc-definition)
+nnoremap <leader>tdf <Plug>(coc-type-definition)
+nnoremap <leader>imp <Plug>(coc-implementation)
+nnoremap <leader>rfc <Plug>(coc-references)
 
-nmap <leader>trm :FloatermNew<CR>
-nmap <leader>sym :Vista coc<CR>
+nnoremap <leader>trm :FloatermNew<CR>
+nnoremap <leader>sym :Vista coc<CR>
 
 " TODO: create a func and use $VIM_SESSION_DIR. 
-nmap <leader>mks :mksession ~/.config/nvim/session/.vim<Left><Left><Left><Left>
+nnoremap <leader>mks :mksession ~/.config/nvim/session/.vim<Left><Left><Left><Left>
 
 nnoremap <leader>wrt :w<CR>
-nmap <leader>src :source $MYVIMRC<CR>
+nnoremap <leader>src :source $MYVIMRC<CR>
 
 " TODO: `rld`  --rld> :e
 
-nmap <leader>fex :NERDTreeToggle<CR>
-nmap <leader>fit :NERDTreeFind<CR> 
+nnoremap <leader>fex :NERDTreeToggle<CR>
+nnoremap <leader>fit :NERDTreeFind<CR> 
 
 nnoremap <leader>yaw "*yaw
 " moves the cursor one character to the right after executing.
 nnoremap <leader>yiw "*yiw 
 vnoremap <leader>yvs "*y
-"nmap paw "*p
+"nnoremap paw "*p
 
 " TODO: try `fcw` and ``.
-nmap <leader>fwp :<C-r>=printf("Rg %s", expand("<cword>"))<CR><CR>
+nnoremap <leader>fwp :<C-r>=printf("Rg %s", expand("<cword>"))<CR><CR>
 " TODO: make a func for Files  and pass the copied word as an argument.
-" nmap <leader>fwf :<C-r>=printf("Files %s", expand("<cword>"))<CR><CR>
+" nnoremap <leader>fwf :<C-r>=printf("Files %s", expand("<cword>"))<CR><CR>
 vnoremap <leader>fv "*y<Esc> :Rg <C-r>*<CR>
 
