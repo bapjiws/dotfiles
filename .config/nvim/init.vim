@@ -165,22 +165,23 @@ function! s:show_documentation()
   endif
 endfunction
 
-"TODO: highlight brighter.
+" TODO: highlight brighter.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-"TODO: introduce "force"/"yelling" commands like mks! or rld!  
+" TODO: introduce "force"/"yelling" commands like mks! or rld! (or MKS and RLD).
+" TODO: center-focus for commands like `dfn`.
 
-nnoremap <leader>rnm <Plug>(coc-rename)
-"TODO: run on save.
+nnoremap <leader>rnm :<C-u>call CocActionAsync('rename')<CR>
+" TODO: run on save.
 nnoremap <leader>fmt :CocCommand prettier.formatFile<CR>
 nnoremap <leader>oim :CocCommand editor.action.organizeImport<CR>
 nnoremap <leader>hlp :call <SID>show_documentation()<CR>
 
 nnoremap ]c :GitGutterNextHunk<CR>
 nnoremap [c :GitGutterPrevHunk<CR>
-nnoremap <leader>add <Plug>(GitGutterStageHunk)
-nnoremap <leader>und <Plug>(GitGutterUndoHunk)
-nnoremap <leader>prw <Plug>(GitGutterPreviewHunk)
+nnoremap <leader>add :GitGutterStageHunk<CR>
+nnoremap <leader>und :GitGutterUndoHunk<CR>
+nnoremap <leader>prw :GitGutterPreviewHunk<CR>
 nnoremap <leader>fld :GitGutterFold<CR>
 
 nnoremap <leader>dff :Gdiffsplit<CR>
@@ -196,10 +197,10 @@ nnoremap <leader>cmd  :<C-u>CocList commands<CR>
 
 nnoremap <leader>vsn :FloatermNew lazygit<CR>
 
-nnoremap <leader>dfn <Plug>(coc-definition)
-nnoremap <leader>tdf <Plug>(coc-type-definition)
-nnoremap <leader>imp <Plug>(coc-implementation)
-nnoremap <leader>rfc <Plug>(coc-references)
+nnoremap <leader>dfn :<C-u>call CocActionAsync('jumpDefinition')<CR>
+nnoremap <leader>tdf :<C-u>call CocActionAsync('jumpTypeDefinition')<CR> 
+nnoremap <leader>imp :<C-u>call CocActionAsync('jumpImplementation')<CR> 
+nnoremap <leader>rfc :<C-u>call CocActionAsync('jumpReferences')<CR>
 
 nnoremap <leader>trm :FloatermNew<CR>
 nnoremap <leader>sym :Vista coc<CR>
