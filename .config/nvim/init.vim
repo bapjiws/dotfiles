@@ -40,6 +40,7 @@ source $HOME/.config/nvim/plugin-config/startify.vim
 source $HOME/.config/nvim/plugin-config/fzf.vim
 source $HOME/.config/nvim/plugin-config/floaterm.vim
 source $HOME/.config/nvim/plugin-config/vista.vim
+source $HOME/.config/nvim/plugin-config/nerdtree.vim
 source $HOME/.config/nvim/themes/onedark.vim
 source $HOME/.config/nvim/themes/airline.vim
 
@@ -58,7 +59,7 @@ set splitbelow splitright
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-nnoremap <C-s> :source $MYVIMRC<CR>
+" Source on save 
 augroup myvimrc
   autocmd!
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
@@ -93,7 +94,6 @@ set shiftwidth=2
 set expandtab
 " }}}
  
-" Code completion {{{
 " TODO: remove or update the comments
 " https://github.com/neoclide/coc-css
 " https://github.com/iamcco/coc-svg
@@ -149,12 +149,12 @@ endfunction
 " Trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" Use <CR> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
 if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+  inoremap <expr> <CR> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 else
-  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  imap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
 function! s:show_documentation()
@@ -165,75 +165,66 @@ function! s:show_documentation()
   endif
 endfunction
 
+" TODO: highlight brighter.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-nmap <leader>rn <Plug>(coc-rename)
-nmap <leader>p :CocCommand prettier.formatFile<CR>
-nmap <leader>oi :CocCommand editor.action.organizeImport<CR>
-" TODO: overlaps with hunk commands.
-nmap <silent> <leader>h :call <SID>show_documentation()<CR>
-nmap ]h <Plug>(GitGutterNextHunk)
-nmap [h <Plug>(GitGutterPrevHunk)
-nmap ghs <Plug>(GitGutterStageHunk)
-nmap ghu <Plug>(GitGutterUndoHunk)
-nmap ghp <Plug>(GitGutterPreviewHunk)
-"GitGutterFold
-" Gdiffsplit + Gread + Gblame
+" TODO: introduce "force"/"yelling" commands like mks! or rld! (or MKS and RLD).
+" TODO: center-focus for commands like `dfn`.
 
-nmap <silent> <leader>d  :<C-u>CocList diagnostics<cr>
-nmap <silent> [d <Plug>(coc-diagnostic-prev)
-nmap <silent> ]d <Plug>(coc-diagnostic-next)
+nnoremap <leader>rnm :<C-u>call CocActionAsync('rename')<CR>
+" TODO: run on save.
+nnoremap <leader>fmt :CocCommand prettier.formatFile<CR>
+nnoremap <leader>oim :CocCommand editor.action.organizeImport<CR>
+nnoremap <leader>hlp :call <SID>show_documentation()<CR>
 
-nnoremap <silent> <leader>ex  :<C-u>CocList extensions<cr>
+nnoremap ]c :GitGutterNextHunk<CR>
+nnoremap [c :GitGutterPrevHunk<CR>
+nnoremap <leader>add :GitGutterStageHunk<CR>
+nnoremap <leader>und :GitGutterUndoHunk<CR>
+nnoremap <leader>prw :GitGutterPreviewHunk<CR>
+nnoremap <leader>fld :GitGutterFold<CR>
 
-nnoremap <silent> <leader>cm  :<C-u>CocList commands<cr>
-"Find current word
-nnoremap <leader>fw :<C-r>=printf("Rg %s", expand("<cword>"))<CR><CR>
-"Find visual selection
+nnoremap <leader>dff :Gdiffsplit<CR>
+nnoremap <leader>rst :Gread<CR>
+nnoremap <leader>blm :Gblame<CR>
+
+nnoremap [d :<C-u>call CocActionAsync('diagnosticPrevious')<CR>
+nnoremap ]d :<C-u>call CocActionAsync('diagnosticNext')<CR>
+nnoremap <leader>dgn :<C-u>CocList diagnostics<CR>
+
+nnoremap <leader>ext  :<C-u>CocList extensions<CR>
+nnoremap <leader>cmd  :<C-u>CocList commands<CR>
+
+nnoremap <leader>vsn :FloatermNew lazygit<CR>
+
+nnoremap <leader>dfn :<C-u>call CocActionAsync('jumpDefinition')<CR>
+nnoremap <leader>tdf :<C-u>call CocActionAsync('jumpTypeDefinition')<CR> 
+nnoremap <leader>imp :<C-u>call CocActionAsync('jumpImplementation')<CR> 
+nnoremap <leader>rfc :<C-u>call CocActionAsync('jumpReferences')<CR>
+
+nnoremap <leader>trm :FloatermNew<CR>
+nnoremap <leader>sym :Vista coc<CR>
+
+" TODO: create a func and use $VIM_SESSION_DIR. 
+nnoremap <leader>mks :mksession ~/.config/nvim/session/.vim<Left><Left><Left><Left>
+
+nnoremap <leader>wrt :w<CR>
+nnoremap <leader>src :source $MYVIMRC<CR>
+
+" TODO: `rld`  --rld> :e
+
+nnoremap <leader>fex :NERDTreeToggle<CR>
+nnoremap <leader>fit :NERDTreeFind<CR> 
+
+nnoremap <leader>yaw "*yaw
+" moves the cursor one character to the right after executing.
+nnoremap <leader>yiw "*yiw 
+vnoremap <leader>yvs "*y
+"nnoremap paw "*p
+
+" TODO: try `fcw` and ``.
+nnoremap <leader>fwp :<C-r>=printf("Rg %s", expand("<cword>"))<CR><CR>
+" TODO: make a func for Files  and pass the copied word as an argument.
+" nnoremap <leader>fwf :<C-r>=printf("Files %s", expand("<cword>"))<CR><CR>
 vnoremap <leader>fv "*y<Esc> :Rg <C-r>*<CR>
-"Find current word
-"nnoremap <leader>fw "*yaw :Rg<C-r>*<BS><CR>
-"Find visual selection
-"vnoremap <leader>fv "*y<Esc> :Rg <C-r>*<BS><CR>
 
-nnoremap <leader>g :FloatermNew lazygit<CR>
-
-" TODO: overlaps with lazygit.
-nmap <silent> <leader>gd <Plug>(coc-definition)
-nmap <silent> <leader>gt <Plug>(coc-type-definition)
-nmap <silent> <leader>gi <Plug>(coc-implementation)
-nmap <silent> <leader>gr <Plug>(coc-references)
-
-nnoremap <leader>t :FloatermNew<CR>
-
-nnoremap <leader>vs :Vista coc<CR>
-
-" TODO: Plug commands
-
-" }}} 
-
-
-
-" NERDTree {{{
-
-" Automatically close NerdTree when you open a file
-let g:NERDTreeQuitOnOpen = 1
-
-" Remove the 'Press ? for help' prompt from the top
-let g:NERDTreeMinimalUI = 1
-
-nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <silent> <leader>f :NERDTreeFind<CR> 
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
-" }}}
