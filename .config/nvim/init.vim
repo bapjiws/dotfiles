@@ -91,6 +91,8 @@ nnoremap <C-L> :vertical resize -5<CR>
 
 nnoremap * *zz
 nnoremap # #zz
+nnoremap N Nzz
+nnoremap n nzz
 
 " Language {{{
 " TODO: check if we need all these.
