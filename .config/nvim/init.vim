@@ -46,14 +46,24 @@ source $HOME/.config/nvim/themes/airline.vim
 
 map <Space> <leader>
 
+" TODO: check if we need all of these.
 set foldmethod=marker
-
 set relativenumber
 set number
-
 set noswapfile
-
 set splitbelow splitright
+
+set langmenu=en_US
+let $LANG = 'en_US'
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+
+" tab counts for 2 spaces
+set tabstop=2
+" when indenting with '>', use 2 spaces width
+set shiftwidth=2
+" on pressing tab, insert 2 spaces
+set expandtab
 
 " Shift lines
 " TODO: find out why how it works. 
@@ -94,23 +104,6 @@ nnoremap # #zz
 nnoremap N Nzz
 nnoremap n nzz
 
-" Language {{{
-" TODO: check if we need all these.
-set langmenu=en_US
-let $LANG = 'en_US'
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
-" }}}
-
-" Space {{{
-" tab counts for 2 spaces
-set tabstop=2
-" when indenting with '>', use 2 spaces width
-set shiftwidth=2
-" on pressing tab, insert 2 spaces
-set expandtab
-" }}}
- 
 " TODO: remove or update the comments
 " https://github.com/neoclide/coc-css
 " https://github.com/iamcco/coc-svg
