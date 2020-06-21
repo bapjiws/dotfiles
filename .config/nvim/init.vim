@@ -87,6 +87,9 @@ nnoremap <C-J> :resize -5<CR>
 nnoremap <C-H> :vertical resize +5<CR>
 nnoremap <C-L> :vertical resize -5<CR>
 
+nnoremap * *zz
+nnoremap # #zz
+
 " Language {{{
 " TODO: check if we need all these.
 set langmenu=en_US
