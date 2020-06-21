@@ -66,6 +66,9 @@ augroup myvimrc
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
 
+inoremap <esc> <nop>
+inoremap jk <esc>
+
 nnoremap <down> <nop>
 inoremap <down> <nop>
 vnoremap <down> <nop>
