@@ -56,6 +56,7 @@ set noswapfile
 set splitbelow splitright
 
 " Shift lines
+" TODO: find out why how it works. 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
@@ -65,12 +66,18 @@ augroup myvimrc
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
 
-" Key mappings {{{
-nnoremap <Down> <Nop>
-nnoremap <Left> <Nop>
-nnoremap <Right> <Nop>
-nnoremap <Up> <Nop>
-" }}}
+nnoremap <down> <nop>
+inoremap <down> <nop>
+vnoremap <down> <nop>
+nnoremap <left> <nop>
+inoremap <left> <nop>
+vnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <right> <nop>
+vnoremap <right> <nop>
+nnoremap <up> <nop>
+inoremap <up> <nop>
+vnoremap <up> <nop>
 
 nnoremap <C-K> :resize +5<CR>
 nnoremap <C-J> :resize -5<CR>
