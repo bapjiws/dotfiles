@@ -67,6 +67,8 @@ augroup myvimrc
 augroup END
 
 inoremap <esc> <nop>
+inoremap <c-c> <nop>
+inoremap <c-[> <nopj>
 inoremap jk <esc>
 
 nnoremap <down> <nop>
