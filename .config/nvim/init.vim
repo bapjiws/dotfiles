@@ -65,6 +65,9 @@ set shiftwidth=2
 " on pressing tab, insert 2 spaces
 set expandtab
 
+" Clean up the search results. 
+nnoremap <esc> :noh<cr>
+
 " Shift lines
 " TODO: find out why how it works. 
 vnoremap J :m '>+1<CR>gv=gv
