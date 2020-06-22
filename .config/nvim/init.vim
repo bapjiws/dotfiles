@@ -67,6 +67,7 @@ set expandtab
 
 " Clean up the search results. 
 nnoremap <esc> :noh<cr>
+nnoremap / /\c
 
 " Shift lines
 " TODO: find out why how it works. 
