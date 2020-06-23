@@ -67,6 +67,7 @@ set expandtab
 
 " Clean up the search results. 
 nnoremap <esc> :noh<cr>
+" Case-insensitive search.
 nnoremap / /\c
 
 " Shift lines
@@ -84,6 +85,7 @@ inoremap <esc> <nop>
 inoremap <c-c> <nop>
 inoremap <c-[> <nopj>
 inoremap jk <esc>
+vnoremap jk <esc>
 
 nnoremap <down> <nop>
 inoremap <down> <nop>
