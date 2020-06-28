@@ -190,6 +190,9 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " TODO: introduce "force"/"yelling" commands like mks! or rld! (or MKS and RLD).
 " TODO: center-focus for commands like `dfn`.
 
+nnoremap <leader>ipg :PlugInstall<CR>
+nnoremap <leader>cpg :PlugClean<CR>
+
 nnoremap <leader>rnm :<C-u>call CocActionAsync('rename')<CR>
 " TODO: run on save.
 nnoremap <leader>fmt :CocCommand prettier.formatFile<CR>
