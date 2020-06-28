@@ -105,6 +105,9 @@ nnoremap <C-J> :resize -5<CR>
 nnoremap <C-H> :vertical resize +5<CR>
 nnoremap <C-L> :vertical resize -5<CR>
 
+nnoremap oo o<esc>k
+nnoremap OO O<esc>j
+
 nnoremap * *zz
 nnoremap # #zz
 nnoremap N Nzz
