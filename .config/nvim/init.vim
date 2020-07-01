@@ -77,17 +77,10 @@ nnoremap / /\c
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-" Source on save 
 augroup myvimrc
   autocmd!
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
-
-inoremap <esc> <nop>
-inoremap <c-c> <nop>
-inoremap <c-[> <nopj>
-inoremap jk <esc>
-vnoremap jk <esc>
 
 nnoremap <down> <nop>
 inoremap <down> <nop>
