@@ -77,9 +77,9 @@ nnoremap / /\c
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-augroup myvimrc
+augroup source_vimrc_on_save
   autocmd!
-  autocmd BufWritePost $MYVIMRC source $MYVIMRC
+  autocmd BufWritePost *.vim source $MYVIMRC
 augroup END
 
 nnoremap <down> <nop>
