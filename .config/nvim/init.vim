@@ -58,6 +58,8 @@ let $LANG = 'en_US'
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
+set noshowmode
+
 " tab counts for 2 spaces
 set tabstop=2
 " when indenting with '>', use 2 spaces width
@@ -193,6 +195,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nnoremap <leader>ipg :PlugInstall<CR>
 nnoremap <leader>cpg :PlugClean<CR>
 
+nnoremap <leader>cla :<C-u>call CocHasProvider('codeLens')<CR>
+nnoremap <leader>cls :<C-u>call CocActionAsync('codeLensAction')<CR>
 nnoremap <leader>rnm :<C-u>call CocActionAsync('rename')<CR>
 " TODO: run on save.
 nnoremap <leader>fmt :CocCommand prettier.formatFile<CR>
@@ -220,7 +224,11 @@ nnoremap <leader>cmd  :<C-u>CocList commands<CR>
 nnoremap <leader>vsn :FloatermNew lazygit<CR>
 
 nnoremap <leader>dfn :<C-u>call CocActionAsync('jumpDefinition')<CR>
+nnoremap <leader>aaa :call CocAction('jumpDefinition', 'vsplit')<CR>
+nnoremap <leader>bbb :call CocAction('doHover')<CR>
 nnoremap <leader>tdf :<C-u>call CocActionAsync('jumpTypeDefinition')<CR> 
+nnoremap <leader>ccc :call CocActionAsync('showSignatureHelp')<CR>
+" TODO: show in a floating window.
 nnoremap <leader>imp :<C-u>call CocActionAsync('jumpImplementation')<CR> 
 nnoremap <leader>rfc :<C-u>call CocActionAsync('jumpReferences')<CR>
 
