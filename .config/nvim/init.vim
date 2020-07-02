@@ -16,6 +16,7 @@ Plug 'mhinz/vim-startify' "https://github.com/mhinz/vim-startify
 Plug 'Xuyuanp/nerdtree-git-plugin' "https://github.com/Xuyuanp/nerdtree-git-plugin
 Plug 'tpope/vim-fugitive' "https://github.com/tpope/vim-fugitive
 Plug 'airblade/vim-gitgutter' "https://github.com/airblade/vim-gitgutter
+Plug 'APZelos/blamer.nvim' "https://github.com/APZelos/blamer.nvim
 
 " Syntax and styling
 Plug 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
@@ -41,6 +42,7 @@ source $HOME/.config/nvim/plugin-config/fzf.vim
 source $HOME/.config/nvim/plugin-config/floaterm.vim
 source $HOME/.config/nvim/plugin-config/vista.vim
 source $HOME/.config/nvim/plugin-config/nerdtree.vim
+source $HOME/.config/nvim/plugin-config/blamer.vim
 source $HOME/.config/nvim/themes/onedark.vim
 source $HOME/.config/nvim/themes/airline.vim
 
@@ -206,6 +208,7 @@ nnoremap <leader>fld :GitGutterFold<CR>
 nnoremap <leader>dff :Gdiffsplit<CR>
 nnoremap <leader>rst :Gread<CR>
 nnoremap <leader>blm :Gblame<CR>
+nnoremap <leader>atp :BlamerToggle<CR>
 
 nnoremap [d :<C-u>call CocActionAsync('diagnosticPrevious')<CR>
 nnoremap ]d :<C-u>call CocActionAsync('diagnosticNext')<CR>
