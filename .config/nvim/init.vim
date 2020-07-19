@@ -248,9 +248,10 @@ nnoremap <leader>yiw "*yiw
 vnoremap <leader>yvs "*y
 "nnoremap paw "*p
 
-" TODO: try `fcw` and ``.
+" fwp - find word in project
+" fwf - find word in file
+" ffp - find file in project
 nnoremap <leader>fwp :<C-r>=printf("Rg %s", expand("<cword>"))<CR><CR>
-" TODO: make a func for Files  and pass the copied word as an argument.
-" nnoremap <leader>fwf :<C-r>=printf("Files %s", expand("<cword>"))<CR><CR>
-vnoremap <leader>fv "*y<Esc> :Rg <C-r>*<CR>
+nnoremap <leader>fwf :<C-r>=printf("BLines %s", expand("<cword>"))<CR><CR>
+nnoremap <leader>ffp "*yi':Files<CR>
 
