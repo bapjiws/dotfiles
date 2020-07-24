@@ -74,6 +74,8 @@ nnoremap <esc> :noh<cr>
 " Case-insensitive search.
 nnoremap / /\c
 
+nnoremap , @@
+
 " Shift lines
 " TODO: find out why how it works. 
 vnoremap J :m '>+1<CR>gv=gv
