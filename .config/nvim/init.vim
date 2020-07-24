@@ -199,8 +199,8 @@ nnoremap <leader>fmt :CocCommand prettier.formatFile<CR>
 nnoremap <leader>oim :CocCommand editor.action.organizeImport<CR>
 nnoremap <leader>hlp :call <SID>show_documentation()<CR>
 
-nnoremap ]c :GitGutterNextHunk<CR>
-nnoremap [c :GitGutterPrevHunk<CR>
+nnoremap ]c :GitGutterNextHunk<CR>zz
+nnoremap [c :GitGutterPrevHunk<CR>zz
 nnoremap <leader>add :GitGutterStageHunk<CR>
 nnoremap <leader>und :GitGutterUndoHunk<CR>
 nnoremap <leader>prw :GitGutterPreviewHunk<CR>
