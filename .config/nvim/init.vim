@@ -212,7 +212,7 @@ nnoremap <leader>und :GitGutterUndoHunk<CR>
 nnoremap <leader>prw :GitGutterPreviewHunk<CR>
 nnoremap <leader>fld :GitGutterFold<CR>
 
-nnoremap <leader>dff :Gdiffsplit<CR>
+nnoremap <leader>dff :Gvdiffsplit<CR>
 nnoremap <leader>rst :Gread<CR>
 nnoremap <leader>blm :Gblame<CR>
 nnoremap <leader>atp :BlamerToggle<CR>
