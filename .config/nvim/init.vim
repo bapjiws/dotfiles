@@ -111,6 +111,10 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap N Nzz
 nnoremap n nzz
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap <C-f> <C-f>zz
+nnoremap <C-b> <C-b>zz
 
 " TODO: remove or update the comments
 " https://github.com/neoclide/coc-css
