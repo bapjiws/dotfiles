@@ -49,7 +49,7 @@ source $HOME/.config/nvim/themes/airline.vim
 map <Space> <leader>
 
 " TODO: check if we need all of these.
-set foldmethod=marker
+set foldmethod=syntax
 set relativenumber
 set number
 set noswapfile
