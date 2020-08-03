@@ -87,17 +87,9 @@ augroup source_vimrc_on_save
 augroup END
 
 nnoremap <down> <nop>
-inoremap <down> <nop>
-vnoremap <down> <nop>
 nnoremap <left> <nop>
-inoremap <left> <nop>
-vnoremap <left> <nop>
 nnoremap <right> <nop>
-inoremap <right> <nop>
-vnoremap <right> <nop>
 nnoremap <up> <nop>
-inoremap <up> <nop>
-vnoremap <up> <nop>
 
 nnoremap <C-K> :resize +5<CR>
 nnoremap <C-J> :resize -5<CR>
