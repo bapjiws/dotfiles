@@ -207,8 +207,8 @@ nnoremap <leader>rst :Gread<CR>
 nnoremap <leader>blm :Gblame<CR>
 nnoremap <leader>atp :BlamerToggle<CR>
 
-nnoremap [d :<C-u>call CocActionAsync('diagnosticPrevious')<CR>
-nnoremap ]d :<C-u>call CocActionAsync('diagnosticNext')<CR>
+nnoremap [d :<C-u>call CocActionAsync('diagnosticPrevious')<CR>zz
+nnoremap ]d :<C-u>call CocActionAsync('diagnosticNext')<CR>zz
 nnoremap <leader>dgn :<C-u>CocList diagnostics<CR>
 
 nnoremap <leader>ext  :<C-u>CocList extensions<CR>
