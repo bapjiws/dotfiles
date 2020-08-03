@@ -112,7 +112,6 @@ nnoremap <C-b> <C-b>zz
 " https://github.com/neoclide/coc-css
 " https://github.com/iamcco/coc-svg
 " https://github.com/neoclide/coc-emmet
-" https://github.com/neoclide/coc-pairs
 " https://github.com/neoclide/coc-snippets
 let g:coc_global_extensions = [
   \ 'coc-tsserver',
@@ -121,7 +120,6 @@ let g:coc_global_extensions = [
   \ 'coc-css', 
   \ 'coc-svg', 
   \ 'coc-emmet',
-  \ 'coc-pairs',
   \ 'coc-snippets',
   \ 'coc-eslint',
   \ 'coc-prettier'
