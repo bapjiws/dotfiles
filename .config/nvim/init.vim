@@ -246,9 +246,11 @@ vnoremap <leader>yvs "*y
 "nnoremap paw "*p
 
 " fwp - find word in project
+" fsp - find selection in project
 " fwf - find word in file
 " ffp - find file in project
 nnoremap <leader>fwp :<C-r>=printf("Rg %s", expand("<cword>"))<CR><CR>
+vnoremap <leader>fsp y:Rg <C-r>"<CR>
 nnoremap <leader>fwf :<C-r>=printf("BLines %s", expand("<cword>"))<CR><CR>
 nnoremap <leader>ffp "*yi':Files<CR>
 
