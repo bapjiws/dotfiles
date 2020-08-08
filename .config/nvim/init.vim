@@ -190,7 +190,7 @@ nnoremap <leader>cpg :PlugClean<CR>
 nnoremap <leader>cla :<C-u>call CocHasProvider('codeLens')<CR>
 nnoremap <leader>cls :<C-u>call CocActionAsync('codeLensAction')<CR>
 nnoremap <leader>rnm :<C-u>call CocActionAsync('rename')<CR>
-nnoremap <leader>rps :%s/<C-r>=printf("%s", expand("<cword>"))<CR>//g<left><left>
+nnoremap <leader>rpc :%s/<C-r>=printf("%s", expand("<cword>"))<CR>//g<left><left>
 " TODO: run on save.
 nnoremap <leader>fmt :CocCommand prettier.formatFile<CR>
 nnoremap <leader>oim :CocCommand editor.action.organizeImport<CR>
