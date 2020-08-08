@@ -177,7 +177,8 @@ function! s:show_documentation()
   endif
 endfunction
 
-" TODO: highlight brighter.
+set cursorline
+highlight CocHighlightText ctermbg=237 guibg=#3E4452
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " TODO: introduce "force"/"yelling" commands like mks! or rld! (or MKS and RLD).
