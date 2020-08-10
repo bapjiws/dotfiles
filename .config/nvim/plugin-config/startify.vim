@@ -20,9 +20,8 @@ let g:startify_change_to_vcs_root = 1
 let g:startify_session_persistence = 1
 
 let g:startify_bookmarks = [
-          \ { 'i': '~/.config/nvim/init.vim' },
-          \ { 'f': '~/.config/fish/config.fish' },
-          \ { 'k': '~/.config/kitty/kitty.conf' },
+          \ { 'i': '~/Git/dotfiles/.config/nvim/init.vim' },
+          \ { 'f': '~/Git/dotfiles/.config/fish/config.fish' },
           \ ]
 
 let g:startify_enable_special = 0
