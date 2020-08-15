@@ -6,7 +6,8 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 " Visual stuff
 Plug 'joshdick/onedark.vim' "https://github.com/joshdick/onedark.vim
-Plug 'itchyny/lightline.vim' "https://github.com/itchyny/lightline.vim
+Plug 'vim-airline/vim-airline' "https://github.com/vim-airline/vim-airline
+Plug 'vim-airline/vim-airline-themes' "https://github.com/vim-airline/vim-airline-themes
 
 " Navigation
 Plug 'scrooloose/nerdtree' "https://github.com/scrooloose/nerdtree
@@ -44,7 +45,7 @@ source $HOME/.config/nvim/plugin-config/vista.vim
 source $HOME/.config/nvim/plugin-config/nerdtree.vim
 source $HOME/.config/nvim/plugin-config/blamer.vim
 source $HOME/.config/nvim/themes/onedark.vim
-source $HOME/.config/nvim/themes/lightline.vim
+source $HOME/.config/nvim/themes/airline.vim
 
 map <Space> <leader>
 
