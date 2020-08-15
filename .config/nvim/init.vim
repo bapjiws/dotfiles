@@ -254,3 +254,8 @@ vnoremap <leader>fsp y:Rg <C-r>"<CR>
 nnoremap <leader>fwf :<C-r>=printf("BLines %s", expand("<cword>"))<CR><CR>
 nnoremap <leader>ffp "*yi':Files<CR>
 
+" TODO: make if work.
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+augroup END
