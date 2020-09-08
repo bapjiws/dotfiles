@@ -228,7 +228,16 @@ nnoremap <leader>ccc :call CocActionAsync('showSignatureHelp')<CR>
 nnoremap <leader>imp :<C-u>call CocActionAsync('jumpImplementation')<CR> 
 nnoremap <leader>rfc :<C-u>call CocActionAsync('jumpReferences')<CR>
 
-nnoremap <leader>trm :FloatermNew<CR>
+" Since fish shell is the system default, nvim has all kinds of issues
+" executing system() calls. Setting `shell` fixes them. fzf-preview still
+" seems to use fish though, which setting $SHELL fixes.
+set shell=/bin/bash
+let $SHELL = "/bin/bash"
+
+" map <Esc> to exit terminal-mode
+tnoremap <Esc> <C-\><C-n>
+nnoremap <leader>trm :FloatermNew fish<CR>
+
 nnoremap <leader>sym :Vista coc<CR>
 
 " TODO: create a func and use $VIM_SESSION_DIR. 
