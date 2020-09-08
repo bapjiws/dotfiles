@@ -187,6 +187,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 nnoremap <leader>ipg :PlugInstall<CR>
 nnoremap <leader>cpg :PlugClean<CR>
+nnoremap <leader>upg :PlugUpdate<CR>
 
 nnoremap <leader>cla :<C-u>call CocHasProvider('codeLens')<CR>
 nnoremap <leader>cls :<C-u>call CocActionAsync('codeLensAction')<CR>
