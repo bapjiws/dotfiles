@@ -14,14 +14,5 @@ if (empty($TMUX))
   endif
 endif
 
-let g:onedark_hide_endofbuffer = 1
-let g:onedark_terminal_italics = 1
-
-""highlight Comment cterm=italic
-"highlight Normal ctermbg=black
-" https://cyfyifanchen.com/neovim-true-color/
-
-"set background = "black"
-
 syntax on
 colorscheme onedark
