@@ -10,6 +10,5 @@ command! -bang -nargs=? -complete=dir Files
 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --smart-case -- '.shellescape(<q-args>), 1,
-  \   {'options': ['--preview', 'bash ~/Git/dotfiles/preview.sh {}']}, <bang>0)
-
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
