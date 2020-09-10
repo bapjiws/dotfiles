@@ -29,6 +29,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} "https://github.com/neoclide/coc
 " Search
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'yuki-ycino/fzf-preview.vim', { 'branch': 'release', 'do': ':UpdateRemotePlugins' }
 
 " TODO: add checks for fzf and lazygit to fish config to install them if missing.
 Plug 'voldikss/vim-floaterm' "https://github.com/voldikss/vim-floaterm
@@ -257,17 +258,16 @@ nnoremap <leader>yiw "*yiw
 vnoremap <leader>yvs "*y
 "nnoremap paw "*p
 
-" fwp - find word in project
-" fsp - find selection in project
-" fwf - find word in file
-" ffp - find file in project
-nnoremap <leader>fwp :<C-r>=printf("Rg %s", expand("<cword>"))<CR><CR>
-vnoremap <leader>fsp y:Rg <C-r>"<CR>
-nnoremap <leader>fwf :<C-r>=printf("BLines %s", expand("<cword>"))<CR><CR>
-nnoremap <leader>ffp "*yi':Files<CR>
-
 " TODO: make if work.
 augroup highlight_yank
     autocmd!
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 augroup END
+
+nnoremap <leader>sip :Rg<CR>
+nnoremap <leader>ffp :<C-u>FzfPreviewProjectFiles<CR>
+nnoremap <leader>fwp :<C-r>=printf("FzfPreviewProjectGrep %s", expand('<cword>'))<CR><CR>
+xnoremap <leader>fvp "sy:FzfPreviewProjectGrep<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"<CR>
+nnoremap <leader>fwf :<C-u>FzfPreviewLines --add-fzf-arg=--no-sort --add-fzf-arg=--query="<C-r>=expand('<cword>')<CR>"<CR>
+
+nnoremap <leader>jps :<C-u>FzfPreviewJumps<CR>
