@@ -50,6 +50,15 @@ source $HOME/.config/nvim/themes/airline.vim
 
 map <Space> <leader>
 
+" Since fish shell is the system default, nvim has all kinds of issues
+" executing system() calls. Setting `shell` fixes them. fzf-preview still
+" seems to use fish though, which setting $SHELL fixes.
+set shell=/bin/bash
+let $SHELL = "/bin/bash"
+
+" map <Esc> to exit terminal-mode
+tnoremap <Esc> <C-\><C-n>
+
 " TODO: check if we need all of these.
 set foldmethod=syntax
 set relativenumber
@@ -110,11 +119,6 @@ nnoremap <C-u> <C-u>zz
 nnoremap <C-f> <C-f>zz
 nnoremap <C-b> <C-b>zz
 
-" TODO: remove or update the comments
-" https://github.com/neoclide/coc-css
-" https://github.com/iamcco/coc-svg
-" https://github.com/neoclide/coc-emmet
-" https://github.com/neoclide/coc-snippets
 let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-json',
@@ -180,11 +184,25 @@ function! s:show_documentation()
 endfunction
 
 set cursorline
+" TODO: make if work.
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+augroup END
+
 highlight CocHighlightText ctermbg=237 guibg=#3E4452
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" TODO: introduce "force"/"yelling" commands like mks! or rld! (or MKS and RLD).
-" TODO: center-focus for commands like `dfn`.
+" TODO: make if work.
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+augroup END
+
+nnoremap ]c :GitGutterNextHunk<CR>zz
+nnoremap [c :GitGutterPrevHunk<CR>zz
+nnoremap [d :<C-u>call CocActionAsync('diagnosticPrevious')<CR>zz
+nnoremap ]d :<C-u>call CocActionAsync('diagnosticNext')<CR>zz
 
 nnoremap <leader>ipg :PlugInstall<CR>
 nnoremap <leader>cpg :PlugClean<CR>
@@ -194,13 +212,11 @@ nnoremap <leader>cla :<C-u>call CocHasProvider('codeLens')<CR>
 nnoremap <leader>cls :<C-u>call CocActionAsync('codeLensAction')<CR>
 nnoremap <leader>rnm :<C-u>call CocActionAsync('rename')<CR>
 nnoremap <leader>rpc :%s/<C-r>=printf("%s", expand("<cword>"))<CR>//g<left><left>
-" TODO: run on save.
+
 nnoremap <leader>fmt :CocCommand prettier.formatFile<CR>
 nnoremap <leader>oim :CocCommand editor.action.organizeImport<CR>
 nnoremap <leader>hlp :call <SID>show_documentation()<CR>
 
-nnoremap ]c :GitGutterNextHunk<CR>zz
-nnoremap [c :GitGutterPrevHunk<CR>zz
 nnoremap <leader>add :GitGutterStageHunk<CR>
 nnoremap <leader>und :GitGutterUndoHunk<CR>
 nnoremap <leader>prw :GitGutterPreviewHunk<CR>
@@ -211,8 +227,6 @@ nnoremap <leader>rst :Gread<CR>
 nnoremap <leader>blm :Gblame<CR>
 nnoremap <leader>atp :BlamerToggle<CR>
 
-nnoremap [d :<C-u>call CocActionAsync('diagnosticPrevious')<CR>zz
-nnoremap ]d :<C-u>call CocActionAsync('diagnosticNext')<CR>zz
 nnoremap <leader>dgn :<C-u>CocList diagnostics<CR>
 
 nnoremap <leader>ext  :<C-u>CocList extensions<CR>
@@ -229,14 +243,6 @@ nnoremap <leader>ccc :call CocActionAsync('showSignatureHelp')<CR>
 nnoremap <leader>imp :<C-u>call CocActionAsync('jumpImplementation')<CR> 
 nnoremap <leader>rfc :<C-u>call CocActionAsync('jumpReferences')<CR>
 
-" Since fish shell is the system default, nvim has all kinds of issues
-" executing system() calls. Setting `shell` fixes them. fzf-preview still
-" seems to use fish though, which setting $SHELL fixes.
-set shell=/bin/bash
-let $SHELL = "/bin/bash"
-
-" map <Esc> to exit terminal-mode
-tnoremap <Esc> <C-\><C-n>
 nnoremap <leader>trm :FloatermNew fish<CR>
 
 nnoremap <leader>sym :Vista coc<CR>
@@ -249,12 +255,6 @@ nnoremap <leader>src :source $MYVIMRC<CR>
 
 nnoremap <leader>fex :FloatermNew ranger<CR>
 nnoremap <leader>fit :NERDTreeFind<CR> 
-
-" TODO: make if work.
-augroup highlight_yank
-    autocmd!
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
-augroup END
 
 nnoremap <leader>sip :Rg<CR>
 nnoremap <leader>ffp :<C-u>FzfPreviewProjectFiles<CR>
