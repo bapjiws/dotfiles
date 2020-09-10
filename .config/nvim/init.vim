@@ -249,7 +249,7 @@ nnoremap <leader>src :source $MYVIMRC<CR>
 
 " TODO: `rld`  --rld> :e
 
-nnoremap <leader>fex :NERDTreeToggle<CR>
+nnoremap <leader>fex :FloatermNew ranger<CR>
 nnoremap <leader>fit :NERDTreeFind<CR> 
 
 nnoremap <leader>yaw "*yaw
