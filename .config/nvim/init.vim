@@ -247,16 +247,8 @@ nnoremap <leader>mks :mksession ~/.config/nvim/session/.vim<Left><Left><Left><Le
 nnoremap <leader>wrt :w<CR>
 nnoremap <leader>src :source $MYVIMRC<CR>
 
-" TODO: `rld`  --rld> :e
-
 nnoremap <leader>fex :FloatermNew ranger<CR>
 nnoremap <leader>fit :NERDTreeFind<CR> 
-
-nnoremap <leader>yaw "*yaw
-" moves the cursor one character to the right after executing.
-nnoremap <leader>yiw "*yiw 
-vnoremap <leader>yvs "*y
-"nnoremap paw "*p
 
 " TODO: make if work.
 augroup highlight_yank
