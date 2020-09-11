@@ -257,7 +257,8 @@ nnoremap <leader>fex :FloatermNew ranger<CR>
 nnoremap <leader>fit :NERDTreeFind<CR> 
 
 nnoremap <leader>sip :Rg<CR>
-nnoremap <leader>ffp :<C-u>FzfPreviewProjectFiles<CR>
+nnoremap <leader>sif :<C-u>FzfPreviewProjectFiles<CR>
+
 nnoremap <leader>fwp :<C-r>=printf("FzfPreviewProjectGrep %s", expand('<cword>'))<CR><CR>
 xnoremap <leader>fvp "sy:FzfPreviewProjectGrep<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"<CR>
 nnoremap <leader>fwf :<C-u>FzfPreviewLines --add-fzf-arg=--no-sort --add-fzf-arg=--query="<C-r>=expand('<cword>')<CR>"<CR>
