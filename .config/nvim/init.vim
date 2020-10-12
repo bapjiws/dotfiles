@@ -80,6 +80,9 @@ set shiftwidth=2
 " on pressing tab, insert 2 spaces
 set expandtab
 
+" disable automatic folding when opening a file
+set nofoldenable
+
 " Clean up the search results. 
 nnoremap <esc> :noh<cr>
 " Case-insensitive search.
