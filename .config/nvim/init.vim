@@ -27,9 +27,7 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "https://github.com/neoclide/coc.nvim
 
 " Search
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'yuki-ycino/fzf-preview.vim', { 'branch': 'release', 'do': ':UpdateRemotePlugins' }
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
 " Floating terminal
 Plug 'voldikss/vim-floaterm' "https://github.com/voldikss/vim-floaterm
@@ -41,7 +39,7 @@ Plug 'liuchengxu/vista.vim' "https://github.com/liuchengxu/vista.vim
 call plug#end()
 
 source $HOME/.config/nvim/plugin-config/startify.vim
-source $HOME/.config/nvim/plugin-config/fzf.vim
+source $HOME/.config/nvim/plugin-config/leaderf.vim
 source $HOME/.config/nvim/plugin-config/floaterm.vim
 source $HOME/.config/nvim/plugin-config/vista.vim
 source $HOME/.config/nvim/plugin-config/nerdtree.vim
@@ -197,6 +195,7 @@ function! s:show_documentation()
 endfunction
 
 set cursorline
+set foldcolumn=0
 
 highlight CocHighlightText ctermbg=237 guibg=#3E4452
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -264,11 +263,17 @@ nnoremap <leader>src :source $MYVIMRC<CR>
 nnoremap <leader>fex :FloatermNew ranger<CR>
 nnoremap <leader>fit :NERDTreeFind<CR> 
 
-nnoremap <leader>sip :Rg<CR>
-nnoremap <leader>sif :<C-u>FzfPreviewProjectFiles<CR>
+" TODO: File icons
 
-nnoremap <leader>fwp :<C-r>=printf("FzfPreviewProjectGrep %s", expand('<cword>'))<CR><CR>
-xnoremap <leader>fvp "sy:FzfPreviewProjectGrep<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"<CR>
-nnoremap <leader>fwf :<C-u>FzfPreviewLines --add-fzf-arg=--no-sort --add-fzf-arg=--query="<C-r>=expand('<cword>')<CR>"<CR>
+" file search
+nnoremap <leader>sif :<C-U><C-R>=printf("Leaderf file %s", "")<CR><CR>
+nnoremap <leader>fwf :<C-U><C-R>=printf("Leaderf file --cword")<CR><CR>
 
-nnoremap <leader>jps :<C-u>FzfPreviewJumps<CR>
+" line search
+nnoremap <leader>sil :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+nnoremap <leader>fwl :<C-U><C-R>=printf("Leaderf line --cword")<CR><CR>
+
+" project search
+nnoremap <leader>sip :Leaderf rg<CR>
+nnoremap <leader>fwp :<C-r>=printf("Leaderf rg %s", expand('<cword>'))<CR><CR>
+
