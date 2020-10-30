@@ -31,9 +31,10 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'yuki-ycino/fzf-preview.vim', { 'branch': 'release', 'do': ':UpdateRemotePlugins' }
 
-" TODO: add checks for fzf and lazygit to fish config to install them if missing.
+" Floating terminal
 Plug 'voldikss/vim-floaterm' "https://github.com/voldikss/vim-floaterm
 
+" Symbols
 Plug 'liuchengxu/vista.vim' "https://github.com/liuchengxu/vista.vim
 
 " Initialize plugin system
