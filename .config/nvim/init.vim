@@ -197,11 +197,6 @@ function! s:show_documentation()
 endfunction
 
 set cursorline
-" TODO: make if work.
-augroup highlight_yank
-    autocmd!
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
-augroup END
 
 highlight CocHighlightText ctermbg=237 guibg=#3E4452
 autocmd CursorHold * silent call CocActionAsync('highlight')
