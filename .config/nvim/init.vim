@@ -94,7 +94,7 @@ augroup source_vimrc_on_save
   autocmd BufWritePost *.vim source $MYVIMRC
 augroup END
 
-" Enable open commands for floaterm + ranger (mirrors `g:fzf_action`).
+" Enable open commands for floaterm + ranger.
 au filetype floaterm call SetFloatermMappings()
 function! SetFloatermMappings()
    tnoremap <buffer> <c-o> <cmd>let g:floaterm_open_command = 'edit'    \| call feedkeys("l", "i")<CR>
