@@ -49,8 +49,8 @@ source $HOME/.config/nvim/themes/airline.vim
 
 map <Space> <leader>
 
-" map <Esc> to exit terminal-mode
-tnoremap <Esc> <C-\><C-n>
+" Exit terminal-mode
+tnoremap <C-]> <C-\><C-n>
 
 " TODO: check if we need all of these.
 " disable automatic folding when opening a file
