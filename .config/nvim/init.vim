@@ -120,6 +120,9 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap N Nzz
 nnoremap n nzz
+nnoremap g* g*zz
+nnoremap g# g#zz
+
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 nnoremap <C-f> <C-f>zz
