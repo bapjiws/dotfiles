@@ -27,7 +27,7 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "https://github.com/neoclide/coc.nvim
 
 " Search
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 
 " Floating terminal
 Plug 'voldikss/vim-floaterm' "https://github.com/voldikss/vim-floaterm
