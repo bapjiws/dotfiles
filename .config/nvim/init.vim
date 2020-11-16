@@ -53,9 +53,13 @@ map <Space> <leader>
 tnoremap <Esc> <C-\><C-n>
 
 " TODO: check if we need all of these.
+" disable automatic folding when opening a file
+set nofoldenable
 set foldmethod=syntax
+
 set relativenumber
 set number
+
 set noswapfile
 set splitbelow splitright
 
@@ -72,9 +76,6 @@ set tabstop=2
 set shiftwidth=2
 " on pressing tab, insert 2 spaces
 set expandtab
-
-" disable automatic folding when opening a file
-set nofoldenable
 
 " Clean up the search results. 
 nnoremap <esc> :noh<cr>
