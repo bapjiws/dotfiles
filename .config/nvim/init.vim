@@ -49,12 +49,6 @@ source $HOME/.config/nvim/themes/airline.vim
 
 map <Space> <leader>
 
-" Since fish shell is the system default, nvim has all kinds of issues
-" executing system() calls. Setting `shell` fixes them. fzf-preview still
-" seems to use fish though, which setting $SHELL fixes.
-set shell=/bin/bash
-let $SHELL = "/bin/bash"
-
 " map <Esc> to exit terminal-mode
 tnoremap <Esc> <C-\><C-n>
 
