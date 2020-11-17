@@ -274,6 +274,9 @@ nnoremap <leader>sil :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 nnoremap <leader>fwl :<C-U><C-R>=printf("Leaderf line --cword")<CR><CR>
 
 " project search
+let g:Lf_RgConfig = [
+        \ "--glob=!*.lock"
+    \ ]
 nnoremap <leader>sip :Leaderf rg<CR>
 nnoremap <leader>fwp :<C-r>=printf("Leaderf rg %s", expand('<cword>'))<CR><CR>
 
