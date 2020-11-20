@@ -116,8 +116,6 @@ nnoremap <C-L> :vertical resize -5<CR>
 nnoremap oo o<esc>k
 nnoremap OO O<esc>j
 
-set scrolloff=999
-
 nnoremap * *zz
 nnoremap # #zz
 nnoremap N Nzz
