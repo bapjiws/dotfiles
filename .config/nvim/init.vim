@@ -32,16 +32,12 @@ Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 " Floating terminal
 Plug 'voldikss/vim-floaterm' "https://github.com/voldikss/vim-floaterm
 
-" Symbols
-Plug 'liuchengxu/vista.vim' "https://github.com/liuchengxu/vista.vim
-
 " Initialize plugin system
 call plug#end()
 
 source $HOME/.config/nvim/plugin-config/startify.vim
 source $HOME/.config/nvim/plugin-config/leaderf.vim
 source $HOME/.config/nvim/plugin-config/floaterm.vim
-source $HOME/.config/nvim/plugin-config/vista.vim
 source $HOME/.config/nvim/plugin-config/nerdtree.vim
 source $HOME/.config/nvim/plugin-config/blamer.vim
 source $HOME/.config/nvim/themes/onedark.vim
@@ -249,8 +245,6 @@ nnoremap <leader>imp :<C-u>call CocActionAsync('jumpImplementation')<CR>
 nnoremap <leader>rfc :<C-u>call CocActionAsync('jumpReferences')<CR>
 
 nnoremap <leader>trm :FloatermNew fish<CR>
-
-nnoremap <leader>sym :Vista coc<CR>
 
 " TODO: create a func and use $VIM_SESSION_DIR. 
 nnoremap <leader>mks :mksession ~/.config/nvim/session/.vim<Left><Left><Left><Left>
