@@ -278,3 +278,8 @@ let g:Lf_RgConfig = [
 nnoremap <leader>sip :Leaderf rg<CR>
 nnoremap <leader>fwp :<C-r>=printf("Leaderf rg %s", expand("<cword>"))<CR><CR>
 
+" buffer search
+nnoremap <leader>sib :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+
+" tag search
+nnoremap <leader>sit :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
