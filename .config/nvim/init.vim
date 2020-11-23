@@ -265,16 +265,16 @@ nnoremap <leader>fit :NERDTreeFind<CR>
 
 " file search
 nnoremap <leader>sif :<C-U><C-R>=printf("Leaderf file %s", "")<CR><CR>
-nnoremap <leader>fwf :<C-U><C-R>=printf("Leaderf file --cword")<CR><CR>
+nnoremap <leader>fwf :<C-U><C-R>=printf("Leaderf file --input %s", expand("<cword>"))<CR><CR>
 
 " line search
 nnoremap <leader>sil :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
-nnoremap <leader>fwl :<C-U><C-R>=printf("Leaderf line --cword")<CR><CR>
+nnoremap <leader>fwl :<C-U><C-R>=printf("Leaderf line --input %s", expand("<cword>"))<CR><CR>
 
 " project search
 let g:Lf_RgConfig = [
         \ "--glob=!*.lock"
     \ ]
 nnoremap <leader>sip :Leaderf rg<CR>
-nnoremap <leader>fwp :<C-r>=printf("Leaderf rg %s", expand('<cword>'))<CR><CR>
+nnoremap <leader>fwp :<C-r>=printf("Leaderf rg %s", expand("<cword>"))<CR><CR>
 
