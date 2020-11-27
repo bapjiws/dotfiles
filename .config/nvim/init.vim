@@ -77,6 +77,8 @@ set expandtab
 nnoremap <esc> :noh<cr>
 " Case-insensitive search.
 nnoremap / /\c
+" Search for visually selected text.
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 nnoremap , @@
 
