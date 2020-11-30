@@ -272,6 +272,7 @@ let g:Lf_RgConfig = [
         \ "--glob=!*.lock"
     \ ]
 nnoremap <leader>sip :Leaderf rg<CR>
+xnoremap <leader>sip :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR><CR>
 nnoremap <leader>fwp :<C-U><C-R>=printf("Leaderf rg %s", expand("<cword>"))<CR><CR>
 
 " buffer search
