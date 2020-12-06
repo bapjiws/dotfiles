@@ -10,17 +10,21 @@ Plug 'vim-airline/vim-airline' "https://github.com/vim-airline/vim-airline
 Plug 'vim-airline/vim-airline-themes' "https://github.com/vim-airline/vim-airline-themes
 
 " Navigation
+" TODO: decide if we need NERDTree and related stuff.
 Plug 'scrooloose/nerdtree' "https://github.com/scrooloose/nerdtree
 Plug 'mhinz/vim-startify' "https://github.com/mhinz/vim-startify
 
 " Git stuff
+" TODO: [nerdtree-git-status] option 'g:NERDTreeIndicatorMapCustom' is deprecated, please use 'g:NERDTreeGitStatusIndicatorMapCustom'
 Plug 'Xuyuanp/nerdtree-git-plugin' "https://github.com/Xuyuanp/nerdtree-git-plugin
 Plug 'tpope/vim-fugitive' "https://github.com/tpope/vim-fugitive
 Plug 'airblade/vim-gitgutter' "https://github.com/airblade/vim-gitgutter
 Plug 'APZelos/blamer.nvim' "https://github.com/APZelos/blamer.nvim
 
 " Syntax and styling
+" TODO: do we need it?
 Plug 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
+" TODO: do we need it?
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 " Code completion
@@ -228,6 +232,7 @@ nnoremap <leader>fld :GitGutterFold<CR>
 nnoremap <leader>dff :Gvdiffsplit<CR>
 nnoremap <leader>rst :Gread<CR>
 nnoremap <leader>blm :Gblame<CR>
+" TODO: find better name.
 nnoremap <leader>atp :BlamerToggle<CR>
 
 nnoremap <leader>dgn :<C-u>CocList diagnostics<CR>
@@ -255,6 +260,7 @@ nnoremap <leader>wrt :w<CR>
 nnoremap <leader>src :source $MYVIMRC<CR>
 
 nnoremap <leader>fex :FloatermNew ranger<CR>
+" TODO: find better name.
 nnoremap <leader>fit :NERDTreeFind<CR> 
 
 " TODO: File icons
