@@ -19,6 +19,7 @@ Plug 'mhinz/vim-startify' "https://github.com/mhinz/vim-startify
 Plug 'Xuyuanp/nerdtree-git-plugin' "https://github.com/Xuyuanp/nerdtree-git-plugin
 Plug 'tpope/vim-fugitive' "https://github.com/tpope/vim-fugitive
 Plug 'airblade/vim-gitgutter' "https://github.com/airblade/vim-gitgutter
+Plug 'rhysd/git-messenger.vim' "https://github.com/rhysd/git-messenger.vim
 Plug 'APZelos/blamer.nvim' "https://github.com/APZelos/blamer.nvim
 
 " Syntax and styling
@@ -234,6 +235,7 @@ nnoremap <leader>rst :Gread<CR>
 nnoremap <leader>blm :Gblame<CR>
 " TODO: find better name.
 nnoremap <leader>atp :BlamerToggle<CR>
+nnoremap <leader>cms :GitMessenger<CR>
 
 nnoremap <leader>dgn :<C-u>CocList diagnostics<CR>
 
