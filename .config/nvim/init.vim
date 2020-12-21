@@ -32,16 +32,18 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "https://github.com/neoclide/coc.nvim
 
 " Search
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 
 " Floating terminal
 Plug 'voldikss/vim-floaterm' "https://github.com/voldikss/vim-floaterm
+
+Plug 'liuchengxu/vista.vim'
 
 " Initialize plugin system
 call plug#end()
 
 source $HOME/.config/nvim/plugin-config/startify.vim
-source $HOME/.config/nvim/plugin-config/leaderf.vim
+source $HOME/.config/nvim/plugin-config/clap.vim
 source $HOME/.config/nvim/plugin-config/floaterm.vim
 source $HOME/.config/nvim/plugin-config/nerdtree.vim
 source $HOME/.config/nvim/plugin-config/blamer.vim
@@ -269,23 +271,19 @@ nnoremap <leader>fit :NERDTreeFind<CR>
 " TODO: File icons
 
 " file search
-nnoremap <leader>sif :<C-U><C-R>=printf("Leaderf file %s", "")<CR><CR>
-nnoremap <leader>fwf :<C-U><C-R>=printf("Leaderf file --input %s", expand("<cword>"))<CR><CR>
+nnoremap <leader>sif :Clap files<CR>
+nnoremap <leader>fwf :Clap files ++query=<cword><CR>
 
 " line search
-nnoremap <leader>sil :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
-nnoremap <leader>fwl :<C-U><C-R>=printf("Leaderf line --input %s", expand("<cword>"))<CR><CR>
+nnoremap <leader>sil :Clap blines<CR>
+nnoremap <leader>fwl :Clap blines ++query=<cword><CR>
 
-" project search
-let g:Lf_RgConfig = [
-        \ "--glob=!*.lock"
-    \ ]
-nnoremap <leader>sip :Leaderf rg<CR>
-xnoremap <leader>sip :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR><CR>
-nnoremap <leader>fwp :<C-U><C-R>=printf("Leaderf rg %s", expand("<cword>"))<CR><CR>
+nnoremap <leader>sip :Clap grep<CR>
+nnoremap <leader>fwp :Clap grep ++query=<cword><CR>
+xnoremap <leader>fwp :Clap grep ++query=@visual<CR>
 
 " buffer search
-nnoremap <leader>sib :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+nnoremap <leader>sib :Clap buffers<CR>
 
 " tag search
-nnoremap <leader>sit :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+nnoremap <leader>sit :Clap tags<CR>
