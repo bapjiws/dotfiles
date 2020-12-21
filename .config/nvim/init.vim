@@ -2,7 +2,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Editing
 Plug 'tpope/vim-surround' "https://github.com/tpope/vim-surround
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'mg979/vim-visual-multi', {'branch': 'master'} "https://github.com/mg979/vim-visual-multi
 
 " Visual stuff
 Plug 'joshdick/onedark.vim' "https://github.com/joshdick/onedark.vim
