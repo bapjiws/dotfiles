@@ -257,6 +257,7 @@ nnoremap <leader>trm :FloatermNew fish<CR>
 
 " TODO: create a func and use $VIM_SESSION_DIR. 
 nnoremap <leader>mks :mksession ~/.config/nvim/session/.vim<Left><Left><Left><Left>
+nnoremap <leader>mks! :mksession! ~/.config/nvim/session/.vim<Left><Left><Left><Left>
 
 nnoremap <leader>wrt :w<CR>
 nnoremap <leader>src :source $MYVIMRC<CR>
