@@ -37,8 +37,6 @@ Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 " Floating terminal
 Plug 'voldikss/vim-floaterm' "https://github.com/voldikss/vim-floaterm
 
-Plug 'liuchengxu/vista.vim'
-
 " Initialize plugin system
 call plug#end()
 
@@ -284,6 +282,3 @@ xnoremap <leader>fwp :Clap grep ++query=@visual<CR>
 
 " buffer search
 nnoremap <leader>sib :Clap buffers<CR>
-
-" tag search
-nnoremap <leader>sit :Clap tags<CR>
