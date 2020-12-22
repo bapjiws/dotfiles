@@ -240,6 +240,9 @@ nnoremap <leader>blm :Gblame<CR>
 nnoremap <leader>atp :BlamerToggle<CR>
 nnoremap <leader>cms :GitMessenger<CR>
 
+nnoremap <leader>fcm :Clap bcommits<CR>
+nnoremap <leader>pcm :Clap commits<CR>
+
 nnoremap <leader>dgn :<C-u>CocList diagnostics<CR>
 
 nnoremap <leader>ext  :<C-u>CocList extensions<CR>
