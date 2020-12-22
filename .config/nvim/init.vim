@@ -246,7 +246,6 @@ nnoremap <leader>pcm :Clap commits<CR>
 nnoremap <leader>dgn :<C-u>CocList diagnostics<CR>
 
 nnoremap <leader>ext  :<C-u>CocList extensions<CR>
-nnoremap <leader>cmd  :<C-u>CocList commands<CR>
 
 nnoremap <leader>vsn :FloatermNew lazygit<CR>
 
@@ -288,3 +287,7 @@ xnoremap <leader>fwp :Clap grep ++query=@visual<CR>
 
 " buffer search
 nnoremap <leader>sib :Clap buffers<CR>
+
+" command search
+nnoremap <leader>cmd :Clap command<CR>
+nnoremap <leader>cmh :Clap command_history<CR>
