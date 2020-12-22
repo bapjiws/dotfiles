@@ -1,5 +1,5 @@
 let g:airline_powerline_fonts = 1
-let g:airline_theme='onedark'
+let g:airline_theme='sonokai'
 
 " Avoid showing 'double arrows'
 let g:airline_skip_empty_sections = 1

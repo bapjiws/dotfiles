@@ -5,7 +5,7 @@ Plug 'tpope/vim-surround' "https://github.com/tpope/vim-surround
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} "https://github.com/mg979/vim-visual-multi
 
 " Visual stuff
-Plug 'joshdick/onedark.vim' "https://github.com/joshdick/onedark.vim
+Plug 'sainnhe/sonokai' "https://github.com/sainnhe/sonokai
 Plug 'vim-airline/vim-airline' "https://github.com/vim-airline/vim-airline
 Plug 'vim-airline/vim-airline-themes' "https://github.com/vim-airline/vim-airline-themes
 
@@ -23,7 +23,7 @@ Plug 'rhysd/git-messenger.vim' "https://github.com/rhysd/git-messenger.vim
 Plug 'APZelos/blamer.nvim' "https://github.com/APZelos/blamer.nvim
 
 " Syntax and styling
-" TODO: do we need it?
+" TODO: consider https://github.com/nvim-treesitter/nvim-treesitter
 Plug 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
 " TODO: do we need it?
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
@@ -45,13 +45,14 @@ source $HOME/.config/nvim/plugin-config/clap.vim
 source $HOME/.config/nvim/plugin-config/floaterm.vim
 source $HOME/.config/nvim/plugin-config/nerdtree.vim
 source $HOME/.config/nvim/plugin-config/blamer.vim
-source $HOME/.config/nvim/themes/onedark.vim
 source $HOME/.config/nvim/themes/airline.vim
 
 map <Space> <leader>
 
 " Exit terminal-mode
 tnoremap <C-]> <C-\><C-n>
+
+colorscheme sonokai
 
 " TODO: check if we need all of these.
 " disable automatic folding when opening a file
