@@ -45,14 +45,13 @@ source $HOME/.config/nvim/plugin-config/clap.vim
 source $HOME/.config/nvim/plugin-config/floaterm.vim
 source $HOME/.config/nvim/plugin-config/nerdtree.vim
 source $HOME/.config/nvim/plugin-config/blamer.vim
+source $HOME/.config/nvim/themes/sonokai.vim
 source $HOME/.config/nvim/themes/airline.vim
 
 map <Space> <leader>
 
 " Exit terminal-mode
 tnoremap <C-]> <C-\><C-n>
-
-colorscheme sonokai
 
 " TODO: check if we need all of these.
 " disable automatic folding when opening a file
