@@ -14,3 +14,4 @@ let g:airline_section_z = airline#section#create(['%3p%% ', 'linenr', ':%2v'])
 let g:airline#extensions#branch#displayed_head_limit = 30
 let g:airline#extensions#branch#vcs_checks = []
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
