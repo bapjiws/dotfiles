@@ -216,6 +216,8 @@ nnoremap <leader>ipg :PlugInstall<CR>
 nnoremap <leader>cpg :PlugClean<CR>
 nnoremap <leader>upg :PlugUpdate<CR>
 
+nnoremap <leader>hlp :Clap help_tags<CR>
+
 " TODO: check if we need/use these two.
 nnoremap <leader>cla :<C-u>call CocHasProvider('codeLens')<CR>
 nnoremap <leader>cls :<C-u>call CocActionAsync('codeLensAction')<CR>
@@ -225,7 +227,6 @@ nnoremap <leader>rpc :%s/<C-r>=printf("%s", expand("<cword>"))<CR>//g<left><left
 
 nnoremap <leader>fmt :CocCommand prettier.formatFile<CR>
 nnoremap <leader>oim :CocCommand editor.action.organizeImport<CR>
-nnoremap <leader>hlp :call <SID>show_documentation()<CR>
 
 " TODO: already use lazygit for this operation.
 nnoremap <leader>add :GitGutterStageHunk<CR>
