@@ -248,7 +248,7 @@ nnoremap <leader>dgn :<C-u>CocList diagnostics<CR>
 
 nnoremap <leader>ext  :<C-u>CocList extensions<CR>
 
-nnoremap <leader>vsn :FloatermNew lazygit<CR>
+nnoremap <leader>vsc :FloatermNew lazygit<CR>
 
 nnoremap <leader>dfn :<C-u>call CocActionAsync('jumpDefinition')<CR>
 nnoremap <leader>aaa :call CocAction('jumpDefinition', 'vsplit')<CR>
