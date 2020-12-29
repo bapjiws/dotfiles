@@ -31,8 +31,16 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 " Code completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "https://github.com/neoclide/coc.nvim
 
+" LSP for Telescope
+Plug 'neovim/nvim-lspconfig'
+
 " Search
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+
+" Telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Floating terminal
 Plug 'voldikss/vim-floaterm' "https://github.com/voldikss/vim-floaterm
@@ -47,6 +55,54 @@ source $HOME/.config/nvim/plugin-config/nerdtree.vim
 source $HOME/.config/nvim/plugin-config/blamer.vim
 source $HOME/.config/nvim/themes/sonokai.vim
 source $HOME/.config/nvim/themes/airline.vim
+
+highlight TelescopeMatching       guifg=#16AA65
+
+:lua << EOF
+require('telescope').setup{
+  defaults = {
+    vimgrep_arguments = {
+      'rg',
+      '--color=auto',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--ignore-case'
+    },
+    prompt_position = "bottom",
+    prompt_prefix = ">",
+    selection_strategy = "reset",
+    sorting_strategy = "descending",
+    layout_strategy = "horizontal",
+    layout_defaults = {
+      -- TODO add builtin options.
+    },
+    file_sorter =  require'telescope.sorters'.get_fuzzy_file,
+    file_ignore_patterns = {},
+    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
+    shorten_path = true,
+    winblend = 0,
+    width = 0.75,
+    preview_cutoff = 120,
+    results_height = 1,
+    results_width = 0.8,
+    border = {},
+    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰'},
+    color_devicons = true,
+    use_less = true,
+    set_env = { ['COLORTERM'] = 'truecolor' }, -- default { }, currently unsupported for shells like cmd.exe / powershell.exe
+    file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
+    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
+    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+  }
+}
+EOF
+
+"https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#tsserver
+:lua << EOF
+  require'lspconfig'.tsserver.setup{}
+EOF
 
 map <Space> <leader>
 
@@ -277,14 +333,17 @@ nnoremap <leader>fit :NERDTreeFind<CR>
 " file search
 nnoremap <leader>sif :Clap files<CR>
 nnoremap <leader>fwf :Clap files ++query=<cword><CR>
+nnoremap <leader>fwf2 <cmd>lua require('telescope.builtin').find_files({ default_text = vim.fn.expand("<cword>") })<CR>
 
 " line search
 nnoremap <leader>sil :Clap blines<CR>
 nnoremap <leader>fwl :Clap blines ++query=<cword><CR>
 
 nnoremap <leader>sip :Clap grep<CR>
+nnoremap <leader>sip2 <cmd>lua require('telescope.builtin').live_grep()<CR>
 nnoremap <leader>fwp :Clap grep ++query=<cword><CR>
 xnoremap <leader>fwp :Clap grep ++query=@visual<CR>
+nnoremap <leader>fwp2 <cmd>lua require('telescope.builtin').live_grep({ default_text = vim.fn.expand("<cword>") })<CR>
 
 " buffer search
 nnoremap <leader>sib :Clap buffers<CR>
