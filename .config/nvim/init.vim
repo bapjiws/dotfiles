@@ -29,7 +29,6 @@ Plug 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 " Code completion
-Plug 'neoclide/coc.nvim', {'branch': 'release'} "https://github.com/neoclide/coc.nvim
 
 " LSP for Telescope
 Plug 'neovim/nvim-lspconfig'
@@ -201,18 +200,6 @@ nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 nnoremap <C-f> <C-f>zz
 nnoremap <C-b> <C-b>zz
-
-let g:coc_global_extensions = [
-  \ 'coc-tsserver',
-  \ 'coc-json',
-  \ 'coc-html', 
-  \ 'coc-css', 
-  \ 'coc-svg', 
-  \ 'coc-emmet',
-  \ 'coc-snippets',
-  \ 'coc-eslint',
-  \ 'coc-prettier'
-  \]
 
 " TextEdit might fail if hidden is not set.
 set hidden
