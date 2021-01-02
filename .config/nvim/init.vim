@@ -115,7 +115,50 @@ EOF
 
 "https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#tsserver
 :lua << EOF
-  require'lspconfig'.tsserver.setup{}
+  require'lspconfig'.tsserver.setup{} -- on_attach=custom_attach
+EOF
+
+"https://github.com/iamcco/diagnostic-languageserver/wiki/Linters#eslint
+:lua << EOF
+require'lspconfig'.diagnosticls.setup{
+  filetypes = { "javascript", "javascript.jsx" },
+  init_options = {
+    filetypes = {
+      javascript = "eslint",
+      ["javascript.jsx"] = "eslint",
+      javascriptreact = "eslint",
+      typescriptreact = "eslint",
+    },
+    linters = {
+      eslint = {
+        sourceName = "eslint",
+        command = "./node_modules/.bin/eslint",
+        rootPatterns = { ".git" },
+        debounce = 100,
+        args = {
+          "--stdin",
+          "--stdin-filename",
+          "%filepath",
+          "--format",
+          "json",
+        },
+        parseJson = {
+          errorsRoot = "[0].messages",
+          line = "line",
+          column = "column",
+          endLine = "endLine",
+          endColumn = "endColumn",
+          message = "${message} [${ruleId}]",
+          security = "severity",
+        };
+        securities = {
+          [2] = "error",
+          [1] = "warning"
+        }
+      }
+    }
+  }
+}
 EOF
 
 map <Space> <leader>
@@ -265,10 +308,24 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 augroup END
 
+  "diagnostic.infoSign": "ℹ",
+  "diagnostic.warningSign": "⚠",
+  "diagnostic.errorSign": "✗",
+  
+"    sign define LspDiagnosticsSignError text=E texthl=LspDiagnosticsSignError linehl= numhl=
+"    sign define LspDiagnosticsSignWarning text=W texthl=LspDiagnosticsSignWarning linehl= numhl=
+"    sign define LspDiagnosticsSignInformation text=I texthl=LspDiagnosticsSignInformation linehl= numhl=
+"    sign define LspDiagnosticsSignHint text=H texthl=LspDiagnosticsSignHint linehl= numhl=
+"
+sign define LspDiagnosticsSignHint text=ℹ texthl=LspDiagnosticsSignHint linehl= numhl=
+sign define LspDiagnosticsSignError text=✗ texthl=LspDiagnosticsSignError linehl= numhl=
+    
+nnoremap <leader>dgn :<C-u>CocList diagnostics<CR>
+nnoremap [d <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zz
+nnoremap ]d <cmd>lua vim.lsp.diagnostic.goto_next()<CR>zz
+
 nnoremap ]c :GitGutterNextHunk<CR>zz
 nnoremap [c :GitGutterPrevHunk<CR>zz
-nnoremap [d :<C-u>call CocActionAsync('diagnosticPrevious')<CR>zz
-nnoremap ]d :<C-u>call CocActionAsync('diagnosticNext')<CR>zz
 
 nnoremap <leader>ipg :PlugInstall<CR>
 nnoremap <leader>cpg :PlugClean<CR>
@@ -297,8 +354,6 @@ nnoremap <leader>cms :GitMessenger<CR>
 
 nnoremap <leader>fcm :Clap bcommits<CR>
 nnoremap <leader>pcm :Clap commits<CR>
-
-nnoremap <leader>dgn :<C-u>CocList diagnostics<CR>
 
 nnoremap <leader>vsc :FloatermNew lazygit<CR>
 
