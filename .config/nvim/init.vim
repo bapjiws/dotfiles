@@ -276,11 +276,7 @@ nnoremap <leader>upg :PlugUpdate<CR>
 
 nnoremap <leader>hlp :Clap help_tags<CR>
 
-" TODO: check if we need/use these two.
-nnoremap <leader>cla :<C-u>call CocHasProvider('codeLens')<CR>
-nnoremap <leader>cls :<C-u>call CocActionAsync('codeLensAction')<CR>
-
-nnoremap <leader>rnm :<C-u>call CocActionAsync('rename')<CR>
+nnoremap <leader>rnm <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <leader>rpc :%s/<C-r>=printf("%s", expand("<cword>"))<CR>//g<left><left>
 
 nnoremap <leader>fmt :CocCommand prettier.formatFile<CR>
@@ -304,18 +300,15 @@ nnoremap <leader>pcm :Clap commits<CR>
 
 nnoremap <leader>dgn :<C-u>CocList diagnostics<CR>
 
-nnoremap <leader>ext  :<C-u>CocList extensions<CR>
-
 nnoremap <leader>vsc :FloatermNew lazygit<CR>
 
-nnoremap <leader>dfn :<C-u>call CocActionAsync('jumpDefinition')<CR>
-nnoremap <leader>aaa :call CocAction('jumpDefinition', 'vsplit')<CR>
-nnoremap <leader>bbb :call CocAction('doHover')<CR>
-nnoremap <leader>tdf :<C-u>call CocActionAsync('jumpTypeDefinition')<CR> 
-nnoremap <leader>ccc :call CocActionAsync('showSignatureHelp')<CR>
-" TODO: show in a floating window.
-nnoremap <leader>imp :<C-u>call CocActionAsync('jumpImplementation')<CR> 
-nnoremap <leader>rfc :<C-u>call CocActionAsync('jumpReferences')<CR>
+nnoremap <leader>dfn <cmd>lua vim.lsp.buf.definition()<CR>zz
+nnoremap <leader>tdf <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <leader>hov <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <leader>sgn <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <leader>imp <cmd>lua vim.lsp.buf.implementation()<CR>
+"nnoremap <leader>rfc <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <leader>rfc :Telescope lsp_references<CR>
 
 nnoremap <leader>trm :FloatermNew fish<CR>
 
