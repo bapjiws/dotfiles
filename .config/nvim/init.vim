@@ -113,6 +113,19 @@ require('telescope').setup{
 }
 EOF
 
+":lua << EOF
+"local map = function(type, key, value)
+"	vim.fn.nvim_buf_set_keymap(0,type,key,value,{noremap = true, silent = true});
+"end
+"
+"local custom_attach = function(client)
+"	print("LSP started.");
+"	require'completion'.on_attach(client)
+"
+"	map('i','<c-space>','<cmd>lua vim.lsp.buf.completion()<CR>')
+"end
+"EOF
+
 "https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#tsserver
 :lua << EOF
   require'lspconfig'.tsserver.setup{} -- on_attach=custom_attach
@@ -262,40 +275,28 @@ set updatetime=300
 set shortmess+=c
 
 
-" Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" TODO: re-enable with the built-in LSP.
+"inoremap <silent><expr> <TAB>
+"      \ pumvisible() ? "\<C-n>" :
+"      \ <SID>check_back_space() ? "\<TAB>" :
+"      \ coc#refresh()
+"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"
+"function! s:check_back_space() abort
+"  let col = col('.') - 1
+"  return !col || getline('.')[col - 1]  =~# '\s'
+"endfunction
 
 " Trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+"inoremap <silent><expr> <c-space> coc#refresh()
+"inoremap <expr> <c-space> lua vim.lsp.buf.completion()<CR>
 
 " Use <CR> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
-if exists('*complete_info')
-  inoremap <expr> <CR> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  imap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-highlight CocHighlightText ctermbg=237 guibg=#3E4452
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
+"if exists('*complete_info')
+"  inoremap <expr> <CR> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+"else
+"  imap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 "endif
 
 " TODO: re-enable with the built-in LSP.
