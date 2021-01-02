@@ -302,6 +302,12 @@ set foldcolumn=0
 highlight CocHighlightText ctermbg=237 guibg=#3E4452
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+"endif
+
+" TODO: re-enable with the built-in LSP.
+"highlight CocHighlightText ctermbg=237 guibg=#3E4452
+"autocmd CursorHold * silent call CocActionAsync('highlight')
+
 " TODO: make if work.
 augroup highlight_yank
     autocmd!
