@@ -346,7 +346,8 @@ nnoremap <leader>ipg :PlugInstall<CR>
 nnoremap <leader>cpg :PlugClean<CR>
 nnoremap <leader>upg :PlugUpdate<CR>
 
-nnoremap <leader>hlp :Clap help_tags<CR>
+nnoremap <leader>sih :Clap help_tags<CR>
+nnoremap <leader>fwh :Clap help_tags ++query=<cword><CR>
 
 nnoremap <leader>rnm <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <leader>rpc :%s/<C-r>=printf("%s", expand("<cword>"))<CR>//g<left><left>
