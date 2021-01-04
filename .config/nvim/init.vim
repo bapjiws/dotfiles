@@ -347,7 +347,6 @@ nnoremap <leader>hlp :Clap help_tags<CR>
 nnoremap <leader>rnm <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <leader>rpc :%s/<C-r>=printf("%s", expand("<cword>"))<CR>//g<left><left>
 
-nnoremap <leader>oim :CocCommand editor.action.organizeImport<CR>
 nnoremap <leader>fmt :Prettier<CR>
 
 " TODO: already use lazygit for this operation.
