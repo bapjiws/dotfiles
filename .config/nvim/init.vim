@@ -29,6 +29,7 @@ Plug 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 " Code completion
+Plug 'nvim-lua/completion-nvim'
 
 " LSP for Telescope
 Plug 'neovim/nvim-lspconfig'
@@ -73,7 +74,7 @@ lua require 'plugins'
 
 "https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#tsserver
 :lua << EOF
-  require'lspconfig'.tsserver.setup{} -- on_attach=custom_attach
+  require'lspconfig'.tsserver.setup{on_attach=require'completion'.on_attach}
 EOF
 
 "https://github.com/iamcco/diagnostic-languageserver/wiki/Linters#eslint
@@ -219,8 +220,16 @@ set updatetime=300
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" TODO: re-enable with the built-in LSP.
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+
+" Avoid showing message extra message when using completion
+set shortmess+=c
+
 "inoremap <silent><expr> <TAB>
 "      \ pumvisible() ? "\<C-n>" :
 "      \ <SID>check_back_space() ? "\<TAB>" :
