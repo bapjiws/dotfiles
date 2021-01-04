@@ -35,6 +35,27 @@ require'lspconfig'.diagnosticls.setup{
           [1] = "warning"
         }
       }
+    },
+    formatters = {
+      prettierEslint = {
+        command = 'prettier-eslint',
+        args = { '--stdin' },
+        rootPatterns = { '.git' },
+      },
+      prettier = {
+        command = 'prettier',
+        args = { '--stdin-filepath', '%filename' },
+        rootPatterns = { '.git' },
+      }
+    },
+    formatFiletypes = {
+       css = 'prettier',
+       javascript = 'prettierEslint',
+       javascriptreact = 'prettierEslint',
+       json = 'prettier',
+       scss = 'prettier',
+       typescript = 'prettierEslint',
+       typescriptreact = 'prettierEslint'
     }
   }
 }

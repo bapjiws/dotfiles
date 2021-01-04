@@ -28,8 +28,6 @@ Plug 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
 " TODO: do we need it?
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-
 " Code completion
 Plug 'nvim-lua/completion-nvim'
 
