@@ -258,7 +258,7 @@ require'snippets'.snippets = {
   --  it will be lookup up in the _global dictionary.
   _global = {
     clg = "console.log();";
-    clo = "console.log(':', )";
+    clo = "console.log(':', );";
 
     -- Insert a basic snippet, which is a string.
     todo = "TODO(ashkan): ";
