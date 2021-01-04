@@ -28,6 +28,8 @@ Plug 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
 " TODO: do we need it?
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
 " Code completion
 Plug 'nvim-lua/completion-nvim'
 
@@ -345,8 +347,8 @@ nnoremap <leader>hlp :Clap help_tags<CR>
 nnoremap <leader>rnm <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <leader>rpc :%s/<C-r>=printf("%s", expand("<cword>"))<CR>//g<left><left>
 
-nnoremap <leader>fmt :CocCommand prettier.formatFile<CR>
 nnoremap <leader>oim :CocCommand editor.action.organizeImport<CR>
+nnoremap <leader>fmt :Prettier<CR>
 
 " TODO: already use lazygit for this operation.
 nnoremap <leader>add :GitGutterStageHunk<CR>
