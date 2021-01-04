@@ -66,65 +66,7 @@ highlight TelescopeMatching       guifg=#16AA65
 
 lua require 'plugins'
 
-"local map = function(type, key, value)
-"	vim.fn.nvim_buf_set_keymap(0,type,key,value,{noremap = true, silent = true});
-"end
-"
-"local custom_attach = function(client)
-"	print("LSP started.");
-"	require'completion'.on_attach(client)
-"
-"	map('i','<c-space>','<cmd>lua vim.lsp.buf.completion()<CR>')
-"end
-"EOF
-
-"https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#tsserver
-:lua << EOF
-  require'lspconfig'.tsserver.setup{on_attach=require'completion'.on_attach}
-EOF
-
-"https://github.com/iamcco/diagnostic-languageserver/wiki/Linters#eslint
-:lua << EOF
-require'lspconfig'.diagnosticls.setup{
-  filetypes = { "javascript", "javascript.jsx" },
-  init_options = {
-    filetypes = {
-      javascript = "eslint",
-      ["javascript.jsx"] = "eslint",
-      javascriptreact = "eslint",
-      typescriptreact = "eslint",
-    },
-    linters = {
-      eslint = {
-        sourceName = "eslint",
-        command = "./node_modules/.bin/eslint",
-        rootPatterns = { ".git" },
-        debounce = 100,
-        args = {
-          "--stdin",
-          "--stdin-filename",
-          "%filepath",
-          "--format",
-          "json",
-        },
-        parseJson = {
-          errorsRoot = "[0].messages",
-          line = "line",
-          column = "column",
-          endLine = "endLine",
-          endColumn = "endColumn",
-          message = "${message} [${ruleId}]",
-          security = "severity",
-        };
-        securities = {
-          [2] = "error",
-          [1] = "warning"
-        }
-      }
-    }
-  }
-}
-EOF
+lua require 'lsp'
 
 map <Space> <leader>
 
