@@ -292,7 +292,7 @@ nnoremap <leader>fwh :Clap help_tags ++query=<cword><CR>
 nnoremap <leader>rnm <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <leader>rpc :%s/<C-r>=printf("%s", expand("<cword>"))<CR>//g<left><left>
 
-nnoremap <leader>fmt :Prettier<CR>
+nnoremap <leader>fmt :lua vim.lsp.buf.formatting()<CR>
 
 " TODO: already use lazygit for this operation.
 nnoremap <leader>add :GitGutterStageHunk<CR>
