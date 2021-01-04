@@ -31,6 +31,10 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 " Code completion
 Plug 'nvim-lua/completion-nvim'
 
+" Snippets
+Plug 'SirVer/ultisnips'
+Plug 'norcalli/snippets.nvim' "https://github.com/norcalli/snippets.nvim
+
 " LSP for Telescope
 Plug 'neovim/nvim-lspconfig'
 
@@ -229,6 +233,56 @@ set completeopt=menuone,noinsert,noselect
 
 " Avoid showing message extra message when using completion
 set shortmess+=c
+
+" Use completion-nvim in every buffer
+autocmd BufEnter * lua require'completion'.on_attach()
+
+" possible value: 'UltiSnips', 'Neosnippet', 'vim-vsnip', 'snippets.nvim'
+let g:completion_enable_snippet = 'snippets.nvim'
+
+" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+" - https://github.com/Valloric/YouCompleteMe
+" - https://github.com/nvim-lua/completion-nvim
+let g:UltiSnipsExpandTrigger="<c-space>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+lua require'snippets'.use_suggested_mappings()
+
+:lua << EOF
+require'snippets'.snippets = {
+  -- The _global dictionary acts as a global fallback.
+  -- If a key is not found for the specific filetype, then
+  --  it will be lookup up in the _global dictionary.
+  _global = {
+    clg = "console.log();";
+    clo = "console.log(':', )";
+
+    -- Insert a basic snippet, which is a string.
+    todo = "TODO(ashkan): ";
+
+    uname = function() return vim.loop.os_uname().sysname end;
+    date = os.date;
+
+    -- Evaluate at the time of the snippet expansion and insert it. You
+    --  can put arbitrary lua functions inside of the =... block as a
+    --  dynamic placeholder. In this case, for an anonymous variable
+    --  which doesn't take user input and is evaluated at the start.
+    epoch = "${=os.time()}";
+    -- Equivalent to above.
+    epoch = function() return os.time() end;
+
+    -- Use the expansion to read the username dynamically.
+    note = [[NOTE(${=io.popen("id -un"):read"*l"}): ]];
+
+    -- Do the same as above, but by using $1, we can make it user input.
+    -- That means that the user will be prompted at the field during expansion.
+    -- You can *EITHER* specify an expression as a placeholder for a variable
+    --  or a literal string/snippet using `${var:...}`, but not both.
+    note = [[NOTE(${1=io.popen("id -un"):read"*l"}): ]];
+  };
+}
+EOF
 
 "inoremap <silent><expr> <TAB>
 "      \ pumvisible() ? "\<C-n>" :
