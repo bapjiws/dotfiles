@@ -27,7 +27,7 @@ require'lspconfig'.diagnosticls.setup{
           column = "column",
           endLine = "endLine",
           endColumn = "endColumn",
-          message = "${message} [${ruleId}]",
+          message = "[eslint] ${message} [${ruleId}]",
           security = "severity",
         };
         securities = {
