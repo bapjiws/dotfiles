@@ -309,9 +309,13 @@ EOF
 "  imap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 "endif
 
-" TODO: re-enable with the built-in LSP.
-"highlight CocHighlightText ctermbg=237 guibg=#3E4452
-"autocmd CursorHold * silent call CocActionAsync('highlight')
+highlight LspReferenceRead guibg=#fb571f
+highlight CursorLine guibg=#3E4452
+:lua << EOF
+  vim.api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
+  vim.api.nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
+  vim.api.nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
+EOF
 
 " TODO: make if work.
 augroup highlight_yank
