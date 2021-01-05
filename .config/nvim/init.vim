@@ -27,6 +27,7 @@ Plug 'APZelos/blamer.nvim' "https://github.com/APZelos/blamer.nvim
 Plug 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
 " TODO: do we need it?
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' } "https://github.com/styled-components/vim-styled-components
+Plug 'norcalli/nvim-colorizer.lua' "https://github.com/norcalli/nvim-colorizer.lua
 
 " LSP and code completion
 Plug 'neovim/nvim-lspconfig' "https://github.com/neovim/nvim-lspconfig
@@ -54,6 +55,7 @@ source $HOME/.config/nvim/themes/sonokai.vim
 source $HOME/.config/nvim/themes/airline.vim
 
 lua require 'lsp'
+:lua require'colorizer'.setup()
 
 map <Space> <leader>
 
