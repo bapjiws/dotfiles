@@ -226,29 +226,6 @@ require'snippets'.snippets = {
 }
 EOF
 
-"inoremap <silent><expr> <TAB>
-"      \ pumvisible() ? "\<C-n>" :
-"      \ <SID>check_back_space() ? "\<TAB>" :
-"      \ coc#refresh()
-"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-"
-"function! s:check_back_space() abort
-"  let col = col('.') - 1
-"  return !col || getline('.')[col - 1]  =~# '\s'
-"endfunction
-
-" Trigger completion.
-"inoremap <silent><expr> <c-space> coc#refresh()
-"inoremap <expr> <c-space> lua vim.lsp.buf.completion()<CR>
-
-" Use <CR> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-"if exists('*complete_info')
-"  inoremap <expr> <CR> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-"else
-"  imap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-"endif
-
 "TODO: fix.
 "TODO: change TODO color to yellow.
 highlight LspReferenceRead guibg=#fb571f
