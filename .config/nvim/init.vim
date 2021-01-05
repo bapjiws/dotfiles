@@ -28,23 +28,16 @@ Plug 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
 " TODO: do we need it?
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' } "https://github.com/styled-components/vim-styled-components
 
-" Code completion
+" LSP and code completion
+Plug 'neovim/nvim-lspconfig' "https://github.com/neovim/nvim-lspconfig
 Plug 'nvim-lua/completion-nvim' "https://github.com/nvim-lua/completion-nvim
 
 " Snippets
 Plug 'SirVer/ultisnips' "https://github.com/sirver/UltiSnips
 Plug 'norcalli/snippets.nvim' "https://github.com/norcalli/snippets.nvim
 
-" LSP for Telescope
-Plug 'neovim/nvim-lspconfig' "https://github.com/neovim/nvim-lspconfig
-
 " Search
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' } "https://github.com/liuchengxu/vim-clap
-
-" Telescope
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
 
 " Floating terminal
 Plug 'voldikss/vim-floaterm' "https://github.com/voldikss/vim-floaterm
@@ -59,10 +52,6 @@ source $HOME/.config/nvim/plugin-config/nerdtree.vim
 source $HOME/.config/nvim/plugin-config/blamer.vim
 source $HOME/.config/nvim/themes/sonokai.vim
 source $HOME/.config/nvim/themes/airline.vim
-
-highlight TelescopeMatching       guifg=#16AA65
-
-lua require 'plugins'
 
 lua require 'lsp'
 
@@ -283,8 +272,7 @@ nnoremap <leader>tdf <cmd>lua vim.lsp.buf.type_definition()<CR>
 nnoremap <leader>hov <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <leader>sgn <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <leader>imp <cmd>lua vim.lsp.buf.implementation()<CR>
-"nnoremap <leader>rfc <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <leader>rfc :Telescope lsp_references<CR>
+nnoremap <leader>rfc <cmd>lua vim.lsp.buf.references()<CR>
 
 nnoremap <leader>trm :FloatermNew fish<CR>
 
@@ -304,17 +292,14 @@ nnoremap <leader>fit :NERDTreeFind<CR>
 " file search
 nnoremap <leader>sif :Clap files<CR>
 nnoremap <leader>fwf :Clap files ++query=<cword><CR>
-nnoremap <leader>fwf2 <cmd>lua require('telescope.builtin').find_files({ default_text = vim.fn.expand("<cword>") })<CR>
 
 " line search
 nnoremap <leader>sil :Clap blines<CR>
 nnoremap <leader>fwl :Clap blines ++query=<cword><CR>
 
 nnoremap <leader>sip :Clap grep<CR>
-nnoremap <leader>sip2 <cmd>lua require('telescope.builtin').live_grep()<CR>
 nnoremap <leader>fwp :Clap grep ++query=<cword><CR>
 xnoremap <leader>fwp :Clap grep ++query=@visual<CR>
-nnoremap <leader>fwp2 <cmd>lua require('telescope.builtin').live_grep({ default_text = vim.fn.expand("<cword>") })<CR>
 
 " buffer search
 nnoremap <leader>sib :Clap buffers<CR>
