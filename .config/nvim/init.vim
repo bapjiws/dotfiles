@@ -249,6 +249,8 @@ EOF
 "  imap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 "endif
 
+"TODO: fix.
+"TODO: change TODO color to yellow.
 highlight LspReferenceRead guibg=#fb571f
 highlight CursorLine guibg=#3E4452
 :lua << EOF
