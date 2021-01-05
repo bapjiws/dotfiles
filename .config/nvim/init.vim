@@ -307,3 +307,6 @@ nnoremap <leader>sib :Clap buffers<CR>
 " command search
 nnoremap <leader>cmd :Clap command<CR>
 nnoremap <leader>cmh :Clap command_history<CR>
+
+" jump search
+nnoremap <leader>jps :Clap jumps<CR>
