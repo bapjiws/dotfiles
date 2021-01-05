@@ -176,9 +176,6 @@ set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion
 set shortmess+=c
 
-" Use completion-nvim in every buffer
-autocmd BufEnter * lua require'completion'.on_attach()
-
 " possible value: 'UltiSnips', 'Neosnippet', 'vim-vsnip', 'snippets.nvim'
 let g:completion_enable_snippet = 'snippets.nvim'
 
