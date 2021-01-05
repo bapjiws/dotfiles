@@ -26,16 +26,20 @@ Plug 'APZelos/blamer.nvim' "https://github.com/APZelos/blamer.nvim
 " TODO: consider https://github.com/nvim-treesitter/nvim-treesitter
 Plug 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
 " TODO: do we need it?
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' } "https://github.com/styled-components/vim-styled-components
 
 " Code completion
-Plug 'neoclide/coc.nvim', {'branch': 'release'} "https://github.com/neoclide/coc.nvim
+Plug 'nvim-lua/completion-nvim' "https://github.com/nvim-lua/completion-nvim
+
+" Snippets
+Plug 'SirVer/ultisnips' "https://github.com/sirver/UltiSnips
+Plug 'norcalli/snippets.nvim' "https://github.com/norcalli/snippets.nvim
 
 " LSP for Telescope
-Plug 'neovim/nvim-lspconfig'
+Plug 'neovim/nvim-lspconfig' "https://github.com/neovim/nvim-lspconfig
 
 " Search
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' } "https://github.com/liuchengxu/vim-clap
 
 " Telescope
 Plug 'nvim-lua/popup.nvim'
@@ -58,66 +62,9 @@ source $HOME/.config/nvim/themes/airline.vim
 
 highlight TelescopeMatching       guifg=#16AA65
 
-" TODO: lua require'plugins'
-:lua << EOF
-local actions = require('telescope.actions')
+lua require 'plugins'
 
-require('telescope').setup{
-  defaults = {
-    mappings = {
-      i = {
-        ["<C-j>"] = actions.move_selection_next,
-        ["<C-k>"] = actions.move_selection_previous,
-        ["<esc>"] = actions.close,
-      },
-      n = {
-        ["<C-j>"] = actions.move_selection_next,
-        ["<C-k>"] = actions.move_selection_previous,
-        ["<esc>"] = actions.close,
-      },
-    },
-    vimgrep_arguments = {
-      'rg',
-      '--color=auto',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--ignore-case'
-    },
-    prompt_position = "bottom",
-    prompt_prefix = ">",
-    selection_strategy = "reset",
-    sorting_strategy = "descending",
-    layout_strategy = "horizontal",
-    layout_defaults = {
-      -- TODO add builtin options.
-    },
-    file_sorter =  require'telescope.sorters'.get_fuzzy_file,
-    file_ignore_patterns = {},
-    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
-    shorten_path = true,
-    winblend = 0,
-    width = 0.75,
-    preview_cutoff = 120,
-    results_height = 1,
-    results_width = 0.8,
-    border = {},
-    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰'},
-    color_devicons = true,
-    use_less = true,
-    set_env = { ['COLORTERM'] = 'truecolor' }, -- default { }, currently unsupported for shells like cmd.exe / powershell.exe
-    file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
-    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
-    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
-  }
-}
-EOF
-
-"https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#tsserver
-:lua << EOF
-  require'lspconfig'.tsserver.setup{}
-EOF
+lua require 'lsp'
 
 map <Space> <leader>
 
@@ -202,75 +149,88 @@ nnoremap <C-u> <C-u>zz
 nnoremap <C-f> <C-f>zz
 nnoremap <C-b> <C-b>zz
 
-let g:coc_global_extensions = [
-  \ 'coc-tsserver',
-  \ 'coc-json',
-  \ 'coc-html', 
-  \ 'coc-css', 
-  \ 'coc-svg', 
-  \ 'coc-emmet',
-  \ 'coc-snippets',
-  \ 'coc-eslint',
-  \ 'coc-prettier'
-  \]
-
+"TODO: check if we need these settings left from Coc.
+set signcolumn=yes
+set cursorline
+set foldcolumn=0
 " TextEdit might fail if hidden is not set.
 set hidden
-
 " Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
-
 " Give more space for displaying messages.
 set cmdheight=2
-
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
+"END TODO
 
-" Don't pass messages to |ins-completion-menu|.
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+
+" Avoid showing message extra message when using completion
 set shortmess+=c
 
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-set signcolumn=yes
+" possible value: 'UltiSnips', 'Neosnippet', 'vim-vsnip', 'snippets.nvim'
+let g:completion_enable_snippet = 'snippets.nvim'
 
-" Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+" - https://github.com/Valloric/YouCompleteMe
+" - https://github.com/nvim-lua/completion-nvim
+let g:UltiSnipsExpandTrigger="<c-space>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+lua require'snippets'.use_suggested_mappings()
 
-" Trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+:lua << EOF
+require'snippets'.snippets = {
+  -- The _global dictionary acts as a global fallback.
+  -- If a key is not found for the specific filetype, then
+  --  it will be lookup up in the _global dictionary.
+  _global = {
+    clg = "console.log();";
+    clo = "console.log(':', );";
 
-" Use <CR> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-if exists('*complete_info')
-  inoremap <expr> <CR> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  imap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
+    -- Insert a basic snippet, which is a string.
+    todo = "TODO(ashkan): ";
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+    uname = function() return vim.loop.os_uname().sysname end;
+    date = os.date;
 
-set cursorline
-set foldcolumn=0
+    -- Evaluate at the time of the snippet expansion and insert it. You
+    --  can put arbitrary lua functions inside of the =... block as a
+    --  dynamic placeholder. In this case, for an anonymous variable
+    --  which doesn't take user input and is evaluated at the start.
+    epoch = "${=os.time()}";
+    -- Equivalent to above.
+    epoch = function() return os.time() end;
 
-highlight CocHighlightText ctermbg=237 guibg=#3E4452
-autocmd CursorHold * silent call CocActionAsync('highlight')
+    -- Use the expansion to read the username dynamically.
+    note = [[NOTE(${=io.popen("id -un"):read"*l"}): ]];
+
+    -- Do the same as above, but by using $1, we can make it user input.
+    -- That means that the user will be prompted at the field during expansion.
+    -- You can *EITHER* specify an expression as a placeholder for a variable
+    --  or a literal string/snippet using `${var:...}`, but not both.
+    note = [[NOTE(${1=io.popen("id -un"):read"*l"}): ]];
+  };
+}
+EOF
+
+"TODO: fix.
+"TODO: change TODO color to yellow.
+highlight LspReferenceRead guibg=#fb571f
+highlight CursorLine guibg=#3E4452
+:lua << EOF
+  vim.api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
+  vim.api.nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
+  vim.api.nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
+EOF
 
 " TODO: make if work.
 augroup highlight_yank
@@ -278,26 +238,27 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 augroup END
 
+sign define LspDiagnosticsSignHint text=ℹ texthl=LspDiagnosticsSignHint linehl= numhl=
+sign define LspDiagnosticsSignWarning text=⚠ texthl=LspDiagnosticsSignWarning linehl= numhl=
+sign define LspDiagnosticsSignError text=✗ texthl=LspDiagnosticsSignError linehl= numhl=
+    
+nnoremap [d <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zz
+nnoremap ]d <cmd>lua vim.lsp.diagnostic.goto_next()<CR>zz
+
 nnoremap ]c :GitGutterNextHunk<CR>zz
 nnoremap [c :GitGutterPrevHunk<CR>zz
-nnoremap [d :<C-u>call CocActionAsync('diagnosticPrevious')<CR>zz
-nnoremap ]d :<C-u>call CocActionAsync('diagnosticNext')<CR>zz
 
 nnoremap <leader>ipg :PlugInstall<CR>
 nnoremap <leader>cpg :PlugClean<CR>
 nnoremap <leader>upg :PlugUpdate<CR>
 
-nnoremap <leader>hlp :Clap help_tags<CR>
+nnoremap <leader>sih :Clap help_tags<CR>
+nnoremap <leader>fwh :Clap help_tags ++query=<cword><CR>
 
-" TODO: check if we need/use these two.
-nnoremap <leader>cla :<C-u>call CocHasProvider('codeLens')<CR>
-nnoremap <leader>cls :<C-u>call CocActionAsync('codeLensAction')<CR>
-
-nnoremap <leader>rnm :<C-u>call CocActionAsync('rename')<CR>
+nnoremap <leader>rnm <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <leader>rpc :%s/<C-r>=printf("%s", expand("<cword>"))<CR>//g<left><left>
 
-nnoremap <leader>fmt :CocCommand prettier.formatFile<CR>
-nnoremap <leader>oim :CocCommand editor.action.organizeImport<CR>
+nnoremap <leader>fmt :lua vim.lsp.buf.formatting()<CR>
 
 " TODO: already use lazygit for this operation.
 nnoremap <leader>add :GitGutterStageHunk<CR>
@@ -315,20 +276,15 @@ nnoremap <leader>cms :GitMessenger<CR>
 nnoremap <leader>fcm :Clap bcommits<CR>
 nnoremap <leader>pcm :Clap commits<CR>
 
-nnoremap <leader>dgn :<C-u>CocList diagnostics<CR>
-
-nnoremap <leader>ext  :<C-u>CocList extensions<CR>
-
 nnoremap <leader>vsc :FloatermNew lazygit<CR>
 
-nnoremap <leader>dfn :<C-u>call CocActionAsync('jumpDefinition')<CR>
-nnoremap <leader>aaa :call CocAction('jumpDefinition', 'vsplit')<CR>
-nnoremap <leader>bbb :call CocAction('doHover')<CR>
-nnoremap <leader>tdf :<C-u>call CocActionAsync('jumpTypeDefinition')<CR> 
-nnoremap <leader>ccc :call CocActionAsync('showSignatureHelp')<CR>
-" TODO: show in a floating window.
-nnoremap <leader>imp :<C-u>call CocActionAsync('jumpImplementation')<CR> 
-nnoremap <leader>rfc :<C-u>call CocActionAsync('jumpReferences')<CR>
+nnoremap <leader>dfn <cmd>lua vim.lsp.buf.definition()<CR>zz
+nnoremap <leader>tdf <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <leader>hov <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <leader>sgn <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <leader>imp <cmd>lua vim.lsp.buf.implementation()<CR>
+"nnoremap <leader>rfc <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <leader>rfc :Telescope lsp_references<CR>
 
 nnoremap <leader>trm :FloatermNew fish<CR>
 
