@@ -265,16 +265,8 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 augroup END
 
-  "diagnostic.infoSign": "ℹ",
-  "diagnostic.warningSign": "⚠",
-  "diagnostic.errorSign": "✗",
-  
-"    sign define LspDiagnosticsSignError text=E texthl=LspDiagnosticsSignError linehl= numhl=
-"    sign define LspDiagnosticsSignWarning text=W texthl=LspDiagnosticsSignWarning linehl= numhl=
-"    sign define LspDiagnosticsSignInformation text=I texthl=LspDiagnosticsSignInformation linehl= numhl=
-"    sign define LspDiagnosticsSignHint text=H texthl=LspDiagnosticsSignHint linehl= numhl=
-"
 sign define LspDiagnosticsSignHint text=ℹ texthl=LspDiagnosticsSignHint linehl= numhl=
+sign define LspDiagnosticsSignWarning text=⚠ texthl=LspDiagnosticsSignWarning linehl= numhl=
 sign define LspDiagnosticsSignError text=✗ texthl=LspDiagnosticsSignError linehl= numhl=
     
 nnoremap <leader>dgn :<C-u>CocList diagnostics<CR>
