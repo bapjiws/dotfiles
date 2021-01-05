@@ -37,13 +37,14 @@ require'lspconfig'.diagnosticls.setup{
       }
     },
     formatters = {
+      --https://github.com/prettier/prettier-eslint-cli
       prettierEslint = {
-        command = 'prettier-eslint',
+        command = './node_modules/.bin/prettier-eslint',
         args = { '--stdin' },
         rootPatterns = { '.git' },
       },
       prettier = {
-        command = 'prettier',
+        command = './node_modules/.bin/prettier',
         args = { '--stdin-filepath', '%filename' },
         rootPatterns = { '.git' },
       }
