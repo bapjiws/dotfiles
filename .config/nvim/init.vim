@@ -26,20 +26,20 @@ Plug 'APZelos/blamer.nvim' "https://github.com/APZelos/blamer.nvim
 " TODO: consider https://github.com/nvim-treesitter/nvim-treesitter
 Plug 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
 " TODO: do we need it?
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' } "https://github.com/styled-components/vim-styled-components
 
 " Code completion
-Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/completion-nvim' "https://github.com/nvim-lua/completion-nvim
 
 " Snippets
-Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips' "https://github.com/sirver/UltiSnips
 Plug 'norcalli/snippets.nvim' "https://github.com/norcalli/snippets.nvim
 
 " LSP for Telescope
-Plug 'neovim/nvim-lspconfig'
+Plug 'neovim/nvim-lspconfig' "https://github.com/neovim/nvim-lspconfig
 
 " Search
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' } "https://github.com/liuchengxu/vim-clap
 
 " Telescope
 Plug 'nvim-lua/popup.nvim'
