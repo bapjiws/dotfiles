@@ -1,5 +1,6 @@
 --https://github.com/iamcco/diagnostic-languageserver/wiki/Linters#eslint
 require'lspconfig'.diagnosticls.setup{
+  on_attach=require'completion'.on_attach,
   filetypes = { "javascript", "javascript.jsx" },
   init_options = {
     filetypes = {
