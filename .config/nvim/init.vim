@@ -243,7 +243,6 @@ sign define LspDiagnosticsSignHint text=ℹ texthl=LspDiagnosticsSignHint linehl
 sign define LspDiagnosticsSignWarning text=⚠ texthl=LspDiagnosticsSignWarning linehl= numhl=
 sign define LspDiagnosticsSignError text=✗ texthl=LspDiagnosticsSignError linehl= numhl=
     
-nnoremap <leader>dgn :<C-u>CocList diagnostics<CR>
 nnoremap [d <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zz
 nnoremap ]d <cmd>lua vim.lsp.diagnostic.goto_next()<CR>zz
 
