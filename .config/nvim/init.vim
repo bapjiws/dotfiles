@@ -10,13 +10,9 @@ Plug 'vim-airline/vim-airline' "https://github.com/vim-airline/vim-airline
 Plug 'vim-airline/vim-airline-themes' "https://github.com/vim-airline/vim-airline-themes
 
 " Navigation
-" TODO: decide if we need NERDTree and related stuff.
-Plug 'scrooloose/nerdtree' "https://github.com/scrooloose/nerdtree
 Plug 'mhinz/vim-startify' "https://github.com/mhinz/vim-startify
 
 " Git stuff
-" TODO: [nerdtree-git-status] option 'g:NERDTreeIndicatorMapCustom' is deprecated, please use 'g:NERDTreeGitStatusIndicatorMapCustom'
-Plug 'Xuyuanp/nerdtree-git-plugin' "https://github.com/Xuyuanp/nerdtree-git-plugin
 Plug 'tpope/vim-fugitive' "https://github.com/tpope/vim-fugitive
 Plug 'airblade/vim-gitgutter' "https://github.com/airblade/vim-gitgutter
 Plug 'rhysd/git-messenger.vim' "https://github.com/rhysd/git-messenger.vim
@@ -49,7 +45,6 @@ call plug#end()
 source $HOME/.config/nvim/plugin-config/startify.vim
 source $HOME/.config/nvim/plugin-config/clap.vim
 source $HOME/.config/nvim/plugin-config/floaterm.vim
-source $HOME/.config/nvim/plugin-config/nerdtree.vim
 source $HOME/.config/nvim/plugin-config/blamer.vim
 source $HOME/.config/nvim/themes/sonokai.vim
 source $HOME/.config/nvim/themes/airline.vim
@@ -286,8 +281,6 @@ nnoremap <leader>wrt :w<CR>
 nnoremap <leader>src :source $MYVIMRC<CR>
 
 nnoremap <leader>fex :FloatermNew ranger<CR>
-" TODO: find better name.
-nnoremap <leader>fit :NERDTreeFind<CR> 
 
 " TODO: File icons
 
