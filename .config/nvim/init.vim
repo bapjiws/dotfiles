@@ -93,10 +93,6 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 nnoremap , @@
 
-" Shift lines
-" TODO: find out why how it works. 
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
 
 augroup source_vimrc_on_save
   autocmd!
@@ -121,9 +117,6 @@ nnoremap <C-K> :resize +5<CR>
 nnoremap <C-J> :resize -5<CR>
 nnoremap <C-H> :vertical resize +5<CR>
 nnoremap <C-L> :vertical resize -5<CR>
-
-nnoremap oo o<esc>k
-nnoremap OO O<esc>j
 
 nnoremap * *zz
 nnoremap # #zz
