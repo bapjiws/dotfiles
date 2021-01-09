@@ -271,7 +271,7 @@ nnoremap <leader>sgn <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <leader>imp <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <leader>rfc <cmd>lua vim.lsp.buf.references()<CR>
 
-nnoremap <leader>trm :FloatermNew fish<CR>
+nnoremap <leader>trm :FloatermNew zsh<CR>
 
 " TODO: create a func and use $VIM_SESSION_DIR. 
 nnoremap <leader>mks :mksession ~/.config/nvim/session/.vim<Left><Left><Left><Left>
