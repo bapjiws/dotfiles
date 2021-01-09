@@ -13,6 +13,7 @@ Plug 'Yggdroot/indentLine' "https://github.com/Yggdroot/indentLine
 
 " Navigation
 Plug 'mhinz/vim-startify' "https://github.com/mhinz/vim-startify
+Plug 'airblade/vim-rooter' "https://github.com/airblade/vim-rooter
 
 " Git stuff
 Plug 'tpope/vim-fugitive' "https://github.com/tpope/vim-fugitive
