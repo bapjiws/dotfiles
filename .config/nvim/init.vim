@@ -3,6 +3,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Editing
 Plug 'tpope/vim-surround' "https://github.com/tpope/vim-surround
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} "https://github.com/mg979/vim-visual-multi
+Plug 'tpope/vim-unimpaired' "https://github.com/tpope/vim-unimpaired
 
 " Visual stuff
 Plug 'sainnhe/sonokai' "https://github.com/sainnhe/sonokai
