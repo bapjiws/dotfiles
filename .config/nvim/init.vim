@@ -224,9 +224,9 @@ sign define LspDiagnosticsSignHint text=ℹ texthl=LspDiagnosticsSignHint linehl
 sign define LspDiagnosticsSignWarning text=⚠ texthl=LspDiagnosticsSignWarning linehl= numhl=
 sign define LspDiagnosticsSignError text=✗ texthl=LspDiagnosticsSignError linehl= numhl=
    
-let g:indentLine_fileTypeExclude = ['dashboard', 'txt']
 let g:indentLine_char = '┊'
-set list lcs=tab:\┊\ 
+au BufRead,BufNewFile *.js set list lcs=tab:\┊\ 
+let g:indentLine_fileTypeExclude = ['dashboard', 'help']
 
 nnoremap [d <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zz
 nnoremap ]d <cmd>lua vim.lsp.diagnostic.goto_next()<CR>zz
