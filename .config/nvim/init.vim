@@ -8,7 +8,7 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'} "https://github.com/mg979/vi
 Plug 'sainnhe/sonokai' "https://github.com/sainnhe/sonokai
 Plug 'vim-airline/vim-airline' "https://github.com/vim-airline/vim-airline
 Plug 'vim-airline/vim-airline-themes' "https://github.com/vim-airline/vim-airline-themes
-Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine' "https://github.com/Yggdroot/indentLine
 
 " Navigation
 Plug 'mhinz/vim-startify' "https://github.com/mhinz/vim-startify
