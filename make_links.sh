@@ -6,6 +6,7 @@ PLUGIN_CONFIG_FOLDER=nvim/plugin-config
 THEME_CONFIG_FOLDER=nvim/themes
 
 ln -sf $DOTFILES_FOLDER/nvim/init.vim $ORIGINAL_FOLDER/nvim/init.vim
+ln -sf $DOTFILES_FOLDER/.zshrc ~/.zshrc
 
 for file in $(ls $DOTFILES_FOLDER/$PLUGIN_CONFIG_FOLDER)
 do
