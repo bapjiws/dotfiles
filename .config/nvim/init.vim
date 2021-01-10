@@ -275,9 +275,8 @@ nnoremap <leader>rfc <cmd>lua vim.lsp.buf.references()<CR>
 
 nnoremap <leader>trm :FloatermNew zsh<CR>
 
-" TODO: create a func and use $VIM_SESSION_DIR. 
-nnoremap <leader>mks :mksession ~/.config/nvim/session/.vim<Left><Left><Left><Left>
-nnoremap <leader>mks! :mksession! ~/.config/nvim/session/.vim<Left><Left><Left><Left>
+nnoremap <leader>ssn :SessionSave<CR>
+nnoremap <leader>lsn :SessionLoad<CR>
 
 nnoremap <leader>wrt :w<CR>
 nnoremap <leader>src :source $MYVIMRC<CR>
