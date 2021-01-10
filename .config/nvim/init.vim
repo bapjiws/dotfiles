@@ -160,6 +160,9 @@ set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion
 set shortmess+=c
 
+" Use completion-nvim in every buffer
+autocmd BufEnter * lua require'completion'.on_attach()
+
 let g:completion_chain_complete_list = [
     \{'complete_items': ['lsp', 'snippet', 'buffers']},
     \{'mode': '<c-p>'},
