@@ -22,8 +22,7 @@ Plug 'rhysd/git-messenger.vim' "https://github.com/rhysd/git-messenger.vim
 Plug 'APZelos/blamer.nvim' "https://github.com/APZelos/blamer.nvim
 
 " Syntax and styling
-" TODO: consider https://github.com/nvim-treesitter/nvim-treesitter
-Plug 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  "https://github.com/nvim-treesitter/nvim-treesitter
 " TODO: do we need it?
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' } "https://github.com/styled-components/vim-styled-components
 Plug 'norcalli/nvim-colorizer.lua' "https://github.com/norcalli/nvim-colorizer.lua
@@ -137,6 +136,15 @@ nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 nnoremap <C-f> <C-f>zz
 nnoremap <C-b> <C-b>zz
+
+:lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  highlight = {
+    enable = true,
+  },
+}
+EOF
 
 "TODO: check if we need these settings left from Coc.
 set signcolumn=yes
