@@ -12,8 +12,8 @@ Plug 'vim-airline/vim-airline-themes' "https://github.com/vim-airline/vim-airlin
 Plug 'Yggdroot/indentLine' "https://github.com/Yggdroot/indentLine
 
 " Navigation
-Plug 'mhinz/vim-startify' "https://github.com/mhinz/vim-startify
 Plug 'airblade/vim-rooter' "https://github.com/airblade/vim-rooter
+Plug 'glepnir/dashboard-nvim' "https://github.com/glepnir/dashboard-nvim
 
 " Git stuff
 Plug 'tpope/vim-fugitive' "https://github.com/tpope/vim-fugitive
@@ -108,6 +108,8 @@ function! SetFloatermMappings()
    tnoremap <buffer> <c-x> <cmd>let g:floaterm_open_command = 'split'  \| call feedkeys("l", "i")<CR>
    tnoremap <buffer> <c-v> <cmd>let g:floaterm_open_command = 'vsplit'  \| call feedkeys("l", "i")<CR>
 endfunction
+
+let g:dashboard_default_header='pikachu'
 
 nnoremap <down> <nop>
 nnoremap <left> <nop>
