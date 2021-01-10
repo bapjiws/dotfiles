@@ -38,7 +38,9 @@ Plug 'SirVer/ultisnips' "https://github.com/sirver/UltiSnips
 Plug 'norcalli/snippets.nvim' "https://github.com/norcalli/snippets.nvim
 
 " Search
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' } "https://github.com/liuchengxu/vim-clap
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Floating terminal
 Plug 'voldikss/vim-floaterm' "https://github.com/voldikss/vim-floaterm
@@ -47,13 +49,14 @@ Plug 'voldikss/vim-floaterm' "https://github.com/voldikss/vim-floaterm
 call plug#end()
 
 source $HOME/.config/nvim/plugin-config/startify.vim
-source $HOME/.config/nvim/plugin-config/clap.vim
 source $HOME/.config/nvim/plugin-config/floaterm.vim
 source $HOME/.config/nvim/plugin-config/blamer.vim
 source $HOME/.config/nvim/themes/sonokai.vim
 source $HOME/.config/nvim/themes/airline.vim
 
 lua require 'lsp'
+"TODO: rework file structure.
+lua require 'plugins'	
 :lua require'colorizer'.setup()
 
 map <Space> <leader>
@@ -216,6 +219,8 @@ require'snippets'.snippets = {
 }
 EOF
 
+highlight TelescopeMatching       guifg=#16AA65
+
 "TODO: fix.
 "TODO: change TODO color to yellow.
 highlight LspReferenceRead guibg=#fb571f
@@ -250,8 +255,8 @@ nnoremap <leader>ipg :PlugInstall<CR>
 nnoremap <leader>cpg :PlugClean<CR>
 nnoremap <leader>upg :PlugUpdate<CR>
 
-nnoremap <leader>sih :Clap help_tags<CR>
-nnoremap <leader>fwh :Clap help_tags ++query=<cword><CR>
+nnoremap <leader>sih <cmd>lua require('telescope.builtin').help_tags()<CR>
+nnoremap <leader>fwh <cmd>lua require('telescope.builtin').help_tags({ default_text = vim.fn.expand("<cword>") })<CR>
 
 nnoremap <leader>rnm <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <leader>rpc :%s/<C-r>=printf("%s", expand("<cword>"))<CR>//g<left><left>
@@ -271,8 +276,8 @@ nnoremap <leader>blm :Gblame<CR>
 nnoremap <leader>atp :BlamerToggle<CR>
 nnoremap <leader>cms :GitMessenger<CR>
 
-nnoremap <leader>fcm :Clap bcommits<CR>
-nnoremap <leader>pcm :Clap commits<CR>
+nnoremap <leader>fcm <cmd>lua require('telescope.builtin').git_bcommits()<CR>
+nnoremap <leader>pcm <cmd>lua require('telescope.builtin').git_commits()<CR>
 
 nnoremap <leader>vsc :FloatermNew lazygit<CR>
 
@@ -296,23 +301,23 @@ nnoremap <leader>fex :FloatermNew ranger<CR>
 " TODO: File icons
 
 " file search
-nnoremap <leader>sif :Clap files<CR>
-nnoremap <leader>fwf :Clap files ++query=<cword><CR>
+nnoremap <leader>sif <cmd>lua require('telescope.builtin').find_files()<CR>
+nnoremap <leader>fwf <cmd>lua require('telescope.builtin').find_files({ default_text = vim.fn.expand("<cword>") })<CR>
 
 " line search
-nnoremap <leader>sil :Clap blines<CR>
-nnoremap <leader>fwl :Clap blines ++query=<cword><CR>
+nnoremap <leader>sil <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>
+nnoremap <leader>fwl <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find({ default_text = vim.fn.expand("<cword>") })<CR>
 
-nnoremap <leader>sip :Clap grep<CR>
-nnoremap <leader>fwp :Clap grep ++query=<cword><CR>
-xnoremap <leader>fwp :Clap grep ++query=@visual<CR>
+nnoremap <leader>sip <cmd>lua require('telescope.builtin').live_grep()<CR>
+nnoremap <leader>fwp <cmd>lua require('telescope.builtin').live_grep({ default_text = vim.fn.expand("<cword>") })<CR>
+" TODO: not cword, but selected text.
+xnoremap <leader>fwp <cmd>lua require('telescope.builtin').live_grep({ default_text = vim.fn.expand("<cword>") })<CR>
 
 " buffer search
-nnoremap <leader>sib :Clap buffers<CR>
+nnoremap <leader>sib <cmd>lua require('telescope.builtin').buffers()<CR>
 
 " command search
-nnoremap <leader>cmd :Clap command<CR>
-nnoremap <leader>cmh :Clap command_history<CR>
+nnoremap <leader>cmd <cmd>lua require('telescope.builtin').commands()<CR>
+nnoremap <leader>cmh <cmd>lua require('telescope.builtin').command_history()<CR>
 
-" jump search
-nnoremap <leader>jps :Clap jumps<CR>
+" TODO: jump search
