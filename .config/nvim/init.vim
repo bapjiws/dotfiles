@@ -5,7 +5,7 @@ Plug 'tpope/vim-surround' "https://github.com/tpope/vim-surround
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} "https://github.com/mg979/vim-visual-multi
 Plug 'tpope/vim-unimpaired' "https://github.com/tpope/vim-unimpaired
 
-" Visual stuff
+" Visuals
 Plug 'sainnhe/sonokai' "https://github.com/sainnhe/sonokai
 Plug 'vim-airline/vim-airline' "https://github.com/vim-airline/vim-airline
 Plug 'vim-airline/vim-airline-themes' "https://github.com/vim-airline/vim-airline-themes
