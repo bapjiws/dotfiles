@@ -31,7 +31,7 @@ Plug 'norcalli/nvim-colorizer.lua' "https://github.com/norcalli/nvim-colorizer.l
 " LSP and code completion
 Plug 'neovim/nvim-lspconfig' "https://github.com/neovim/nvim-lspconfig
 Plug 'nvim-lua/completion-nvim' "https://github.com/nvim-lua/completion-nvim
-Plug 'steelsojka/completion-buffers'
+Plug 'steelsojka/completion-buffers' "https://github.com/steelsojka/completion-buffers
 
 " Snippets
 Plug 'SirVer/ultisnips' "https://github.com/sirver/UltiSnips
