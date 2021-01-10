@@ -31,6 +31,7 @@ Plug 'norcalli/nvim-colorizer.lua' "https://github.com/norcalli/nvim-colorizer.l
 " LSP and code completion
 Plug 'neovim/nvim-lspconfig' "https://github.com/neovim/nvim-lspconfig
 Plug 'nvim-lua/completion-nvim' "https://github.com/nvim-lua/completion-nvim
+Plug 'steelsojka/completion-buffers'
 
 " Snippets
 Plug 'SirVer/ultisnips' "https://github.com/sirver/UltiSnips
@@ -158,6 +159,12 @@ set completeopt=menuone,noinsert,noselect
 
 " Avoid showing message extra message when using completion
 set shortmess+=c
+
+let g:completion_chain_complete_list = [
+    \{'complete_items': ['lsp', 'snippet', 'buffers']},
+    \{'mode': '<c-p>'},
+    \{'mode': '<c-n>'}
+\]
 
 " possible value: 'UltiSnips', 'Neosnippet', 'vim-vsnip', 'snippets.nvim'
 let g:completion_enable_snippet = 'snippets.nvim'
