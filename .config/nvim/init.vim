@@ -233,6 +233,7 @@ nnoremap <leader>prw :GitGutterPreviewHunk<CR>
 nnoremap <leader>fld :GitGutterFold<CR>
 
 nnoremap <leader>dff :Gvdiffsplit<CR>
+nnoremap <leader>dfm :Gvdiffsplit master<CR><c-w>r
 nnoremap <leader>rst :Gread<CR>
 nnoremap <leader>blm :Gblame<CR>
 " TODO: find better name.
