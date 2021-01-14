@@ -231,9 +231,8 @@ nnoremap <leader>fld :GitGutterFold<CR>
 nnoremap <leader>dff :Gvdiffsplit<CR>
 nnoremap <leader>dfm :Gvdiffsplit master<CR><c-w>r
 nnoremap <leader>rst :Gread<CR>
-nnoremap <leader>blm :Gblame<CR>
-" TODO: find better name.
-nnoremap <leader>atp :BlamerToggle<CR>
+nnoremap <leader>blf :Gblame<CR>
+nnoremap <leader>bll :BlamerToggle<CR>
 
 nnoremap <leader>fcm <cmd>lua require('telescope.builtin').git_bcommits()<CR>
 nnoremap <leader>pcm <cmd>lua require('telescope.builtin').git_commits()<CR>
