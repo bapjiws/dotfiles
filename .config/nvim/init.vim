@@ -18,7 +18,6 @@ Plug 'glepnir/dashboard-nvim' "https://github.com/glepnir/dashboard-nvim
 " Git stuff
 Plug 'tpope/vim-fugitive' "https://github.com/tpope/vim-fugitive
 Plug 'airblade/vim-gitgutter' "https://github.com/airblade/vim-gitgutter
-Plug 'rhysd/git-messenger.vim' "https://github.com/rhysd/git-messenger.vim
 Plug 'APZelos/blamer.nvim' "https://github.com/APZelos/blamer.nvim
 
 " Syntax and styling
@@ -238,7 +237,6 @@ nnoremap <leader>rst :Gread<CR>
 nnoremap <leader>blm :Gblame<CR>
 " TODO: find better name.
 nnoremap <leader>atp :BlamerToggle<CR>
-nnoremap <leader>cms :GitMessenger<CR>
 
 nnoremap <leader>fcm <cmd>lua require('telescope.builtin').git_bcommits()<CR>
 nnoremap <leader>pcm <cmd>lua require('telescope.builtin').git_commits()<CR>
