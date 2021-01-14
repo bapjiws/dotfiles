@@ -100,6 +100,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# https://denysdovhan.com/spaceship-prompt/docs/Options.html
+SPACESHIP_DOCKER_SHOW=false
+SPACESHIP_EXEC_TIME_SHOW=false
+
 export LUA_PATH="/Users/a_to_the_b/Git/dotfiles/.config/nvim/lsp/?.lua;/Users/a_to_the_b/Git/dotfiles/.config/nvim/lua/?.lua;;"
 export DOTFILES_FOLDER=~/Git/dotfiles/.config
 
