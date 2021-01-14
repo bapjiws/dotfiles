@@ -225,8 +225,6 @@ nnoremap <leader>rpc :%s/<C-r>=printf("%s", expand("<cword>"))<CR>//g<left><left
 
 nnoremap <leader>fmt :lua vim.lsp.buf.formatting()<CR>
 
-" TODO: already use lazygit for this operation.
-nnoremap <leader>add :GitGutterStageHunk<CR>
 nnoremap <leader>und :GitGutterUndoHunk<CR>
 nnoremap <leader>prw :GitGutterPreviewHunk<CR>
 nnoremap <leader>fld :GitGutterFold<CR>
