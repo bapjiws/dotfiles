@@ -45,7 +45,6 @@ Plug 'voldikss/vim-floaterm' "https://github.com/voldikss/vim-floaterm
 " Initialize plugin system
 call plug#end()
 
-source $HOME/.config/nvim/plugin-config/startify.vim
 source $HOME/.config/nvim/plugin-config/floaterm.vim
 source $HOME/.config/nvim/plugin-config/blamer.vim
 source $HOME/.config/nvim/themes/sonokai.vim
