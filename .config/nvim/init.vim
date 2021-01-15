@@ -247,8 +247,9 @@ nnoremap <leader>rfc <cmd>lua vim.lsp.buf.references()<CR>
 
 nnoremap <leader>trm :FloatermNew zsh<CR>
 
-nnoremap <leader>ssn :SessionSave<CR>
-nnoremap <leader>lsn :SessionLoad<CR>
+nnoremap <leader>ssn :SSave<CR>
+nnoremap <leader>lsn :SLoad<CR>
+nnoremap <leader>dsn :SDelete<CR>
 
 nnoremap <leader>wrt :w<CR>
 nnoremap <leader>src :source $MYVIMRC<CR>
