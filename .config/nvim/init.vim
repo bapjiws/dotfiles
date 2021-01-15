@@ -216,6 +216,8 @@ nnoremap <leader>ipg :PlugInstall<CR>
 nnoremap <leader>cpg :PlugClean<CR>
 nnoremap <leader>upg :PlugUpdate<CR>
 
+nnoremap <leader>cab :w <bar> %bd <bar> e# <bar> bd# <CR>
+
 nnoremap <leader>sih <cmd>lua require('telescope.builtin').help_tags()<CR>
 nnoremap <leader>fwh <cmd>lua require('telescope.builtin').help_tags({ default_text = vim.fn.expand("<cword>") })<CR>
 
