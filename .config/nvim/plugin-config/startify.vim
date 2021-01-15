@@ -21,7 +21,8 @@ let g:startify_session_persistence = 1
 
 let g:startify_bookmarks = [
           \ { 'i': '~/Git/dotfiles/.config/nvim/init.vim' },
-          \ { 'f': '~/Git/dotfiles/.config/fish/config.fish' },
+          \ { 'z': '~/Git/dotfiles/.config/.zshrc' },
+          \ { 'r': '~/Git/dotfiles/.config/ranger/rc.conf' },
           \ ]
 
 let g:startify_enable_special = 0
