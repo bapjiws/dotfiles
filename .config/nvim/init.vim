@@ -111,7 +111,6 @@ function! SetFloatermMappings()
    tnoremap <buffer> <c-v> <cmd>let g:floaterm_open_command = 'vsplit'  \| call feedkeys("l", "i")<CR>
 endfunction
 
-let g:dashboard_default_executive='telescope'
 let g:dashboard_default_header='pikachu'
 
 nnoremap <down> <nop>
