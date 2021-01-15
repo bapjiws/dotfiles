@@ -184,7 +184,7 @@ highlight TelescopeMatching       guifg=#16AA65
 
 "TODO: fix.
 "TODO: change TODO color to yellow.
-highlight LspReferenceRead guibg=#fb571f
+highlight LspReferenceRead guibg=#4a4a4a
 highlight CursorLine guibg=#3E4452
 :lua << EOF
   vim.api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
