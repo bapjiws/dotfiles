@@ -202,7 +202,7 @@ sign define LspDiagnosticsSignError text=✗ texthl=LspDiagnosticsSignError line
    
 let g:indentLine_char = '│'
 au BufRead,BufNewFile *.js,*.jsx set list lcs=tab:\│\ ,eol:↴
-let g:indentLine_fileTypeExclude = ['dashboard', 'help', 'vim']
+let g:indentLine_fileTypeExclude = ['startify', 'help', 'vim']
 
 nnoremap [d <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zz
 nnoremap ]d <cmd>lua vim.lsp.diagnostic.goto_next()<CR>zz
