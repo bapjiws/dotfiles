@@ -108,3 +108,6 @@ export LUA_PATH="/Users/a_to_the_b/Git/dotfiles/.config/nvim/lsp/?.lua;/Users/a_
 export DOTFILES_FOLDER=~/Git/dotfiles/.config
 
 alias vim_config="nvim $DOTFILES_FOLDER/nvim/init.vim"
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
