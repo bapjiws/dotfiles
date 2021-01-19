@@ -223,7 +223,7 @@ nnoremap <leader>fwh <cmd>lua require('telescope.builtin').help_tags({ default_t
 nnoremap <leader>rnm <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <leader>rpc :%s/<C-r>=printf("%s", expand("<cword>"))<CR>//g<left><left>
 
-nnoremap <leader>fmt :lua vim.lsp.buf.formatting()<CR>
+nnoremap <leader>fmt <cmd>lua vim.lsp.buf.formatting()<CR>
 
 nnoremap <leader>und :GitGutterUndoHunk<CR>
 nnoremap <leader>prw :GitGutterPreviewHunk<CR>
