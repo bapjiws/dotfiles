@@ -143,6 +143,7 @@ EOF
 
 "TODO: check if we need these settings left from Coc.
 set signcolumn=yes
+set cursorline
 set foldcolumn=0
 " TextEdit might fail if hidden is not set.
 set hidden
