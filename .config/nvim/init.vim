@@ -35,9 +35,9 @@ Plug 'steelsojka/completion-buffers' "https://github.com/steelsojka/completion-b
 Plug 'SirVer/ultisnips' "https://github.com/sirver/UltiSnips
 
 " Search
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-lua/popup.nvim' "https://github.com/nvim-lua/popup.nvim
+Plug 'nvim-lua/plenary.nvim' "https://github.com/nvim-lua/plenary.nvim
+Plug 'nvim-telescope/telescope.nvim' "https://github.com/nvim-telescope/telescope.nvim
 
 " Floating terminal
 Plug 'voldikss/vim-floaterm' "https://github.com/voldikss/vim-floaterm
