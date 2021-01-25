@@ -42,6 +42,9 @@ Plug 'nvim-telescope/telescope.nvim' "https://github.com/nvim-telescope/telescop
 " Floating terminal
 Plug 'voldikss/vim-floaterm' "https://github.com/voldikss/vim-floaterm
 
+" Debugging
+Plug 'puremourning/vimspector'
+
 " Initialize plugin system
 call plug#end()
 
@@ -50,6 +53,9 @@ source $HOME/.config/nvim/plugin-config/floaterm.vim
 source $HOME/.config/nvim/plugin-config/blamer.vim
 source $HOME/.config/nvim/themes/sonokai.vim
 source $HOME/.config/nvim/themes/airline.vim
+
+let g:vimspector_enable_mappings = 'HUMAN'
+"packadd! vimspector
 
 lua require 'lsp'
 "TODO: rework file structure.
