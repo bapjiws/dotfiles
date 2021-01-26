@@ -237,6 +237,7 @@ nnoremap <leader>bll :BlamerToggle<CR>
 
 nnoremap <leader>fcm <cmd>lua require('telescope.builtin').git_bcommits()<CR>
 nnoremap <leader>pcm <cmd>lua require('telescope.builtin').git_commits()<CR>
+nnoremap <leader>chf <cmd>lua require('telescope.builtin').git_status()<CR>
 
 nnoremap <leader>vsc :FloatermNew lazygit<CR>
 
