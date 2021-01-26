@@ -145,6 +145,9 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+
 
 "TODO: check if we need these settings left from Coc.
 set signcolumn=yes
