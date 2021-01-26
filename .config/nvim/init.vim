@@ -10,7 +10,6 @@ Plug 'tpope/vim-repeat' "https://github.com/tpope/vim-repeat
 Plug 'sainnhe/sonokai' "https://github.com/sainnhe/sonokai
 Plug 'vim-airline/vim-airline' "https://github.com/vim-airline/vim-airline
 Plug 'vim-airline/vim-airline-themes' "https://github.com/vim-airline/vim-airline-themes
-Plug 'Yggdroot/indentLine' "https://github.com/Yggdroot/indentLine
 
 " Navigation
 Plug 'mhinz/vim-startify' "https://github.com/mhinz/vim-startify
@@ -205,11 +204,6 @@ augroup END
 sign define LspDiagnosticsSignHint text=ℹ texthl=LspDiagnosticsSignHint linehl= numhl=
 sign define LspDiagnosticsSignWarning text=⚠ texthl=LspDiagnosticsSignWarning linehl= numhl=
 sign define LspDiagnosticsSignError text=✗ texthl=LspDiagnosticsSignError linehl= numhl=
-   
-let g:indentLine_char = '│'
-au BufRead,BufNewFile *.js,*.jsx set list lcs=tab:\│\ ,eol:↴
-"TODO: use whitelist instead.
-let g:indentLine_fileTypeExclude = ['startify', 'help', 'vim']
 
 nnoremap [d <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zz
 nnoremap ]d <cmd>lua vim.lsp.diagnostic.goto_next()<CR>zz
