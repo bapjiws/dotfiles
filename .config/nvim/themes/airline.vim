@@ -1,8 +1,8 @@
 let g:airline_powerline_fonts = 1
 let g:airline_theme='sonokai'
 
-" Avoid showing 'double arrows'
-let g:airline_skip_empty_sections = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 " Hiding 'x' (filetype), 'y' (file encoding), errors and warnings.
 let g:airline#extensions#default#layout = [
