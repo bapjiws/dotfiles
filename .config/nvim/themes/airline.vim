@@ -13,3 +13,6 @@ let g:airline#extensions#default#layout = [
 let g:airline_section_z = airline#section#create(['%3p%% ', 'linenr', ':%2v'])
 let g:airline#extensions#branch#displayed_head_limit = 30
 let g:airline#extensions#branch#vcs_checks = []
+
+"Avoid showing 'double arrows'
+let g:airline_skip_empty_sections = 1
