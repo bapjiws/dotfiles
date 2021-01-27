@@ -13,6 +13,7 @@ Plug 'vim-airline/vim-airline-themes' "https://github.com/vim-airline/vim-airlin
 
 " Navigation
 Plug 'mhinz/vim-startify' "https://github.com/mhinz/vim-startify
+Plug 'airblade/vim-rooter' "https://github.com/airblade/vim-rooter
 
 " Git stuff
 Plug 'tpope/vim-fugitive' "https://github.com/tpope/vim-fugitive
