@@ -54,6 +54,8 @@ source $HOME/.config/nvim/plugin-config/blamer.vim
 source $HOME/.config/nvim/themes/sonokai.vim
 source $HOME/.config/nvim/themes/airline.vim
 
+set list lcs=tab:\ \ 
+
 let g:vimspector_enable_mappings = 'HUMAN'
 "packadd! vimspector
 
