@@ -31,6 +31,7 @@ Plug 'neovim/nvim-lspconfig' "https://github.com/neovim/nvim-lspconfig
 Plug 'nvim-lua/completion-nvim' "https://github.com/nvim-lua/completion-nvim
 Plug 'steelsojka/completion-buffers' "https://github.com/steelsojka/completion-buffers
 Plug 'romgrk/nvim-treesitter-context' "https://github.com/romgrk/nvim-treesitter-context
+Plug 'nvim-treesitter/nvim-treesitter-refactor', { 'commit': '130d94' } "https://github.com/nvim-treesitter/nvim-treesitter-refactor
 
 " Snippets
 Plug 'SirVer/ultisnips' "https://github.com/sirver/UltiSnips
@@ -150,17 +151,26 @@ require'nvim-treesitter.configs'.setup {
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = "gnn",
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm",
+      node_incremental = "]v", --"grn",
+      node_decremental = "[v", --"grm",
+    },
+  },
+  refactor = {
+    highlight_definitions = { enable = true },
+    navigation = {
+      enable = true,
+      keymaps = {
+        goto_definition_lsp_fallback = "<leader>dfn",
+        goto_next_usage = "]w",
+        goto_previous_usage = "[w",
+      },
     },
   },
 }
 EOF
+
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
-
 
 "TODO: check if we need these settings left from Coc.
 set signcolumn=yes
@@ -201,15 +211,8 @@ let g:completion_enable_snippet = 'UltiSnips'
 
 highlight TelescopeMatching       guifg=#16AA65
 
-"TODO: fix.
 "TODO: change TODO color to yellow.
-highlight LspReferenceRead guibg=#4a4a4a
 highlight CursorLine guibg=#3E4452
-:lua << EOF
-  vim.api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
-  vim.api.nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
-  vim.api.nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
-EOF
 
 " TODO: make if work.
 augroup highlight_yank
@@ -257,7 +260,6 @@ nnoremap <leader>chf <cmd>lua require('telescope.builtin').git_status()<CR>
 
 nnoremap <leader>vsc :FloatermNew lazygit<CR>
 
-nnoremap <leader>dfn <cmd>lua vim.lsp.buf.definition()<CR>zz
 nnoremap <leader>tdf <cmd>lua vim.lsp.buf.type_definition()<CR>
 nnoremap <leader>hov <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <leader>sgn <cmd>lua vim.lsp.buf.signature_help()<CR>
