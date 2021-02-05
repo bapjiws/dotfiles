@@ -5,6 +5,7 @@ Plug 'tpope/vim-surround' "https://github.com/tpope/vim-surround
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} "https://github.com/mg979/vim-visual-multi
 Plug 'tpope/vim-unimpaired' "https://github.com/tpope/vim-unimpaired
 Plug 'tpope/vim-repeat' "https://github.com/tpope/vim-repeat
+Plug 'szw/vim-maximizer' "https://github.com/szw/vim-maximizer
 
 " Visuals
 Plug 'sainnhe/sonokai' "https://github.com/sainnhe/sonokai
@@ -129,6 +130,7 @@ nnoremap <C-K> :resize +5<CR>
 nnoremap <C-J> :resize -5<CR>
 nnoremap <C-H> :vertical resize +5<CR>
 nnoremap <C-L> :vertical resize -5<CR>
+nnoremap <leader>mbf :MaximizerToggle<CR>
 
 nnoremap * *zz
 nnoremap # #zz
