@@ -65,7 +65,6 @@ let g:vimspector_enable_mappings = 'HUMAN'
 lua require 'lsp'
 "TODO: rework file structure.
 lua require 'plugins'	
-:lua require'colorizer'.setup()
 
 map <Space> <leader>
 
