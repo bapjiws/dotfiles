@@ -210,7 +210,12 @@ let g:completion_chain_complete_list = [
 
 let g:completion_enable_snippet = 'UltiSnips'
 
-highlight TelescopeMatching       guifg=#16AA65
+highlight TelescopeSelection      guifg=#F27C04 gui=bold " selected item
+highlight TelescopeSelectionCaret guifg=#CC241D " selection caret
+highlight TelescopeMultiSelection guifg=#928374 " multisections
+highlight TelescopeNormal         guibg=#00000  " floating windows created by telescope.
+
+highlight TelescopeMatching       guifg=#16DBC2
 
 "TODO: change TODO color to yellow.
 highlight CursorLine guibg=#3E4452
