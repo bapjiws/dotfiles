@@ -14,6 +14,7 @@ require('telescope').setup{
         ["<esc>"] = actions.close,	
       },	
     },	
+    -- See https://github.com/BurntSushi/ripgrep/blob/master/complete/_rg for all options.
     vimgrep_arguments = {	
       'rg',	
       '--color=auto',	
@@ -21,7 +22,7 @@ require('telescope').setup{
       '--with-filename',	
       '--line-number',	
       '--column',	
-      '--ignore-case'	
+      '--smart-case'	
     },	
     prompt_position = "bottom",	
     prompt_prefix = ">",	
