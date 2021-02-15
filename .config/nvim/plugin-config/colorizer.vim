@@ -1,3 +1,4 @@
+:lua << EOF
 require 'colorizer'.setup {
   'css';
   'javascript';
@@ -6,3 +7,4 @@ require 'colorizer'.setup {
   };
   'vim';
 }
+EOF
