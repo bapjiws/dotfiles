@@ -56,8 +56,10 @@ source $HOME/.config/nvim/plugin-config/floaterm.vim
 source $HOME/.config/nvim/plugin-config/blamer.vim
 source $HOME/.config/nvim/plugin-config/telescope.vim
 source $HOME/.config/nvim/plugin-config/colorizer.vim
+
 source $HOME/.config/nvim/lsp/diagnosticls.vim
 source $HOME/.config/nvim/lsp/tsserver.vim
+
 source $HOME/.config/nvim/themes/sonokai.vim
 source $HOME/.config/nvim/themes/airline.vim
 
