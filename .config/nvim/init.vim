@@ -142,7 +142,7 @@ nnoremap <C-u> <C-u>zz
 nnoremap <C-f> <C-f>zz
 nnoremap <C-b> <C-b>zz
 
-:lua <<EOF
+:lua << EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "javascript", "typescript", "tsx", "html", "css", "json", "graphql", "bash", "regex", "yaml", "lua" },
   highlight = {
