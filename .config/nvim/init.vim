@@ -51,17 +51,14 @@ Plug 'puremourning/vimspector'
 " Initialize plugin system
 call plug#end()
 
-source $HOME/.config/nvim/plugin-config/startify.vim
-source $HOME/.config/nvim/plugin-config/floaterm.vim
-source $HOME/.config/nvim/plugin-config/blamer.vim
-source $HOME/.config/nvim/plugin-config/telescope.vim
-source $HOME/.config/nvim/plugin-config/colorizer.vim
-
-source $HOME/.config/nvim/lsp/diagnosticls.vim
-source $HOME/.config/nvim/lsp/tsserver.vim
-
-source $HOME/.config/nvim/themes/sonokai.vim
-source $HOME/.config/nvim/themes/airline.vim
+source $HOME/.config/nvim/plugin/startify.vim
+source $HOME/.config/nvim/plugin/floaterm.vim
+source $HOME/.config/nvim/plugin/blamer.vim
+source $HOME/.config/nvim/plugin/telescope.vim
+source $HOME/.config/nvim/plugin/colorizer.vim
+source $HOME/.config/nvim/plugin/lsp.vim
+source $HOME/.config/nvim/plugin/sonokai.vim
+source $HOME/.config/nvim/plugin/airline.vim
 
 set list lcs=tab:\ \ 
 

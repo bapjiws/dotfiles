@@ -1,3 +1,7 @@
+:lua << EOF
+--https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#tsserver
+require'lspconfig'.tsserver.setup{on_attach=require'completion'.on_attach}
+
 --https://github.com/iamcco/diagnostic-languageserver/wiki/Linters#eslint
 require'lspconfig'.diagnosticls.setup{
   on_attach=require'completion'.on_attach,
@@ -61,3 +65,4 @@ require'lspconfig'.diagnosticls.setup{
     }
   }
 }
+EOF
