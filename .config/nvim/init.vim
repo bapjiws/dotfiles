@@ -142,33 +142,6 @@ nnoremap <C-u> <C-u>zz
 nnoremap <C-f> <C-f>zz
 nnoremap <C-b> <C-b>zz
 
-:lua << EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "javascript", "typescript", "tsx", "html", "css", "json", "graphql", "bash", "regex", "yaml", "lua" },
-  highlight = {
-    enable = true,
-  },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      node_incremental = "]v", --"grn",
-      node_decremental = "[v", --"grm",
-    },
-  },
-  refactor = {
-    highlight_definitions = { enable = true },
-    navigation = {
-      enable = true,
-      keymaps = {
-        goto_definition_lsp_fallback = "<leader>dfn",
-        goto_next_usage = "]w",
-        goto_previous_usage = "[w",
-      },
-    },
-  },
-}
-EOF
-
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
