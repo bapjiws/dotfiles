@@ -33,7 +33,7 @@ Plug 'neovim/nvim-lspconfig' "https://github.com/neovim/nvim-lspconfig
 Plug 'nvim-lua/completion-nvim' "https://github.com/nvim-lua/completion-nvim
 Plug 'steelsojka/completion-buffers' "https://github.com/steelsojka/completion-buffers
 Plug 'romgrk/nvim-treesitter-context' "https://github.com/romgrk/nvim-treesitter-context
-Plug 'nvim-treesitter/nvim-treesitter-refactor', { 'commit': '130d94' } "https://github.com/nvim-treesitter/nvim-treesitter-refactor
+Plug 'nvim-treesitter/nvim-treesitter-refactor' "https://github.com/nvim-treesitter/nvim-treesitter-refactor
 
 " Snippets
 Plug 'SirVer/ultisnips' "https://github.com/sirver/UltiSnips
