@@ -7,7 +7,8 @@ require('telescope').setup{
       i = {	
         ["<C-j>"] = actions.move_selection_next,	
         ["<C-k>"] = actions.move_selection_previous,	
-        ["<esc>"] = actions.close,	
+        ["<C-x>"] = false,
+        ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
       },	
       n = {	
         ["<C-j>"] = actions.move_selection_next,	
