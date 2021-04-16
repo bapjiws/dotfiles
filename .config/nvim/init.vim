@@ -278,7 +278,7 @@ nnoremap <leader>tdf :lua vim.lsp.buf.type_definition()<CR>
 nnoremap <leader>hov :lua vim.lsp.buf.hover()<CR>
 nnoremap <leader>sgn :lua vim.lsp.buf.signature_help()<CR>
 nnoremap <leader>imp :lua vim.lsp.buf.implementation()<CR>
-nnoremap <leader>rfc :lua vim.lsp.buf.references()<CR>
+nnoremap <leader>rfc :lua require('telescope.builtin').lsp_references()<CR>
 
 nnoremap <leader>trm :FloatermNew zsh<CR>
 
