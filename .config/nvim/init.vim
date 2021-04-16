@@ -314,3 +314,10 @@ nnoremap <leader>cmd :lua require('telescope.builtin').commands()<CR>
 nnoremap <leader>cmh :lua require('telescope.builtin').command_history()<CR>
 
 " TODO: jump search
+
+" TODO: decide if using this stuff.
+nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
+nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
+
+nnoremap <leader>pw :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
+nnoremap <leader>vh :lua require('telescope.builtin').help_tags()<CR>
