@@ -321,3 +321,6 @@ nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
 
 nnoremap <leader>pw :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
 nnoremap <leader>vh :lua require('telescope.builtin').help_tags()<CR>
+
+" To change 2 spaces to a tab 
+":%s/\(^\s*\)\@<=    /\t/g
