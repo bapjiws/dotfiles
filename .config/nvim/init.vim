@@ -184,12 +184,12 @@ let g:completion_chain_complete_list = [
 
 let g:completion_enable_snippet = 'UltiSnips'
 
-highlight TelescopeSelection      guifg=#F27C04 gui=bold " selected item
-highlight TelescopeSelectionCaret guifg=#CC241D " selection caret
-highlight TelescopeMultiSelection guifg=#928374 " multisections
-highlight TelescopeNormal         guibg=#00000  " floating windows created by telescope.
-
-highlight TelescopeMatching       guifg=#16DBC2
+"highlight TelescopeSelection      guifg=#F27C04 gui=bold " selected item
+"highlight TelescopeSelectionCaret guifg=#CC241D " selection caret
+"highlight TelescopeMultiSelection guifg=#928374 " multisections
+"highlight TelescopeNormal         guibg=#00000  " floating windows created by telescope.
+"
+"highlight TelescopeMatching       guifg=#16DBC2
 
 "TODO: change TODO color to yellow.
 highlight CursorLine guibg=#3E4452
@@ -250,9 +250,6 @@ nnoremap <leader>upg :PlugUpdate<CR>
 
 nnoremap <leader>cab :w <bar> %bd <bar> e# <bar> bd# <CR>
 
-nnoremap <leader>sih :lua require('telescope.builtin').help_tags()<CR>
-nnoremap <leader>fwh :lua require('telescope.builtin').help_tags({ default_text = vim.fn.expand("<cword>") })<CR>
-
 nnoremap <leader>rnm :lua vim.lsp.buf.rename()<CR>
 nnoremap <leader>rpc :%s/<C-r>=printf("%s", expand("<cword>"))<CR>//g<left><left>
 
@@ -268,17 +265,13 @@ nnoremap <leader>rst :Gread<CR>
 nnoremap <leader>blf :Gblame<CR>
 nnoremap <leader>bll :BlamerToggle<CR>
 
-nnoremap <leader>fcm :lua require('telescope.builtin').git_bcommits()<CR>
-nnoremap <leader>pcm :lua require('telescope.builtin').git_commits()<CR>
-nnoremap <leader>chf :lua require('telescope.builtin').git_status()<CR>
-
 nnoremap <leader>vsc :FloatermNew lazygit<CR>
 
 nnoremap <leader>tdf :lua vim.lsp.buf.type_definition()<CR>
 nnoremap <leader>hov :lua vim.lsp.buf.hover()<CR>
 nnoremap <leader>sgn :lua vim.lsp.buf.signature_help()<CR>
 nnoremap <leader>imp :lua vim.lsp.buf.implementation()<CR>
-nnoremap <leader>rfc :lua require('telescope.builtin').lsp_references()<CR>
+"nnoremap <leader>rfc :lua require('telescope.builtin').lsp_references()<CR>
 
 nnoremap <leader>trm :FloatermNew zsh<CR>
 
@@ -291,36 +284,35 @@ nnoremap <leader>src :source $MYVIMRC<CR>
 
 nnoremap <leader>fex :FloatermNew ranger<CR>
 
-" TODO: File icons
+
+"nnoremap <leader>fcm :lua require('telescope.builtin').git_bcommits()<CR>
+"nnoremap <leader>pcm :lua require('telescope.builtin').git_commits()<CR>
+"nnoremap <leader>chf :lua require('telescope.builtin').git_status()<CR>
+
+"nnoremap <leader>sih :lua require('telescope.builtin').help_tags()<CR>
+"nnoremap <leader>fwh :lua require('telescope.builtin').help_tags({ default_text = vim.fn.expand("<cword>") })<CR>
 
 " file search
-nnoremap <leader>sif :lua require('telescope.builtin').find_files()<CR>
-nnoremap <leader>fwf :lua require('telescope.builtin').find_files({ default_text = vim.fn.expand("<cword>") })<CR>
+"nnoremap <leader>sif :lua require('telescope.builtin').find_files()<CR>
+"nnoremap <leader>fwf :lua require('telescope.builtin').find_files({ default_text = vim.fn.expand("<cword>") })<CR>
 
 " line search
-nnoremap <leader>sil :lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>
-nnoremap <leader>fwl :lua require('telescope.builtin').current_buffer_fuzzy_find({ default_text = vim.fn.expand("<cword>") })<CR>
+"nnoremap <leader>sil :lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>
+"nnoremap <leader>fwl :lua require('telescope.builtin').current_buffer_fuzzy_find({ default_text = vim.fn.expand("<cword>") })<CR>
 
-nnoremap <leader>sip :lua require('telescope.builtin').live_grep()<CR>
-nnoremap <leader>fwp :lua require('telescope.builtin').live_grep({ default_text = vim.fn.expand("<cword>") })<CR>
-" TODO: not cword, but selected text.
-xnoremap <leader>fwp :lua require('telescope.builtin').live_grep({ default_text = vim.fn.expand("<cword>") })<CR>
+"nnoremap <leader>sip :lua require('telescope.builtin').live_grep()<CR>
+"nnoremap <leader>fwp :lua require('telescope.builtin').live_grep({ default_text = vim.fn.expand("<cword>") })<CR>
+"" TODO: not cword, but selected text.
+"xnoremap <leader>fwp :lua require('telescope.builtin').live_grep({ default_text = vim.fn.expand("<cword>") })<CR>
 
 " buffer search
-nnoremap <leader>sib :lua require('telescope.builtin').buffers()<CR>
+"nnoremap <leader>sib :lua require('telescope.builtin').buffers()<CR>
 
 " command search
-nnoremap <leader>cmd :lua require('telescope.builtin').commands()<CR>
-nnoremap <leader>cmh :lua require('telescope.builtin').command_history()<CR>
+"nnoremap <leader>cmd :lua require('telescope.builtin').commands()<CR>
+"nnoremap <leader>cmh :lua require('telescope.builtin').command_history()<CR>
 
 " TODO: jump search
-
-" TODO: decide if using this stuff.
-nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
-nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
-
-nnoremap <leader>pw :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
-nnoremap <leader>vh :lua require('telescope.builtin').help_tags()<CR>
 
 " To change 2 spaces to a tab 
 ":%s/\(^\s*\)\@<=    /\t/g
