@@ -5,8 +5,8 @@ require('telescope').setup {
     defaults = {
         mappings = {	
           i = {	
-            --['<C-j>'] = actions.move_selection_next,	
-            --['<C-k>'] = actions.move_selection_previous,	
+            ['<C-j>'] = actions.move_selection_next,	
+            ['<C-k>'] = actions.move_selection_previous,	
             --['<C-x>'] = false,
             ['<C-q>'] = actions.send_to_qflist + actions.open_qflist,
           },	
