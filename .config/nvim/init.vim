@@ -184,13 +184,6 @@ let g:completion_chain_complete_list = [
 
 let g:completion_enable_snippet = 'UltiSnips'
 
-"highlight TelescopeSelection      guifg=#F27C04 gui=bold " selected item
-"highlight TelescopeSelectionCaret guifg=#CC241D " selection caret
-"highlight TelescopeMultiSelection guifg=#928374 " multisections
-"highlight TelescopeNormal         guibg=#00000  " floating windows created by telescope.
-"
-"highlight TelescopeMatching       guifg=#16DBC2
-
 "TODO: change TODO color to yellow.
 highlight CursorLine guibg=#3E4452
 
@@ -283,36 +276,6 @@ nnoremap <leader>wrt :w<CR>
 nnoremap <leader>src :source $MYVIMRC<CR>
 
 nnoremap <leader>fex :FloatermNew ranger<CR>
-
-
-"nnoremap <leader>fcm :lua require('telescope.builtin').git_bcommits()<CR>
-"nnoremap <leader>pcm :lua require('telescope.builtin').git_commits()<CR>
-"nnoremap <leader>chf :lua require('telescope.builtin').git_status()<CR>
-
-"nnoremap <leader>sih :lua require('telescope.builtin').help_tags()<CR>
-"nnoremap <leader>fwh :lua require('telescope.builtin').help_tags({ default_text = vim.fn.expand("<cword>") })<CR>
-
-" file search
-"nnoremap <leader>sif :lua require('telescope.builtin').find_files()<CR>
-"nnoremap <leader>fwf :lua require('telescope.builtin').find_files({ default_text = vim.fn.expand("<cword>") })<CR>
-
-" line search
-"nnoremap <leader>sil :lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>
-"nnoremap <leader>fwl :lua require('telescope.builtin').current_buffer_fuzzy_find({ default_text = vim.fn.expand("<cword>") })<CR>
-
-"nnoremap <leader>sip :lua require('telescope.builtin').live_grep()<CR>
-"nnoremap <leader>fwp :lua require('telescope.builtin').live_grep({ default_text = vim.fn.expand("<cword>") })<CR>
-"" TODO: not cword, but selected text.
-"xnoremap <leader>fwp :lua require('telescope.builtin').live_grep({ default_text = vim.fn.expand("<cword>") })<CR>
-
-" buffer search
-"nnoremap <leader>sib :lua require('telescope.builtin').buffers()<CR>
-
-" command search
-"nnoremap <leader>cmd :lua require('telescope.builtin').commands()<CR>
-"nnoremap <leader>cmh :lua require('telescope.builtin').command_history()<CR>
-
-" TODO: jump search
 
 " To change 2 spaces to a tab 
 ":%s/\(^\s*\)\@<=    /\t/g
