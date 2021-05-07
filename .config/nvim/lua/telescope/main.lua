@@ -1,4 +1,3 @@
-:lua << EOF
 local actions = require('telescope.actions')	
 
 require('telescope').setup {
@@ -133,4 +132,3 @@ cmd 'hi TelescopePreviewBorder  guifg=#525865'
 -- highlight TelescopeNormal         guibg=#00000  " floating windows created by telescope.
 -- 
 -- highlight TelescopeMatching       guifg=#16DBC2
-EOF

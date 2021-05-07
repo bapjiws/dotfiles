@@ -56,7 +56,7 @@ call plug#end()
 source $HOME/.config/nvim/plugin/startify.vim
 source $HOME/.config/nvim/plugin/floaterm.vim
 source $HOME/.config/nvim/plugin/blamer.vim
-source $HOME/.config/nvim/plugin/telescope.vim
+:lua require('telescope')
 source $HOME/.config/nvim/plugin/colorizer.vim
 source $HOME/.config/nvim/plugin/lsp.vim
 source $HOME/.config/nvim/plugin/sonokai.vim
