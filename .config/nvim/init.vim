@@ -56,11 +56,11 @@ call plug#end()
 source $HOME/.config/nvim/plugin/startify.vim
 source $HOME/.config/nvim/plugin/floaterm.vim
 source $HOME/.config/nvim/plugin/blamer.vim
+:lua require('lsp_init')
 :lua require('telescope_init')
 :lua require('compe_init')
 :lua require('treesitter_init')
 source $HOME/.config/nvim/plugin/colorizer.vim
-source $HOME/.config/nvim/plugin/lsp.vim
 source $HOME/.config/nvim/plugin/sonokai.vim
 source $HOME/.config/nvim/plugin/airline.vim
 
@@ -189,10 +189,6 @@ inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
-
-sign define LspDiagnosticsSignHint text=ℹ texthl=LspDiagnosticsSignHint linehl= numhl=
-sign define LspDiagnosticsSignWarning text=⚠ texthl=LspDiagnosticsSignWarning linehl= numhl=
-sign define LspDiagnosticsSignError text=✗ texthl=LspDiagnosticsSignError linehl= numhl=
 
 nnoremap [d :lua vim.lsp.diagnostic.goto_prev()<CR>zz
 nnoremap ]d :lua vim.lsp.diagnostic.goto_next()<CR>zz
