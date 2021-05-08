@@ -30,11 +30,10 @@ Plug 'norcalli/nvim-colorizer.lua' "https://github.com/norcalli/nvim-colorizer.l
 
 " LSP and code completion
 Plug 'neovim/nvim-lspconfig' "https://github.com/neovim/nvim-lspconfig
-Plug 'nvim-lua/completion-nvim' "https://github.com/nvim-lua/completion-nvim
-Plug 'steelsojka/completion-buffers' "https://github.com/steelsojka/completion-buffers
+Plug 'hrsh7th/nvim-compe' "https://github.com/hrsh7th/nvim-compe
+Plug 'jose-elias-alvarez/nvim-lsp-ts-utils' "https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils
 Plug 'romgrk/nvim-treesitter-context' "https://github.com/romgrk/nvim-treesitter-context
 Plug 'nvim-treesitter/nvim-treesitter-refactor' "https://github.com/nvim-treesitter/nvim-treesitter-refactor
-Plug 'https://github.com/hrsh7th/nvim-compe'
 
 " Snippets
 Plug 'SirVer/ultisnips' "https://github.com/sirver/UltiSnips
