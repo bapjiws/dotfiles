@@ -3,6 +3,9 @@ DOTFILES_FOLDER=~/Git/dotfiles/.config
 ORIGINAL_FOLDER=~/.config
 
 PLUGIN_FOLDER=nvim/plugin
+LUA_FOLDER=nvim/lua
+
+ln -sf $DOTFILES_FOLDER/$LUA_FOLDER $ORIGINAL_FOLDER/$LUA_FOLDER
 
 ln -sf $DOTFILES_FOLDER/nvim/init.vim $ORIGINAL_FOLDER/nvim/init.vim
 ln -sf $DOTFILES_FOLDER/.zshrc ~/.zshrc
