@@ -30,11 +30,10 @@ Plug 'norcalli/nvim-colorizer.lua' "https://github.com/norcalli/nvim-colorizer.l
 
 " LSP and code completion
 Plug 'neovim/nvim-lspconfig' "https://github.com/neovim/nvim-lspconfig
-Plug 'nvim-lua/completion-nvim' "https://github.com/nvim-lua/completion-nvim
-Plug 'steelsojka/completion-buffers' "https://github.com/steelsojka/completion-buffers
+Plug 'hrsh7th/nvim-compe' "https://github.com/hrsh7th/nvim-compe
+Plug 'jose-elias-alvarez/nvim-lsp-ts-utils' "https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils
 Plug 'romgrk/nvim-treesitter-context' "https://github.com/romgrk/nvim-treesitter-context
 Plug 'nvim-treesitter/nvim-treesitter-refactor' "https://github.com/nvim-treesitter/nvim-treesitter-refactor
-Plug 'https://github.com/hrsh7th/nvim-compe'
 
 " Snippets
 Plug 'SirVer/ultisnips' "https://github.com/sirver/UltiSnips
@@ -56,9 +55,11 @@ call plug#end()
 source $HOME/.config/nvim/plugin/startify.vim
 source $HOME/.config/nvim/plugin/floaterm.vim
 source $HOME/.config/nvim/plugin/blamer.vim
-source $HOME/.config/nvim/plugin/telescope.vim
+:lua require('lsp_init')
+:lua require('telescope_init')
+:lua require('compe_init')
+:lua require('treesitter_init')
 source $HOME/.config/nvim/plugin/colorizer.vim
-source $HOME/.config/nvim/plugin/lsp.vim
 source $HOME/.config/nvim/plugin/sonokai.vim
 source $HOME/.config/nvim/plugin/airline.vim
 
@@ -173,24 +174,6 @@ set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion
 set shortmess+=c
 
-" Use completion-nvim in every buffer
-autocmd BufEnter * lua require'completion'.on_attach()
-
-let g:completion_chain_complete_list = [
-    \{'complete_items': ['lsp', 'snippet', 'buffers']},
-    \{'mode': '<c-p>'},
-    \{'mode': '<c-n>'}
-\]
-
-let g:completion_enable_snippet = 'UltiSnips'
-
-highlight TelescopeSelection      guifg=#F27C04 gui=bold " selected item
-highlight TelescopeSelectionCaret guifg=#CC241D " selection caret
-highlight TelescopeMultiSelection guifg=#928374 " multisections
-highlight TelescopeNormal         guibg=#00000  " floating windows created by telescope.
-
-highlight TelescopeMatching       guifg=#16DBC2
-
 "TODO: change TODO color to yellow.
 highlight CursorLine guibg=#3E4452
 
@@ -200,43 +183,12 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 augroup END
 
-let g:compe = {}
-let g:compe.enabled = v:true
-let g:compe.autocomplete = v:true
-let g:compe.debug = v:false
-let g:compe.min_length = 1
-let g:compe.preselect = 'enable'
-let g:compe.throttle_time = 80
-let g:compe.source_timeout = 200
-let g:compe.incomplete_delay = 400
-let g:compe.max_abbr_width = 100
-let g:compe.max_kind_width = 100
-let g:compe.max_menu_width = 100
-let g:compe.documentation = v:true
-
-let g:compe.source = {}
-let g:compe.source.path = v:true
-let g:compe.source.buffer = v:true
-let g:compe.source.calc = v:true
-let g:compe.source.vsnip = v:true
-let g:compe.source.nvim_lsp = v:true
-let g:compe.source.nvim_lua = v:true
-let g:compe.source.spell = v:true
-let g:compe.source.tags = v:false
-let g:compe.source.snippets_nvim = v:false
-let g:compe.source.treesitter = v:true
-let g:compe.source.omni = v:false
-
+" TODO: rewrite in lua, move ti its file.
 inoremap <silent><expr> <C-Space> compe#complete()
-"inoremap <silent><expr> <C-Space> compe#complete('<C-Space>')
 inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
-
-sign define LspDiagnosticsSignHint text=ℹ texthl=LspDiagnosticsSignHint linehl= numhl=
-sign define LspDiagnosticsSignWarning text=⚠ texthl=LspDiagnosticsSignWarning linehl= numhl=
-sign define LspDiagnosticsSignError text=✗ texthl=LspDiagnosticsSignError linehl= numhl=
 
 nnoremap [d :lua vim.lsp.diagnostic.goto_prev()<CR>zz
 nnoremap ]d :lua vim.lsp.diagnostic.goto_next()<CR>zz
@@ -249,9 +201,6 @@ nnoremap <leader>cpg :PlugClean<CR>
 nnoremap <leader>upg :PlugUpdate<CR>
 
 nnoremap <leader>cab :w <bar> %bd <bar> e# <bar> bd# <CR>
-
-nnoremap <leader>sih :lua require('telescope.builtin').help_tags()<CR>
-nnoremap <leader>fwh :lua require('telescope.builtin').help_tags({ default_text = vim.fn.expand("<cword>") })<CR>
 
 nnoremap <leader>rnm :lua vim.lsp.buf.rename()<CR>
 nnoremap <leader>rpc :%s/<C-r>=printf("%s", expand("<cword>"))<CR>//g<left><left>
@@ -268,17 +217,13 @@ nnoremap <leader>rst :Gread<CR>
 nnoremap <leader>blf :Gblame<CR>
 nnoremap <leader>bll :BlamerToggle<CR>
 
-nnoremap <leader>fcm :lua require('telescope.builtin').git_bcommits()<CR>
-nnoremap <leader>pcm :lua require('telescope.builtin').git_commits()<CR>
-nnoremap <leader>chf :lua require('telescope.builtin').git_status()<CR>
-
 nnoremap <leader>vsc :FloatermNew lazygit<CR>
 
 nnoremap <leader>tdf :lua vim.lsp.buf.type_definition()<CR>
 nnoremap <leader>hov :lua vim.lsp.buf.hover()<CR>
 nnoremap <leader>sgn :lua vim.lsp.buf.signature_help()<CR>
 nnoremap <leader>imp :lua vim.lsp.buf.implementation()<CR>
-nnoremap <leader>rfc :lua require('telescope.builtin').lsp_references()<CR>
+"nnoremap <leader>rfc :lua require('telescope.builtin').lsp_references()<CR>
 
 nnoremap <leader>trm :FloatermNew zsh<CR>
 
@@ -290,37 +235,6 @@ nnoremap <leader>wrt :w<CR>
 nnoremap <leader>src :source $MYVIMRC<CR>
 
 nnoremap <leader>fex :FloatermNew ranger<CR>
-
-" TODO: File icons
-
-" file search
-nnoremap <leader>sif :lua require('telescope.builtin').find_files()<CR>
-nnoremap <leader>fwf :lua require('telescope.builtin').find_files({ default_text = vim.fn.expand("<cword>") })<CR>
-
-" line search
-nnoremap <leader>sil :lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>
-nnoremap <leader>fwl :lua require('telescope.builtin').current_buffer_fuzzy_find({ default_text = vim.fn.expand("<cword>") })<CR>
-
-nnoremap <leader>sip :lua require('telescope.builtin').live_grep()<CR>
-nnoremap <leader>fwp :lua require('telescope.builtin').live_grep({ default_text = vim.fn.expand("<cword>") })<CR>
-" TODO: not cword, but selected text.
-xnoremap <leader>fwp :lua require('telescope.builtin').live_grep({ default_text = vim.fn.expand("<cword>") })<CR>
-
-" buffer search
-nnoremap <leader>sib :lua require('telescope.builtin').buffers()<CR>
-
-" command search
-nnoremap <leader>cmd :lua require('telescope.builtin').commands()<CR>
-nnoremap <leader>cmh :lua require('telescope.builtin').command_history()<CR>
-
-" TODO: jump search
-
-" TODO: decide if using this stuff.
-nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
-nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
-
-nnoremap <leader>pw :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
-nnoremap <leader>vh :lua require('telescope.builtin').help_tags()<CR>
 
 " To change 2 spaces to a tab 
 ":%s/\(^\s*\)\@<=    /\t/g
