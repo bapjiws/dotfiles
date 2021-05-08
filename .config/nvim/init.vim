@@ -56,7 +56,7 @@ call plug#end()
 source $HOME/.config/nvim/plugin/startify.vim
 source $HOME/.config/nvim/plugin/floaterm.vim
 source $HOME/.config/nvim/plugin/blamer.vim
-:lua require('telescope')
+:lua require('telescope_init')
 :lua require('treesitter_init')
 source $HOME/.config/nvim/plugin/colorizer.vim
 source $HOME/.config/nvim/plugin/lsp.vim
