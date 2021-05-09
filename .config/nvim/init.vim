@@ -52,6 +52,8 @@ Plug 'puremourning/vimspector'
 " Initialize plugin system
 call plug#end()
 
+set termguicolors
+
 source $HOME/.config/nvim/plugin/startify.vim
 source $HOME/.config/nvim/plugin/floaterm.vim
 source $HOME/.config/nvim/plugin/blamer.vim
@@ -59,7 +61,7 @@ source $HOME/.config/nvim/plugin/blamer.vim
 :lua require('telescope_init')
 :lua require('compe_init')
 :lua require('treesitter_init')
-source $HOME/.config/nvim/plugin/colorizer.vim
+:lua require('colorizer_init')
 source $HOME/.config/nvim/plugin/sonokai.vim
 source $HOME/.config/nvim/plugin/airline.vim
 
