@@ -221,6 +221,7 @@ nnoremap <leader>bll :BlamerToggle<CR>
 
 nnoremap <leader>vsc :FloatermNew lazygit<CR>
 
+nnoremap <leader>dfn <cmd>lua vim.lsp.buf.definition()<CR>zz
 nnoremap <leader>tdf :lua vim.lsp.buf.type_definition()<CR>
 nnoremap <leader>hov :lua vim.lsp.buf.hover()<CR>
 nnoremap <leader>sgn :lua vim.lsp.buf.signature_help()<CR>
