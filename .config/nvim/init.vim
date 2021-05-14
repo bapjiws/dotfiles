@@ -62,7 +62,7 @@ source $HOME/.config/nvim/plugin/blamer.vim
 :lua require('compe_init')
 :lua require('treesitter_init')
 :lua require('colorizer_init')
-source $HOME/.config/nvim/plugin/sonokai.vim
+:lua require('sonokai_init')
 source $HOME/.config/nvim/plugin/airline.vim
 
 set list lcs=tab:\ \ 
