@@ -19,8 +19,7 @@ Plug 'moll/vim-bbye' "https://github.com/moll/vim-bbye
 
 " Git stuff
 Plug 'tpope/vim-fugitive' "https://github.com/tpope/vim-fugitive
-Plug 'airblade/vim-gitgutter' "https://github.com/airblade/vim-gitgutter
-Plug 'APZelos/blamer.nvim' "https://github.com/APZelos/blamer.nvim
+Plug 'lewis6991/gitsigns.nvim' "https://github.com/lewis6991/gitsigns.nvim
 
 " Syntax and styling
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  "https://github.com/nvim-treesitter/nvim-treesitter
@@ -62,6 +61,7 @@ source $HOME/.config/nvim/plugin/blamer.vim
 :lua require('telescope_init')
 :lua require('compe_init')
 :lua require('treesitter_init')
+:lua require('gitsigns_init')
 :lua require('colorizer_init')
 :lua require('sonokai_init')
 source $HOME/.config/nvim/plugin/airline.vim
@@ -187,9 +187,6 @@ inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 nnoremap [d :lua vim.lsp.diagnostic.goto_prev()<CR>zz
 nnoremap ]d :lua vim.lsp.diagnostic.goto_next()<CR>zz
 
-nnoremap ]c :GitGutterNextHunk<CR>zz
-nnoremap [c :GitGutterPrevHunk<CR>zz
-
 nnoremap <leader>ipg :PlugInstall<CR>
 nnoremap <leader>cpg :PlugClean<CR>
 nnoremap <leader>upg :PlugUpdate<CR>
@@ -201,15 +198,9 @@ nnoremap <leader>rpc :%s/<C-r>=printf("%s", expand("<cword>"))<CR>//g<left><left
 
 nnoremap <leader>fmt :lua vim.lsp.buf.formatting()<CR>
 
-nnoremap <leader>und :GitGutterUndoHunk<CR>
-nnoremap <leader>prw :GitGutterPreviewHunk<CR>
-nnoremap <leader>fld :GitGutterFold<CR>
-
 nnoremap <leader>dff :Gvdiffsplit<CR>
 nnoremap <leader>dfm :Gvdiffsplit master<CR><c-w>r
-nnoremap <leader>rst :Gread<CR>
 nnoremap <leader>blf :Gblame<CR>
-nnoremap <leader>bll :BlamerToggle<CR>
 
 nnoremap <leader>vsc :FloatermNew lazygit<CR>
 
