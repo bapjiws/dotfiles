@@ -22,7 +22,7 @@ require "bufferline".setup {
 vim.api.nvim_set_keymap('n', ']x', ':BufferLineMoveNext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '[x', ':BufferLineMovePrev<CR>', { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('n', '<S-x>', ':bdelete<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-x>', ':Bwipeout<CR>', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', '<TAB>', ':tabnext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<S-TAB>', ':tabprevious<CR>', { noremap = true, silent = true })
