@@ -62,7 +62,7 @@ source $HOME/.config/nvim/plugin/blamer.vim
 :lua require('compe_init')
 :lua require('treesitter_init')
 :lua require('gitsigns_init')
-:lua require('statusline_init')
+:lua require('galaxyline_init')
 :lua require('colorizer_init')
 :lua require('sonokai_init')
 
