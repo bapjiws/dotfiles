@@ -9,8 +9,8 @@ Plug 'szw/vim-maximizer' "https://github.com/szw/vim-maximizer
 
 " Visuals
 Plug 'sainnhe/sonokai' "https://github.com/sainnhe/sonokai
-Plug 'vim-airline/vim-airline' "https://github.com/vim-airline/vim-airline
-Plug 'vim-airline/vim-airline-themes' "https://github.com/vim-airline/vim-airline-themes
+Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'} "https://github.com/glepnir/galaxyline.nvim
+Plug 'kyazdani42/nvim-web-devicons'
 
 " Navigation
 Plug 'mhinz/vim-startify' "https://github.com/mhinz/vim-startify
@@ -62,9 +62,9 @@ source $HOME/.config/nvim/plugin/blamer.vim
 :lua require('compe_init')
 :lua require('treesitter_init')
 :lua require('gitsigns_init')
+:lua require('statusline_init')
 :lua require('colorizer_init')
 :lua require('sonokai_init')
-source $HOME/.config/nvim/plugin/airline.vim
 
 set list lcs=tab:\ \ 
 
