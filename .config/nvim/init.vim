@@ -16,6 +16,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'mhinz/vim-startify' "https://github.com/mhinz/vim-startify
 Plug 'airblade/vim-rooter' "https://github.com/airblade/vim-rooter
 Plug 'moll/vim-bbye' "https://github.com/moll/vim-bbye
+Plug 'akinsho/nvim-bufferline.lua' "https://github.com/akinsho/nvim-bufferline.lua
 
 " Git stuff
 Plug 'tpope/vim-fugitive' "https://github.com/tpope/vim-fugitive
@@ -65,6 +66,7 @@ source $HOME/.config/nvim/plugin/blamer.vim
 :lua require('galaxyline_init')
 :lua require('colorizer_init')
 :lua require('sonokai_init')
+:lua require('bufferline_init')
 
 set list lcs=tab:\ \ 
 
