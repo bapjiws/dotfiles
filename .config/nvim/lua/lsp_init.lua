@@ -32,7 +32,7 @@ local function on_attach(client)
 
     require("nvim-lsp-ts-utils").setup {}
 
-        -- no default maps, so you may want to define some here
+    -- no default maps, so you may want to define some here
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", {silent = true})
     vim.api.nvim_buf_set_keymap(bufnr, "n", "qq", ":TSLspFixCurrent<CR>", {silent = true})
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":TSLspRenameFile<CR>", {silent = true})
