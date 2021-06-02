@@ -1,3 +1,4 @@
+let g:floaterm_opener='vsplit'
 let g:floaterm_wintitle=0
 let g:floaterm_autoclose=1
 let g:floaterm_width=0.8
