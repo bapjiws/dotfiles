@@ -125,7 +125,6 @@ local efm_languages = {
   less = { prettier },
   json = { prettier },
   graphql = { prettier },
-  vue = { prettier },
   html = { prettier }
 }
 
