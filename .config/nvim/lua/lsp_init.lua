@@ -35,12 +35,6 @@ local function on_attach(client)
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-    vim.api.nvim_set_current_dir(client.config.root_dir)
-
-    require("nvim-lsp-ts-utils").setup {}
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "oim", ":TSLspOrganize<CR>", {silent = true})
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "rnf", ":TSLspRenameFile<CR>", {silent = true})
-
     -- Mappings.
     local opts = {noremap = true, silent = true}
 
@@ -68,6 +62,11 @@ local function on_attach(client)
         buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end
 
+    vim.api.nvim_set_current_dir(client.config.root_dir)
+
+    require("nvim-lsp-ts-utils").setup {}
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "oim", ":TSLspOrganize<CR>", {silent = true})
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "rnf", ":TSLspRenameFile<CR>", {silent = true})
 end
 
 lsp_config.cssls.setup({
