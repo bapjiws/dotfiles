@@ -46,12 +46,8 @@ local function on_attach(client)
     vim.api.nvim_set_current_dir(client.config.root_dir)
 
     require("nvim-lsp-ts-utils").setup {}
-
-    -- no default maps, so you may want to define some here
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", {silent = true})
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "qq", ":TSLspFixCurrent<CR>", {silent = true})
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":TSLspRenameFile<CR>", {silent = true})
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>", {silent = true})
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "oim", ":TSLspOrganize<CR>", {silent = true})
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "rnf", ":TSLspRenameFile<CR>", {silent = true})
 
     -- Mappings.
     local opts = {noremap = true, silent = true}
