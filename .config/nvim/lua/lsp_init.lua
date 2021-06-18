@@ -123,7 +123,7 @@ lsp_config.efm.setup({
   cmd = {
     "efm-langserver"
   },
-   init_options = { documentFormatting = true },
+  init_options = { documentFormatting = true },
   filetypes = {
     "javascript",
     "javascriptreact",
