@@ -173,32 +173,19 @@ set shortmess+=c
 "TODO: change TODO color to yellow.
 highlight CursorLine guibg=#3E4452
 
-nnoremap [d :lua vim.lsp.diagnostic.goto_prev()<CR>zz
-nnoremap ]d :lua vim.lsp.diagnostic.goto_next()<CR>zz
-
 nnoremap <leader>ipg :PlugInstall<CR>
 nnoremap <leader>cpg :PlugClean<CR>
 nnoremap <leader>upg :PlugUpdate<CR>
 
 nnoremap <leader>cab :w <bar> %bd <bar> e# <bar> bd# <CR>
 
-nnoremap <leader>rnm :lua vim.lsp.buf.rename()<CR>
 nnoremap <leader>rpc :%s/<C-r>=printf("%s", expand("<cword>"))<CR>//g<left><left>
-
-nnoremap <leader>fmt :lua vim.lsp.buf.formatting()<CR>
 
 nnoremap <leader>dff :Gvdiffsplit<CR>
 nnoremap <leader>dfm :Gvdiffsplit master<CR><c-w>r
 nnoremap <leader>blf :Gblame<CR>
 
 nnoremap <leader>vsc :FloatermNew lazygit<CR>
-
-nnoremap <leader>dfn <cmd>lua vim.lsp.buf.definition()<CR>zz
-nnoremap <leader>tdf :lua vim.lsp.buf.type_definition()<CR>
-nnoremap <leader>hov :lua vim.lsp.buf.hover()<CR>
-nnoremap <leader>sgn :lua vim.lsp.buf.signature_help()<CR>
-nnoremap <leader>imp :lua vim.lsp.buf.implementation()<CR>
-"nnoremap <leader>rfc :lua require('telescope.builtin').lsp_references()<CR>
 
 nnoremap <leader>trm :FloatermNew zsh<CR>
 
