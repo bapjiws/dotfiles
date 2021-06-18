@@ -173,12 +173,6 @@ set shortmess+=c
 "TODO: change TODO color to yellow.
 highlight CursorLine guibg=#3E4452
 
-" TODO: make if work.
-augroup highlight_yank
-    autocmd!
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
-augroup END
-
 nnoremap [d :lua vim.lsp.diagnostic.goto_prev()<CR>zz
 nnoremap ]d :lua vim.lsp.diagnostic.goto_next()<CR>zz
 
