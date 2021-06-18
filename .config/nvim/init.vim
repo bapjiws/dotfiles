@@ -14,7 +14,6 @@ Plug 'kyazdani42/nvim-web-devicons'
 
 " Navigation
 Plug 'mhinz/vim-startify' "https://github.com/mhinz/vim-startify
-Plug 'airblade/vim-rooter' "https://github.com/airblade/vim-rooter
 Plug 'moll/vim-bbye' "https://github.com/moll/vim-bbye
 Plug 'akinsho/nvim-bufferline.lua' "https://github.com/akinsho/nvim-bufferline.lua
 
