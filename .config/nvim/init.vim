@@ -58,6 +58,7 @@ set termguicolors
 source $HOME/.config/nvim/plugin/startify.vim
 source $HOME/.config/nvim/plugin/floaterm.vim
 source $HOME/.config/nvim/plugin/blamer.vim
+:lua require('general_init')
 :lua require('lsp_init')
 :lua require('telescope_init')
 :lua require('compe_init')
