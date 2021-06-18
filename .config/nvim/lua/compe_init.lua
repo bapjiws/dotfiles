@@ -22,3 +22,4 @@ require'compe'.setup {
 }
 
 vim.api.nvim_set_keymap('i', '<C-Space>',  '<cmd>lua vim.fn["compe#complete"]()<CR>', {noremap = true})
+vim.api.nvim_set_keymap('i', '<C-x>',  '<cmd>lua vim.fn["compe#confirm"]()<CR>', {noremap = true})
