@@ -73,7 +73,6 @@ set list lcs=tab:\ \
 let g:vimspector_enable_mappings = 'HUMAN'
 "packadd! vimspector
 
-map <Space> <leader>
 
 " Exit terminal-mode
 tnoremap <C-]> <C-\><C-n>
