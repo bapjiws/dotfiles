@@ -12,8 +12,8 @@ Plug 'sainnhe/sonokai' "https://github.com/sainnhe/sonokai
 Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'} "https://github.com/glepnir/galaxyline.nvim
 Plug 'kyazdani42/nvim-web-devicons'
 
-" Navigation
-Plug 'mhinz/vim-startify' "https://github.com/mhinz/vim-startify
+
+Plug 'glepnir/dashboard-nvim' "https://github.com/glepnir/dashboard-nvim
 Plug 'moll/vim-bbye' "https://github.com/moll/vim-bbye
 Plug 'akinsho/nvim-bufferline.lua' "https://github.com/akinsho/nvim-bufferline.lua
 
@@ -54,10 +54,10 @@ call plug#end()
 
 set termguicolors
 
-source $HOME/.config/nvim/plugin/startify.vim
 source $HOME/.config/nvim/plugin/floaterm.vim
 source $HOME/.config/nvim/plugin/blamer.vim
 :lua require('general_init')
+:lua require('dashboard_init')
 :lua require('lsp_init')
 :lua require('telescope_init')
 :lua require('compe_init')
@@ -187,10 +187,6 @@ nnoremap <leader>blf :Gblame<CR>
 nnoremap <leader>vsc :FloatermNew lazygit<CR>
 
 nnoremap <leader>trm :FloatermNew zsh<CR>
-
-nnoremap <leader>ssn :SSave<CR>
-nnoremap <leader>lsn :SLoad<CR>
-nnoremap <leader>dsn :SDelete<CR>
 
 nnoremap <leader>wrt :w<CR>
 nnoremap <leader>src :source $MYVIMRC<CR>
