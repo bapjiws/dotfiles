@@ -2,19 +2,8 @@
 DOTFILES_FOLDER=~/Git/dotfiles/.config
 ORIGINAL_FOLDER=~/.config
 
-PLUGIN_FOLDER=nvim/plugin
-LUA_FOLDER=nvim/lua
-
-ln -sf $DOTFILES_FOLDER/$LUA_FOLDER $ORIGINAL_FOLDER/$LUA_FOLDER
-
-ln -sf $DOTFILES_FOLDER/nvim/init.vim $ORIGINAL_FOLDER/nvim/init.vim
-ln -sf $DOTFILES_FOLDER/.zshrc ~/.zshrc
-ln -sf $DOTFILES_FOLDER/ranger/rc.conf $ORIGINAL_FOLDER/ranger/rc.conf
+ln -sf $DOTFILES_FOLDER/nvim $ORIGINAL_FOLDER/nvim
 ln -sf $DOTFILES_FOLDER/UltiSnips/javascript.snippets $ORIGINAL_FOLDER/nvim/UltiSnips/javascript.snippets
 
-mkdir $ORIGINAL_FOLDER/$PLUGIN_FOLDER
-
-for file in $(ls $DOTFILES_FOLDER/$PLUGIN_FOLDER)
-do
-  ln -sf $DOTFILES_FOLDER/$PLUGIN_FOLDER/$file $ORIGINAL_FOLDER/$PLUGIN_FOLDER/$file
-done
+ln -sf $DOTFILES_FOLDER/ranger/rc.conf $ORIGINAL_FOLDER/ranger/rc.conf
+ln -sf $DOTFILES_FOLDER/fish/config.fish $ORIGINAL_FOLDER/fish/config.fish
