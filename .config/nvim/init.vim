@@ -55,7 +55,6 @@ call plug#end()
 set termguicolors
 
 source $HOME/.config/nvim/plugin/floaterm.vim
-source $HOME/.config/nvim/plugin/blamer.vim
 :lua require('general_init')
 :lua require('dashboard_init')
 :lua require('lsp_init')
