@@ -1,0 +1,7 @@
+# Replace the "❯" symbol in the prompt
+[character]
+success_symbol = ""
+
+[shell]
+fish_indicator = ""
+disabled = false
