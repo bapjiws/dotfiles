@@ -31,8 +31,6 @@ vim.fn.sign_define("LspDiagnosticsSignInformation", { text = "", numhl = "Lsp
 vim.fn.sign_define("LspDiagnosticsSignHint", { text = "", numhl = "LspDiagnosticsDefaultHint" })
 
 local function on_attach(client)
-    vim.api.nvim_set_current_dir(client.config.root_dir)
-
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     
     local opts = {noremap = true, silent = true}
