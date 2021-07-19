@@ -8,4 +8,6 @@ ln -sf $DOTFILES_FOLDER/UltiSnips/javascript.snippets $ORIGINAL_FOLDER/nvim/Ulti
 ln -sf $DOTFILES_FOLDER/ranger/rc.conf $ORIGINAL_FOLDER/ranger/rc.conf
 
 ln -sf $DOTFILES_FOLDER/fish/config.fish $ORIGINAL_FOLDER/fish/config.fish
+ln -sf $DOTFILES_FOLDER/fish/functions/nvm.fish $ORIGINAL_FOLDER/fish/functions/nvm.fish
+
 ln -sf $DOTFILES_FOLDER/fish/starship.toml $ORIGINAL_FOLDER/starship.toml
