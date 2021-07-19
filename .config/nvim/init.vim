@@ -185,7 +185,7 @@ nnoremap <leader>blf :Gblame<CR>
 
 nnoremap <leader>vsc :FloatermNew lazygit<CR>
 
-nnoremap <leader>trm :FloatermNew zsh<CR>
+nnoremap <leader>trm :FloatermNew fish<CR>
 
 nnoremap <leader>wrt :w<CR>
 nnoremap <leader>src :source $MYVIMRC<CR>
