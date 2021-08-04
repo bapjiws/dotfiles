@@ -182,7 +182,7 @@ nnoremap <leader>rpc :%s/<C-r>=printf("%s", expand("<cword>"))<CR>//g<left><left
 
 nnoremap <leader>dff :Gvdiffsplit<CR>
 nnoremap <leader>dfm :Gvdiffsplit master<CR><c-w>r
-nnoremap <leader>blf :Gblame<CR>
+nnoremap <leader>blf :Git blame<CR>
 
 nnoremap <leader>vsc :FloatermNew lazygit<CR>
 
