@@ -20,6 +20,7 @@ Plug 'akinsho/nvim-bufferline.lua' "https://github.com/akinsho/nvim-bufferline.l
 
 " Git stuff
 Plug 'tpope/vim-fugitive' "https://github.com/tpope/vim-fugitive
+Plug 'tpope/vim-rhubarb' "https://github.com/tpope/vim-rhubarb
 Plug 'lewis6991/gitsigns.nvim' "https://github.com/lewis6991/gitsigns.nvim
 
 " Syntax and styling
@@ -184,6 +185,7 @@ nnoremap <leader>rpc :%s/<C-r>=printf("%s", expand("<cword>"))<CR>//g<left><left
 nnoremap <leader>dff :Gvdiffsplit<CR>
 nnoremap <leader>dfm :Gvdiffsplit master<CR><c-w>r
 nnoremap <leader>blf :Git blame<CR>
+nnoremap <leader>brg :GBrowse<CR>
 
 nnoremap <leader>vsc :FloatermNew lazygit<CR>
 
