@@ -34,6 +34,7 @@ Plug 'hrsh7th/nvim-compe' "https://github.com/hrsh7th/nvim-compe
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils' "https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils
 Plug 'romgrk/nvim-treesitter-context' "https://github.com/romgrk/nvim-treesitter-context
 Plug 'nvim-treesitter/nvim-treesitter-refactor' "https://github.com/nvim-treesitter/nvim-treesitter-refactor
+Plug 'cohama/lexima.vim' "https://github.com/cohama/lexima.vim
 Plug 'mattn/emmet-vim' "https://github.com/mattn/emmet-vim
 
 " Snippets
