@@ -48,9 +48,6 @@ Plug 'nvim-telescope/telescope.nvim'
 " Floating terminal
 Plug 'voldikss/vim-floaterm'
 
-" Debugging
-Plug 'puremourning/vimspector'
-
 " Fix gx
 Plug 'stsewd/gx-extended.vim'
 
@@ -73,9 +70,6 @@ source $HOME/.config/nvim/plugin/floaterm.vim
 :lua require('bufferline_init')
 
 set list lcs=tab:\ \ 
-
-let g:vimspector_enable_mappings = 'HUMAN'
-"packadd! vimspector
 
 " Exit terminal-mode
 tnoremap <C-]> <C-\><C-n>
