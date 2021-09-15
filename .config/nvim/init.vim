@@ -51,6 +51,9 @@ Plug 'voldikss/vim-floaterm' "https://github.com/voldikss/vim-floaterm
 " Debugging
 Plug 'puremourning/vimspector'
 
+" Fix gx
+Plug 'stsewd/gx-extended.vim' "https://github.com/stsewd/gx-extended.vim
+
 " Initialize plugin system
 call plug#end()
 
