@@ -1,58 +1,58 @@
 call plug#begin('~/.config/nvim/plugged')
 
 " Editing
-Plug 'tpope/vim-surround' "https://github.com/tpope/vim-surround
-Plug 'mg979/vim-visual-multi', {'branch': 'master'} "https://github.com/mg979/vim-visual-multi
-Plug 'tpope/vim-unimpaired' "https://github.com/tpope/vim-unimpaired
-Plug 'tpope/vim-repeat' "https://github.com/tpope/vim-repeat
-Plug 'szw/vim-maximizer' "https://github.com/szw/vim-maximizer
+Plug 'tpope/vim-surround'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-repeat'
+Plug 'szw/vim-maximizer'
 
 " Visuals
-Plug 'sainnhe/sonokai' "https://github.com/sainnhe/sonokai
-Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'} "https://github.com/glepnir/galaxyline.nvim
+Plug 'sainnhe/sonokai'
+Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'kyazdani42/nvim-web-devicons'
 
-Plug 'glepnir/dashboard-nvim' "https://github.com/glepnir/dashboard-nvim
-Plug 'airblade/vim-rooter' "https://github.com/airblade/vim-rooter
-Plug 'moll/vim-bbye' "https://github.com/moll/vim-bbye
-Plug 'akinsho/nvim-bufferline.lua' "https://github.com/akinsho/nvim-bufferline.lua
+Plug 'glepnir/dashboard-nvim'
+Plug 'airblade/vim-rooter'
+Plug 'moll/vim-bbye'
+Plug 'akinsho/nvim-bufferline.lua'
 
 " Git stuff
-Plug 'tpope/vim-fugitive' "https://github.com/tpope/vim-fugitive
-Plug 'tpope/vim-rhubarb' "https://github.com/tpope/vim-rhubarb
-Plug 'lewis6991/gitsigns.nvim' "https://github.com/lewis6991/gitsigns.nvim
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'lewis6991/gitsigns.nvim'
 
 " Syntax and styling
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  "https://github.com/nvim-treesitter/nvim-treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
 " TODO: do we need it?
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' } "https://github.com/styled-components/vim-styled-components
-Plug 'norcalli/nvim-colorizer.lua' "https://github.com/norcalli/nvim-colorizer.lua
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'norcalli/nvim-colorizer.lua'
 
 " LSP and code completion
-Plug 'neovim/nvim-lspconfig' "https://github.com/neovim/nvim-lspconfig
-Plug 'hrsh7th/nvim-compe' "https://github.com/hrsh7th/nvim-compe
-Plug 'jose-elias-alvarez/nvim-lsp-ts-utils' "https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils
-Plug 'romgrk/nvim-treesitter-context' "https://github.com/romgrk/nvim-treesitter-context
-Plug 'nvim-treesitter/nvim-treesitter-refactor' "https://github.com/nvim-treesitter/nvim-treesitter-refactor
-Plug 'cohama/lexima.vim' "https://github.com/cohama/lexima.vim
-Plug 'mattn/emmet-vim' "https://github.com/mattn/emmet-vim
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
+Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+Plug 'romgrk/nvim-treesitter-context'
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
+Plug 'cohama/lexima.vim'
+Plug 'mattn/emmet-vim'
 
 " Snippets
-Plug 'SirVer/ultisnips' "https://github.com/sirver/UltiSnips
+Plug 'SirVer/ultisnips'
 
 " Search
-Plug 'nvim-lua/popup.nvim' "https://github.com/nvim-lua/popup.nvim
-Plug 'nvim-lua/plenary.nvim' "https://github.com/nvim-lua/plenary.nvim
-Plug 'nvim-telescope/telescope.nvim' "https://github.com/nvim-telescope/telescope.nvim
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Floating terminal
-Plug 'voldikss/vim-floaterm' "https://github.com/voldikss/vim-floaterm
+Plug 'voldikss/vim-floaterm'
 
 " Debugging
 Plug 'puremourning/vimspector'
 
 " Fix gx
-Plug 'stsewd/gx-extended.vim' "https://github.com/stsewd/gx-extended.vim
+Plug 'stsewd/gx-extended.vim'
 
 " Initialize plugin system
 call plug#end()
