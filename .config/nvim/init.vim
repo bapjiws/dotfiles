@@ -12,7 +12,6 @@ Plug 'sainnhe/sonokai' "https://github.com/sainnhe/sonokai
 Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'} "https://github.com/glepnir/galaxyline.nvim
 Plug 'kyazdani42/nvim-web-devicons'
 
-
 Plug 'glepnir/dashboard-nvim' "https://github.com/glepnir/dashboard-nvim
 Plug 'airblade/vim-rooter' "https://github.com/airblade/vim-rooter
 Plug 'moll/vim-bbye' "https://github.com/moll/vim-bbye
@@ -74,7 +73,6 @@ set list lcs=tab:\ \
 
 let g:vimspector_enable_mappings = 'HUMAN'
 "packadd! vimspector
-
 
 " Exit terminal-mode
 tnoremap <C-]> <C-\><C-n>
