@@ -6,3 +6,9 @@ error_symbol = ""
 [shell]
 fish_indicator = ""
 disabled = false
+
+[cmd_duration]
+disabled = true
+
+[gcloud]
+disabled = true
