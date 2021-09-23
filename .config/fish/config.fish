@@ -1,3 +1,5 @@
+set -x SHELL /bin/bash
+
 starship init fish | source
 
 alias rng "ranger"
