@@ -29,8 +29,14 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'norcalli/nvim-colorizer.lua'
 
 " LSP and code completion
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-nvim-lua'
+
 Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
+
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 Plug 'romgrk/nvim-treesitter-context'
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
@@ -39,6 +45,7 @@ Plug 'mattn/emmet-vim'
 
 " Snippets
 Plug 'SirVer/ultisnips'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
 " Search
 Plug 'nvim-lua/popup.nvim'
@@ -61,7 +68,7 @@ source $HOME/.config/nvim/plugin/floaterm.vim
 :lua require('dashboard_init')
 :lua require('lsp_init')
 :lua require('telescope_init')
-:lua require('compe_init')
+:lua require('cmp_init')
 :lua require('treesitter_init')
 :lua require('gitsigns_init')
 :lua require('galaxyline_init')

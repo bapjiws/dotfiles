@@ -75,7 +75,8 @@ lsp_config.tsserver.setup({
   end,
   handlers = {
     ['textDocument/publishDiagnostics'] = function(...) end
-  }
+  },
+  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 })
 
 lsp_config.html.setup({
