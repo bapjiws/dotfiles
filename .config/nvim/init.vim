@@ -78,35 +78,44 @@ source $HOME/.config/nvim/plugin/floaterm.vim
 :lua require('bufferline_init')
 :lua require('bbye_init')
 
+
+
 set list lcs=tab:\ \ 
 
-" Exit terminal-mode
-tnoremap <C-]> <C-\><C-n>
-
-" TODO: check if we need all of these.
-" disable automatic folding when opening a file
+" Disable automatic folding when opening a file
 set nofoldenable
-set foldmethod=syntax
+
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 
 set relativenumber
+
 set number
 
 set noswapfile
+
 set splitbelow splitright
 
-set langmenu=en_US
-let $LANG = 'en_US'
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
-
-set noshowmode
-
-" tab counts for 2 spaces
+" Tab counts for 2 spaces
 set tabstop=2
-" when indenting with '>', use 2 spaces width
+" When indenting with '>', use 2 spaces width
 set shiftwidth=2
-" on pressing tab, insert 2 spaces
+" On pressing tab, insert 2 spaces
 set expandtab
+
+set signcolumn=yes
+
+set cursorline
+"TODO: change TODO color to yellow.
+highlight CursorLine guibg=#3E4452
+
+" Give more space for displaying messages.
+set cmdheight=2
+" Having longer updatetime leads to noticeable delays.
+set updatetime=300
+
+
+
 
 " Clean up the search results. 
 nnoremap <esc> :noh<cr>
@@ -116,7 +125,6 @@ nnoremap / /\c
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 nnoremap , @@
-
 
 augroup source_vimrc_on_save
   autocmd!
@@ -146,25 +154,6 @@ nnoremap <C-u> <C-u>zz
 nnoremap <C-f> <C-f>zz
 nnoremap <C-b> <C-b>zz
 
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-
-"TODO: check if we need these settings left from Coc.
-set signcolumn=yes
-set cursorline
-set foldcolumn=0
-" TextEdit might fail if hidden is not set.
-set hidden
-" Some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
-" Give more space for displaying messages.
-set cmdheight=2
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-"END TODO
-
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -174,9 +163,6 @@ set completeopt=menuone,noinsert,noselect
 
 " Avoid showing message extra message when using completion
 set shortmess+=c
-
-"TODO: change TODO color to yellow.
-highlight CursorLine guibg=#3E4452
 
 nnoremap <leader>ipg :PlugInstall<CR>
 nnoremap <leader>cpg :PlugClean<CR>
