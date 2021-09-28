@@ -12,6 +12,7 @@ Plug 'sainnhe/sonokai'
 Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'kyazdani42/nvim-web-devicons'
 
+" Project navigation
 Plug 'glepnir/dashboard-nvim'
 Plug 'airblade/vim-rooter'
 Plug 'moll/vim-bbye'
@@ -75,6 +76,7 @@ source $HOME/.config/nvim/plugin/floaterm.vim
 :lua require('colorizer_init')
 :lua require('sonokai_init')
 :lua require('bufferline_init')
+:lua require('bbye_init')
 
 set list lcs=tab:\ \ 
 

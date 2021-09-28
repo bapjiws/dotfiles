@@ -11,5 +11,3 @@ require "bufferline".setup {
 -- [b and ]b are already set by unimpaired.
 vim.api.nvim_set_keymap('n', ']x', ':BufferLineMoveNext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '[x', ':BufferLineMovePrev<CR>', { noremap = true, silent = true })
-
-vim.api.nvim_set_keymap('n', '<S-x>', ':Bwipeout<CR>', { noremap = true, silent = true })
