@@ -89,7 +89,6 @@ set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
 set relativenumber
-
 set number
 
 set noswapfile
@@ -113,9 +112,6 @@ highlight CursorLine guibg=#3E4452
 set cmdheight=2
 " Having longer updatetime leads to noticeable delays.
 set updatetime=300
-
-
-
 
 " Clean up the search results. 
 nnoremap <esc> :noh<cr>
