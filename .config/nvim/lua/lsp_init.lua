@@ -41,9 +41,9 @@ local function on_attach(client)
     buf_set_keymap("n", "<leader>hov", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
     buf_set_keymap("n", "<leader>sgn", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 
-    buf_set_keymap("n", "<leader>dgn", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-    buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zz", opts)
-    buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>zz", opts)
+    buf_set_keymap("n", "<leader>dgn", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+    buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>zz", opts)
+    buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>zz", opts)
 
 
     buf_set_keymap("n", "<leader>rnm", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
