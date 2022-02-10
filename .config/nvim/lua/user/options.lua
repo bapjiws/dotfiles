@@ -39,3 +39,39 @@ vim.opt.shortmess:append "c"
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
+
+-- TODO: My mappings
+
+-- set termguicolors
+-- set list lcs=tab:\ \ 
+
+-- " Disable automatic folding when opening a file
+-- set nofoldenable
+
+-- set foldmethod=expr
+-- set foldexpr=nvim_treesitter#foldexpr()
+
+-- set relativenumber
+-- set number
+
+-- set noswapfile
+
+-- set splitbelow splitright
+
+-- " Tab counts for 2 spaces
+-- set tabstop=2
+-- " When indenting with '>', use 2 spaces width
+-- set shiftwidth=2
+-- " On pressing tab, insert 2 spaces
+-- set expandtab
+
+-- set signcolumn=yes
+
+-- set cursorline
+-- "TODO: change TODO color to yellow.
+-- highlight CursorLine guibg=#3E4452
+
+-- " Give more space for displaying messages.
+-- set cmdheight=2
+-- " Having longer updatetime leads to noticeable delays.
+-- set updatetime=300
