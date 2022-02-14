@@ -8,15 +8,13 @@ local keymap = vim.api.nvim_set_keymap
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 
+-- Clean up the search results
+keymap("n", "<Esc>", ":nohlsearch<CR>", opts)
+
+-- Case-insensitive search
+keymap("n", "/", "/\\c", opts)
 
 -- TODO: My keymaps
-
--- " Clean up the search results. 
--- nnoremap <esc> :noh<cr>
--- " Case-insensitive search.
--- nnoremap / /\c
--- " Search for visually selected text.
--- vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 -- nnoremap , @@
 
@@ -72,3 +70,5 @@ vim.g.mapleader = " "
 
 -- " To change 2 spaces to a tab 
 -- ":%s/\(^\s*\)\@<=    /\t/g
+
+-- TODD: try https://www.reddit.com/r/neovim/comments/jxub94/reload_lua_config/ for reloading
