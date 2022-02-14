@@ -1,8 +1,7 @@
-local opts = { noremap = true, silent = true }
+-- TODO: decide if need it
+local term_opts = {silent = true}
 
-local term_opts = { silent = true }
-
--- Shorten function name
+local opts = {noremap = true, silent = true}
 local keymap = vim.api.nvim_set_keymap
 
 --Remap space as leader key
