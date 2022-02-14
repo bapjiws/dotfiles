@@ -14,6 +14,12 @@ keymap("n", "<Esc>", ":nohlsearch<CR>", opts)
 -- Case-insensitive search
 keymap("n", "/", "/\\c", opts)
 
+-- Better window navigation
+keymap("n", "<C-h>", ":vertical resize +5<CR>", opts)
+keymap("n", "<C-j>", ":resize -5<CR>", opts)
+keymap("n", "<C-k>", ":resize +5<CR>", opts)
+keymap("n", "<C-l>", ":vertical resize -5<CR>", opts)
+
 -- TODO: My keymaps
 
 -- nnoremap , @@
@@ -23,10 +29,6 @@ keymap("n", "/", "/\\c", opts)
 --   autocmd BufWritePost *.vim source $MYVIMRC
 -- augroup END
 
--- nnoremap <C-K> :resize +5<CR>
--- nnoremap <C-J> :resize -5<CR>
--- nnoremap <C-H> :vertical resize +5<CR>
--- nnoremap <C-L> :vertical resize -5<CR>
 -- nnoremap <leader>mbf :MaximizerToggle<CR>
 
 -- nnoremap * *zz
