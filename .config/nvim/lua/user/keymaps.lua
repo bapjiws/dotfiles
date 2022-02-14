@@ -23,11 +23,6 @@ keymap("n", "/", "/\\c", opts)
 --   autocmd BufWritePost *.vim source $MYVIMRC
 -- augroup END
 
--- nnoremap <down> <nop>
--- nnoremap <left> <nop>
--- nnoremap <right> <nop>
--- nnoremap <up> <nop>
-
 -- nnoremap <C-K> :resize +5<CR>
 -- nnoremap <C-J> :resize -5<CR>
 -- nnoremap <C-H> :vertical resize +5<CR>
