@@ -20,6 +20,16 @@ keymap("n", "<C-j>", ":resize -5<CR>", opts)
 keymap("n", "<C-k>", ":resize +5<CR>", opts)
 keymap("n", "<C-l>", ":vertical resize -5<CR>", opts)
 
+keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "<C-u>", "<C-u>zz", opts)
+keymap("n", "<C-f>", "<C-f>zz", opts)
+keymap("n", "<C-b>", "<C-b>zz", opts)
+
+keymap("n", "*", "*zz", opts)
+keymap("n", "#", "#zz", opts)
+keymap("n", "N", "Nzz", opts)
+keymap("n", "n", "nzz", opts)
+
 -- TODO: My keymaps
 
 -- nnoremap , @@
@@ -30,18 +40,6 @@ keymap("n", "<C-l>", ":vertical resize -5<CR>", opts)
 -- augroup END
 
 -- nnoremap <leader>mbf :MaximizerToggle<CR>
-
--- nnoremap * *zz
--- nnoremap # #zz
--- nnoremap N Nzz
--- nnoremap n nzz
--- nnoremap g* g*zz
--- nnoremap g# g#zz
-
--- nnoremap <C-d> <C-d>zz
--- nnoremap <C-u> <C-u>zz
--- nnoremap <C-f> <C-f>zz
--- nnoremap <C-b> <C-b>zz
 
 -- nnoremap <leader>ipg :PlugInstall<CR>
 -- nnoremap <leader>cpg :PlugClean<CR>
