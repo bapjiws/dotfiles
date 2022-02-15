@@ -31,6 +31,10 @@ keymap("n", "N", "Nzz", opts)
 keymap("n", "n", "nzz", opts)
 
 -- TODO: My keymaps
+-- " To change 2 spaces to a tab 
+-- ":%s/\(^\s*\)\@<=    /\t/g
+
+-- TODD: try https://www.reddit.com/r/neovim/comments/jxub94/reload_lua_config/ for reloading
 
 -- nnoremap , @@
 
@@ -38,6 +42,8 @@ keymap("n", "n", "nzz", opts)
 --   autocmd!
 --   autocmd BufWritePost *.vim source $MYVIMRC
 -- augroup END
+
+-- TODO: My commands
 
 -- nnoremap <leader>mbf :MaximizerToggle<CR>
 
@@ -62,8 +68,3 @@ keymap("n", "n", "nzz", opts)
 -- nnoremap <leader>src :source $MYVIMRC<CR>
 
 -- nnoremap <leader>fex :FloatermNew ranger<CR>
-
--- " To change 2 spaces to a tab 
--- ":%s/\(^\s*\)\@<=    /\t/g
-
--- TODD: try https://www.reddit.com/r/neovim/comments/jxub94/reload_lua_config/ for reloading
