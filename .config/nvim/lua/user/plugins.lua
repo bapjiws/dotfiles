@@ -26,7 +26,6 @@ require('packer').init {
 
 return require('packer').startup(function(use)
   -- Color scheme
-  -- TODO: maybe change
   use "rebelot/kanagawa.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim
