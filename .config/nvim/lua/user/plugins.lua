@@ -14,7 +14,7 @@ vim.cmd([[
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
   augroup end
 ]])
-
+  
 -- Use a popup window
 require('packer').init {
   display = {
@@ -27,6 +27,17 @@ require('packer').init {
 return require('packer').startup(function(use)
   -- Color scheme
   use "rebelot/kanagawa.nvim"
+
+  -- cmp plugins
+  use "hrsh7th/nvim-cmp" -- The completion plugin
+  use "hrsh7th/cmp-buffer" -- buffer completions
+  use "hrsh7th/cmp-path" -- path completions
+  use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "saadparwaiz1/cmp_luasnip" -- snippet completions
+  use "hrsh7th/cmp-nvim-lsp"
+
+  -- snippets
+  use "L3MON4D3/LuaSnip" --snippet engine
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
