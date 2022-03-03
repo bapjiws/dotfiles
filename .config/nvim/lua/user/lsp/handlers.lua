@@ -93,6 +93,7 @@ M.on_attach = function(client, bufnr)
   if client.name == "tsserver" then
     client.resolved_capabilities.document_formatting = false
 
+    local opts = { noremap = true, silent = true }
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>fmt", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 
     -- TODO: check on this part.
