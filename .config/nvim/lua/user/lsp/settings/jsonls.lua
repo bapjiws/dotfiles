@@ -1,3 +1,5 @@
+-- https://www.schemastore.org/json
+
 local function read_json(file_path)
     local file = io.open(file_path, "r")
     local table = vim.fn.json_decode(file:read("a"))
