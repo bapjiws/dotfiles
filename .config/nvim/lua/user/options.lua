@@ -42,7 +42,6 @@ vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 
 -- TODO: My options
 
--- set termguicolors
 -- set list lcs=tab:\ \ 
 
 -- " Disable automatic folding when opening a file
