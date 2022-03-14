@@ -6,26 +6,26 @@ end
 configs.setup {
   -- https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
   ensure_installed = {
-      "bash",
-      "css",
-      "dockerfile",
-      "fish",
-      "graphql",
-      "html",
-      "javascript",
-      "json",
-      "lua",
-      "regex",
-      "tsx",
-      "typescript",
-      "vim",
-      "yaml",
+    "bash",
+    "css",
+    "dockerfile",
+    "fish",
+    "graphql",
+    "html",
+    "javascript",
+    "json",
+    "lua",
+    "regex",
+    "tsx",
+    "typescript",
+    "vim",
+    "yaml",
   },
   highlight = {
-      enable = true,
+    enable = true,
   },
   indent = {
-      enable = true
+    enable = true
   },
   incremental_selection = {
     enable = true,
