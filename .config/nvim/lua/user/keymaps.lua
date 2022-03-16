@@ -30,6 +30,9 @@ keymap("n", "#", "#zz", opts)
 keymap("n", "N", "Nzz", opts)
 keymap("n", "n", "nzz", opts)
 
+keymap("n", "<leader>wrt", ":w<CR>", opts)
+keymap("n", "<leader>src", ":source<CR>", opts)
+
 -- TODO: My keymaps
 -- " To change 2 spaces to a tab 
 -- ":%s/\(^\s*\)\@<=    /\t/g
@@ -63,8 +66,5 @@ keymap("n", "n", "nzz", opts)
 -- nnoremap <leader>vsc :FloatermNew lazygit<CR>
 
 -- nnoremap <leader>trm :FloatermNew fish<CR>
-
--- nnoremap <leader>wrt :w<CR>
--- nnoremap <leader>src :source $MYVIMRC<CR>
 
 -- nnoremap <leader>fex :FloatermNew ranger<CR>
