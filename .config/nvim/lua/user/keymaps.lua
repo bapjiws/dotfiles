@@ -31,7 +31,7 @@ keymap("n", "N", "Nzz", opts)
 keymap("n", "n", "nzz", opts)
 
 keymap("n", "<leader>wrt", ":w<CR>", opts)
-keymap("n", "<leader>src", ":source<CR>", opts)
+keymap("n", "<leader>src", ":source ~/Git/dotfiles/.config/nvim/init.lua<CR>", opts)
 
 -- TODO: My keymaps
 -- " To change 2 spaces to a tab 
@@ -64,7 +64,5 @@ keymap("n", "<leader>src", ":source<CR>", opts)
 -- nnoremap <leader>brg :GBrowse<CR>
 
 -- nnoremap <leader>vsc :FloatermNew lazygit<CR>
-
 -- nnoremap <leader>trm :FloatermNew fish<CR>
-
 -- nnoremap <leader>fex :FloatermNew ranger<CR>
