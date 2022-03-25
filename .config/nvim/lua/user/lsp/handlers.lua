@@ -87,21 +87,13 @@ local function lsp_keymaps(bufnr)
   -- require("nvim-lsp-ts-utils").setup {}
   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "oim", ":TSLspOrganize<CR>", {silent = true})
   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "rnf", ":TSLspRenameFile<CR>", {silent = true})
+
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>fmt", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
 M.on_attach = function(client, bufnr)
   if client.name == "tsserver" then
     client.resolved_capabilities.document_formatting = false
-
-    local opts = { noremap = true, silent = true }
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>fmt", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-
-    -- TODO: check on this part.
-    -- if client.resolved_capabilities.document_formatting then
-    --     buf_set_keymap("n", "<space>fmt", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-    -- elseif client.resolved_capabilities.document_range_formatting then
-    --     buf_set_keymap("n", "<space>fmt", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-    -- end
   end
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
