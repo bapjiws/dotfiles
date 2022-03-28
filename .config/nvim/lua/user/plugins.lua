@@ -28,7 +28,10 @@ return require('packer').startup(function(use)
   -- Misc plugins
   use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
   use "kyazdani42/nvim-web-devicons"
+
+  -- Buffers
   use "akinsho/bufferline.nvim"
+  use "moll/vim-bbye" -- closing buffers
 
   use "kyazdani42/nvim-tree.lua"
 
@@ -38,7 +41,6 @@ return require('packer').startup(function(use)
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
   use "hrsh7th/cmp-buffer" -- buffer completions
-  use "moll/vim-bbye" -- closing buffers
   use "hrsh7th/cmp-path" -- path completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
@@ -54,7 +56,6 @@ return require('packer').startup(function(use)
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   use "tamago324/nlsp-settings.nvim"
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
