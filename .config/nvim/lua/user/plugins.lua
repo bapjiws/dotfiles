@@ -31,6 +31,7 @@ return require('packer').startup(function(use)
   use 'voldikss/vim-floaterm'
   use "tpope/vim-surround"
   use "tpope/vim-unimpaired"
+  use "mg979/vim-visual-multi"
 
   -- Buffers
   use "akinsho/bufferline.nvim"
