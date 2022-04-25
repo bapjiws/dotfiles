@@ -29,6 +29,8 @@ return require('packer').startup(function(use)
   use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
   use "kyazdani42/nvim-web-devicons"
   use 'voldikss/vim-floaterm'
+  use "tpope/vim-surround"
+  use "tpope/vim-unimpaired"
 
   -- Buffers
   use "akinsho/bufferline.nvim"
