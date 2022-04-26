@@ -35,7 +35,7 @@ return require('packer').startup(function(use)
   use "nvim-lualine/lualine.nvim"
 
   -- Buffers
-  use "akinsho/bufferline.nvim"
+  use {'akinsho/bufferline.nvim', tag = "*"}
   use "moll/vim-bbye" -- closing buffers
 
   use "kyazdani42/nvim-tree.lua"
