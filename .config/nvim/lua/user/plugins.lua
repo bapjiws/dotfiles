@@ -33,6 +33,7 @@ return require('packer').startup(function(use)
   use "tpope/vim-unimpaired"
   use "mg979/vim-visual-multi"
   use "nvim-lualine/lualine.nvim"
+  use "lukas-reineke/indent-blankline.nvim"
 
   -- Buffers
   use {'akinsho/bufferline.nvim', tag = "*"}
