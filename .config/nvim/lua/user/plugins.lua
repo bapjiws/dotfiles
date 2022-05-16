@@ -34,6 +34,8 @@ return require('packer').startup(function(use)
   use "mg979/vim-visual-multi"
   use "nvim-lualine/lualine.nvim"
   use "lukas-reineke/indent-blankline.nvim"
+  use "numToStr/Comment.nvim"
+
 
   -- Buffers
   use {'akinsho/bufferline.nvim', tag = "*"}
