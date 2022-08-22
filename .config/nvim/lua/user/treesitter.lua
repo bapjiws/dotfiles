@@ -45,9 +45,11 @@ configs.setup {
       },
     },
   },
-  -- TODO: re-enable after installing the comment plugin.
-  -- context_commentstring = {
-  --   enable = true,
-  --   enable_autocmd = false,
-  -- },
+  autopairs = {
+		enable = true,
+	},
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  }
 }
