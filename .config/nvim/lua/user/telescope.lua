@@ -8,13 +8,15 @@ local actions = require 'telescope.actions'
 telescope.setup {
   defaults = {
     prompt_prefix = " ",
-    selection_caret = "  ",
+    selection_caret = " ",
+    file_ignore_patterns = { ".git/", "node_modules" },
 
-    -- https://github.com/nvim-telescope/telescope.nvim#default-mappings
     mappings = {
       i = {
-         ["<C-j>"] = actions.move_selection_next,
-         ["<C-k>"] = actions.move_selection_previous,
+        ["<Down>"] = actions.cycle_history_next,
+        ["<Up>"] = actions.cycle_history_prev,
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
       },
     },
   },
@@ -38,4 +40,4 @@ vim.api.nvim_set_keymap('n', '<Leader>fwh', [[<Cmd>lua require('telescope.builti
 
 vim.api.nvim_set_keymap('n', '<Leader>rfc', [[<Cmd>lua require('telescope.builtin').lsp_references()<CR>]], opts)
 
-vim.api.nvim_set_keymap('n', '<Leader>fcm', [[<Cmd>lua require('telescope.builtin').git_bcommits()<CR>]], opts)
+vim.api.nvim_set_keymap('n', '<Leader>vst', [[<Cmd>lua require('telescope.builtin').git_status()<CR>]], opts)
