@@ -4,38 +4,50 @@ if not status_ok then
 end
 
 gitsigns.setup {
+  signs = {
+    add = { hl = "GitSignsAdd", text = "▎", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
+    change = { hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+    delete = { hl = "GitSignsDelete", text = "契", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+    topdelete = { hl = "GitSignsDelete", text = "契", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+    changedelete = { hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+  },
   current_line_blame = true,
   current_line_blame_opts = {
     delay = 500,
   },
   on_attach = function(bufnr)
-    local function map(mode, lhs, rhs, opts)
-        opts = vim.tbl_extend('force', {noremap = true, silent = true}, opts or {})
-        vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
+    local gs = package.loaded.gitsigns
+
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
     end
 
     -- Navigation
-    map('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
-    map('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
+    map('n', ']c', function()
+      if vim.wo.diff then return ']c' end
+      vim.schedule(function() gs.next_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+
+    map('n', '[c', function()
+      if vim.wo.diff then return '[c' end
+      vim.schedule(function() gs.prev_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
 
     -- Actions
-    -- map('n', '<leader>stg', ':Gitsigns stage_hunk<CR>')
-    -- map('v', '<leader>hs', ':Gitsigns stage_hunk<CR>')
+    map('n', '<leader>sth', '<cmd>Gitsigns stage_hunk<CR>')
+    map('n', '<leader>stb', '<cmd>Gitsigns stage_buffer<CR>')
+    map('n', '<leader>ush', '<cmd>Gitsigns undo_stage_hunk<CR>')
+    map('n', '<leader>rsh', '<cmd>Gitsigns reset_hunk<CR>')
+    map('n', '<leader>rsb', '<cmd>Gitsigns reset_buffer<CR>')
 
-    map('n', '<leader>und', ':Gitsigns reset_hunk<CR>')
-    map('v', '<leader>und', ':Gitsigns reset_hunk<CR>')
-
-    -- map('n', '<leader>hS', '<cmd>Gitsigns stage_buffer<CR>')
-    -- map('n', '<leader>hu', '<cmd>Gitsigns undo_stage_hunk<CR>')
-    map('n', '<leader>rst', '<cmd>Gitsigns reset_buffer<CR>')
+    map('n', '<leader>slh', '<cmd>Gitsigns select_hunk<CR>')
     map('n', '<leader>prw', '<cmd>Gitsigns preview_hunk<CR>')
     map('n', '<leader>bll', '<cmd>lua require"gitsigns".blame_line{full=true}<CR>')
     map('n', '<leader>dff', '<cmd>Gitsigns diffthis<CR>')
-    -- map('n', '<leader>hD', '<cmd>lua require"gitsigns".diffthis("~")<CR>')
     map('n', '<leader>tgd', '<cmd>Gitsigns toggle_deleted<CR>')
-
-    -- Text object
-    -- map('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-    -- map('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
   end
 }
