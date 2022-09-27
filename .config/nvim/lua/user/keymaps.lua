@@ -33,6 +33,8 @@ keymap("n", "n", "nzz", opts)
 keymap("n", "<leader>wrt", ":w<CR>", opts)
 keymap("n", "<leader>src", ":source ~/Git/dotfiles/.config/nvim/init.lua<CR>", opts)
 
+keymap("x", "<leader>pst", "\"_dP", opts)
+
 -- TODO: My keymaps
 -- " To change 2 spaces to a tab 
 -- ":%s/\(^\s*\)\@<=    /\t/g
