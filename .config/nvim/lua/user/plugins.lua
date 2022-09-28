@@ -57,13 +57,14 @@ return require('packer').startup(function(use)
 
   use "thinca/vim-qfreplace"
 
-  use({ "lewis6991/impatient.nvim" })
+  use "lewis6991/impatient.nvim"
+
+  use "kyazdani42/nvim-tree.lua"
 
   -- Buffers
   use {'akinsho/bufferline.nvim', tag = "*"}
   use "moll/vim-bbye" -- closing buffers
 
-  use "kyazdani42/nvim-tree.lua"
 
   -- Color scheme
   use "rebelot/kanagawa.nvim"
