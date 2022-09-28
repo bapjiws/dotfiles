@@ -11,3 +11,5 @@ ln -sf $DOTFILES_FOLDER/fish/config.fish $ORIGINAL_FOLDER/fish/config.fish
 ln -sf $DOTFILES_FOLDER/fish/functions/nvm.fish $ORIGINAL_FOLDER/fish/functions/nvm.fish
 
 ln -sf $DOTFILES_FOLDER/fish/starship.toml $ORIGINAL_FOLDER/starship.toml
+
+ln -sf $DOTFILES_FOLDER/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
