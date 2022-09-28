@@ -55,8 +55,7 @@ return require('packer').startup(function(use)
   use "numToStr/Comment.nvim"
   use "JoosepAlviste/nvim-ts-context-commentstring"
 
-
-
+  use "thinca/vim-qfreplace"
   -- Buffers
   use {'akinsho/bufferline.nvim', tag = "*"}
   use "moll/vim-bbye" -- closing buffers
