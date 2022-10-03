@@ -70,7 +70,7 @@ local function lsp_keymaps(bufnr)
 
   keymap(bufnr, "n", "<leader>rnm", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 
-  keymap(bufnr, "n", "<leader>fmt", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  keymap(bufnr, "n", "<leader>fmt", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
 end
 
 M.on_attach = function(client, bufnr)
