@@ -61,7 +61,7 @@ return require('packer').startup(function(use)
 
   use "kyazdani42/nvim-tree.lua"
 
-	use "goolord/alpha-nvim"
+  use "goolord/alpha-nvim"
 
   -- Buffers
   use {'akinsho/bufferline.nvim', tag = "*"}
