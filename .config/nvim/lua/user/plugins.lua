@@ -64,7 +64,7 @@ return require('packer').startup(function(use)
   use "goolord/alpha-nvim"
 
   -- Buffers
-  use {'akinsho/bufferline.nvim', tag = "*"}
+  use { 'akinsho/bufferline.nvim', tag = "*" }
   use "moll/vim-bbye" -- closing buffers
 
   -- Color scheme
@@ -94,7 +94,7 @@ return require('packer').startup(function(use)
   -- https://github.com/rafamadriz/friendly-snippets/wiki/Javascript,-Typescript,-Javascriptreact,-Typescriptreact
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
-   -- LSP
+  -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   use "tamago324/nlsp-settings.nvim"
