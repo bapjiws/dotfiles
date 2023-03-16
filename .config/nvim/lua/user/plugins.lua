@@ -73,21 +73,12 @@ return require('packer').startup(function(use)
   use "joshdick/onedark.vim"
 
   -- cmp plugins
-  use 'github/copilot.vim'
   use "hrsh7th/nvim-cmp" -- The completion plugin
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp"
-  use { "zbirenbaum/copilot.lua" }
-  use {
-    "zbirenbaum/copilot-cmp",
-    after = { "copilot.lua" },
-    config = function()
-      require("copilot_cmp").setup()
-    end
-  }
 
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
