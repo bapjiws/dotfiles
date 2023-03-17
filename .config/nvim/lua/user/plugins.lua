@@ -43,7 +43,7 @@ return require('packer').startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
   use "kyazdani42/nvim-web-devicons"
-  use 'voldikss/vim-floaterm'
+  -- use 'voldikss/vim-floaterm'
   use "tpope/vim-surround"
   use "tpope/vim-unimpaired"
   use "mg979/vim-visual-multi"
@@ -52,8 +52,8 @@ return require('packer').startup(function(use)
 
   use "windwp/nvim-autopairs"
 
-  use "numToStr/Comment.nvim"
-  use "JoosepAlviste/nvim-ts-context-commentstring"
+  -- use "numToStr/Comment.nvim"
+  -- use "JoosepAlviste/nvim-ts-context-commentstring"
 
   use "thinca/vim-qfreplace"
 
@@ -70,7 +70,7 @@ return require('packer').startup(function(use)
   -- Color scheme
   --[[ use "rebelot/kanagawa.nvim" ]]
   --[[ use "sjl/badwolf" ]]
-  use "joshdick/onedark.vim"
+  -- use "joshdick/onedark.vim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
