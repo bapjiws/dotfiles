@@ -68,9 +68,7 @@ return require('packer').startup(function(use)
   use "moll/vim-bbye" -- closing buffers
 
   -- Color scheme
-  --[[ use "rebelot/kanagawa.nvim" ]]
-  --[[ use "sjl/badwolf" ]]
-  use "joshdick/onedark.vim"
+  use "navarasu/onedark.nvim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
