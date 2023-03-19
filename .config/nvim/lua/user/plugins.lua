@@ -91,6 +91,8 @@ return require('packer').startup(function(use)
   use "tamago324/nlsp-settings.nvim"
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
+  use "j-hui/fidget.nvim" -- LSP status updates
+
   -- Telescope
   use "nvim-telescope/telescope.nvim"
 
