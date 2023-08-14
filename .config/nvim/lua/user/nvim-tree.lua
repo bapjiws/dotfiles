@@ -61,10 +61,6 @@ require("nvim-tree").setup({
       error = "",
     },
   },
-  view = {
-    width = 30,
-    side = "left",
-  },
 })
 
 vim.keymap.set('n', '<leader>fex', ':NvimTreeFindFile<CR>', {noremap = true, silent = true})
