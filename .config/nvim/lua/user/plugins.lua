@@ -41,7 +41,7 @@ packer.init {
 return require('packer').startup(function(use)
   -- Misc plugins
   use "wbthomason/packer.nvim" -- Have packer manage itself
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
+  use "nvim-lua/plenary.nvim"  -- Useful lua functions used by lots of plugins
   use 'voldikss/vim-floaterm'
   use "tpope/vim-surround"
   use "tpope/vim-unimpaired"
@@ -75,15 +75,15 @@ return require('packer').startup(function(use)
   use "navarasu/onedark.nvim"
 
   -- cmp plugins
-  use "hrsh7th/nvim-cmp" -- The completion plugin
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "hrsh7th/nvim-cmp"         -- The completion plugin
+  use "hrsh7th/cmp-buffer"       -- buffer completions
+  use "hrsh7th/cmp-path"         -- path completions
+  use "hrsh7th/cmp-cmdline"      -- cmdline completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp"
 
   -- snippets
-  use "L3MON4D3/LuaSnip" --snippet engine
+  use "L3MON4D3/LuaSnip"             --snippet engine
   -- https://github.com/rafamadriz/friendly-snippets/wiki/Javascript,-Typescript,-Javascriptreact,-Typescriptreact
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
@@ -95,7 +95,7 @@ return require('packer').startup(function(use)
   use "tamago324/nlsp-settings.nvim"
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
-  use "j-hui/fidget.nvim" -- LSP status updates
+  use "j-hui/fidget.nvim"               -- LSP status updates
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
