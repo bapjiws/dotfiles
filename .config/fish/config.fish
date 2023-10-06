@@ -7,4 +7,5 @@ alias lzg "lazygit"
 
 alias ll "exa -las type --git --icons"
 
+export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.bun/bin:$HOME/Library/Android/sdk/platform-tools:$PATH"
