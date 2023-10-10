@@ -7,6 +7,7 @@ local highlight = {
   "RainbowViolet",
   "RainbowCyan",
 }
+
 local hooks = require "ibl.hooks"
 -- create the highlight groups in the highlight setup hook, so they are reset
 -- every time the colorscheme changes
@@ -22,7 +23,7 @@ end)
 
 vim.g.rainbow_delimiters = { highlight = highlight }
 require("ibl").setup {
-  scope = { highlight = highlight },
+  scope = { highlight = highlight, include = { node_type = { ["*"] = { "*" } } } },
   viewport_buffer = { min = 1 }
 }
 
