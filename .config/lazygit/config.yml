@@ -1,2 +1,8 @@
+git:
+  log:
+    showWholeGraph: true
+gui:
+  nerdFontsVersion: "2"
+  showBranchCommitHash: true
 os:
-  editCommand: 'nvim'
+  editPreset: nvim"
