@@ -5,4 +5,4 @@ gui:
   nerdFontsVersion: "2"
   showBranchCommitHash: true
 os:
-  editPreset: nvim"
+  editPreset: "nvim"
