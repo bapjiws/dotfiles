@@ -12,3 +12,6 @@ ln -sf $DOTFILES_FOLDER/fish/functions/nvm.fish $ORIGINAL_FOLDER/fish/functions/
 ln -sf $DOTFILES_FOLDER/fish/starship.toml $ORIGINAL_FOLDER/starship.toml
 
 ln -sf $DOTFILES_FOLDER/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
+
+ln -sf $DOTFILES_FOLDER/ranger/rc.conf $ORIGINAL_FOLDER/ranger/rc.conf
+ln -sf $DOTFILES_FOLDER/ranger/rifle.conf $ORIGINAL_FOLDER/ranger/rifle.conf
