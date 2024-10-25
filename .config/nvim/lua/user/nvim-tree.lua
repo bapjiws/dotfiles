@@ -63,4 +63,4 @@ require("nvim-tree").setup({
   },
 })
 
-vim.keymap.set('n', '<leader>fex', ':NvimTreeFindFile<CR>', {noremap = true, silent = true})
+vim.keymap.set('n', '<leader>ftr', ':NvimTreeFindFile<CR>', {noremap = true, silent = true})
