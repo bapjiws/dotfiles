@@ -12,3 +12,22 @@ export PATH="$HOME/.bun/bin:$HOME/Library/Android/sdk/platform-tools:$PATH"
 
 fish_vi_key_bindings
 fzf --fish | source
+
+# Print tree structure in the preview window
+# export FZF_ALT_C_OPTS="
+#   --walker-skip .git,node_modules,target
+#   --preview 'tree -C {}'"
+
+# CTRL-Y to copy the command into clipboard using pbcopy
+# export FZF_CTRL_R_OPTS="
+#   --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+#   --color header:italic
+#   --header 'Press CTRL-Y to copy command into clipboard'"
+
+# Preview file content using bat (https://github.com/sharkdp/bat)
+# export FZF_CTRL_T_OPTS="
+#   --walker-skip .git,node_modules,target
+#   --preview 'bat -n --color=always {}'
+#   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+
+export FZF_CTRL_T_COMMAND="fd --type f --hidden --follow --exclude .git"
