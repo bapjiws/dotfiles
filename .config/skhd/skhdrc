@@ -1,3 +1,4 @@
 alt - b: open -a "Brave Browser"
 alt - t: open -a "iTerm"
 alt - m: open -a "Slack"
+alt - n: open -a "Obsidian"
