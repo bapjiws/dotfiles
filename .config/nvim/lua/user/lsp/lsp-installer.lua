@@ -29,7 +29,7 @@ mason_lspconfig.setup {
 }
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
-if not lspconfig_status_ok then 
+if not lspconfig_status_ok then
   return
 end
 
@@ -46,10 +46,10 @@ for _, server in pairs(servers) do
     opts = vim.tbl_deep_extend("force", lua_opts, opts)
   end
 
-	if server == "jsonls" then
+  if server == "jsonls" then
     local jsonls_opts = require("user.lsp.settings.jsonls")
     opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
-	end
+  end
 
   lspconfig[server].setup(opts)
 end
