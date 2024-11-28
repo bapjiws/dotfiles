@@ -9,6 +9,7 @@ alias ll "exa -las type --git --icons"
 
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.bun/bin:$HOME/Library/Android/sdk/platform-tools:$PATH"
+export PATH="$HOME/Git/tt-go/scripts:$PATH"
 
 fish_vi_key_bindings
 fzf --fish | source
@@ -30,4 +31,4 @@ fzf --fish | source
 #   --preview 'bat -n --color=always {}'
 #   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
-export FZF_CTRL_T_COMMAND="fd --type f --hidden --follow --exclude .git"
+export FZF_CTRL_T_COMMAND="fd --type d --type f --hidden --follow --exclude .git"
