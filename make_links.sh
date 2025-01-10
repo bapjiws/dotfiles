@@ -16,5 +16,5 @@ ln -sf $DOTFILES_FOLDER/lazygit/config.yml ~/Library/Application\ Support/lazygi
 ln -sf $DOTFILES_FOLDER/ranger/rc.conf $ORIGINAL_FOLDER/ranger/rc.conf
 ln -sf $DOTFILES_FOLDER/ranger/rifle.conf $ORIGINAL_FOLDER/ranger/rifle.conf
 
-mkdir $ORIGINAL_FOLDER/skhd
+mkdir -p $ORIGINAL_FOLDER/skhd
 ln -sf $DOTFILES_FOLDER/skhd/skhdrc $ORIGINAL_FOLDER/skhd/skhdrc
