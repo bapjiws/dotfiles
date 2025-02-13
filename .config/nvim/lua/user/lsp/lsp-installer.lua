@@ -52,6 +52,11 @@ for _, server in pairs(servers) do
     opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
   end
 
+  if server == "yamlls" then
+    local yamlls_opts = require("user.lsp.settings.yamlls")
+    opts = vim.tbl_deep_extend("force", yamlls_opts, opts)
+  end
+
   if server == "denols" then
     opts = vim.tbl_deep_extend("force", {
       root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
