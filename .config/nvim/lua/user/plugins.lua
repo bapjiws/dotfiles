@@ -102,9 +102,16 @@ return require('packer').startup(function(use)
   --[[   end ]]
   --[[ } ]]
   use "tamago324/nlsp-settings.nvim"
-  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
-  use "j-hui/fidget.nvim"               -- LSP status updates
+  use "j-hui/fidget.nvim" -- LSP status updates
+
+  use {
+    'nvimtools/none-ls.nvim', -- for formatters and linters
+
+    requires = {
+      'nvimtools/none-ls-extras.nvim', -- optional
+    },
+  }
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"

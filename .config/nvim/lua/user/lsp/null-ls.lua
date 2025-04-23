@@ -9,7 +9,7 @@ local code_actions = null_ls.builtins.code_actions
 null_ls.setup({
 	debug = false,
 	sources = {
-    code_actions.eslint_d,
+    require("none-ls.code_actions.eslint"),
 		formatting.prettierd,
 		formatting.stylua,
 	},
