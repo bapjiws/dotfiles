@@ -93,15 +93,14 @@ return require('packer').startup(function(use)
   use "williamboman/mason-lspconfig.nvim"
   use "neovim/nvim-lspconfig"
 
-  use { "zbirenbaum/copilot.lua" }
-  use {
-    "zbirenbaum/copilot-cmp",
-    after = { "copilot.lua" },
-    config = function()
-      require("copilot_cmp").setup()
-    end
-  }
-
+  --[[ use { "zbirenbaum/copilot.lua" } ]]
+  --[[ use { ]]
+  --[[   "zbirenbaum/copilot-cmp", ]]
+  --[[   after = { "copilot.lua" }, ]]
+  --[[   config = function() ]]
+  --[[     require("copilot_cmp").setup() ]]
+  --[[   end ]]
+  --[[ } ]]
   use "tamago324/nlsp-settings.nvim"
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
