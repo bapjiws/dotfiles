@@ -1,4 +1,4 @@
---[[ require("copilot").setup({ ]]
---[[   suggestion = { enabled = true }, ]]
---[[   panel = { enabled = true }, ]]
---[[ }) ]]
+require("CopilotChat").setup {
+  -- See Configuration section for options
+  agent = 'copilot',
+}

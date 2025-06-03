@@ -93,14 +93,19 @@ return require('packer').startup(function(use)
   use "williamboman/mason-lspconfig.nvim"
   use "neovim/nvim-lspconfig"
 
-  --[[ use { "zbirenbaum/copilot.lua" } ]]
-  --[[ use { ]]
-  --[[   "zbirenbaum/copilot-cmp", ]]
-  --[[   after = { "copilot.lua" }, ]]
-  --[[   config = function() ]]
-  --[[     require("copilot_cmp").setup() ]]
-  --[[   end ]]
-  --[[ } ]]
+  use {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    dependencies = {
+      { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+      { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+    },
+    build = "make tiktoken", -- Only on MacOS or Linux
+    opts = {
+      -- See Configuration section for options
+    },
+    -- See Commands section for default commands if you want to lazy load on them
+  }
+
   use "tamago324/nlsp-settings.nvim"
 
   use "j-hui/fidget.nvim" -- LSP status updates
