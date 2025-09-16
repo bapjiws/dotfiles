@@ -9,7 +9,7 @@ telescope.setup {
   defaults = {
     prompt_prefix = " ",
     selection_caret = " ",
-    file_ignore_patterns = { ".git/", "node_modules" },
+    file_ignore_patterns = { "node_modules" },
 
     mappings = {
       i = {
@@ -19,6 +19,11 @@ telescope.setup {
         ["<C-k>"] = actions.move_selection_previous,
       },
     },
+  },
+  pickers = {
+    find_files = {
+      hidden = true
+    }
   },
 }
 
