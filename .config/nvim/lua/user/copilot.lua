@@ -7,3 +7,10 @@ require("CopilotChat").setup {
     },
   }
 }
+
+vim.keymap.set('n', '<leader>cbc', function()
+  local input = vim.fn.input("Quick Chat: ")
+  if input ~= "" then
+    require("CopilotChat").ask("#buffer " .. input)
+  end
+end, { desc = "CopilotChat - Quick chat" })
