@@ -1,5 +1,4 @@
 require("CopilotChat").setup {
-  -- See Configuration section for options
   agent = 'copilot',
   mappings = {
     reset = {
