@@ -15,7 +15,6 @@ local servers = {
   "jsonls",
   "lua_ls",
   "ts_ls",
-  "denols",
   "vimls",
   "yamlls",
 }
@@ -57,28 +56,6 @@ for _, server in pairs(servers) do
     opts = vim.tbl_deep_extend("force", yamlls_opts, opts)
   end
 
-  if server == "denols" then
-    opts = vim.tbl_deep_extend("force", {
-      root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-    }, opts)
-  end
-
-  if server == "ts_ls" then
-    opts = vim.tbl_deep_extend("force", {
-      root_dir = function(filename)
-        local denoRootDir = lspconfig.util.root_pattern("deno.json", "deno.json")(filename);
-        if denoRootDir then
-          print('This seems to be a Deno project; returning nil so that tsserver does not attach');
-          return nil;
-        else
-          print('This seems to be a TS project; return root dir based on package.json')
-        end
-
-        return lspconfig.util.root_pattern("package.json")(filename);
-      end,
-      single_file_support = false,
-    }, opts)
-  end
 
   lspconfig[server].setup(opts)
 end
