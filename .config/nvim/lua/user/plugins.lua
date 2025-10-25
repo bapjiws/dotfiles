@@ -106,6 +106,32 @@ return require('packer').startup(function(use)
     -- See Commands section for default commands if you want to lazy load on them
   }
 
+  -- Required plugins
+  --[[ use 'nvim-lua/plenary.nvim' ]]
+  use 'MunifTanjim/nui.nvim'
+  use 'MeanderingProgrammer/render-markdown.nvim'
+
+  -- Optional dependencies
+  --[[ use 'hrsh7th/nvim-cmp' ]]
+  use 'nvim-tree/nvim-web-devicons' -- or use 'echasnovski/mini.icons'
+  use 'HakonHarnes/img-clip.nvim'
+  use 'zbirenbaum/copilot.lua'
+  use 'stevearc/dressing.nvim' -- for enhanced input UI
+  use 'folke/snacks.nvim' -- for modern input UI
+
+  -- Avante.nvim with build process
+  use {
+    'yetone/avante.nvim',
+    branch = 'main',
+    --[[ run = 'make BUILD_FROM_SOURCE=true', ]]
+    run = 'make',
+    --[[ config = function() ]]
+    --[[   require('avante').setup({ ]]
+    --[[     provider = "copilot" ]]
+    --[[   }) ]]
+    --[[ end ]]
+  }
+
   use "tamago324/nlsp-settings.nvim"
 
   use "j-hui/fidget.nvim" -- LSP status updates
