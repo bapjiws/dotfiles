@@ -51,6 +51,5 @@ for _, server in pairs(servers) do
     opts = vim.tbl_deep_extend("force", yamlls_opts, opts)
   end
 
-
-  vim.lsp.config[server].setup(opts)
+  vim.lsp.config(server, opts)
 end
