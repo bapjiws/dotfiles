@@ -10,7 +10,10 @@ null_ls.setup({
 	debug = false,
 	sources = {
     require("none-ls.code_actions.eslint"),
-		formatting.prettierd,
+		formatting.prettierd.with({
+			-- Use project-local prettier from node_modules (same as VS Code)
+			prefer_local = "node_modules/.bin",
+		}),
 		formatting.stylua,
 	},
 })
