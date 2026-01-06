@@ -4,7 +4,7 @@ success_symbol = ""
 error_symbol = ""
 
 [shell]
-fish_indicator = ""
+fish_indicator = "🐠"
 disabled = false
 
 [cmd_duration]
