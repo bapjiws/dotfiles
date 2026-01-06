@@ -53,3 +53,5 @@ function npm
     command npm $argv
   end
 end
+
+starship init fish | source
