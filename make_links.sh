@@ -18,3 +18,5 @@ ln -sf $DOTFILES_FOLDER/ranger/rifle.conf $ORIGINAL_FOLDER/ranger/rifle.conf
 
 mkdir -p $ORIGINAL_FOLDER/skhd
 ln -sf $DOTFILES_FOLDER/skhd/skhdrc $ORIGINAL_FOLDER/skhd/skhdrc
+
+touch ~/.hushlogin
