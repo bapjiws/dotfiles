@@ -35,23 +35,4 @@ fzf --fish | source
 
 export FZF_CTRL_T_COMMAND="fd --type d --type f --hidden --follow --exclude .git"
 
-# Example for Bash/Zsh
-# npm() {
-#   if command -v aikido-npm > /dev/null 2>&1; then
-#     aikido-npm "$@"
-#   else
-#     echo "Warning: safe-chain is not installed. npm will run without protection."
-#     command npm "$@"
-#   fi
-# }
-
-function npm
-  if command -v aikido-npm >/dev/null 2>&1
-    aikido-npm $argv
-  else
-    echo "Warning: safe-chain is not installed. npm will run without protection."
-    command npm $argv
-  end
-end
-
 starship init fish | source
