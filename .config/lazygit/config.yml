@@ -2,7 +2,7 @@ git:
   log:
     showWholeGraph: true
 gui:
-  nerdFontsVersion: "2"
+  nerdFontsVersion: "3"
   showBranchCommitHash: true
 os:
   editPreset: "nvim"
