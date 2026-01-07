@@ -196,10 +196,10 @@ return require('packer').startup(function(use)
 
   -- Treesitter
   use {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
+    'nvim-treesitter/nvim-treesitter',
+    lazy = false,
+    build = ':TSUpdate'
   }
-  use "nvim-treesitter/nvim-treesitter-refactor"
 
   -- Git
   use "lewis6991/gitsigns.nvim"
