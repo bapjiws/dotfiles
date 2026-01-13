@@ -19,4 +19,13 @@ ln -sf $DOTFILES_FOLDER/ranger/rifle.conf $ORIGINAL_FOLDER/ranger/rifle.conf
 mkdir -p $ORIGINAL_FOLDER/skhd
 ln -sf $DOTFILES_FOLDER/skhd/skhdrc $ORIGINAL_FOLDER/skhd/skhdrc
 
+mkdir -p $ORIGINAL_FOLDER/yabai
+ln -sf $DOTFILES_FOLDER/yabai/yabairc $ORIGINAL_FOLDER/yabai/yabairc
+
+ln -sf $DOTFILES_FOLDER/yabai/left50.sh $ORIGINAL_FOLDER/yabai/left50.sh
+chmod +x ~/.config/yabai/left50.sh
+
+ln -sf $DOTFILES_FOLDER/yabai/right50.sh $ORIGINAL_FOLDER/yabai/right50.sh
+chmod +x ~/.config/yabai/right50.sh
+
 touch ~/.hushlogin
