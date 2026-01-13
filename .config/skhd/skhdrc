@@ -2,3 +2,15 @@ alt - b: open -a "Brave Browser"
 alt - t: open -a "iTerm"
 alt - m: open -a "Slack"
 alt - n: open -a "Obsidian"
+
+# Focus (only after layout exists)
+cmd + alt - h     : yabai -m window --focus west
+cmd + alt - l     : yabai -m window --focus east
+cmd + alt - k     : yabai -m window --focus north
+cmd + alt - j     : yabai -m window --focus south
+
+# Left (stays 50%)
+cmd + alt - left : ~/.config/yabai/left50.sh
+
+# Right (stays 50%)
+cmd + alt - right : ~/.config/yabai/right50.sh
