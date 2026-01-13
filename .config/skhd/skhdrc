@@ -14,3 +14,9 @@ cmd + alt - left : ~/.config/yabai/left50.sh
 
 # Right (stays 50%)
 cmd + alt - right : ~/.config/yabai/right50.sh
+
+# Yabai zoom fullscreen (fill current space)
+cmd + alt - f : yabai -m window --toggle windowed-fullscreen
+
+# macOS native fullscreen toggle
+cmd + alt + shift - f : yabai -m window --toggle native-fullscreen
