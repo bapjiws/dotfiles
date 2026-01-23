@@ -119,6 +119,8 @@ return require('packer').startup(function(use)
   use 'stevearc/dressing.nvim' -- for enhanced input UI
   use 'folke/snacks.nvim' -- for modern input UI
 
+  use 'karb94/neoscroll.nvim'
+
   -- Avante.nvim with build process
   use {
     'yetone/avante.nvim',
