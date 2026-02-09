@@ -34,17 +34,6 @@ configs.setup {
       node_decremental = "[v",
     },
   },
-  refactor = {
-    highlight_definitions = { enable = true },
-    navigation = {
-      enable = true,
-      keymaps = {
-        goto_definition_lsp_fallback = "<leader>dfn",
-        goto_next_usage = "]w",
-        goto_previous_usage = "[w",
-      },
-    },
-  },
   autopairs = {
 		enable = true,
 	},

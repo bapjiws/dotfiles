@@ -92,6 +92,7 @@ return require('packer').startup(function(use)
   use "williamboman/mason.nvim"
   use "williamboman/mason-lspconfig.nvim"
   use "neovim/nvim-lspconfig"
+  use "RRethy/vim-illuminate" -- Highlight and navigate references
 
   use {
     "CopilotC-Nvim/CopilotChat.nvim",
