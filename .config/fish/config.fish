@@ -36,3 +36,4 @@ fzf --fish | source
 export FZF_CTRL_T_COMMAND="fd --type d --type f --hidden --follow --exclude .git"
 
 starship init fish | source
+source ~/.safe-chain/scripts/init-fish.fish # Safe-chain Fish initialization script
