@@ -4,14 +4,14 @@ alt - m: open -a "Slack"
 alt - n: open -a "Obsidian"
 alt - f: open -a "Finder"
 
-# Left (stays 50%)
-cmd + alt - left : ~/.config/yabai/left50.sh
+# make floating window fill left-half of screen
+cmd + alt - left : yabai -m window --grid 1:2:0:0:1:1
 
-# Right (stays 50%)
-cmd + alt - right : ~/.config/yabai/right50.sh
+# make floating window fill right-half of screen
+cmd + alt - right  : yabai -m window --grid 1:2:1:0:1:1
 
-# Yabai zoom fullscreen (fill current space)
-cmd + alt - f : yabai -m window --toggle windowed-fullscreen
+# make floating window fill screen
+cmd + alt - up     : yabai -m window --grid 1:1:0:0:1:1
 
-# macOS native fullscreen toggle
-cmd + alt + shift - f : yabai -m window --toggle native-fullscreen
+# toggle window native fullscreen
+cmd + alt - f : yabai -m window --toggle native-fullscreen
