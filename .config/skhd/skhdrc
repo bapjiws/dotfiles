@@ -17,17 +17,17 @@ cmd + alt - up     : yabai -m window --grid 1:1:0:0:1:1
 cmd + alt - f : yabai -m window --toggle native-fullscreen
 
 # focus monitor/display
-shift + alt - x : yabai -m display --focus recent
-shift + alt - z : yabai -m display --focus prev
-shift + alt - c : yabai -m display --focus next
-shift + alt - 1 : yabai -m display --focus 1
-shift + alt - 2 : yabai -m display --focus 2
-shift + alt - 3 : yabai -m display --focus 3
+# shift + alt - x : yabai -m display --focus recent
+# shift + alt - z : yabai -m display --focus prev
+# shift + alt - c : yabai -m display --focus next
+# shift + alt - 1 : yabai -m display --focus 1
+# shift + alt - 2 : yabai -m display --focus 2
+# shift + alt - 3 : yabai -m display --focus 3
 
 # send window to monitor and follow focus
-shift + cmd - x  : yabai -m window --display recent && yabai -m display --focus recent
-shift + cmd - z  : yabai -m window --display prev && yabai -m display --focus prev
-shift + cmd - c  : yabai -m window --display next && yabai -m display --focus next
-shift + cmd - 1  : yabai -m window --display 1 && yabai -m display --focus 1
-shift + cmd - 2  : yabai -m window --display 2 && yabai -m display --focus 2
-shift + cmd - 3  : yabai -m window --display 3 && yabai -m display --focus 3
+# shift + cmd - x  : yabai -m window --display recent && yabai -m display --focus recent
+# shift + cmd - z  : yabai -m window --display prev && yabai -m display --focus prev
+# shift + cmd - c  : yabai -m window --display next && yabai -m display --focus next
+# shift + cmd - 1  : yabai -m space --layout bsp; yabai -m window --display 1 && yabai -m display --focus 1; yabai -m space --layout float
+# shift + cmd - 2  : yabai -m space --layout bsp; yabai -m window --display 2 && yabai -m display --focus 2; yabai -m space --layout float
+# shift + cmd - 3  : yabai -m space --layout bsp; yabai -m window --display 3 && yabai -m display --focus 3; yabai -m space --layout float
