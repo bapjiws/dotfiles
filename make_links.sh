@@ -22,12 +22,6 @@ ln -sf $DOTFILES_FOLDER/skhd/skhdrc $ORIGINAL_FOLDER/skhd/skhdrc
 mkdir -p $ORIGINAL_FOLDER/yabai
 ln -sf $DOTFILES_FOLDER/yabai/yabairc $ORIGINAL_FOLDER/yabai/yabairc
 
-ln -sf $DOTFILES_FOLDER/yabai/left50.sh $ORIGINAL_FOLDER/yabai/left50.sh
-chmod +x ~/.config/yabai/left50.sh
-
-ln -sf $DOTFILES_FOLDER/yabai/right50.sh $ORIGINAL_FOLDER/yabai/right50.sh
-chmod +x ~/.config/yabai/right50.sh
-
 ln -sf $DOTFILES_FOLDER/iterm2/profile.json ~/Library/Application\ Support/iTerm2/DynamicProfiles/profile.json
 
 touch ~/.hushlogin
