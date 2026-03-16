@@ -17,9 +17,6 @@ cmd + alt - up : yabai -m window --toggle float; yabai -m window --grid 1:1:0:0:
 cmd + alt - f : yabai -m window --toggle native-fullscreen
 
 # focus monitor
-# shift + alt - x  : yabai -m display --focus recent
-# shift + alt - z  : yabai -m display --focus prev
-# shift + alt - c  : yabai -m display --focus next
 shift + alt - 1  : yabai -m display --focus 1
 shift + alt - 2  : yabai -m display --focus 2
 shift + alt - 3  : yabai -m display --focus 3
