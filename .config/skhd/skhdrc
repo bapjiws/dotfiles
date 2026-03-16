@@ -2,7 +2,7 @@ alt - b: open -a "Brave Browser"
 alt - t: open -a "iTerm"
 alt - m: open -a "Slack"
 alt - n: open -a "Obsidian"
-alt - f: osascript -e 'tell application "Finder" to activate' -e 'tell application "Finder" to make new Finder window'
+alt - f: osascript -e 'tell application "Finder" to make new Finder window' -e 'tell application "Finder" to activate'
 
 # make floating window fill left-half of screen
 cmd + alt - left : yabai -m window --grid 1:2:0:0:1:1
