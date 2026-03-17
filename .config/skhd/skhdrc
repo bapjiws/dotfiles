@@ -4,13 +4,13 @@ alt - m: open -a "Slack"
 alt - n: open -a "Obsidian"
 alt - f: osascript -e 'tell application "Finder" to make new Finder window' -e 'tell application "Finder" to activate'
 
-# snap window to left half (50% width) - toggle float, position, toggle back
+# snap window to left half (50% width) - toggle float layout, position, toggle back to tiling (bsp) layout
 cmd + alt - left : yabai -m window --toggle float; yabai -m window --grid 1:2:0:0:1:1; yabai -m window --toggle bsp
 
-# snap window to right half (50% width) - toggle float, position, toggle back
+# snap window to right half (50% width) - toggle float layout, position, toggle back to tiling (bsp) layout
 cmd + alt - right : yabai -m window --toggle float; yabai -m window --grid 1:2:1:0:1:1; yabai -m window --toggle bsp
 
-# make window fill screen - toggle float, position, toggle back
+# make window fill screen - toggle float layout, position, toggle back to tiling (bsp) layout
 cmd + alt - up : yabai -m window --toggle float; yabai -m window --grid 1:1:0:0:1:1; yabai -m window --toggle bsp
 
 # toggle window native fullscreen
