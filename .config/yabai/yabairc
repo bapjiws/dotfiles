@@ -1,4 +1,20 @@
 #!/usr/bin/env sh
 
-# global settings
+# Layouts:
+#
+# 1. BSP (Binary Space Partitioning) Mode:
+# - Tiling layout: Windows automatically tile to fill available space
+# - Windows are organized in a binary tree structure
+# - When you open a new window, it splits the current space in half (either
+# horizontally or vertically)
+# - Windows don't overlap - they're arranged side-by-side
+# - Think: automatic window organization like i3, dwm, or other tiling window
+# managers on Linux
+#
+# 2. Float Mode:
+# - Traditional layout: Windows behave like standard macOS windows
+# - Windows can overlap, be moved freely, and resized manually
+# - You have full control over window position and size
+# - This is how macOS normally works by default
+
 yabai -m config layout bsp
