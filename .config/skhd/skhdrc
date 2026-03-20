@@ -2,6 +2,7 @@ alt - b: open -a "Brave Browser"
 alt - t: open -a "iTerm"
 alt - m: open -a "Slack"
 alt - n: open -a "Obsidian"
+# each press opens a new Finder window using AppleScript
 alt - f: osascript -e 'tell application "Finder" to make new Finder window' -e 'tell application "Finder" to activate'
 
 # snap window to left half (50% width) - toggle float layout, position, toggle back to tiling (bsp) layout
