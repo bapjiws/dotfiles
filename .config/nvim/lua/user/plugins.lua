@@ -94,19 +94,6 @@ return require('packer').startup(function(use)
   use "neovim/nvim-lspconfig"
   use "RRethy/vim-illuminate" -- Highlight and navigate references
 
-  use {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
-      { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
-    },
-    build = "make tiktoken", -- Only on MacOS or Linux
-    opts = {
-      -- See Configuration section for options
-    },
-    -- See Commands section for default commands if you want to lazy load on them
-  }
-
   -- Required plugins
   --[[ use 'nvim-lua/plenary.nvim' ]]
   use 'MunifTanjim/nui.nvim'
@@ -116,24 +103,10 @@ return require('packer').startup(function(use)
   --[[ use 'hrsh7th/nvim-cmp' ]]
   use 'nvim-tree/nvim-web-devicons' -- or use 'echasnovski/mini.icons'
   use 'HakonHarnes/img-clip.nvim'
-  use 'zbirenbaum/copilot.lua'
   use 'stevearc/dressing.nvim' -- for enhanced input UI
   use 'folke/snacks.nvim' -- for modern input UI
 
   use 'karb94/neoscroll.nvim'
-
-  -- Avante.nvim with build process
-  use {
-    'yetone/avante.nvim',
-    branch = 'main',
-    --[[ run = 'make BUILD_FROM_SOURCE=true', ]]
-    run = 'make',
-    --[[ config = function() ]]
-    --[[   require('avante').setup({ ]]
-    --[[     provider = "copilot" ]]
-    --[[   }) ]]
-    --[[ end ]]
-  }
 
   use {
     "NickvanDyke/opencode.nvim",
