@@ -1,188 +1,153 @@
-local fn = vim.fn
-
--- Automatically install packer
-local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system {
-    "git",
-    "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
-  }
-  print "Installing packer close and reopen Neovim..."
-  vim.cmd [[packadd packer.nvim]]
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.uv.fs_stat(lazypath) then
+  vim.fn.system({
+    "git", "clone", "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]]
+require("lazy").setup({
 
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-  return
-end
+  -- Misc
+  { "nvim-lua/plenary.nvim" },
+  { "tpope/vim-surround" },
+  { "tpope/vim-unimpaired" },
+  { "mg979/vim-visual-multi" },
+  { "thinca/vim-qfreplace" },
+  { "windwp/nvim-autopairs" },
+  { "numToStr/Comment.nvim" },
+  { "JoosepAlviste/nvim-ts-context-commentstring" },
 
--- Have packer use a popup window
-packer.init {
-  display = {
-    open_fn = function()
-      return require("packer.util").float { border = "rounded" }
-    end,
+  -- UI
+  { "nvim-lualine/lualine.nvim" },
+  { "lukas-reineke/indent-blankline.nvim" },
+  { "karb94/neoscroll.nvim" },
+  { "chrisbra/Colorizer" },
+  { "navarasu/onedark.nvim" },
+  { "akinsho/bufferline.nvim", version = "*" },
+  { "moll/vim-bbye" },
+  { "goolord/alpha-nvim" },
+  { "voldikss/vim-floaterm" },
+  { "stevearc/dressing.nvim" },
+
+  -- Icons (shared dependency)
+  { "nvim-tree/nvim-web-devicons" },
+
+  -- File explorer
+  {
+    "nvim-tree/nvim-tree.lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
-}
 
-return require('packer').startup(function(use)
-  -- Misc plugins
-  use "wbthomason/packer.nvim" -- Have packer manage itself
-  use "nvim-lua/plenary.nvim"  -- Useful lua functions used by lots of plugins
-  use 'voldikss/vim-floaterm'
-  use "tpope/vim-surround"
-  use "tpope/vim-unimpaired"
-  use "mg979/vim-visual-multi"
-  use "nvim-lualine/lualine.nvim"
-  use "lukas-reineke/indent-blankline.nvim"
+  -- Completion
+  { "hrsh7th/nvim-cmp" },
+  { "hrsh7th/cmp-buffer" },
+  { "hrsh7th/cmp-path" },
+  { "hrsh7th/cmp-cmdline" },
+  { "saadparwaiz1/cmp_luasnip" },
+  { "hrsh7th/cmp-nvim-lsp" },
 
-  use "windwp/nvim-autopairs"
-
-  use "numToStr/Comment.nvim"
-  use "JoosepAlviste/nvim-ts-context-commentstring"
-
-  use "thinca/vim-qfreplace"
-
-  use "lewis6991/impatient.nvim"
-
-  use {
-    'nvim-tree/nvim-tree.lua',
-    requires = {
-      'nvim-tree/nvim-web-devicons', -- optional
-    },
-  }
-
-  use "goolord/alpha-nvim"
-
-  -- Buffers
-  use { 'akinsho/bufferline.nvim', tag = "*" }
-  use "moll/vim-bbye" -- closing buffers
-
-  -- Color scheme
-  use "navarasu/onedark.nvim"
-  use "chrisbra/Colorizer"
-
-  -- cmp plugins
-  use "hrsh7th/nvim-cmp"         -- The completion plugin
-  use "hrsh7th/cmp-buffer"       -- buffer completions
-  use "hrsh7th/cmp-path"         -- path completions
-  use "hrsh7th/cmp-cmdline"      -- cmdline completions
-  use "saadparwaiz1/cmp_luasnip" -- snippet completions
-  use "hrsh7th/cmp-nvim-lsp"
-
-  -- snippets
-  use "L3MON4D3/LuaSnip"             --snippet engine
-  -- https://github.com/rafamadriz/friendly-snippets/wiki/Javascript,-Typescript,-Javascriptreact,-Typescriptreact
-  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+  -- Snippets
+  { "L3MON4D3/LuaSnip" },
+  { "rafamadriz/friendly-snippets" },
 
   -- LSP
-  use "williamboman/mason.nvim"
-  use "williamboman/mason-lspconfig.nvim"
-  use "neovim/nvim-lspconfig"
-  use "RRethy/vim-illuminate" -- Highlight and navigate references
+  { "williamboman/mason.nvim" },
+  { "williamboman/mason-lspconfig.nvim" },
+  { "neovim/nvim-lspconfig" },
+  { "RRethy/vim-illuminate" },
+  { "tamago324/nlsp-settings.nvim" },
+  { "j-hui/fidget.nvim" },
+  {
+    "nvimtools/none-ls.nvim",
+    dependencies = { "nvimtools/none-ls-extras.nvim" },
+  },
 
-  -- Required plugins
-  --[[ use 'nvim-lua/plenary.nvim' ]]
-  use 'MunifTanjim/nui.nvim'
-  use 'MeanderingProgrammer/render-markdown.nvim'
+  -- Telescope
+  { "nvim-telescope/telescope.nvim" },
 
-  -- Optional dependencies
-  --[[ use 'hrsh7th/nvim-cmp' ]]
-  use 'nvim-tree/nvim-web-devicons' -- or use 'echasnovski/mini.icons'
-  use 'HakonHarnes/img-clip.nvim'
-  use 'stevearc/dressing.nvim' -- for enhanced input UI
-  use 'folke/snacks.nvim' -- for modern input UI
+  -- Treesitter
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    lazy = false,
+  },
 
-  use 'karb94/neoscroll.nvim'
+  -- Git
+  { "lewis6991/gitsigns.nvim" },
 
-  use {
+  -- Markdown
+  { "MeanderingProgrammer/render-markdown.nvim" },
+  { "HakonHarnes/img-clip.nvim" },
+  { "MunifTanjim/nui.nvim" },
+
+  -- Snacks (UI utilities, required by opencode.nvim)
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+  },
+
+  -- AI agent
+  {
     "NickvanDyke/opencode.nvim",
     dependencies = {
-      -- Recommended for `ask()` and `select()`.
-      -- Required for default `toggle()` implementation.
-      { "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
+      { "folke/snacks.nvim", opts = {
+        input = {
+          win = {
+            relative = "editor",
+            width = 100,
+            height = 10,
+          }
+        },
+        picker = {},
+        terminal = {}
+      }},
     },
     config = function()
       ---@type opencode.Opts
       vim.g.opencode_opts = {
-        -- Your configuration, if any — see `lua/opencode/config.lua`, or "goto definition".
-        --[[ provider = "copilot", ]]
         provider = {
-          -- TODO: modifiable ON
           enabled = "snacks",
           ---@type opencode.provider.Snacks
+          snacks = {},
+        },
+        ask = {
           snacks = {
-            -- Customize `snacks.terminal` to your liking.
+            win = {
+              relative = "editor",
+              width = 100,
+              height = 50,
+            }
           }
         }
       }
 
-      -- Required for `opts.auto_reload`.
       vim.o.autoread = true
 
       vim.keymap.set({ "n", "x" }, "<leader>cmd", function() require("opencode").select() end, { desc = "All commands" })
-
       vim.keymap.set({ "n", "x" }, "<leader>ask", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask" })
-
-
       vim.keymap.set({ "n", "x" }, "<leader>ths", function() require("opencode").prompt("@this") end, { desc = "Add to opencode" })
       vim.keymap.set({ "n", "x" }, "<leader>slt", function() require("opencode").prompt("@selection") end, { desc = "Add selection" })
-
-      vim.keymap.set({ "n", "t" }, "<leader>tgl",   function() require("opencode").toggle() end, { desc = "Toggle" })
-
+      vim.keymap.set({ "n", "t" }, "<leader>tgl", function() require("opencode").toggle() end, { desc = "Toggle" })
       vim.keymap.set("n", "<leader>ssn", function() require("opencode").command("session.new") end, { desc = "New session" })
       vim.keymap.set("n", "<leader>ssl", function() require("opencode").command("session.list") end, { desc = "List all sessions" })
-
       vim.keymap.set("n", "<S-C-k>", function() require("opencode").command("session.half.page.up") end, { desc = "opencode half page up" })
       vim.keymap.set("n", "<S-C-j>", function() require("opencode").command("session.half.page.down") end, { desc = "opencode half page down" })
 
-      -- You may want these if you stick with the opinionated "<C-a>" and "<C-x>" above — otherwise consider "<leader>o".
-      --[[ vim.keymap.set('n', '+', '<C-a>', { desc = 'Increment', noremap = true }) ]]
-      --[[ vim.keymap.set('n', '-', '<C-x>', { desc = 'Decrement', noremap = true }) ]]
+      vim.keymap.set('n', '<leader>ttc', function()
+        vim.cmd('vsplit')
+        vim.cmd('terminal fish -lc "tt claude"')
+        vim.cmd('startinsert')
+      end, { desc = 'Open tt claude' })
     end,
-  }
+  },
 
-  use "tamago324/nlsp-settings.nvim"
-
-  use "j-hui/fidget.nvim" -- LSP status updates
-
-  use {
-    'nvimtools/none-ls.nvim', -- for formatters and linters
-
-    requires = {
-      'nvimtools/none-ls-extras.nvim', -- optional
-    },
-  }
-
-  -- Telescope
-  use "nvim-telescope/telescope.nvim"
-
-  -- Treesitter
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    lazy = false,
-    build = ':TSUpdate'
-  }
-
-  -- Git
-  use "lewis6991/gitsigns.nvim"
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if PACKER_BOOTSTRAP then
-    require("packer").sync()
-  end
-end)
+}, {
+  ui = {
+    border = "rounded",
+  },
+})
