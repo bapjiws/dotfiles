@@ -1,9 +1,9 @@
-local mason_status_ok, mason = pcall(require, "mason")
-if not mason_status_ok then
-  return
-end
-
+local mason_ok, mason = pcall(require, "mason")
+if not mason_ok then return end
 mason.setup()
+
+local mlsp_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not mlsp_ok then return end
 
 local servers = {
   "bashls",
@@ -19,37 +19,26 @@ local servers = {
   "yamlls",
 }
 
-local mason_lspconfig_status_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
-if not mason_lspconfig_status_ok then
-  return
-end
-
-mason_lspconfig.setup {
+mason_lspconfig.setup({
   ensure_installed = servers,
-}
+  handlers = {
+    function(server_name)
+      local opts = {
+        on_attach    = require("user.lsp.handlers").on_attach,
+        capabilities = require("user.lsp.handlers").capabilities,
+      }
 
-local opts = {}
+      if server_name == "lua_ls" then
+        opts = vim.tbl_deep_extend("force", require("user.lsp.settings.lua_ls"), opts)
+      end
+      if server_name == "jsonls" then
+        opts = vim.tbl_deep_extend("force", require("user.lsp.settings.jsonls"), opts)
+      end
+      if server_name == "yamlls" then
+        opts = vim.tbl_deep_extend("force", require("user.lsp.settings.yamlls"), opts)
+      end
 
-for _, server in pairs(servers) do
-  opts = {
-    on_attach = require("user.lsp.handlers").on_attach,
-    capabilities = require("user.lsp.handlers").capabilities,
-  }
-
-  if server == "lua_ls" then
-    local lua_opts = require "user.lsp.settings.lua_ls"
-    opts = vim.tbl_deep_extend("force", lua_opts, opts)
-  end
-
-  if server == "jsonls" then
-    local jsonls_opts = require("user.lsp.settings.jsonls")
-    opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
-  end
-
-  if server == "yamlls" then
-    local yamlls_opts = require("user.lsp.settings.yamlls")
-    opts = vim.tbl_deep_extend("force", yamlls_opts, opts)
-  end
-
-  vim.lsp.config(server, opts)
-end
+      require("lspconfig")[server_name].setup(opts)
+    end,
+  },
+})

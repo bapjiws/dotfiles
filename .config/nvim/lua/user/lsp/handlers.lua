@@ -11,7 +11,6 @@ M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 
 M.setup = function()
   local signs = {
-
     { name = "DiagnosticSignError", text = "" },
     { name = "DiagnosticSignWarn", text = "" },
     { name = "DiagnosticSignHint", text = "" },
@@ -22,12 +21,10 @@ M.setup = function()
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
   end
 
-  local config = {
+  vim.diagnostic.config({
     virtual_text = true,
-    signs = {
-      active = signs,
-    },
-    update_in_insert = true,
+    signs = true,
+    update_in_insert = false,
     underline = true,
     severity_sort = true,
     float = {
@@ -38,9 +35,15 @@ M.setup = function()
       header = "",
       prefix = "",
     },
-  }
+  })
 
-  vim.diagnostic.config(config)
+  -- Show diagnostic float automatically after cursor is still
+  vim.api.nvim_create_autocmd("CursorHold", {
+    group = vim.api.nvim_create_augroup("UserDiagnosticFloat", { clear = true }),
+    callback = function()
+      vim.diagnostic.open_float(nil, { focus = false })
+    end,
+  })
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "rounded",
@@ -49,40 +52,44 @@ M.setup = function()
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
     border = "rounded",
   })
-end
 
-local function lsp_keymaps(bufnr)
-  local keymap = vim.api.nvim_buf_set_keymap
-  local opts = { noremap = true, silent = true }
+  -- Register LSP keymaps via LspAttach so they fire reliably for every server
+  vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("UserLspKeymaps", { clear = true }),
+    callback = function(ev)
+      local bufnr = ev.buf
+      local client = vim.lsp.get_client_by_id(ev.data.client_id)
+      local map = vim.keymap.set
+      local opts = { noremap = true, silent = true, buffer = bufnr }
 
-  keymap(bufnr, "n", "<leader>dcr", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  keymap(bufnr, "n", "<leader>imp", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  keymap(bufnr, "n", "<leader>dfn", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  keymap(bufnr, "n", "<leader>ref", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  keymap(bufnr, "n", "<leader>hov", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  keymap(bufnr, "n", "<leader>sgn", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-  keymap(bufnr, "n", "<leader>cac", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+      -- Disable LSP formatting for servers where conform takes over
+      if client and (client.name == "ts_ls" or client.name == "lua_ls") then
+        client.server_capabilities.documentFormattingProvider = false
+      end
 
-  keymap(bufnr, "n", "<leader>dgn", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-  keymap(bufnr, "n", "<leader>dgl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-  keymap(bufnr, "n", "[d", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<CR>", opts)
-  keymap(bufnr, "n", "]d", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<CR>", opts)
+      map("n", "<leader>dcr", vim.lsp.buf.declaration,    vim.tbl_extend("force", opts, { desc = "Declaration" }))
+      map("n", "<leader>imp", vim.lsp.buf.implementation, vim.tbl_extend("force", opts, { desc = "Implementation" }))
+      map("n", "<leader>dfn", vim.lsp.buf.definition,     vim.tbl_extend("force", opts, { desc = "Definition" }))
+      map("n", "<leader>ref", vim.lsp.buf.references,     vim.tbl_extend("force", opts, { desc = "References" }))
+      map("n", "<leader>hov", vim.lsp.buf.hover,          vim.tbl_extend("force", opts, { desc = "Hover" }))
+      map("n", "<leader>sgn", vim.lsp.buf.signature_help, vim.tbl_extend("force", opts, { desc = "Signature help" }))
+      map("n", "<leader>cac", vim.lsp.buf.code_action,    vim.tbl_extend("force", opts, { desc = "Code action" }))
+      map("n", "<leader>rnm", vim.lsp.buf.rename,         vim.tbl_extend("force", opts, { desc = "Rename" }))
 
-  keymap(bufnr, "n", "<leader>rnm", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+      map("n", "<leader>dgn", vim.diagnostic.setloclist,  vim.tbl_extend("force", opts, { desc = "Diagnostics (loclist)" }))
+      map("n", "<leader>dgl", vim.diagnostic.open_float,  vim.tbl_extend("force", opts, { desc = "Diagnostics (float)" }))
+      map("n", "[d", function() vim.diagnostic.goto_prev({ float = true }) end, vim.tbl_extend("force", opts, { desc = "Prev diagnostic" }))
+      map("n", "]d", function() vim.diagnostic.goto_next({ float = true }) end, vim.tbl_extend("force", opts, { desc = "Next diagnostic" }))
 
-  keymap(bufnr, "n", "<leader>fmt", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
+      map("n", "<leader>fmt", function()
+        require("conform").format({ lsp_fallback = true })
+      end, vim.tbl_extend("force", opts, { desc = "Format" }))
+    end,
+  })
 end
 
 M.on_attach = function(client, bufnr)
-  if client.name == "tsserver" then
-    client.server_capabilities.document_formatting = false
-  end
-
-  if client.name == "lua_ls" then
-    client.server_capabilities.document_formatting = false
-  end
-
-  lsp_keymaps(bufnr)
+  -- Kept for compatibility; keymaps are now handled via LspAttach autocmd in M.setup()
 end
 
 return M
