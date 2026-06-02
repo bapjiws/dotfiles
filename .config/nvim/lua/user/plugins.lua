@@ -12,7 +12,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 
   -- Misc
-  { "nvim-lua/plenary.nvim" },
   { "tpope/vim-unimpaired" },
   { "mg979/vim-visual-multi" },
   { "thinca/vim-qfreplace" },
@@ -88,12 +87,12 @@ require("lazy").setup({
 \ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\
  \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
           keys = {
-            { icon = " ", key = "f", desc = "Find File",         action = ":lua require('telescope.builtin').find_files()" },
-            { icon = " ", key = "e", desc = "New File",          action = ":ene | startinsert" },
-            { icon = " ", key = "r", desc = "Recent Files",      action = ":lua require('telescope.builtin').oldfiles()" },
-            { icon = " ", key = "t", desc = "Find Text",         action = ":lua require('telescope.builtin').live_grep()" },
-            { icon = " ", key = "c", desc = "Configuration",     action = ":e ~/.config/nvim/init.lua" },
-            { icon = " ", key = "q", desc = "Quit",              action = ":qa" },
+            { icon = " ", key = "f", desc = "Find File",     action = function() Snacks.picker.files({ hidden = true }) end },
+            { icon = " ", key = "e", desc = "New File",      action = ":ene | startinsert" },
+            { icon = " ", key = "r", desc = "Recent Files",  action = function() Snacks.picker.recent() end },
+            { icon = " ", key = "t", desc = "Find Text",     action = function() Snacks.picker.grep() end },
+            { icon = " ", key = "c", desc = "Configuration", action = ":e ~/.config/nvim/init.lua" },
+            { icon = " ", key = "q", desc = "Quit",          action = ":qa" },
           },
         },
       },
@@ -196,9 +195,6 @@ require("lazy").setup({
       })
     end,
   },
-
-  -- Telescope (to be replaced by snacks.picker in the next commit)
-  { "nvim-telescope/telescope.nvim" },
 
   -- Treesitter
   {
