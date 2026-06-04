@@ -30,3 +30,5 @@ map("n", "<leader>fwh", function() Snacks.picker.help({ pattern = vim.fn.expand(
 
 map("n", "<leader>rfc", function() Snacks.picker.lsp_references() end, vim.tbl_extend("force", opts, { desc = "LSP references" }))
 map("n", "<leader>vst", function() Snacks.picker.git_status() end,     vim.tbl_extend("force", opts, { desc = "Git status" }))
+
+vim.keymap.set("n", "<S-x>", function() Snacks.bufdelete() end, { noremap = true, silent = true, desc = "Close buffer" })

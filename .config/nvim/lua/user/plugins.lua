@@ -32,7 +32,6 @@ require("lazy").setup({
   -- UI
   { "nvim-lualine/lualine.nvim" },
   { "akinsho/bufferline.nvim", version = "*" },
-  { "moll/vim-bbye" },
   { "navarasu/onedark.nvim" },
   { "nvim-tree/nvim-web-devicons" },
 
