@@ -31,4 +31,10 @@ map("n", "<leader>fwh", function() Snacks.picker.help({ pattern = vim.fn.expand(
 map("n", "<leader>rfc", function() Snacks.picker.lsp_references() end, vim.tbl_extend("force", opts, { desc = "LSP references" }))
 map("n", "<leader>vst", function() Snacks.picker.git_status() end,     vim.tbl_extend("force", opts, { desc = "Git status" }))
 
-vim.keymap.set("n", "<S-x>", function() Snacks.bufdelete() end, { noremap = true, silent = true, desc = "Close buffer" })
+-- Buffer
+map("n", "<S-x>", function() Snacks.bufdelete() end, vim.tbl_extend("force", opts, { desc = "Close buffer" }))
+
+-- Terminal / tools
+map("n", "<leader>vct", function() Snacks.lazygit() end,          vim.tbl_extend("force", opts, { desc = "Lazygit" }))
+map("n", "<leader>fex", function() Snacks.terminal("ranger") end, vim.tbl_extend("force", opts, { desc = "File explorer (ranger)" }))
+map("n", "<leader>trm", function() Snacks.terminal("fish") end,   vim.tbl_extend("force", opts, { desc = "Terminal" }))

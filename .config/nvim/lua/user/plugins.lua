@@ -128,20 +128,6 @@ require("lazy").setup({
 			lazygit = { enabled = true },
 			picker = { enabled = true },
 		},
-		config = function(_, opts)
-			require("snacks").setup(opts)
-
-			-- Terminal keymaps (replaces vim-floaterm)
-			vim.keymap.set("n", "<leader>vct", function()
-				Snacks.lazygit()
-			end, { desc = "Lazygit" })
-			vim.keymap.set("n", "<leader>fex", function()
-				Snacks.terminal("ranger")
-			end, { desc = "File explorer (ranger)" })
-			vim.keymap.set("n", "<leader>trm", function()
-				Snacks.terminal("fish")
-			end, { desc = "Terminal" })
-		end,
 	},
 
 	-- File explorer
