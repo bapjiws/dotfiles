@@ -7,16 +7,20 @@ map("n", "<leader>fwf", function() Snacks.picker.files({ hidden = true, pattern 
 
 map("n", "<leader>sip", function() Snacks.picker.grep() end,       vim.tbl_extend("force", opts, { desc = "Grep" }))
 map("n", "<leader>fwp", function() Snacks.picker.grep_word() end,  vim.tbl_extend("force", opts, { desc = "Grep (cword)" }))
-map("n", "<leader>fqp", function()
-  local line  = vim.fn.getline(".")
-  local s     = string.find(line, '"[^"]*"')
-  local search = ""
+local function grep_quoted(quote)
+  local line    = vim.fn.getline(".")
+  local pattern = quote .. "[^" .. quote .. "]+" .. quote
+  local s       = string.find(line, pattern)
+  local search  = ""
   if s then
-    local e = string.find(line, '"', s + 1)
+    local e = string.find(line, quote, s + 1)
     if e then search = string.sub(line, s + 1, e - 1) end
   end
   Snacks.picker.grep({ search = search })
-end, vim.tbl_extend("force", opts, { desc = "Grep quoted string" }))
+end
+
+map("n", "<leader>fqp", function() grep_quoted('"') end, vim.tbl_extend("force", opts, { desc = "Grep double-quoted string" }))
+map("n", "<leader>fqs", function() grep_quoted("'") end, vim.tbl_extend("force", opts, { desc = "Grep single-quoted string" }))
 
 map("n", "<leader>sib", function() Snacks.picker.buffers() end,         vim.tbl_extend("force", opts, { desc = "Buffers" }))
 map("n", "<leader>cmh", function() Snacks.picker.command_history() end, vim.tbl_extend("force", opts, { desc = "Command history" }))
