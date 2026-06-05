@@ -129,6 +129,7 @@ require("lazy").setup({
 			lazygit = { enabled = true },
 			picker = { enabled = true },
 		gh = {},
+		gitbrowse = {},
 		},
 	},
 

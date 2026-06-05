@@ -40,7 +40,10 @@ map("n", "<leader>fex", function() Snacks.terminal("ranger") end, vim.tbl_extend
 map("n", "<leader>trm", function() Snacks.terminal("fish") end,   vim.tbl_extend("force", opts, { desc = "Terminal" }))
 
 -- Git
-map("n", "<leader>blg", function() Snacks.git.blame_line() end, vim.tbl_extend("force", opts, { desc = "Git log for line" }))
+map("n", "<leader>blg", function() Snacks.git.blame_line() end,                        vim.tbl_extend("force", opts, { desc = "Git log for line" }))
+map("n", "<leader>gbo", function() Snacks.gitbrowse({ what = "repo" }) end,            vim.tbl_extend("force", opts, { desc = "Git browse repo" }))
+map("n", "<leader>gbf", function() Snacks.gitbrowse({ what = "file" }) end,            vim.tbl_extend("force", opts, { desc = "Git browse file (branch)" }))
+map("v", "<leader>gbf", function() Snacks.gitbrowse({ what = "file" }) end,            vim.tbl_extend("force", opts, { desc = "Git browse selection (branch)" }))
 
 -- GitHub (requires gh CLI authenticated)
 map("n", "<leader>ghi", function() Snacks.picker.gh_issue() end,                    vim.tbl_extend("force", opts, { desc = "Issues (open)" }))
