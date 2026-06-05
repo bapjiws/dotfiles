@@ -2,6 +2,7 @@ font-family = JetBrainsMono Nerd Font
 font-size    = 14
 
 command = /opt/homebrew/bin/fish
+shell-integration = fish
 
 theme = Borland
 
