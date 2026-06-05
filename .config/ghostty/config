@@ -1,0 +1,15 @@
+font-family = JetBrainsMono Nerd Font
+font-size    = 14
+
+command = /opt/homebrew/bin/fish
+
+theme = light:iterm-light,dark:iterm-dark
+
+background-opacity = 0.78
+
+scrollback-limit = 1000
+
+cursor-style       = block
+cursor-style-blink = false
+
+bold-is-bright = false

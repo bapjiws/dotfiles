@@ -24,4 +24,6 @@ ln -sf $DOTFILES_FOLDER/yabai/yabairc $ORIGINAL_FOLDER/yabai/yabairc
 
 ln -sf $DOTFILES_FOLDER/iterm2/profile.json ~/Library/Application\ Support/iTerm2/DynamicProfiles/profile.json
 
+ln -sf $DOTFILES_FOLDER/ghostty $ORIGINAL_FOLDER/ghostty
+
 touch ~/.hushlogin
