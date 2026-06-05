@@ -3,7 +3,7 @@ font-size    = 14
 
 command = /opt/homebrew/bin/fish
 
-theme = light:iterm-light,dark:iterm-dark
+theme = Borland
 
 background-opacity = 0.78
 
