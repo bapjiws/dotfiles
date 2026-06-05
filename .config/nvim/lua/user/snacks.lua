@@ -38,3 +38,9 @@ map("n", "<S-x>", function() Snacks.bufdelete() end, vim.tbl_extend("force", opt
 map("n", "<leader>vct", function() Snacks.lazygit() end,          vim.tbl_extend("force", opts, { desc = "Lazygit" }))
 map("n", "<leader>fex", function() Snacks.terminal("ranger") end, vim.tbl_extend("force", opts, { desc = "File explorer (ranger)" }))
 map("n", "<leader>trm", function() Snacks.terminal("fish") end,   vim.tbl_extend("force", opts, { desc = "Terminal" }))
+
+-- GitHub (requires gh CLI authenticated)
+map("n", "<leader>ghi", function() Snacks.picker.gh_issue() end,                    vim.tbl_extend("force", opts, { desc = "Issues (open)" }))
+map("n", "<leader>ghI", function() Snacks.picker.gh_issue({ state = "all" }) end,   vim.tbl_extend("force", opts, { desc = "Issues (all)" }))
+map("n", "<leader>ghp", function() Snacks.picker.gh_pr() end,                       vim.tbl_extend("force", opts, { desc = "Pull requests (open)" }))
+map("n", "<leader>ghP", function() Snacks.picker.gh_pr({ state = "all" }) end,      vim.tbl_extend("force", opts, { desc = "Pull requests (all)" }))

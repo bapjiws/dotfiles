@@ -67,6 +67,7 @@ require("lazy").setup({
 				{ "<leader>t", group = "Terminal / Toggle" },
 				{ "<leader>c", group = "Commands / Code" },
 				{ "<leader>r", group = "References / Rename" },
+			{ "<leader>g", group = "GitHub" },
 			})
 		end,
 	},
@@ -127,6 +128,7 @@ require("lazy").setup({
 			terminal = { enabled = true },
 			lazygit = { enabled = true },
 			picker = { enabled = true },
+		gh = {},
 		},
 	},
 
