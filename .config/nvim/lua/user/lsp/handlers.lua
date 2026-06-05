@@ -72,11 +72,6 @@ M.setup = function()
       map("n", "<leader>cac", vim.lsp.buf.code_action,    vim.tbl_extend("force", opts, { desc = "Code action" }))
       map("n", "<leader>rnm", vim.lsp.buf.rename,         vim.tbl_extend("force", opts, { desc = "Rename" }))
 
-      map("n", "<leader>dgn", vim.diagnostic.setloclist,  vim.tbl_extend("force", opts, { desc = "Diagnostics (loclist)" }))
-      map("n", "<leader>dgl", vim.diagnostic.open_float,  vim.tbl_extend("force", opts, { desc = "Diagnostics (float)" }))
-      map("n", "[d", function() vim.diagnostic.goto_prev({ float = true }) end, vim.tbl_extend("force", opts, { desc = "Prev diagnostic" }))
-      map("n", "]d", function() vim.diagnostic.goto_next({ float = true }) end, vim.tbl_extend("force", opts, { desc = "Next diagnostic" }))
-
       map("n", "<leader>fmt", function()
         require("conform").format({ lsp_fallback = true })
       end, vim.tbl_extend("force", opts, { desc = "Format" }))
