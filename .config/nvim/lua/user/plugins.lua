@@ -127,10 +127,11 @@ require("lazy").setup({
 			scroll = { enabled = true },
 			terminal = { enabled = true },
 			lazygit = { enabled = true },
-			picker = { enabled = true },
+		picker = { enabled = true },
+		words = { enabled = true },
 		gh = {},
 		gitbrowse = {},
-		},
+	},
 	},
 
 	-- File explorer
@@ -169,7 +170,6 @@ require("lazy").setup({
 		end,
 	},
 	{ "neovim/nvim-lspconfig" },
-	{ "RRethy/vim-illuminate" },
 	{ "j-hui/fidget.nvim" },
 
 	-- Formatting (replaces none-ls)

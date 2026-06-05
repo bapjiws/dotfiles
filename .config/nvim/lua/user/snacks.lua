@@ -45,6 +45,10 @@ map("n", "<leader>gbo", function() Snacks.gitbrowse({ what = "repo" }) end,     
 map("n", "<leader>gbf", function() Snacks.gitbrowse({ what = "file" }) end,            vim.tbl_extend("force", opts, { desc = "Git browse file (branch)" }))
 map("v", "<leader>gbf", function() Snacks.gitbrowse({ what = "file" }) end,            vim.tbl_extend("force", opts, { desc = "Git browse selection (branch)" }))
 
+-- Words (LSP reference highlights — replaces vim-illuminate)
+map("n", "]w", function() Snacks.words.jump(1, true) end,  vim.tbl_extend("force", opts, { desc = "Next reference" }))
+map("n", "[w", function() Snacks.words.jump(-1, true) end, vim.tbl_extend("force", opts, { desc = "Previous reference" }))
+
 -- GitHub (requires gh CLI authenticated)
 map("n", "<leader>ghi", function() Snacks.picker.gh_issue() end,                    vim.tbl_extend("force", opts, { desc = "Issues (open)" }))
 map("n", "<leader>ghI", function() Snacks.picker.gh_issue({ state = "all" }) end,   vim.tbl_extend("force", opts, { desc = "Issues (all)" }))
