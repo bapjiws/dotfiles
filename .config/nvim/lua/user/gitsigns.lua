@@ -38,7 +38,7 @@ gitsigns.setup {
     map('n', '<leader>rsb', '<cmd>Gitsigns reset_buffer<CR>')
 
     map('n', '<leader>slh', '<cmd>Gitsigns select_hunk<CR>')
-    map('n', '<leader>prw', '<cmd>Gitsigns preview_hunk<CR>')
+    map('n', '<leader>prw', '<cmd>Gitsigns preview_hunk_inline<CR>')
     map('n', '<leader>bll', '<cmd>lua require"gitsigns".blame_line{full=true}<CR>')
     map('n', '<leader>blm', '<cmd>Gitsigns blame<CR>')
     map('n', '<leader>dff', '<cmd>Gitsigns diffthis<CR>')
