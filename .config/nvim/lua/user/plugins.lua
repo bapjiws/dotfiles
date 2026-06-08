@@ -69,6 +69,7 @@ require("lazy").setup({
 				{ "<leader>r", group = "References / Rename" },
 				{ "<leader>g", group = "GitHub" },
 				{ "<leader>x", group = "Trouble (diagnostics)" },
+				{ "<leader>dv", group = "Diffview" },
 			})
 		end,
 	},
@@ -240,6 +241,7 @@ require("lazy").setup({
 
 	-- Git
 	{ "lewis6991/gitsigns.nvim" },
+	{ "sindrets/diffview.nvim", cmd = { "DiffviewOpen", "DiffviewFileHistory", "DiffviewClose" } },
 
 	-- Markdown rendering
 	{
