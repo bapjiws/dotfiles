@@ -33,13 +33,9 @@ M.setup = function()
     },
   })
 
-  -- Show diagnostic float automatically after cursor is still
-  vim.api.nvim_create_autocmd("CursorHold", {
-    group = vim.api.nvim_create_augroup("UserDiagnosticFloat", { clear = true }),
-    callback = function()
-      vim.diagnostic.open_float(nil, { focus = false })
-    end,
-  })
+  -- Unmap built-in Neovim 0.10+ diagnostic navigation (we use Trouble instead)
+  --[[ pcall(vim.keymap.del, "n", "[d") ]]
+  --[[ pcall(vim.keymap.del, "n", "]d") ]]
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "rounded",
