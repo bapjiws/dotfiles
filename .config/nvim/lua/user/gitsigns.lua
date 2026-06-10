@@ -17,18 +17,26 @@ gitsigns.setup {
       vim.keymap.set(mode, l, r, opts)
     end
 
-    -- Navigation
+    local ok_ts, ts_repeat = pcall(require, "nvim-treesitter.textobjects.repeatable_move")
+    local next_hunk, prev_hunk
+    if ok_ts then
+      next_hunk, prev_hunk = ts_repeat.make_repeatable_move_pair(gs.next_hunk, gs.prev_hunk)
+    else
+      next_hunk = gs.next_hunk
+      prev_hunk = gs.prev_hunk
+    end
+
     map('n', ']c', function()
       if vim.wo.diff then return ']c' end
-      vim.schedule(function() gs.next_hunk() end)
+      vim.schedule(next_hunk)
       return '<Ignore>'
-    end, {expr=true})
+    end, { expr = true })
 
     map('n', '[c', function()
       if vim.wo.diff then return '[c' end
-      vim.schedule(function() gs.prev_hunk() end)
+      vim.schedule(prev_hunk)
       return '<Ignore>'
-    end, {expr=true})
+    end, { expr = true })
 
     -- Actions
     map('n', '<leader>sth', '<cmd>Gitsigns stage_hunk<CR>')
