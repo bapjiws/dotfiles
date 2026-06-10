@@ -1,40 +1,113 @@
-local status_ok, configs = pcall(require, "nvim-treesitter.configs")
-if not status_ok then
-  return
+-- Neovim 0.12: treesitter highlighting is built-in, no .configs.setup needed.
+-- This file handles: parser installation, indentation, incremental selection.
+
+local ok, ts = pcall(require, "nvim-treesitter")
+if not ok then return end
+
+-- Install any parsers that aren't already present
+local installed = require("nvim-treesitter.config").get_installed()
+local wanted = {
+  "bash", "css", "dockerfile", "fish", "graphql", "html",
+  "javascript", "json", "lua", "regex", "tsx", "typescript",
+  "vim", "yaml",
+}
+local missing = vim.tbl_filter(function(p)
+  return not vim.tbl_contains(installed, p)
+end, wanted)
+if #missing > 0 then
+  ts.install(missing)
 end
 
-configs.setup {
-  -- https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
-  ensure_installed = {
-    "bash",
-    "css",
-    "dockerfile",
-    "fish",
-    "graphql",
-    "html",
-    "javascript",
-    "json",
-    "lua",
-    "regex",
-    "tsx",
-    "typescript",
-    "vim",
-    "yaml",
-  },
-  highlight = {
-    enable = true,
-  },
-  indent = {
-    enable = true
-  },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      node_incremental = "]v",
-      node_decremental = "[v",
+-- Treesitter-powered indentation
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("UserTreesitterIndent", { clear = true }),
+  callback = function()
+    if pcall(vim.treesitter.get_parser, 0) then
+      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end
+  end,
+})
+
+-- Textobjects — standalone setup (nvim-treesitter.configs no longer exists)
+local ok_to, textobjects = pcall(require, "nvim-treesitter-textobjects")
+if ok_to then
+  textobjects.setup({
+    select = {
+      enable = true,
+      lookahead = true,
+      keymaps = {
+        ["af"] = { query = "@function.outer", desc = "Around function" },
+        ["if"] = { query = "@function.inner", desc = "Inner function" },
+        ["ac"] = { query = "@class.outer",    desc = "Around class" },
+        ["ic"] = { query = "@class.inner",    desc = "Inner class" },
+        ["aa"] = { query = "@parameter.outer", desc = "Around argument" },
+        ["ia"] = { query = "@parameter.inner", desc = "Inner argument" },
+        ["ab"] = { query = "@block.outer",    desc = "Around block" },
+        ["ib"] = { query = "@block.inner",    desc = "Inner block" },
+      },
     },
-  },
-  autopairs = {
-		enable = true,
-	},
-}
+    move = {
+      enable = true,
+      set_jumps = true,
+      goto_next_start     = { ["]m"] = { query = "@function.outer", desc = "Next function start" } },
+      goto_next_end       = { ["]M"] = { query = "@function.outer", desc = "Next function end" } },
+      goto_previous_start = { ["[m"] = { query = "@function.outer", desc = "Prev function start" } },
+      goto_previous_end   = { ["[M"] = { query = "@function.outer", desc = "Prev function end" } },
+    },
+    swap = {
+      enable = true,
+      swap_next     = { ["<M-n>"] = { query = "@parameter.inner", desc = "Swap with next argument" } },
+      swap_previous = { ["<M-p>"] = { query = "@parameter.inner", desc = "Swap with prev argument" } },
+    },
+  })
+end
+
+-- Incremental selection using built-in vim.treesitter API
+-- ]v: start on smallest node, then expand outward. [v: shrink back.
+local _sel_stack = {}
+
+local function select_node(node)
+  local sr, sc, er, ec = node:range()
+  -- node:range() → 0-indexed rows, 0-indexed cols, end col exclusive.
+  -- setpos expects 1-indexed row and 1-indexed col.
+  local end_row, end_col
+  if ec == 0 then
+    -- node ends exactly at the start of the next line → select to end of er-1
+    end_row = er      -- already 1-indexed (er is 0-indexed line AFTER the node)
+    end_col = #vim.fn.getline(er)
+  else
+    end_row = er + 1
+    end_col = ec      -- exclusive 0-indexed = inclusive 1-indexed last char
+  end
+  vim.fn.setpos("'<", { 0, sr + 1, sc + 1, 0 })
+  vim.fn.setpos("'>", { 0, end_row, end_col, 0 })
+  vim.cmd("normal! gv")
+end
+
+vim.keymap.set("n", "]v", function()
+  _sel_stack = {}
+  pcall(vim.treesitter.start)  -- ensure parser is active for this buffer
+  local node = vim.treesitter.get_node()
+  if not node then
+    vim.notify("No treesitter node at cursor", vim.log.levels.WARN)
+    return
+  end
+  table.insert(_sel_stack, node)
+  select_node(node)
+end, { desc = "Treesitter: start selection" })
+
+vim.keymap.set("x", "]v", function()
+  local top = _sel_stack[#_sel_stack]
+  if not top then return end
+  local parent = top:parent()
+  if not parent then return end
+  table.insert(_sel_stack, parent)
+  select_node(parent)
+end, { desc = "Treesitter: expand selection" })
+
+vim.keymap.set("x", "[v", function()
+  if #_sel_stack <= 1 then return end
+  table.remove(_sel_stack)
+  local prev = _sel_stack[#_sel_stack]
+  if prev then select_node(prev) end
+end, { desc = "Treesitter: shrink selection" })

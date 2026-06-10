@@ -235,8 +235,12 @@ require("lazy").setup({
 	-- Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
 		build = ":TSUpdate",
 		lazy = false,
+		dependencies = {
+			{ "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
+		},
 	},
 
 	-- Git
