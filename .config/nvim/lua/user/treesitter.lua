@@ -36,28 +36,9 @@ if ok_to then
       enable = true,
       lookahead = true,
       keymaps = {
-        ["af"] = { query = "@function.outer", desc = "Around function" },
-        ["if"] = { query = "@function.inner", desc = "Inner function" },
-        ["ac"] = { query = "@class.outer",    desc = "Around class" },
-        ["ic"] = { query = "@class.inner",    desc = "Inner class" },
-        ["aa"] = { query = "@parameter.outer", desc = "Around argument" },
-        ["ia"] = { query = "@parameter.inner", desc = "Inner argument" },
         ["ab"] = { query = "@block.outer",    desc = "Around block" },
         ["ib"] = { query = "@block.inner",    desc = "Inner block" },
       },
-    },
-    move = {
-      enable = true,
-      set_jumps = true,
-      goto_next_start     = { ["]m"] = { query = "@function.outer", desc = "Next function start" } },
-      goto_next_end       = { ["]M"] = { query = "@function.outer", desc = "Next function end" } },
-      goto_previous_start = { ["[m"] = { query = "@function.outer", desc = "Prev function start" } },
-      goto_previous_end   = { ["[M"] = { query = "@function.outer", desc = "Prev function end" } },
-    },
-    swap = {
-      enable = true,
-      swap_next     = { ["<M-n>"] = { query = "@parameter.inner", desc = "Swap with next argument" } },
-      swap_previous = { ["<M-p>"] = { query = "@parameter.inner", desc = "Swap with prev argument" } },
     },
   })
 end
