@@ -1,10 +1,6 @@
--- Neovim 0.12: treesitter highlighting is built-in, no .configs.setup needed.
--- This file handles: parser installation, indentation, incremental selection.
-
 local ok, ts = pcall(require, "nvim-treesitter")
 if not ok then return end
 
--- Install any parsers that aren't already present
 local installed = require("nvim-treesitter.config").get_installed()
 local wanted = {
   "bash", "css", "dockerfile", "fish", "graphql", "html",
@@ -18,7 +14,6 @@ if #missing > 0 then
   ts.install(missing)
 end
 
--- Treesitter-powered indentation
 vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("UserTreesitterIndent", { clear = true }),
   callback = function()
@@ -28,7 +23,6 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- Textobjects — standalone setup (nvim-treesitter.configs no longer exists)
 local ok_to, textobjects = pcall(require, "nvim-treesitter-textobjects")
 if ok_to then
   textobjects.setup({
@@ -43,22 +37,16 @@ if ok_to then
   })
 end
 
--- Incremental selection using built-in vim.treesitter API
--- ]v: start on smallest node, then expand outward. [v: shrink back.
 local _sel_stack = {}
-
 local function select_node(node)
   local sr, sc, er, ec = node:range()
-  -- node:range() → 0-indexed rows, 0-indexed cols, end col exclusive.
-  -- setpos expects 1-indexed row and 1-indexed col.
   local end_row, end_col
   if ec == 0 then
-    -- node ends exactly at the start of the next line → select to end of er-1
-    end_row = er      -- already 1-indexed (er is 0-indexed line AFTER the node)
+    end_row = er
     end_col = #vim.fn.getline(er)
   else
     end_row = er + 1
-    end_col = ec      -- exclusive 0-indexed = inclusive 1-indexed last char
+    end_col = ec
   end
   vim.fn.setpos("'<", { 0, sr + 1, sc + 1, 0 })
   vim.fn.setpos("'>", { 0, end_row, end_col, 0 })
@@ -67,7 +55,7 @@ end
 
 vim.keymap.set("n", "]v", function()
   _sel_stack = {}
-  pcall(vim.treesitter.start)  -- ensure parser is active for this buffer
+  pcall(vim.treesitter.start)
   local node = vim.treesitter.get_node()
   if not node then
     vim.notify("No treesitter node at cursor", vim.log.levels.WARN)
