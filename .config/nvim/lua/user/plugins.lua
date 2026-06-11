@@ -240,6 +240,7 @@ require("lazy").setup({
 		lazy = false,
 		dependencies = {
 			{ "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
+			{ "nvim-treesitter/nvim-treesitter-context", opts = {} },
 		},
 	},
 
