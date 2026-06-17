@@ -246,6 +246,8 @@ require("lazy").setup({
 
 	-- Git
 	{ "lewis6991/gitsigns.nvim" },
+	{ "kevinhwang91/nvim-ufo", dependencies = { "kevinhwang91/promise-async" } },
+	{ "luukvbaal/statuscol.nvim" },
 	{ "sindrets/diffview.nvim", cmd = { "DiffviewOpen", "DiffviewFileHistory", "DiffviewClose" } },
 
 	-- Markdown rendering

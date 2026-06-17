@@ -35,6 +35,17 @@ vim.opt.scrolloff = 0
 vim.opt.sidescrolloff = 8
 vim.opt.guifont = "Iosevka Term Nerd Font:h17" -- the font used in graphical neovim applications
 vim.opt.fillchars.eob=" "
+
+vim.opt.foldcolumn   = "1"
+vim.opt.foldlevel    = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable   = true
+vim.opt.fillchars:append({
+  fold      = " ",
+  foldopen  = "▾",
+  foldclose = "▸",
+  foldsep   = " ",
+})
 vim.opt.shortmess:append "c"
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
