@@ -292,7 +292,7 @@ require("lazy").setup({
 				require("opencode").prompt("@selection")
 			end, { desc = "Add selection" })
 			vim.keymap.set({ "n", "t" }, "<leader>tgl", function()
-				require("opencode").toggle()
+				require("opencode").start()
 			end, { desc = "Toggle opencode" })
 			vim.keymap.set("n", "<leader>ssn", function()
 				require("opencode").command("session.new")
