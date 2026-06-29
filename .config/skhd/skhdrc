@@ -1,5 +1,5 @@
 alt - b: open -a "Brave Browser"
-alt - t: open -a "iTerm"
+alt - t: open -a "Ghostty"
 alt - m: open -a "Slack"
 alt - n: open -a "Obsidian"
 alt - c: open -a "Cursor"
