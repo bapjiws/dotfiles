@@ -1,10 +1,5 @@
-local status_ok, onedark = pcall(require, "onedark")
-if not status_ok then
-  return
-end
+require("catppuccin").setup({
+  flavour = "latte",
+})
 
-onedark.setup {
-  style = 'darker'
-}
-
-onedark.load()
+vim.cmd.colorscheme("catppuccin")

@@ -34,7 +34,7 @@ require("lazy").setup({
 	-- UI
 	{ "nvim-lualine/lualine.nvim" },
 	{ "akinsho/bufferline.nvim", version = "*" },
-	{ "navarasu/onedark.nvim" },
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	{ "nvim-tree/nvim-web-devicons" },
 
 	-- Colour highlighting (replaces chrisbra/Colorizer)
