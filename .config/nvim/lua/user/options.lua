@@ -46,6 +46,18 @@ vim.opt.fillchars:append({
   foldclose = "▸",
   foldsep   = " ",
 })
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.wrap      = true
+    vim.opt_local.linebreak = true  -- break at word boundaries, not mid-word
+    vim.opt_local.breakindent = true -- wrapped lines indent to match the original
+
+    vim.keymap.set("n", "j", "gj", { buffer = true })
+    vim.keymap.set("n", "k", "gk", { buffer = true })
+  end,
+})
+
 vim.opt.shortmess:append "c"
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
