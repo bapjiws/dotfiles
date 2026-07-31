@@ -306,12 +306,6 @@ require("lazy").setup({
 			vim.keymap.set("n", "<S-C-j>", function()
 				require("opencode").command("session.half.page.down")
 			end, { desc = "opencode page down" })
-
-			vim.keymap.set("n", "<leader>ttc", function()
-				vim.cmd("vsplit")
-				vim.cmd('terminal fish -lc "tt claude"')
-				vim.cmd("startinsert")
-			end, { desc = "Open tt claude" })
 		end,
 	},
 }, {
