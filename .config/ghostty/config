@@ -4,7 +4,7 @@ font-size    = 14
 command = /opt/homebrew/bin/fish
 shell-integration = fish
 
-theme = Borland
+theme = Dark Modern
 
 background-opacity = 0.78
 
