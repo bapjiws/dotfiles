@@ -33,7 +33,7 @@ fzf --fish | source
 #   --preview 'bat -n --color=always {}'
 #   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
-export FZF_CTRL_T_COMMAND="fd --type d --type f --hidden --follow --exclude .git"
+# export FZF_CTRL_T_COMMAND="fd --type d --type f --hidden --follow --exclude .git"
 
 starship init fish | source
 source ~/.safe-chain/scripts/init-fish.fish # Safe-chain Fish initialization script
