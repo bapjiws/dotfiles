@@ -260,52 +260,28 @@ require("lazy").setup({
 
 	-- AI agent
 	{
-		"NickvanDyke/opencode.nvim",
+		"coder/claudecode.nvim",
 		dependencies = { "folke/snacks.nvim" },
 		config = function()
-			---@type opencode.Opts
-			vim.g.opencode_opts = {
-				provider = {
-					enabled = "snacks",
-					---@type opencode.provider.Snacks
-					snacks = {},
+			require("claudecode").setup({
+				terminal = {
+					split_side = "right",
+					split_width_percentage = 0.3,
 				},
-				ask = {
-					snacks = {
-						win = { relative = "editor", width = 100, height = 50 },
-					},
-				},
-			}
+			})
 
 			vim.o.autoread = true
 
-			vim.keymap.set({ "n", "x" }, "<leader>cmd", function()
-				require("opencode").select()
-			end, { desc = "All commands" })
-			vim.keymap.set({ "n", "x" }, "<leader>ask", function()
-				require("opencode").ask("@this: ", { submit = true })
-			end, { desc = "Ask" })
-			vim.keymap.set({ "n", "x" }, "<leader>ths", function()
-				require("opencode").prompt("@this")
-			end, { desc = "Add to opencode" })
-			vim.keymap.set({ "n", "x" }, "<leader>slt", function()
-				require("opencode").prompt("@selection")
-			end, { desc = "Add selection" })
-			vim.keymap.set({ "n", "t" }, "<leader>tgl", function()
-				require("opencode").start()
-			end, { desc = "Toggle opencode" })
+			vim.keymap.set({ "n", "t" }, "<leader>tgl", "<cmd>ClaudeCode<cr>", { desc = "Toggle Claude" })
+			vim.keymap.set("n", "<leader>ask", "<cmd>ClaudeCodeFocus<cr>", { desc = "Ask (focus Claude)" })
+			vim.keymap.set("n", "<leader>ths", "<cmd>ClaudeCodeAdd %<cr>", { desc = "Add buffer to Claude" })
+			vim.keymap.set("x", "<leader>slt", "<cmd>ClaudeCodeSend<cr>", { desc = "Add selection to Claude" })
+			vim.keymap.set("n", "<leader>cmd", "<cmd>ClaudeCodeSelectModel<cr>", { desc = "Select model" })
 			vim.keymap.set("n", "<leader>ssn", function()
-				require("opencode").command("session.new")
-			end, { desc = "New session" })
-			vim.keymap.set("n", "<leader>ssl", function()
-				require("opencode").command("session.list")
-			end, { desc = "List sessions" })
-			vim.keymap.set("n", "<S-C-k>", function()
-				require("opencode").command("session.half.page.up")
-			end, { desc = "opencode page up" })
-			vim.keymap.set("n", "<S-C-j>", function()
-				require("opencode").command("session.half.page.down")
-			end, { desc = "opencode page down" })
+				vim.cmd("ClaudeCodeStop")
+				vim.cmd("ClaudeCode")
+			end, { desc = "New Claude session" })
+			vim.keymap.set("n", "<leader>ssl", "<cmd>ClaudeCode --resume<cr>", { desc = "Resume Claude session" })
 		end,
 	},
 }, {

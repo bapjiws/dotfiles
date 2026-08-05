@@ -11,7 +11,6 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.bun/bin:$HOME/Library/Android/sdk/platform-tools:$PATH"
 export PATH="$HOME/Git/tt-go/scripts:$PATH"
 export PATH="$HOME/.orbstack/bin:$PATH"
-export PATH="$HOME/.opencode/bin:$PATH"
 
 fish_vi_key_bindings
 fzf --fish | source
