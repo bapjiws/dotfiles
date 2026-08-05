@@ -1,5 +1,5 @@
 #!/bin/bash
-DOTFILES_FOLDER=~/Git/dotfiles/.config
+DOTFILES_FOLDER=~/git/dotfiles/.config
 ORIGINAL_FOLDER=~/.config
 
 ln -sf $DOTFILES_FOLDER/nvim $ORIGINAL_FOLDER/nvim
