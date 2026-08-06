@@ -37,7 +37,15 @@ map("n", "<S-x>", function() Snacks.bufdelete() end, vim.tbl_extend("force", opt
 -- Terminal / tools
 map("n", "<leader>vct", function() Snacks.lazygit() end,          vim.tbl_extend("force", opts, { desc = "Lazygit" }))
 map("n", "<leader>fex", function() Snacks.terminal("ranger") end, vim.tbl_extend("force", opts, { desc = "File explorer (ranger)" }))
-map("n", "<leader>trm", function() Snacks.terminal("fish") end,   vim.tbl_extend("force", opts, { desc = "Terminal" }))
+map("n", "<leader>trm", function()
+  Snacks.terminal("fish", {
+    win = {
+      wo = {
+        statuscolumn = " ", -- 1-column left padding so terminal text doesn't touch the edge
+      },
+    },
+  })
+end, vim.tbl_extend("force", opts, { desc = "Terminal" }))
 
 -- Git
 map("n", "<leader>blg", function() Snacks.git.blame_line() end,                        vim.tbl_extend("force", opts, { desc = "Git log for line" }))
