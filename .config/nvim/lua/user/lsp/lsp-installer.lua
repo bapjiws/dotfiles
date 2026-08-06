@@ -37,6 +37,9 @@ mason_lspconfig.setup({
       if server_name == "yamlls" then
         opts = vim.tbl_deep_extend("force", require("user.lsp.settings.yamlls"), opts)
       end
+      if server_name == "ts_ls" then
+        opts = vim.tbl_deep_extend("force", require("user.lsp.settings.ts_ls"), opts)
+      end
 
       require("lspconfig")[server_name].setup(opts)
     end,

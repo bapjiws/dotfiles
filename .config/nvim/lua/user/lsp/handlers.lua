@@ -63,6 +63,11 @@ M.setup = function()
         client.server_capabilities.documentFormattingProvider = false
       end
 
+      -- Render inlay hints for any server that supports them
+      if client and client.server_capabilities.inlayHintProvider then
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+      end
+
       map("n", "<leader>dcr", vim.lsp.buf.declaration,    vim.tbl_extend("force", opts, { desc = "Declaration" }))
       map("n", "<leader>imp", vim.lsp.buf.implementation, vim.tbl_extend("force", opts, { desc = "Implementation" }))
       map("n", "<leader>dfn", vim.lsp.buf.definition,     vim.tbl_extend("force", opts, { desc = "Definition" }))
