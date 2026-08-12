@@ -165,6 +165,47 @@ require("lazy").setup({
 	{ "saadparwaiz1/cmp_luasnip" },
 	{ "hrsh7th/cmp-nvim-lsp" },
 
+	-- Local LLM FIM completion (talks to a llama-server instance you run yourself)
+	{
+		"ggml-org/llama.vim",
+		init = function()
+			vim.g.llama_config = {
+				endpoint_fim = "http://127.0.0.1:8012/infill",
+				auto_fim = true,
+        show_info = 0, -- 0 = off, 1 = statusline, 2 = inline (default)
+				-- <C-j>/<C-k> collide with cmp.lua's cmp-select-next/prev keymaps
+				keymap_fim_next = "<M-]>",
+				keymap_fim_prev = "<M-[>",
+			}
+
+			-- llama.vim has no buftype/filetype filtering of its own — it fires on every
+			-- cursor move globally, which also hits picker/prompt inputs (e.g. Snacks
+			-- pickers use buftype=prompt) and corrupts their statusline with FIM stats.
+			-- Using FileType (not BufEnter+buftype check) because Snacks applies
+			-- buftype/filetype to the picker's input buffer at a point that isn't
+			-- reliably ordered relative to BufEnter — FileType only ever fires at the
+			-- exact moment filetype is actually set, so there's no race to lose.
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = "snacks_picker_input",
+				callback = function(args)
+					vim.cmd("silent! LlamaDisable")
+					-- strip any buffer-local FIM keymaps that were set on this buffer
+					-- before this autocmd existed (llama.vim's <expr> cycle maps eat
+					-- the keypress instead of falling back once disabled)
+					for _, lhs in ipairs({ "<Tab>", "<S-Tab>", "<C-j>", "<C-k>", "<M-]>", "<M-[>" }) do
+						pcall(vim.keymap.del, "i", lhs, { buffer = args.buf })
+					end
+					vim.api.nvim_create_autocmd("BufLeave", {
+						buffer = args.buf,
+						callback = function()
+							vim.cmd("silent! LlamaEnable")
+						end,
+					})
+				end,
+			})
+		end,
+	},
+
 	-- Snippets
 	{ "L3MON4D3/LuaSnip" },
 
