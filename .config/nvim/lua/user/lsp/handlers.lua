@@ -63,8 +63,8 @@ M.setup = function()
         client.server_capabilities.documentFormattingProvider = false
       end
 
-      -- Render inlay hints for any server that supports them
-      if client and client.server_capabilities.inlayHintProvider then
+      -- Render inlay hints for any server that supports them (lua_ls's are too noisy: array-index hints like [1], [23])
+      if client and client.name ~= "lua_ls" and client.server_capabilities.inlayHintProvider then
         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
       end
 
