@@ -12,5 +12,7 @@ scrollback-limit = 1000
 
 cursor-style       = block
 cursor-style-blink = false
+cursor-color       = #dc8a78
+cursor-text        = #eff1f5
 
 bold-is-bright = false
