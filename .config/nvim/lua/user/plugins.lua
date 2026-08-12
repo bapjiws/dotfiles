@@ -258,6 +258,19 @@ require("lazy").setup({
 		end,
 	},
 
+	-- Markdown + Mermaid live preview (opens in browser, no need to push to see rendering)
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		ft = { "markdown" },
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+		keys = {
+			{ "<leader>mdp", "<cmd>MarkdownPreviewToggle<cr>", desc = "Markdown preview" },
+		},
+	},
+
 	-- AI agent
  --[[  { ]]
 	--[[ 	"NickvanDyke/opencode.nvim", ]]
