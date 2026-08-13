@@ -55,8 +55,4 @@ function p-plus-up --description "Open 3 new tabs in the current Ghostty window 
     # small settle delay so async focus (Ghostty's tab-select, Electron's own activate) can't land after the browser opens
     sleep 1
     open http://localhost:4000
-
-    # give the browser a moment to actually become frontmost before sending it a keystroke
-    sleep 1
-    osascript -e 'tell application "System Events" to keystroke "i" using {command down, option down}'
 end
