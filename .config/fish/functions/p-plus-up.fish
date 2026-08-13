@@ -27,4 +27,26 @@ function p-plus-up --description "Open 3 new tabs in the current Ghostty window 
         -e 'end tell')
 
     echo $result >$state_file
+
+    set -l tries 0
+    while test $tries -lt 30; and not nc -z localhost 4000 2>/dev/null
+        sleep 0.5
+        set tries (math $tries + 1)
+    end
+
+    # overmind-devtools launches its own Electron window (npx install + boot can take a while,
+    # and it steals focus once it appears) — wait for it so it doesn't pop up after the browser
+    set -l ot_tries 0
+    while test $ot_tries -lt 60
+        set -l has_electron (osascript -e 'tell application "System Events" to (name of processes) contains "Electron"' 2>/dev/null)
+        if test "$has_electron" = true
+            break
+        end
+        sleep 0.5
+        set ot_tries (math $ot_tries + 1)
+    end
+
+    # small settle delay so async focus (Ghostty's tab-select, Electron's own activate) can't land after the browser opens
+    sleep 1
+    open http://localhost:4000
 end
