@@ -34,6 +34,12 @@ function p-plus-up --description "Open 3 new tabs in the current Ghostty window 
         set tries (math $tries + 1)
     end
 
+    set -l tries 0
+    while test $tries -lt 30; and not nc -z localhost 8080 2>/dev/null
+        sleep 0.5
+        set tries (math $tries + 1)
+    end
+
     # overmind-devtools launches its own Electron window (npx install + boot can take a while,
     # and it steals focus once it appears) — wait for it so it doesn't pop up after the browser
     set -l ot_tries 0
