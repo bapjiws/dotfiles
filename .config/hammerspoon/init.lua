@@ -77,9 +77,15 @@ local function getSortedScreens()
   return screens
 end
 
--- focus monitor: focus its frontmost standard window, or just move the
--- mouse there (moving the cursor onto a screen makes macOS treat it as
--- the "active" display for things like new windows) if it has none
+-- move the mouse cursor to the center of a window, so focus changes are
+-- visually obvious across displays
+local function moveMouseToWindow(win)
+  local f = win:frame()
+  hs.mouse.absolutePosition({x = f.x + f.w / 2, y = f.y + f.h / 2})
+end
+
+-- focus monitor: focus its frontmost standard window and bring the mouse
+-- along, or just move the mouse there if it has no windows
 local function focusDisplay(n)
   local screen = getSortedScreens()[n]
   if not screen then return end
@@ -87,6 +93,7 @@ local function focusDisplay(n)
   for _, win in ipairs(hs.window.orderedWindows()) do
     if win:isStandard() and win:screen() == screen then
       win:focus()
+      moveMouseToWindow(win)
       return
     end
   end
@@ -102,6 +109,7 @@ local function sendWindowToDisplay(n)
   local screen = getSortedScreens()[n]
   if not win or not screen then return end
   win:moveToScreen(screen)
+  moveMouseToWindow(win)
 end
 
 for i = 1, 3 do
@@ -112,15 +120,15 @@ end
 -- ===== Extra: move cursor to the focused window (not in yabai/skhd) =====
 
 hs.hotkey.bind({"cmd", "alt"}, "m", function()
-  hs.alert.show("cmd+alt+m fired")
   local win = hs.window.focusedWindow()
-  if not win then
-    hs.alert.show("no focused window")
-    return
-  end
-  local f = win:frame()
-  hs.alert.show(string.format("frame: %d,%d %dx%d", f.x, f.y, f.w, f.h))
-  hs.mouse.absolutePosition({x = f.x + f.w / 2, y = f.y + f.h / 2})
+  if win then moveMouseToWindow(win) end
+end)
+
+-- also bring the cursor along on any focus change (app switch via cmd-tab,
+-- dock click, our own app launchers above, etc.), not just this hotkey
+local focusWatcher = hs.window.filter.new()
+focusWatcher:subscribe(hs.window.filter.windowFocused, function(win)
+  moveMouseToWindow(win)
 end)
 
 -- ===== Config reload (standard Hammerspoon convenience) =====
