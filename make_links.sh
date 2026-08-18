@@ -22,6 +22,9 @@ ln -sf $DOTFILES_FOLDER/skhd/skhdrc $ORIGINAL_FOLDER/skhd/skhdrc
 mkdir -p $ORIGINAL_FOLDER/yabai
 ln -sf $DOTFILES_FOLDER/yabai/yabairc $ORIGINAL_FOLDER/yabai/yabairc
 
+mkdir -p ~/.hammerspoon
+ln -sf $DOTFILES_FOLDER/hammerspoon/init.lua ~/.hammerspoon/init.lua
+
 ln -sf $DOTFILES_FOLDER/iterm2/profile.json ~/Library/Application\ Support/iTerm2/DynamicProfiles/profile.json
 
 ln -sf $DOTFILES_FOLDER/ghostty $ORIGINAL_FOLDER/ghostty
