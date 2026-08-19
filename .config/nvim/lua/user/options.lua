@@ -61,3 +61,4 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.opt.shortmess:append "c"
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
+vim.opt.isfname:remove("=") -- so `gx` on `KEY=https://...` lines opens the URL, not `KEY=https://...`
