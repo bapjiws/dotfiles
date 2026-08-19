@@ -8,6 +8,7 @@ local appLaunchers = {
   c = "Claude",
   d = "Figma",
   o = "Orca",
+  e = "Microsoft Outlook",
 }
 
 for key, appName in pairs(appLaunchers) do
