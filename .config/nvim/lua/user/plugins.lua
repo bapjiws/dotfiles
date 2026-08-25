@@ -219,6 +219,7 @@ require("lazy").setup({
 			require("mason-tool-installer").setup({
 				ensure_installed = {
 					"prettierd",
+					"eslint_d",
 					"stylua",
 				},
 				auto_update = false,
@@ -238,10 +239,12 @@ require("lazy").setup({
 			require("conform").setup({
 				formatters_by_ft = {
 					lua = { "stylua" },
-					javascript = { "prettierd" },
-					typescript = { "prettierd" },
-					javascriptreact = { "prettierd" },
-					typescriptreact = { "prettierd" },
+					-- Projects without a Prettier config format via `eslint --fix` instead,
+					-- so prettierd's own config file (incl. package.json "prettier") gates it.
+					javascript = { "prettierd", "eslint_d", stop_after_first = true },
+					typescript = { "prettierd", "eslint_d", stop_after_first = true },
+					javascriptreact = { "prettierd", "eslint_d", stop_after_first = true },
+					typescriptreact = { "prettierd", "eslint_d", stop_after_first = true },
 					css = { "prettierd" },
 					html = { "prettierd" },
 					json = { "prettierd" },
@@ -249,7 +252,29 @@ require("lazy").setup({
 					markdown = { "prettierd" },
 				},
 				formatters = {
-					prettierd = { prefer_local = "node_modules/.bin" },
+					prettierd = {
+						prefer_local = "node_modules/.bin",
+						condition = function(self, ctx)
+							return require("conform.formatters.prettierd").cwd(self, ctx) ~= nil
+						end,
+					},
+					eslint_d = {
+						prefer_local = "node_modules/.bin",
+						condition = function(self, ctx)
+							return vim.fs.find({
+								"eslint.config.js",
+								"eslint.config.mjs",
+								"eslint.config.cjs",
+								"eslint.config.ts",
+								".eslintrc",
+								".eslintrc.js",
+								".eslintrc.cjs",
+								".eslintrc.json",
+								".eslintrc.yaml",
+								".eslintrc.yml",
+							}, { path = ctx.dirname, upward = true })[1] ~= nil
+						end,
+					},
 				},
 			})
 		end,
