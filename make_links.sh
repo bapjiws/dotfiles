@@ -29,4 +29,11 @@ ln -sf $DOTFILES_FOLDER/iterm2/profile.json ~/Library/Application\ Support/iTerm
 
 ln -sf $DOTFILES_FOLDER/ghostty $ORIGINAL_FOLDER/ghostty
 
+mkdir -p ~/.agents/skills ~/.claude/skills
+for skill in $DOTFILES_FOLDER/agents/skills/*/; do
+  name=$(basename "$skill")
+  ln -sf "${skill%/}" ~/.agents/skills/"$name"
+  ln -sf ../../.agents/skills/"$name" ~/.claude/skills/"$name"
+done
+
 touch ~/.hushlogin
