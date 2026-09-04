@@ -40,15 +40,18 @@ Triggers: "summarise this PR", "summarize the PR", "summarise the diff", "summar
      git log --oneline "origin/$base..HEAD"
      ```
      Mention in the summary that this is a local diff, not PR metadata — no title/URL/description is available in this path.
-3. If the diff is empty, tell the user there's nothing to summarise (relative to the PR / base branch) and stop — don't fabricate a summary.
-4. If the diff is large (rule of thumb: `--stat` lists more than ~15 files, or the full patch is too big to read comfortably), work from the `--stat` file list and commit log instead of the full patch text. Only pull a full diff for individual files (`git diff <base>...HEAD -- <path>`) when the file list alone doesn't make the change clear.
-5. Synthesize, don't transcribe. If the branch/PR has multiple unrelated commits, group the summary by theme or area (e.g. "Auth", "CI", "Docs") instead of listing commit-by-commit or file-by-file. Use commit messages and the PR title/body (if any) as signal for *why*, not just *what*.
-6. Write the summary as markdown:
+3. Ask the user directly — a single yes/no question, before composing the summary — whether this is a "P+" project. This decides whether a ticket-link section gets added; don't infer it yourself from the title's shape (a parenthetical doesn't necessarily mean P+).
+   - **If yes**: extract the ticket ID from the PR title's trailing parenthetical — a short token of letters/digits with a hyphen, no spaces, e.g. `feat: intro page sections (P30300115-6100)` → `P30300115-6100`. If the title has no such parenthetical (or there's no PR title at all), tell the user and ask them to supply the ID directly instead of guessing.
+   - **If no**: don't extract or ask for an ID at all — there will be no `## Link to ticket` section.
+4. If the diff is empty, tell the user there's nothing to summarise (relative to the PR / base branch) and stop — don't fabricate a summary.
+5. If the diff is large (rule of thumb: `--stat` lists more than ~15 files, or the full patch is too big to read comfortably), work from the `--stat` file list and commit log instead of the full patch text. Only pull a full diff for individual files (`git diff <base>...HEAD -- <path>`) when the file list alone doesn't make the change clear.
+6. Synthesize, don't transcribe. If the branch/PR has multiple unrelated commits, group the summary by theme or area (e.g. "Auth", "CI", "Docs") instead of listing commit-by-commit or file-by-file. Use commit messages and the PR title/body (if any) as signal for *why*, not just *what*.
+7. Write the summary as markdown:
    - `## Changes` — a fixed, literal section header (never the raw PR title text) — followed by 3-8 bullets, one line each, covering only the meaningful changes — skip trivial diffs (formatting-only files, lockfile bumps) unless that's literally the whole PR.
    - Group bullets under short `###` sub-headers only if the change genuinely spans distinct areas; prefer a flat bullet list otherwise.
-   - Check the PR title for a trailing parenthetical ticket ID — a short token of letters/digits with a hyphen and no spaces, e.g. `feat: intro page sections (P30300115-6100)` → `P30300115-6100`. If found, strip it out of the title text you're working from and instead add a second section, `## Link to ticket`, containing just the bare ID on its own line — no markdown link syntax, no guessed URL. GitHub's "autolink references" feature (the same thing that renders the ID as a link in the PR title itself) auto-links the bare ID once it's pasted into a PR description, so constructing a URL yourself would just risk guessing wrong.
-   - Omit the `## Link to ticket` section entirely when the title has no such parenthetical — don't leave it in empty.
-7. Copy the markdown to the clipboard so it's one ⌘V away from pasting into GitHub, using a **quoted** heredoc (`<<'EOF'`) so the shell doesn't expand `$`, backticks, or other special characters that might appear in commit messages or file paths:
+   - Only if step 3 was answered yes, add a second section, `## Link to ticket`, containing just the bare ID (found or supplied in step 3) on its own line — no markdown link syntax, no guessed URL. GitHub's "autolink references" feature (the same thing that renders the ID as a link in the PR title itself) auto-links the bare ID once it's pasted into a PR description, so constructing a URL yourself would just risk guessing wrong.
+   - Otherwise omit the `## Link to ticket` section entirely — don't leave it in empty.
+8. Copy the markdown to the clipboard so it's one ⌘V away from pasting into GitHub, using a **quoted** heredoc (`<<'EOF'`) so the shell doesn't expand `$`, backticks, or other special characters that might appear in commit messages or file paths:
    ```bash
    pbcopy <<'EOF'
    ## Changes
@@ -59,13 +62,14 @@ Triggers: "summarise this PR", "summarize the PR", "summarise the diff", "summar
    <ID>
    EOF
    ```
-8. Output the identical markdown in the chat, wrapped in a fenced code block language-tagged `markdown`, with a short lead-in noting it's already on the clipboard — nothing else of substance outside the block. This keeps the markdown as literal, unrendered source — sending it as normal chat prose would let Claude Code's own rendering swallow the `##`/`-` syntax before the user can copy it.
+9. Output the identical markdown in the chat, wrapped in a fenced code block language-tagged `markdown`, with a short lead-in noting it's already on the clipboard — nothing else of substance outside the block. This keeps the markdown as literal, unrendered source — sending it as normal chat prose would let Claude Code's own rendering swallow the `##`/`-` syntax before the user can copy it.
 
 ## Common Mistakes
 - Rendering the summary as normal chat markdown instead of fencing it in a fenced `markdown` block — the user loses the literal `##`/`-` syntax and can't paste it as-is.
 - Copy-pasting the raw PR title as the section header instead of the fixed `## Changes` label.
+- Auto-detecting a ticket ID from the title's shape and skipping the P+ question — always ask; a parenthetical alone isn't confirmation this is a P+ project.
 - Constructing a guessed Atlassian/Jira URL for the ticket ID instead of pasting the bare ID — let GitHub's autolink reference (the same one that links it in the PR title) do the linking.
-- Including an empty `## Link to ticket` section when the PR title has no parenthetical ID — omit the section entirely instead.
+- Including an empty `## Link to ticket` section when the answer was no, or when yes but no ID could be found or supplied — omit the section entirely instead.
 - Using an unquoted heredoc (`<<EOF` instead of `<<'EOF'`) with `pbcopy` — lets the shell expand `$`/backticks inside commit messages or filenames before they hit the clipboard.
 - Letting the clipboard content and the chat-displayed content drift apart — copy and display the exact same markdown.
 - Assuming the default branch is `main` — detect it (`gh repo view` or `git symbolic-ref refs/remotes/origin/HEAD`), since it may be `master` or something else.
