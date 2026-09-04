@@ -6,7 +6,7 @@ description: Use when the user asks to summarise or summarize the current PR, th
 # Summarise PR
 
 ## Overview
-Produces a brief, scannable summary of the changes in the current PR (or current branch, if no PR is open yet), delivered as raw markdown source in a fenced code block so it can be pasted verbatim into a GitHub PR description, Slack message, or changelog — not rendered as chat output.
+Produces a brief, scannable summary of the changes in the current PR (or current branch, if no PR is open yet), copies it to the clipboard, and shows it as raw markdown source in a fenced code block — ready to paste directly into a GitHub PR description (⌘V), Slack message, or changelog, not rendered as chat output.
 
 ## When to Use
 Triggers: "summarise this PR", "summarize the PR", "summarise the diff", "summarize my changes", or `/summarise-pr`.
@@ -47,10 +47,20 @@ Triggers: "summarise this PR", "summarize the PR", "summarise the diff", "summar
    - One-line title (PR title if available, otherwise a short description of the change).
    - 3-8 bullets, one line each, covering only the meaningful changes — skip trivial diffs (formatting-only files, lockfile bumps) unless that's literally the whole PR.
    - Group bullets under short `##`/`###` headers only if the change genuinely spans distinct areas; prefer a flat bullet list otherwise.
-7. Output the markdown wrapped in a fenced code block, language-tagged `markdown`, with nothing else of substance outside it (at most one short lead-in sentence). This keeps the markdown as literal, unrendered source — sending it as normal chat prose would let Claude Code's own rendering swallow the `##`/`-` syntax before the user can copy it.
+7. Copy the markdown to the clipboard so it's one ⌘V away from pasting into GitHub, using a **quoted** heredoc (`<<'EOF'`) so the shell doesn't expand `$`, backticks, or other special characters that might appear in commit messages or file paths:
+   ```bash
+   pbcopy <<'EOF'
+   ## <Title>
+   - <bullet>
+   - <bullet>
+   EOF
+   ```
+8. Output the identical markdown in the chat, wrapped in a fenced code block language-tagged `markdown`, with a short lead-in noting it's already on the clipboard — nothing else of substance outside the block. This keeps the markdown as literal, unrendered source — sending it as normal chat prose would let Claude Code's own rendering swallow the `##`/`-` syntax before the user can copy it.
 
 ## Common Mistakes
 - Rendering the summary as normal chat markdown instead of fencing it in a fenced `markdown` block — the user loses the literal `##`/`-` syntax and can't paste it as-is.
+- Using an unquoted heredoc (`<<EOF` instead of `<<'EOF'`) with `pbcopy` — lets the shell expand `$`/backticks inside commit messages or filenames before they hit the clipboard.
+- Letting the clipboard content and the chat-displayed content drift apart — copy and display the exact same markdown.
 - Assuming the default branch is `main` — detect it (`gh repo view` or `git symbolic-ref refs/remotes/origin/HEAD`), since it may be `master` or something else.
 - Pulling the full `git diff`/`gh pr diff` patch text for a large PR — use `--stat` plus targeted per-file diffs instead of flooding context with the whole patch.
 - Listing every commit or every changed file — synthesize by theme instead; a PR with a dozen commits should still read as one coherent summary.
