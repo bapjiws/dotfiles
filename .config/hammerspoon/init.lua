@@ -1,3 +1,4 @@
+require("hs.ipc") -- enables the `hs` CLI for debugging/reloading from a shell
 hs.window.animationDuration = 0
 
 local appLaunchers = {
@@ -29,9 +30,10 @@ end)
 
 -- ===== Window move/resize (mirrors: cmd+alt - left/right/up/f, plus 1/2/3 for thirds) =====
 
-local function setWindowGrid(win, x, y, w, h)
+-- screen is optional; defaults to the window's current screen
+local function setWindowGrid(win, x, y, w, h, screen)
   if not win then return end
-  local f = win:screen():frame()
+  local f = (screen or win:screen()):frame()
   win:setFrame({
     x = f.x + f.w * x,
     y = f.y + f.h * y,
@@ -124,6 +126,45 @@ for i = 1, 3 do
   hs.hotkey.bind({"shift", "alt"}, tostring(i), function() focusDisplay(i) end)
   hs.hotkey.bind({"shift", "cmd"}, tostring(i), function() sendWindowToDisplay(i) end)
 end
+
+-- ===== Layout combo (cmd+alt - l): Ghostty / Brave / Figma in thirds on display 2 =====
+
+-- place an app's main window into a grid slot on the given screen. If the
+-- app isn't running yet, launch it; if its window is in native fullscreen
+-- (which ignores setFrame), leave fullscreen first. Either way, retry until
+-- the window is ready to be moved.
+local function placeAppOnScreen(appName, screen, x, w, attempts)
+  attempts = attempts or 20
+  local app = hs.application.get(appName)
+  local win = app and (app:mainWindow() or app:allWindows()[1])
+  if win and not win:isFullScreen() then
+    setWindowGrid(win, x, 0, w, 1, screen)
+    return
+  end
+  if not app then
+    hs.application.launchOrFocus(appName)
+  elseif win then
+    win:setFullScreen(false)
+  end
+  if attempts > 0 then
+    hs.timer.doAfter(0.5, function()
+      placeAppOnScreen(appName, screen, x, w, attempts - 1)
+    end)
+  end
+end
+
+local thirdsLayout = {
+  { app = "Ghostty",       x = 0 / 3 },
+  { app = "Brave Browser", x = 1 / 3 },
+  { app = "Figma",         x = 2 / 3 },
+}
+
+hs.hotkey.bind({"cmd", "alt"}, "l", function()
+  local screen = getSortedScreens()[2] or hs.screen.mainScreen()
+  for _, slot in ipairs(thirdsLayout) do
+    placeAppOnScreen(slot.app, screen, slot.x, 1 / 3)
+  end
+end)
 
 -- ===== Extra: move cursor to the focused window (not in yabai/skhd) =====
 
