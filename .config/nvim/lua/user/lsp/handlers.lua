@@ -76,10 +76,6 @@ M.setup = function()
       map("n", "<leader>sgn", vim.lsp.buf.signature_help, vim.tbl_extend("force", opts, { desc = "Signature help" }))
       map("n", "<leader>cac", vim.lsp.buf.code_action,    vim.tbl_extend("force", opts, { desc = "Code action" }))
       map("n", "<leader>rnm", vim.lsp.buf.rename,         vim.tbl_extend("force", opts, { desc = "Rename" }))
-
-      map("n", "<leader>fmt", function()
-        require("conform").format({ lsp_fallback = true })
-      end, vim.tbl_extend("force", opts, { desc = "Format" }))
     end,
   })
 end

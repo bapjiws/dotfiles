@@ -235,6 +235,22 @@ require("lazy").setup({
 		"stevearc/conform.nvim",
 		event = "BufWritePre",
 		cmd = "ConformInfo",
+		-- `keys` (not just `event`/`cmd`) so lazy.nvim loads conform *and* runs its
+		-- config() the moment <leader>fmt is pressed, instead of only on save. Doesn't
+		-- need an LSP client at all (conform formats standalone; lsp_fallback is just
+		-- a fallback), so this must NOT be gated behind LspAttach like the other
+		-- keymaps below -- that left a real no-op window right after opening a buffer,
+		-- before the LSP (e.g. ts_ls) attached, where <leader>fmt silently did nothing.
+		keys = {
+			{
+				"<leader>fmt",
+				function()
+					require("conform").format({ lsp_fallback = true })
+				end,
+				mode = "n",
+				desc = "Format",
+			},
+		},
 		config = function()
 			require("conform").setup({
 				formatters_by_ft = {
