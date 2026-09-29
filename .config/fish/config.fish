@@ -3,7 +3,14 @@ set -x SHELL /bin/bash
 starship init fish | source
 
 alias rng "ranger"
-alias lzg "lazygit"
+function lzg
+    set -lx LAZYGIT_NEW_DIR_FILE ~/.lazygit/newdir
+    lazygit $argv
+    if test -f $LAZYGIT_NEW_DIR_FILE
+        cd (cat $LAZYGIT_NEW_DIR_FILE)
+        rm -f $LAZYGIT_NEW_DIR_FILE
+    end
+end
 
 alias ll "exa -las type --git --icons"
 
@@ -39,4 +46,4 @@ fzf --fish | source
 # export FZF_CTRL_T_COMMAND="fd --type d --type f --hidden --follow --exclude .git"
 
 starship init fish | source
-source ~/.safe-chain/scripts/init-fish.fish # Safe-chain Fish initialization script
+# source ~/.safe-chain/scripts/init-fish.fish # Safe-chain Fish initialization script
