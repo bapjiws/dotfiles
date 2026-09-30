@@ -47,25 +47,34 @@ Triggers: "split this into commits", "commit this properly", "break my changes i
    - **Order** so each commit stands on its own where practical: types and helpers before their users, a refactor before the feature that relies on it. If two commits only work together, say so in the plan.
    - **Name** each commit `type(scope): subject`, conventional commits 1.0: `feat`, `fix`, `refactor`, `perf`, `docs`, `test`, `build`, `ci`, `chore`, `style` (formatting only), `revert`. Scope is optional: a short noun for the area, reusing scopes from step 5. Subject in imperative mood, lower-case start, no trailing period, aim for ≤ 60 characters, hard cap 72. Mark breaking changes with `!` and a `BREAKING CHANGE:` footer.
    - **Describe** each commit with a body of one to four lines: *why* the change exists first, then anything a reviewer wouldn't guess from the diff. Bullets are fine for distinct points. Trivial commits still get a one-sentence body. Add a `Refs:` / ticket footer only if the repo's recent commits do. **Don't hard-wrap the body:** each paragraph or bullet is one continuous line, because GitHub pre-fills PR descriptions from commit bodies and shows single newlines as literal line breaks.
-7. **Get approval.** Show the plan in chat as normal markdown (it's read here, not pasted elsewhere), then ask.
-   ```
-   ### Plan: 3 commits on `feature/token-refresh` (PR #123)
+7. **Get approval.** Every time, in every mode (`--one` included), do both parts, in this order. The user approves a *message*, so the subject **and** the description must be in front of them, twice: in chat and in the dialog.
+   1. **Print the plan** as your last chat message before asking, as normal markdown, with no prose summary of the change before or instead of it ("I'll create a single `feat` commit that…" is not the plan). Every commit gets these three labelled lines: the exact subject, the files, and the description **verbatim**, i.e. the same text that will be committed, not a paraphrase.
+      ```
+      ### Plan: 3 commits on `feature/token-refresh` (PR #123)
 
-   1. `feat(auth): refresh access tokens before they expire`
-      Files: `src/auth/refresh.ts` (new), `src/auth/client.ts`
-      Description: Access tokens were only refreshed after a 401, which dropped in-flight requests. Refresh proactively once 80% of the lifetime has passed.
+      **1. Subject:** `feat(auth): refresh access tokens before they expire`
+      **Files:** `src/auth/refresh.ts` (new), `src/auth/client.ts`
+      **Description:** Access tokens were only refreshed after a 401, which dropped in-flight requests. Refresh proactively once 80% of the lifetime has passed.
 
-   2. `test(auth): cover proactive token refresh`
-      Files: `src/auth/refresh.test.ts` (new)
-      Description: ...
+      **2. Subject:** `test(auth): cover proactive token refresh`
+      **Files:** `src/auth/refresh.test.ts` (new)
+      **Description:** ...
 
-   **Left out:** `.env.local` — looks like secrets, not committing it.
-   ```
-   Ask with `AskUserQuestion` when available (plain chat otherwise), saying in the question that commits are made locally and nothing is pushed:
-   - **Approve — commit locally** (recommended)
-   - **Adjust the plan** — ask in plain chat what to change (merge, split, reword, move a file), revise, show the full updated plan, and ask again.
-   - **Cancel** — stop; nothing has been touched.
-   Free-text answers that change the plan count as *Adjust*. Approval covers exactly the plan that was shown; any change needs a fresh approval. Don't create a single commit before an explicit approve.
+      **Left out:** `.env.local` — looks like secrets, not committing it.
+      ```
+      In `--one` mode this is the same block with a single entry. Before asking, check your own last message: if any commit lacks a **Description:** line, you haven't printed the plan yet.
+   2. **Ask** with `AskUserQuestion` when available (plain chat otherwise). The dialog can cover the chat above it and **does not render markdown**, so it has to carry the message itself, in plain text with no backticks or `**`:
+      - **Question text:** the subject(s), the branch, and that nothing is pushed. One commit: `Commit "feat(auth): refresh access tokens before they expire" locally on feature/token-refresh? Nothing is pushed.` Several: `Commit these 3 locally on feature/token-refresh? Nothing is pushed.` followed by the subjects.
+      - **Approve option's description:** the description text, verbatim. For several commits, one `subject: description` per commit. A file list or a base commit hash is not a description.
+      - Optionally also put the full message(s) in the Approve option's `preview` field, but it may not be displayed, so never rely on it.
+      - Never write "shown above" in an option unless the full message really is above.
+
+      Options:
+      - **Approve — commit locally** (recommended)
+      - **Adjust the plan** — ask in plain chat what to change (merge, split, reword, move a file), revise, print the full updated plan again, and ask again.
+      - **Cancel** — stop; nothing has been touched.
+
+      Free-text answers that change the plan count as *Adjust*. Approval covers exactly the plan that was shown; any change needs a fresh approval. Don't create a single commit before an explicit approve.
 8. **Commit.** Run `git reset -q` once first: it empties the index (the user's earlier staging is folded into the plan) and leaves the working tree exactly as it is. Then, per commit in plan order:
    - **Stage exactly the planned files:** `git add -A -- <paths>` (handles deletions and renames; include both paths of a rename).
    - **Stage a subset of a file's hunks** (non-interactive — `git add -p` needs a TTY): generate the diff fresh with `git diff -U0 -- <file> > <scratchpad-dir>/part.patch`, edit the patch (with `Write`/`Edit`) down to the file header plus the chosen `@@` hunks, then `git apply --cached --unidiff-zero --recount <scratchpad-dir>/part.patch`. Regenerate the diff after every commit, because line numbers shift.
@@ -92,6 +101,8 @@ Triggers: "split this into commits", "commit this properly", "break my changes i
 
 ## Common Mistakes
 - Committing before the user has explicitly approved the plan, or after they asked for changes to it, on the strength of the earlier approval.
+- Asking for approval without printing the exact subject and description first, or with a prose summary in their place. The user approves a message, so they must see the message, every time. Showing only the subject is the same mistake.
+- Putting markdown (backticks, `**`) in the approval dialog's question or option text: it renders literally.
 - Pushing, "just to see the PR update".
 - Building the plan from `git diff --stat` alone — file names don't reveal which hunks belong to which change. Read the diff.
 - Forgetting untracked files: `git diff` doesn't list them, so a plan built from it silently strands new files.
