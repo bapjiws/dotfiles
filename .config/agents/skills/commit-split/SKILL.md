@@ -1,6 +1,6 @@
 ---
 name: commit-split
-description: Use when the user wants the uncommitted work on a PR or branch split into several meaningful commits — phrases like "split this into commits", "commit this properly", "break my changes into commits", "make commits out of this", or "/commit-split" (optionally with a PR number or URL). Plans the commits as conventional commits with names and descriptions, asks for approval, then commits locally. Never pushes.
+description: Use when the user wants the uncommitted work on a PR or branch split into several meaningful commits — phrases like "split this into commits", "commit this properly", "break my changes into commits", "make commits out of this", or "/commit-split" (optionally with a PR number or URL). Also for the case where the user already knows it's all one commit — "commit this as one commit", "name this commit", "write the commit message for this", or "/commit-split --one". Plans the commits as conventional commits with names and descriptions, asks for approval, then commits locally. Never pushes.
 ---
 
 # Commit Split
@@ -8,10 +8,12 @@ description: Use when the user wants the uncommitted work on a PR or branch spli
 ## Overview
 Takes all the uncommitted work in the working tree of a PR's branch (staged, unstaged, and untracked), groups it into logical commits, and shows the plan: conventional commit names plus descriptions. Only after the user approves does it create the commits. It never pushes: the commits stay local until the user decides to push them. Commits already on the branch are never touched.
 
-Arguments (optional): `/commit-split [<PR number or URL>]`. With none, it uses the current branch's PR if there is one, else just the current branch.
+Arguments (optional): `/commit-split [--one] [<PR number or URL>]`. With no PR, it uses the current branch's PR if there is one, else just the current branch.
+
+**`--one` mode** is for when the user already knows all of the uncommitted work belongs in a single commit (the flag, or wording like "commit this as one commit" / "name this commit"). Everything below applies unchanged except step 6: no grouping, ordering, or hunk splitting, and the plan is exactly one commit. What you still do is read the work, name it, describe it, ask for approval, and commit.
 
 ## When to Use
-Triggers: "split this into commits", "commit this properly", "break my changes into commits", "make commits out of this", or `/commit-split`. Not for reorganising commits that already exist (that's a rebase) and not for a single obvious commit the user could have asked for directly.
+Triggers: "split this into commits", "commit this properly", "break my changes into commits", "make commits out of this", "commit this as one commit", "name this commit", or `/commit-split [--one]`. Not for reorganising commits that already exist (that's a rebase).
 
 ## Steps
 1. **Preflight.**
@@ -37,6 +39,7 @@ Triggers: "split this into commits", "commit this properly", "break my changes i
    - Skip reading only what's obvious from name and stat: lockfiles, snapshots, generated output.
 5. **Learn the repo's commit conventions.** Check `CLAUDE.md` / `AGENTS.md` / `CONTRIBUTING.md`, a commitlint config (`commitlint.config.*`, `.commitlintrc*`, or a `commitlint` key in `package.json`), and `git log -20 --format=%s`. Use the scopes and ticket-footer habits found there. If the repo's own rules are stricter than conventional commits (allowed types/scopes, required footer), follow them. If recent history isn't conventional, still use conventional commits — the user asked for it.
 6. **Draft the plan.**
+   - **In `--one` mode, skip the grouping rules below:** the plan is a single commit holding every file, so take only the *Left out* rule from "Assign everything" and the *Name* and *Describe* rules. The user has made the call that this is one change, so don't split it or refuse. If the diff plainly contains unrelated concerns, say so in one line above the message and still plan one commit. Pick the type and scope that fit the main change, and put the secondary parts in the body as bullets rather than stretching the subject with "and". Staging in step 8 is then just `git add -A` minus any *Left out* paths.
    - **One commit = one logical change** that a reviewer can understand alone. Not one commit per file, and not one giant commit. If the work really is a single change, a one-commit plan is a valid answer.
    - **Assign everything.** Every changed and untracked file goes in exactly one commit. A file may be split across commits by hunk only when its hunks are clearly independent (e.g. an unrelated formatting change or a drive-by fix mixed into a feature file); say so in the plan. Files that look like they shouldn't be committed at all — `.env*`, keys, logs, build output, editor junk, leftover debug code — go under **Left out** for the user to decide, never silently included or dropped.
    - **Keep together:** a manifest with its lockfile; generated files with their source; tests with the code they cover (a separate `test:` commit only when the tests are a distinct chunk of work); a rename's delete and add.
@@ -93,7 +96,8 @@ Triggers: "split this into commits", "commit this properly", "break my changes i
 - Building the plan from `git diff --stat` alone — file names don't reveal which hunks belong to which change. Read the diff.
 - Forgetting untracked files: `git diff` doesn't list them, so a plan built from it silently strands new files.
 - Ignoring the index: assuming staged files are already "done" instead of treating staged and unstaged work as one pool.
-- One commit per file, or one commit for everything, when the work has several distinct concerns (or one, when it doesn't).
+- One commit per file, or one commit for everything, when the work has several distinct concerns (or one, when it doesn't). Exception: in `--one` mode the user has already decided, so plan one commit.
+- In `--one` mode, splitting anyway or refusing because the diff looks mixed. Flag it in one line and go on.
 - Mixing a formatter run or drive-by rename into a feature commit, which makes the feature diff unreviewable.
 - Splitting a manifest from its lockfile, or a source file from its generated output.
 - Silently committing `.env`, keys, logs, or build artifacts, or silently leaving files out — anything not committed appears under **Left out** in the plan.
