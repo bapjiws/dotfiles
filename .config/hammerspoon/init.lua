@@ -28,7 +28,7 @@ hs.hotkey.bind({"alt"}, "f", function()
   ]])
 end)
 
--- ===== Window move/resize (mirrors: cmd+alt - left/right/up/f, plus 1/2/3 for thirds) =====
+-- ===== Window move/resize (cmd+alt - left/right/up/down halves, 1/2/3 thirds, f fullscreen) =====
 
 -- screen is optional; defaults to the window's current screen
 local function setWindowGrid(win, x, y, w, h, screen)
@@ -52,9 +52,14 @@ hs.hotkey.bind({"cmd", "alt"}, "right", function()
   setWindowGrid(hs.window.focusedWindow(), 0.5, 0, 0.5, 1)
 end)
 
--- make window fill screen
+-- snap window to upper half
 hs.hotkey.bind({"cmd", "alt"}, "up", function()
-  setWindowGrid(hs.window.focusedWindow(), 0, 0, 1, 1)
+  setWindowGrid(hs.window.focusedWindow(), 0, 0, 1, 0.5)
+end)
+
+-- snap window to lower half
+hs.hotkey.bind({"cmd", "alt"}, "down", function()
+  setWindowGrid(hs.window.focusedWindow(), 0, 0.5, 1, 0.5)
 end)
 
 -- snap window to left / middle / right third (cmd+alt - 1/2/3)
